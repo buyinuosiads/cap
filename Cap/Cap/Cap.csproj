@@ -70,6 +70,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlarmManagementParent\AlarmManagement\AlarmManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlarmManagementParent\AlarmManagement\AlarmManagement.Designer.cs">
+      <DependentUpon>AlarmManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AlarmManagementParent\AlarmManagement\AlarmManagementAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlarmManagementParent\AlarmManagement\AlarmManagementAdd.Designer.cs">
+      <DependentUpon>AlarmManagementAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AlarmManagementParent\AlarmManagement\AlarmManagementEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlarmManagementParent\AlarmManagement\AlarmManagementEdit.Designer.cs">
+      <DependentUpon>AlarmManagementEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceManagementParent\AttendanceManagement\AttendanceManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceManagementParent\AttendanceManagement\AttendanceManagement.Designer.cs">
+      <DependentUpon>AttendanceManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceManagementParent\AttendanceManagement\AttendanceManagementAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceManagementParent\AttendanceManagement\AttendanceManagementAdd.Designer.cs">
+      <DependentUpon>AttendanceManagementAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceManagementParent\AttendanceManagement\AttendanceManagementEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceManagementParent\AttendanceManagement\AttendanceManagementEdit.Designer.cs">
+      <DependentUpon>AttendanceManagementEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="BasicSettings\Accessories\Accessories.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +123,24 @@
     </Compile>
     <Compile Include="BasicSettings\Accessories\AccessoriesEdit.Designer.cs">
       <DependentUpon>AccessoriesEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicSettings\Box\Box.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicSettings\Box\Box.Designer.cs">
+      <DependentUpon>Box.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicSettings\Box\BoxAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicSettings\Box\BoxAdd.Designer.cs">
+      <DependentUpon>BoxAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicSettings\Box\BoxEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicSettings\Box\BoxEdit.Designer.cs">
+      <DependentUpon>BoxEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="BasicSettings\Ingredients\Ingredients.cs">
       <SubType>Form</SubType>
@@ -123,6 +177,42 @@
     </Compile>
     <Compile Include="BasicSettings\Perm\PermEdit.Designer.cs">
       <DependentUpon>PermEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicSettings\Product\Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicSettings\Product\Product.Designer.cs">
+      <DependentUpon>Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicSettings\Product\ProductAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicSettings\Product\ProductAdd.Designer.cs">
+      <DependentUpon>ProductAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicSettings\Product\ProductEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicSettings\Product\ProductEdit.Designer.cs">
+      <DependentUpon>ProductEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicSettings\Specifications\Specifications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicSettings\Specifications\Specifications.Designer.cs">
+      <DependentUpon>Specifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicSettings\Specifications\SpecificationsAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicSettings\Specifications\SpecificationsAdd.Designer.cs">
+      <DependentUpon>SpecificationsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BasicSettings\Specifications\SpecificationsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BasicSettings\Specifications\SpecificationsEdit.Designer.cs">
+      <DependentUpon>SpecificationsEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="BasicSettings\Technology\Technology.cs">
       <SubType>Form</SubType>
@@ -172,6 +262,114 @@
     <Compile Include="BasicSettings\WidthOfCloth\WidthOfClothAdd.Designer.cs">
       <DependentUpon>WidthOfClothAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Finance\FinancialJournal\FinancialJournal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinancialJournal\FinancialJournal.Designer.cs">
+      <DependentUpon>FinancialJournal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\FinancialJournal\FinancialJournalAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinancialJournal\FinancialJournalAdd.Designer.cs">
+      <DependentUpon>FinancialJournalAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\FinancialJournal\FinancialJournalEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinancialJournal\FinancialJournalEdit.Designer.cs">
+      <DependentUpon>FinancialJournalEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\FinancialStatements\FinancialStatements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinancialStatements\FinancialStatements.Designer.cs">
+      <DependentUpon>FinancialStatements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\FinancialStatements\FinancialStatementsAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinancialStatements\FinancialStatementsAdd.Designer.cs">
+      <DependentUpon>FinancialStatementsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\FinancialStatements\FinancialStatementsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finance\FinancialStatements\FinancialStatementsEdit.Designer.cs">
+      <DependentUpon>FinancialStatementsEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FixedAssetsParent\FixedAssets\FixedAssets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FixedAssetsParent\FixedAssets\FixedAssets.Designer.cs">
+      <DependentUpon>FixedAssets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FixedAssetsParent\FixedAssets\FixedAssetsAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FixedAssetsParent\FixedAssets\FixedAssetsAdd.Designer.cs">
+      <DependentUpon>FixedAssetsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FixedAssetsParent\FixedAssets\FixedAssetsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FixedAssetsParent\FixedAssets\FixedAssetsEdit.Designer.cs">
+      <DependentUpon>FixedAssetsEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryManagement\Inbound\Inbound.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryManagement\Inbound\Inbound.Designer.cs">
+      <DependentUpon>Inbound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryManagement\Inbound\InboundAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryManagement\Inbound\InboundAdd.Designer.cs">
+      <DependentUpon>InboundAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryManagement\Inbound\InboundEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryManagement\Inbound\InboundEdit.Designer.cs">
+      <DependentUpon>InboundEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryManagement\Inventory\Inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryManagement\Inventory\Inventory.Designer.cs">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryManagement\Inventory\InventoryAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryManagement\Inventory\InventoryAdd.Designer.cs">
+      <DependentUpon>InventoryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryManagement\Inventory\InventoryEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryManagement\Inventory\InventoryEdit.Designer.cs">
+      <DependentUpon>InventoryEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryManagement\Outbound\Outbound.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryManagement\Outbound\Outbound.Designer.cs">
+      <DependentUpon>Outbound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryManagement\Outbound\OutboundAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryManagement\Outbound\OutboundAdd.Designer.cs">
+      <DependentUpon>OutboundAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryManagement\Outbound\OutboundEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryManagement\Outbound\OutboundEdit.Designer.cs">
+      <DependentUpon>OutboundEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,8 +382,116 @@
     <Compile Include="Nav.Designer.cs">
       <DependentUpon>Nav.cs</DependentUpon>
     </Compile>
+    <Compile Include="Order\OrderAdditionalRecording\OrderAdditionalRecording.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OrderAdditionalRecording\OrderAdditionalRecording.Designer.cs">
+      <DependentUpon>OrderAdditionalRecording.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderAdditionalRecording\OrderAdditionalRecordingAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OrderAdditionalRecording\OrderAdditionalRecordingAdd.Designer.cs">
+      <DependentUpon>OrderAdditionalRecordingAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderAdditionalRecording\OrderAdditionalRecordingEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OrderAdditionalRecording\OrderAdditionalRecordingEdit.Designer.cs">
+      <DependentUpon>OrderAdditionalRecordingEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderManagement\OrderManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OrderManagement\OrderManagement.Designer.cs">
+      <DependentUpon>OrderManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderManagement\OrderManagementAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OrderManagement\OrderManagementAdd.Designer.cs">
+      <DependentUpon>OrderManagementAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderManagement\OrderManagementEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OrderManagement\OrderManagementEdit.Designer.cs">
+      <DependentUpon>OrderManagementEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderSplitting\OrderSplitting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OrderSplitting\OrderSplitting.Designer.cs">
+      <DependentUpon>OrderSplitting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderSplitting\OrderSplittingAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OrderSplitting\OrderSplittingAdd.Designer.cs">
+      <DependentUpon>OrderSplittingAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order\OrderSplitting\OrderSplittingEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order\OrderSplitting\OrderSplittingEdit.Designer.cs">
+      <DependentUpon>OrderSplittingEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchasingManagementParent\PurchasingManagement\PurchasingManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingManagementParent\PurchasingManagement\PurchasingManagement.Designer.cs">
+      <DependentUpon>PurchasingManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingManagementParent\PurchasingManagement\PurchasingManagementAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingManagementParent\PurchasingManagement\PurchasingManagementAdd.Designer.cs">
+      <DependentUpon>PurchasingManagementAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasingManagementParent\PurchasingManagement\PurchasingManagementEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasingManagementParent\PurchasingManagement\PurchasingManagementEdit.Designer.cs">
+      <DependentUpon>PurchasingManagementEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierAndCustom\Custom\Custom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierAndCustom\Custom\Custom.Designer.cs">
+      <DependentUpon>Custom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierAndCustom\Custom\CustomAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierAndCustom\Custom\CustomAdd.Designer.cs">
+      <DependentUpon>CustomAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierAndCustom\Custom\CustomEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierAndCustom\Custom\CustomEdit.Designer.cs">
+      <DependentUpon>CustomEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierAndCustom\Supplier\Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierAndCustom\Supplier\Supplier.Designer.cs">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierAndCustom\Supplier\SupplierAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierAndCustom\Supplier\SupplierAdd.Designer.cs">
+      <DependentUpon>SupplierAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierAndCustom\Supplier\SupplierEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierAndCustom\Supplier\SupplierEdit.Designer.cs">
+      <DependentUpon>SupplierEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="SystemSetup\Company.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +510,51 @@
     <Compile Include="BasicSettings\WidthOfCloth\WidthOfCloth.Designer.cs">
       <DependentUpon>WidthOfCloth.cs</DependentUpon>
     </Compile>
+    <Compile Include="WorkerManagementParent\WorkerManagement\WorkerManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkerManagementParent\WorkerManagement\WorkerManagement.Designer.cs">
+      <DependentUpon>WorkerManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerManagementParent\WorkerManagement\WorkerManagementAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkerManagementParent\WorkerManagement\WorkerManagementAdd.Designer.cs">
+      <DependentUpon>WorkerManagementAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerManagementParent\WorkerManagement\WorkerManagementEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkerManagementParent\WorkerManagement\WorkerManagementEdit.Designer.cs">
+      <DependentUpon>WorkerManagementEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkRecordsParent\WorkRecords\WorkRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkRecordsParent\WorkRecords\WorkRecords.Designer.cs">
+      <DependentUpon>WorkRecords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkRecordsParent\WorkRecords\WorkRecordsAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkRecordsParent\WorkRecords\WorkRecordsAdd.Designer.cs">
+      <DependentUpon>WorkRecordsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkRecordsParent\WorkRecords\WorkRecordsEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkRecordsParent\WorkRecords\WorkRecordsEdit.Designer.cs">
+      <DependentUpon>WorkRecordsEdit.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AlarmManagementParent\AlarmManagement\AlarmManagement.resx">
+      <DependentUpon>AlarmManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AlarmManagementParent\AlarmManagement\AlarmManagementAdd.resx">
+      <DependentUpon>AlarmManagementAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceManagementParent\AttendanceManagement\AttendanceManagement.resx">
+      <DependentUpon>AttendanceManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BasicSettings\Accessories\Accessories.resx">
       <DependentUpon>Accessories.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +563,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BasicSettings\Accessories\AccessoriesEdit.resx">
       <DependentUpon>AccessoriesEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicSettings\Box\Box.resx">
+      <DependentUpon>Box.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicSettings\Box\BoxAdd.resx">
+      <DependentUpon>BoxAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicSettings\Box\BoxEdit.resx">
+      <DependentUpon>BoxEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BasicSettings\Ingredients\Ingredients.resx">
       <DependentUpon>Ingredients.cs</DependentUpon>
@@ -230,6 +590,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BasicSettings\Perm\PermEdit.resx">
       <DependentUpon>PermEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicSettings\Product\Product.resx">
+      <DependentUpon>Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicSettings\Product\ProductAdd.resx">
+      <DependentUpon>ProductAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicSettings\Product\ProductEdit.resx">
+      <DependentUpon>ProductEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicSettings\Specifications\Specifications.resx">
+      <DependentUpon>Specifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicSettings\Specifications\SpecificationsAdd.resx">
+      <DependentUpon>SpecificationsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BasicSettings\Specifications\SpecificationsEdit.resx">
+      <DependentUpon>SpecificationsEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BasicSettings\Technology\Technology.resx">
       <DependentUpon>Technology.cs</DependentUpon>
@@ -255,11 +633,74 @@
     <EmbeddedResource Include="BasicSettings\WidthOfCloth\WidthOfClothEdit.resx">
       <DependentUpon>WidthOfClothEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinancialJournal\FinancialJournal.resx">
+      <DependentUpon>FinancialJournal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinancialStatements\FinancialStatements.resx">
+      <DependentUpon>FinancialStatements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FixedAssetsParent\FixedAssets\FixedAssets.resx">
+      <DependentUpon>FixedAssets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryManagement\Inbound\Inbound.resx">
+      <DependentUpon>Inbound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryManagement\Inbound\InboundAdd.resx">
+      <DependentUpon>InboundAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryManagement\Inbound\InboundEdit.resx">
+      <DependentUpon>InboundEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryManagement\Inventory\Inventory.resx">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryManagement\Inventory\InventoryAdd.resx">
+      <DependentUpon>InventoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryManagement\Inventory\InventoryEdit.resx">
+      <DependentUpon>InventoryEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryManagement\Outbound\Outbound.resx">
+      <DependentUpon>Outbound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryManagement\Outbound\OutboundAdd.resx">
+      <DependentUpon>OutboundAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryManagement\Outbound\OutboundEdit.resx">
+      <DependentUpon>OutboundEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Nav.resx">
       <DependentUpon>Nav.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\OrderAdditionalRecording\OrderAdditionalRecording.resx">
+      <DependentUpon>OrderAdditionalRecording.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\OrderAdditionalRecording\OrderAdditionalRecordingAdd.resx">
+      <DependentUpon>OrderAdditionalRecordingAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\OrderAdditionalRecording\OrderAdditionalRecordingEdit.resx">
+      <DependentUpon>OrderAdditionalRecordingEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\OrderManagement\OrderManagement.resx">
+      <DependentUpon>OrderManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\OrderManagement\OrderManagementAdd.resx">
+      <DependentUpon>OrderManagementAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\OrderManagement\OrderManagementEdit.resx">
+      <DependentUpon>OrderManagementEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\OrderSplitting\OrderSplitting.resx">
+      <DependentUpon>OrderSplitting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\OrderSplitting\OrderSplittingAdd.resx">
+      <DependentUpon>OrderSplittingAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Order\OrderSplitting\OrderSplittingEdit.resx">
+      <DependentUpon>OrderSplittingEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -270,6 +711,27 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PurchasingManagementParent\PurchasingManagement\PurchasingManagement.resx">
+      <DependentUpon>PurchasingManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierAndCustom\Custom\Custom.resx">
+      <DependentUpon>Custom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierAndCustom\Custom\CustomAdd.resx">
+      <DependentUpon>CustomAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierAndCustom\Custom\CustomEdit.resx">
+      <DependentUpon>CustomEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierAndCustom\Supplier\Supplier.resx">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierAndCustom\Supplier\SupplierAdd.resx">
+      <DependentUpon>SupplierAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierAndCustom\Supplier\SupplierEdit.resx">
+      <DependentUpon>SupplierEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SystemSetup\Company.resx">
       <DependentUpon>Company.cs</DependentUpon>
     </EmbeddedResource>
@@ -278,6 +740,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BasicSettings\WidthOfCloth\WidthOfCloth.resx">
       <DependentUpon>WidthOfCloth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkerManagementParent\WorkerManagement\WorkerManagement.resx">
+      <DependentUpon>WorkerManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkRecordsParent\WorkRecords\WorkRecords.resx">
+      <DependentUpon>WorkRecords.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
