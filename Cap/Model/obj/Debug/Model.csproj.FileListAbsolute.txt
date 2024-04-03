@@ -1,6 +1,0 @@
-D:\项目开发\我的项目\项目开发\WinformUI\Cap\Cap\Model\bin\Debug\Model.dll
-D:\项目开发\我的项目\项目开发\WinformUI\Cap\Cap\Model\bin\Debug\Model.pdb
-D:\项目开发\我的项目\项目开发\WinformUI\Cap\Cap\Model\obj\Debug\Model.csproj.AssemblyReference.cache
-D:\项目开发\我的项目\项目开发\WinformUI\Cap\Cap\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
-D:\项目开发\我的项目\项目开发\WinformUI\Cap\Cap\Model\obj\Debug\Model.dll
-D:\项目开发\我的项目\项目开发\WinformUI\Cap\Cap\Model\obj\Debug\Model.pdb
