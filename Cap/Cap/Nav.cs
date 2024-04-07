@@ -21,10 +21,14 @@ using Cap.PurchasingManagementParent.PurchasingManagement;
 using Cap.SupplierAndCustom.Custom;
 using Cap.SupplierAndCustom.Supplier;
 using Cap.SystemSetup;
+using Cap.SystemSetup.AlarmSetting;
+using Cap.SystemSetup.Menu;
+using Cap.SystemSetup.Role;
 using Cap.SystemSetup.WidthOfCloth;
 using Cap.WorkerManagementParent.WorkerManagement;
 using Cap.WorkRecordsParent.WorkRecords;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +39,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Cap
 {
@@ -72,7 +77,11 @@ namespace Cap
             TreeNode parent = uiNavMenu1.CreateNode("系统设置", 61451, 24, pageIndex);
 
             //通过设置PageIndex关联，节点文字、图标由相应的Page的Text、Symbol提供
-            uiNavMenu1.CreateChildNode(parent, AddPage(new Company(), ++pageIndex));
+            uiNavMenu1.CreateChildNode(parent, AddPage(new SystemSetup.User(), ++pageIndex)); //用户管理
+            uiNavMenu1.CreateChildNode(parent, AddPage(new Company(), ++pageIndex));  //公司管理
+            uiNavMenu1.CreateChildNode(parent, AddPage(new MenuBar(), ++pageIndex)); //菜单管理
+            uiNavMenu1.CreateChildNode(parent, AddPage(new Role(), ++pageIndex)); //角色管理
+            uiNavMenu1.CreateChildNode(parent, AddPage(new AlarmSetting(), ++pageIndex));  //告警设置
             //uiNavMenu1.CreateChildNode(parent, AddPage(new FButton(), ++pageIndex));
             //uiNavMenu1.CreateChildNode(parent, AddPage(new FCheckBox(), ++pageIndex));
             //uiNavMenu1.CreateChildNode(parent, AddPage(new FCombobox(), ++pageIndex));

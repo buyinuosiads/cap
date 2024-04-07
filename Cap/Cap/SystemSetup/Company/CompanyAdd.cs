@@ -65,6 +65,14 @@ namespace Cap.SystemSetup
             }
         }
 
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+         
 
+
+            //context.Cas.Add(ca);
+            //context.SaveChanges();
+
+        }
     }
 }

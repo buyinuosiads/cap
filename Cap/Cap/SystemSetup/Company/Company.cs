@@ -1,4 +1,5 @@
-﻿using Sunny.UI;
+﻿using Model;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,8 @@ namespace Cap.SystemSetup
 
         List<Data> dataList = new List<Data>();
         DataTable dataTable = new DataTable("DataTable");
+        //CapProjectDataContext capProjectDb = new CapProjectDataContext();
+
         public Company()
         {
             InitializeComponent();
@@ -23,7 +26,7 @@ namespace Cap.SystemSetup
             for (int i = 0; i < 3610; i++)
             {
                 Data data = new Data();
-                data.Column1 = "大力" + i;
+                data.Column1 = "大力公司" + i;
                 data.Column2 = i.Mod(2) == 0 ? "A" : "B";
                 data.Column3 = "编辑";
                 data.Column4 = i.Mod(4) == 0;
@@ -58,10 +61,6 @@ namespace Cap.SystemSetup
         /// <param name="count"></param>
         private void uiPagination1_PageChanged(object sender, object pagingSource, int pageIndex, int count)
         {
-            //未连接数据库，通过模拟数据来实现
-            //一般通过ORM的分页去取数据来填充
-            //pageIndex：第几页，和界面对应，从1开始，取数据可能要用pageIndex - 1
-            //count：单页数据量，也就是PageSize值
 
             dataTable.Rows.Clear();
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
@@ -69,9 +68,8 @@ namespace Cap.SystemSetup
                 if (i >= dataList.Count) break;
                 dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column4);
             }
-
-
         }
+
 
         private void uiDataGridView1_SelectIndexChange(object sender, int index)
         {
@@ -89,14 +87,50 @@ namespace Cap.SystemSetup
 
             public bool Column4 { get; set; }
 
-            public override string ToString()
-            {
-                return Column1;
-            }
+
         }
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            // 获取所点击的行
+            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+            // 获取行数据
+            string rowData = row.Cells["Column1"].Value.ToString();
+            string Column2 = row.Cells["Column2"].Value.ToString();
+            string Column3 = row.Cells["Column3"].Value.ToString();
+            string Column4 = row.Cells["Column4"].Value.ToString();
+
+
+            // 确保点击的是按钮列
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            {
+                CompanyDetail companySearchDetail = new CompanyDetail(Column2);///实例化窗体
+                companySearchDetail.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
+                companySearchDetail.ShowDialog();///显示窗体 
+            }
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            {
+                CommpanyEdit commpanyEdit = new CommpanyEdit();///实例化窗体
+                commpanyEdit.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
+                commpanyEdit.ShowDialog();///显示窗体 
+            }
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                if (ShowAskDialog("确定要删除吗？"))
+                {
+                    ShowSuccessTip("删除成功");
+                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                }
+                else
+                {
+                    ShowErrorTip("取消当前操作");
+                }
+            }
 
         }
 
@@ -111,6 +145,8 @@ namespace Cap.SystemSetup
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
+
             CompanyAdd frm = new CompanyAdd();
             frm.Render();
             frm.ShowDialog();
@@ -120,41 +156,6 @@ namespace Cap.SystemSetup
             }
 
             frm.Dispose();
-        }
-
-        private void uiLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void uiPagination1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
-
-        private void uiCheckBoxGroup1_ValueChanged(object sender, CheckBoxGroupEventArgs e)
-        {
-
-        }
-
-        private void edtName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void uiSymbolButton1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

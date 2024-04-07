@@ -56,6 +56,7 @@
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(259, 12);
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // edtAddress
             // 
