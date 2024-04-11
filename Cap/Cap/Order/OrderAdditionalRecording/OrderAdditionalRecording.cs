@@ -104,7 +104,14 @@ namespace Cap.Order.OrderAdditionalRecording
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            string rowData = row.Cells["SupplierName"].Value.ToString(); 
+            string rowData = row.Cells["SupplierName"].Value.ToString();
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            {
+                OrderAdditionalRecordingEdit order = new OrderAdditionalRecordingEdit(rowData);///实例化窗体
+                order.ShowDialog();
+            }
 
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)

@@ -20,18 +20,23 @@ namespace Cap
 
         private void FLogin_ButtonLoginClick(object sender, System.EventArgs e)
         {
-            if (UserName == "1" && Password == "1")
-            {
-                IsLogin = true;
-                Nav form = new Nav();
-                form.Show();
+
+            IsLogin = true;
+            Nav form = new Nav();
+            form.Show();
+
+            //if (UserName == "1" && Password == "1")
+            //{
+            //    IsLogin = true;
+            //    Nav form = new Nav();
+            //    form.Show();
 
 
-            }
-            else
-            {
-                ShowErrorTip("用户名或者密码错误。");
-            }
+            //}
+            //else
+            //{
+            //    ShowErrorTip("用户名或者密码错误。");
+            //}
         }
 
     }
