@@ -13,9 +13,10 @@ namespace Cap.SystemSetup.Menu
 {
     public partial class MenuBarEdit : UIEditForm
     {
-        public MenuBarEdit()
+        public MenuBarEdit(string rowData)
         {
             InitializeComponent();
+            MenuText.Text = rowData;
         }
 
         private void btnOK_Click(object sender, EventArgs e)

@@ -56,9 +56,9 @@
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel1.Location = new System.Drawing.Point(268, 273);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel1.Size = new System.Drawing.Size(55, 16);
             this.uiLabel1.TabIndex = 87;
-            this.uiLabel1.Text = "货物单价";
+            this.uiLabel1.Text = "耗材数";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiTextBox1
@@ -85,9 +85,9 @@
             this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel4.Location = new System.Drawing.Point(268, 216);
             this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel4.Size = new System.Drawing.Size(55, 16);
             this.uiLabel4.TabIndex = 85;
-            this.uiLabel4.Text = "供应货物";
+            this.uiLabel4.Text = "满箱数";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // edtName

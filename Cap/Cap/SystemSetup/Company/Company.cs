@@ -27,16 +27,13 @@ namespace Cap.SystemSetup
             {
                 Data data = new Data();
                 data.Column1 = "大力公司" + i;
-                data.Column2 = i.Mod(2) == 0 ? "A" : "B";
-                data.Column3 = "编辑";
-                data.Column4 = i.Mod(4) == 0;
+                data.Column2 = DateTime.Now.ToString();
+ 
                 dataList.Add(data);
             }
 
             dataTable.Columns.Add("Column1");
-            dataTable.Columns.Add("Column2");
-            dataTable.Columns.Add("Column3");
-            dataTable.Columns.Add("Column4");
+            dataTable.Columns.Add("Column2"); 
             uiDataGridView1.DataSource = dataTable;
 
             //不自动生成列
@@ -66,7 +63,7 @@ namespace Cap.SystemSetup
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column4);
+                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2);
             }
         }
 
@@ -97,15 +94,13 @@ namespace Cap.SystemSetup
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
             string rowData = row.Cells["Column1"].Value.ToString();
-            string Column2 = row.Cells["Column2"].Value.ToString();
-            string Column3 = row.Cells["Column3"].Value.ToString();
-            string Column4 = row.Cells["Column4"].Value.ToString();
+            string Column2 = row.Cells["Column2"].Value.ToString(); 
 
 
             // 确保点击的是按钮列
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                CompanyDetail companySearchDetail = new CompanyDetail(Column2);///实例化窗体
+                CompanyDetail companySearchDetail = new CompanyDetail(rowData);///实例化窗体
                 companySearchDetail.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
                 companySearchDetail.ShowDialog();///显示窗体 
             }
@@ -113,7 +108,7 @@ namespace Cap.SystemSetup
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
-                CommpanyEdit commpanyEdit = new CommpanyEdit();///实例化窗体
+                CommpanyEdit commpanyEdit = new CommpanyEdit(rowData);///实例化窗体
                 commpanyEdit.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
                 commpanyEdit.ShowDialog();///显示窗体 
             }
@@ -142,17 +137,16 @@ namespace Cap.SystemSetup
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
         }
+         
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void uiSymbolButton2_Click(object sender, EventArgs e)
         {
-
 
             CompanyAdd frm = new CompanyAdd();
             frm.Render();
             frm.ShowDialog();
             if (frm.IsOK)
             {
-                ShowSuccessDialog(frm.Person.ToString());
             }
 
             frm.Dispose();

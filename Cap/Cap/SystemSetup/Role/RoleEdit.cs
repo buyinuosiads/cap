@@ -20,9 +20,10 @@ namespace Cap.SystemSetup.Role
         string checkItem = string.Empty;
         string _RoleId = string.Empty;
         string _MenuName = string.Empty;
-        public RoleEdit(string RoleId)
+        public RoleEdit(string RoleId, string RoleName)
         {
             InitializeComponent();
+            Name.Text = RoleName;
             //Sys_Role sys_Role = capProjectDb.Sys_Role.Where(t => t.RoleId.Equals(RoleId)).FirstOrDefault();
             //uiComboTreeView2.Text = sys_Role.MenuName;
             //Name.Text = sys_Role.RoleName;

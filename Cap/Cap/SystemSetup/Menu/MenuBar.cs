@@ -28,7 +28,7 @@ namespace Cap.SystemSetup.Menu
             {
                 Data data = new Data();
                 data.MenuText = "菜单" + i;
-                data.CreateTime = i.Mod(2) == 0 ? "A" : "B";
+                data.CreateTime = DateTime.Now.ToString();
                 dataList.Add(data);
             }
 
@@ -57,7 +57,7 @@ namespace Cap.SystemSetup.Menu
         {
             public string MenuText { get; set; }
 
-            public string CreateTime { get; set; } 
+            public string CreateTime { get; set; }
         }
 
 
@@ -110,7 +110,7 @@ namespace Cap.SystemSetup.Menu
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            //string rowData = row.Cells["Column1"].Value.ToString();
+            string rowData = row.Cells["MenuText"].Value.ToString();
             //string Column2 = row.Cells["Column2"].Value.ToString();
             //string Column3 = row.Cells["Column3"].Value.ToString();
             //string Column4 = row.Cells["Column4"].Value.ToString();
@@ -119,7 +119,7 @@ namespace Cap.SystemSetup.Menu
             // 确保点击的是按钮列
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                MenuBarDetail menuBarDetail = new MenuBarDetail();///实例化窗体
+                MenuBarDetail menuBarDetail = new MenuBarDetail(rowData);///实例化窗体
                 menuBarDetail.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
                 menuBarDetail.ShowDialog();///显示窗体 
             }
@@ -127,7 +127,7 @@ namespace Cap.SystemSetup.Menu
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
-                MenuBarEdit menuBarEdit = new MenuBarEdit();///实例化窗体
+                MenuBarEdit menuBarEdit = new MenuBarEdit(rowData);///实例化窗体
                 menuBarEdit.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
                 menuBarEdit.ShowDialog();///显示窗体 
             }
@@ -157,10 +157,10 @@ namespace Cap.SystemSetup.Menu
             //    dataTable.Rows.Add(dataList[i].MenuText, dataList[i].CreateTime);
             //}
         }
+ 
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void uiSymbolButton2_Click(object sender, EventArgs e)
         {
-
             MenuBarAdd menu = new MenuBarAdd();
             menu.Render();
             menu.ShowDialog();
@@ -171,7 +171,6 @@ namespace Cap.SystemSetup.Menu
             }
             menu.Dispose();
             SearchList();
-
 
         }
     }

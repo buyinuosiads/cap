@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinancialJournal));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
             this.edtName = new Sunny.UI.UITextBox();
@@ -43,17 +43,17 @@
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.btnAdd = new Sunny.UI.UISymbolButton();
             this.uiPagination1 = new Sunny.UI.UIPagination();
-            this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.编辑 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.CreationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConsumablesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullBoxCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
+            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullBoxCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConsumablesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.uiCheckBoxGroup1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
@@ -134,13 +134,14 @@
             this.btnAdd.TabIndex = 27;
             this.btnAdd.Text = "增加";
             this.btnAdd.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // uiPagination1
             // 
             this.uiPagination1.CausesValidation = false;
             this.uiPagination1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uiPagination1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiPagination1.Location = new System.Drawing.Point(3, 455);
+            this.uiPagination1.Location = new System.Drawing.Point(3, 420);
             this.uiPagination1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPagination1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPagination1.Name = "uiPagination1";
@@ -154,77 +155,16 @@
             this.uiPagination1.Text = "uiDataGridPage1";
             this.uiPagination1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiPagination1.TotalCount = 40000;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.NullValue = "删除";
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column6.HeaderText = "操作";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // 编辑
-            // 
-            this.编辑.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = "编辑";
-            this.编辑.DefaultCellStyle = dataGridViewCellStyle2;
-            this.编辑.HeaderText = "操作";
-            this.编辑.Name = "编辑";
-            this.编辑.ReadOnly = true;
-            // 
-            // CreationName
-            // 
-            this.CreationName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CreationName.DataPropertyName = "Column5";
-            this.CreationName.HeaderText = "创建人";
-            this.CreationName.Name = "CreationName";
-            this.CreationName.ReadOnly = true;
-            // 
-            // CreationTime
-            // 
-            this.CreationTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CreationTime.DataPropertyName = "Column4";
-            this.CreationTime.HeaderText = "创建时间";
-            this.CreationTime.Name = "CreationTime";
-            this.CreationTime.ReadOnly = true;
-            // 
-            // ConsumablesCount
-            // 
-            this.ConsumablesCount.DataPropertyName = "Column3";
-            this.ConsumablesCount.HeaderText = "耗材数";
-            this.ConsumablesCount.Name = "ConsumablesCount";
-            this.ConsumablesCount.ReadOnly = true;
-            this.ConsumablesCount.Width = 166;
-            // 
-            // FullBoxCount
-            // 
-            this.FullBoxCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FullBoxCount.DataPropertyName = "Column2";
-            this.FullBoxCount.HeaderText = "满箱数";
-            this.FullBoxCount.Name = "FullBoxCount";
-            this.FullBoxCount.ReadOnly = true;
-            // 
-            // SupplierName
-            // 
-            this.SupplierName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SupplierName.DataPropertyName = "Column1";
-            this.SupplierName.HeaderText = "供应商名称";
-            this.SupplierName.Name = "SupplierName";
-            this.SupplierName.ReadOnly = true;
+            this.uiPagination1.PageChanged += new Sunny.UI.UIPagination.OnPageChangeEventHandler(this.uiPagination1_PageChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.uiDataGridView1);
             this.groupBox1.Controls.Add(this.uiPagination1);
-            this.groupBox1.Location = new System.Drawing.Point(-1, 194);
+            this.groupBox1.Location = new System.Drawing.Point(0, 109);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1043, 494);
+            this.groupBox1.Size = new System.Drawing.Size(1043, 459);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             // 
@@ -233,18 +173,18 @@
             this.uiDataGridView1.AllowUserToAddRows = false;
             this.uiDataGridView1.AllowUserToDeleteRows = false;
             this.uiDataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.uiDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.uiDataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiDataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.uiDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.uiDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.uiDataGridView1.ColumnHeadersHeight = 32;
             this.uiDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.uiDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -254,8 +194,8 @@
             this.CreationTime,
             this.CreationName,
             this.Column5,
-            this.编辑,
-            this.Column6});
+            this.Edit,
+            this.Delete});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -288,19 +228,82 @@
             this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.uiDataGridView1.RowTemplate.Height = 23;
             this.uiDataGridView1.SelectedIndex = -1;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1037, 433);
+            this.uiDataGridView1.Size = new System.Drawing.Size(1037, 398);
             this.uiDataGridView1.TabIndex = 9;
+            this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
+            // 
+            // SupplierName
+            // 
+            this.SupplierName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SupplierName.DataPropertyName = "Column1";
+            this.SupplierName.HeaderText = "财务日账";
+            this.SupplierName.Name = "SupplierName";
+            this.SupplierName.ReadOnly = true;
+            // 
+            // FullBoxCount
+            // 
+            this.FullBoxCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FullBoxCount.DataPropertyName = "Column2";
+            this.FullBoxCount.HeaderText = "固定资产";
+            this.FullBoxCount.Name = "FullBoxCount";
+            this.FullBoxCount.ReadOnly = true;
+            // 
+            // ConsumablesCount
+            // 
+            this.ConsumablesCount.DataPropertyName = "Column3";
+            this.ConsumablesCount.HeaderText = "其他采购";
+            this.ConsumablesCount.Name = "ConsumablesCount";
+            this.ConsumablesCount.ReadOnly = true;
+            this.ConsumablesCount.Width = 166;
+            // 
+            // CreationTime
+            // 
+            this.CreationTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CreationTime.DataPropertyName = "Column4";
+            this.CreationTime.HeaderText = "创建时间";
+            this.CreationTime.Name = "CreationTime";
+            this.CreationTime.ReadOnly = true;
+            // 
+            // CreationName
+            // 
+            this.CreationName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CreationName.DataPropertyName = "Column5";
+            this.CreationName.HeaderText = "创建人";
+            this.CreationName.Name = "CreationName";
+            this.CreationName.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = "查看";
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = "查看";
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column5.HeaderText = "操作";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Edit
+            // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.NullValue = "编辑";
+            this.Edit.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Edit.HeaderText = "操作";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = "删除";
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Delete.HeaderText = "操作";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // FinancialJournal
             // 
@@ -310,6 +313,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FinancialJournal";
             this.Text = "财务日账";
+            this.Initialize += new System.EventHandler(this.FinancialJournal_Initialize_1);
             this.uiCheckBoxGroup1.ResumeLayout(false);
             this.uiCheckBoxGroup1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -327,16 +331,16 @@
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UISymbolButton btnAdd;
         private Sunny.UI.UIPagination uiPagination1;
-        private System.Windows.Forms.DataGridViewButtonColumn Column6;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.DataGridViewButtonColumn 编辑;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreationName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ConsumablesCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FullBoxCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
         private System.Windows.Forms.GroupBox groupBox1;
         private Sunny.UI.UIDataGridView uiDataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullBoxCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ConsumablesCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreationName;
         private System.Windows.Forms.DataGridViewButtonColumn Column5;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
     }
 }

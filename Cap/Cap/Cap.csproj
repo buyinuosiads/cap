@@ -492,23 +492,131 @@
     <Compile Include="SupplierAndCustom\Supplier\SupplierEdit.Designer.cs">
       <DependentUpon>SupplierEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="SystemSetup\Company.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SystemSetup\Company.Designer.cs">
-      <DependentUpon>Company.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SystemSetup\CompanyAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SystemSetup\CompanyAdd.Designer.cs">
-      <DependentUpon>CompanyAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="BasicSettings\WidthOfCloth\WidthOfCloth.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BasicSettings\WidthOfCloth\WidthOfCloth.Designer.cs">
       <DependentUpon>WidthOfCloth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\AlarmSetting\AlarmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\AlarmSetting\AlarmSetting.Designer.cs">
+      <DependentUpon>AlarmSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\AlarmSetting\AlarmSettingAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\AlarmSetting\AlarmSettingAdd.Designer.cs">
+      <DependentUpon>AlarmSettingAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\AlarmSetting\AlarmSettingDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\AlarmSetting\AlarmSettingDetail.Designer.cs">
+      <DependentUpon>AlarmSettingDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\AlarmSetting\AlarmSettingEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\AlarmSetting\AlarmSettingEdit.Designer.cs">
+      <DependentUpon>AlarmSettingEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Company\CommpanyEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Company\CommpanyEdit.Designer.cs">
+      <DependentUpon>CommpanyEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Company\Company.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Company\Company.Designer.cs">
+      <DependentUpon>Company.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Company\CompanyAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Company\CompanyAdd.Designer.cs">
+      <DependentUpon>CompanyAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Company\CompanyDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Company\CompanyDetail.Designer.cs">
+      <DependentUpon>CompanyDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\MenuBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\MenuBar.Designer.cs">
+      <DependentUpon>MenuBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\MenuBarAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\MenuBarAdd.Designer.cs">
+      <DependentUpon>MenuBarAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\MenuBarDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\MenuBarDetail.Designer.cs">
+      <DependentUpon>MenuBarDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\MenuBarEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Menu\MenuBarEdit.Designer.cs">
+      <DependentUpon>MenuBarEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Role\Role.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Role\Role.Designer.cs">
+      <DependentUpon>Role.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Role\RoleAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Role\RoleAdd.Designer.cs">
+      <DependentUpon>RoleAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Role\RoleDetial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Role\RoleDetial.Designer.cs">
+      <DependentUpon>RoleDetial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\Role\RoleEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\Role\RoleEdit.Designer.cs">
+      <DependentUpon>RoleEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\User\User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\User\User.Designer.cs">
+      <DependentUpon>User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\User\UserAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\User\UserAdd.Designer.cs">
+      <DependentUpon>UserAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\User\UserDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\User\UserDetail.Designer.cs">
+      <DependentUpon>UserDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\User\UserEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemSetup\User\UserEdit.Designer.cs">
+      <DependentUpon>UserEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="WorkerManagementParent\WorkerManagement\WorkerManagement.cs">
       <SubType>Form</SubType>
@@ -552,8 +660,17 @@
     <EmbeddedResource Include="AlarmManagementParent\AlarmManagement\AlarmManagementAdd.resx">
       <DependentUpon>AlarmManagementAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AlarmManagementParent\AlarmManagement\AlarmManagementEdit.resx">
+      <DependentUpon>AlarmManagementEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AttendanceManagementParent\AttendanceManagement\AttendanceManagement.resx">
       <DependentUpon>AttendanceManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceManagementParent\AttendanceManagement\AttendanceManagementAdd.resx">
+      <DependentUpon>AttendanceManagementAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceManagementParent\AttendanceManagement\AttendanceManagementEdit.resx">
+      <DependentUpon>AttendanceManagementEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BasicSettings\Accessories\Accessories.resx">
       <DependentUpon>Accessories.cs</DependentUpon>
@@ -636,11 +753,29 @@
     <EmbeddedResource Include="Finance\FinancialJournal\FinancialJournal.resx">
       <DependentUpon>FinancialJournal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinancialJournal\FinancialJournalAdd.resx">
+      <DependentUpon>FinancialJournalAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinancialJournal\FinancialJournalEdit.resx">
+      <DependentUpon>FinancialJournalEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Finance\FinancialStatements\FinancialStatements.resx">
       <DependentUpon>FinancialStatements.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinancialStatements\FinancialStatementsAdd.resx">
+      <DependentUpon>FinancialStatementsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finance\FinancialStatements\FinancialStatementsEdit.resx">
+      <DependentUpon>FinancialStatementsEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FixedAssetsParent\FixedAssets\FixedAssets.resx">
       <DependentUpon>FixedAssets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FixedAssetsParent\FixedAssets\FixedAssetsAdd.resx">
+      <DependentUpon>FixedAssetsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FixedAssetsParent\FixedAssets\FixedAssetsEdit.resx">
+      <DependentUpon>FixedAssetsEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryManagement\Inbound\Inbound.resx">
       <DependentUpon>Inbound.cs</DependentUpon>
@@ -714,6 +849,12 @@
     <EmbeddedResource Include="PurchasingManagementParent\PurchasingManagement\PurchasingManagement.resx">
       <DependentUpon>PurchasingManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingManagementParent\PurchasingManagement\PurchasingManagementAdd.resx">
+      <DependentUpon>PurchasingManagementAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasingManagementParent\PurchasingManagement\PurchasingManagementEdit.resx">
+      <DependentUpon>PurchasingManagementEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SupplierAndCustom\Custom\Custom.resx">
       <DependentUpon>Custom.cs</DependentUpon>
     </EmbeddedResource>
@@ -732,20 +873,86 @@
     <EmbeddedResource Include="SupplierAndCustom\Supplier\SupplierEdit.resx">
       <DependentUpon>SupplierEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SystemSetup\Company.resx">
-      <DependentUpon>Company.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SystemSetup\CompanyAdd.resx">
-      <DependentUpon>CompanyAdd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BasicSettings\WidthOfCloth\WidthOfCloth.resx">
       <DependentUpon>WidthOfCloth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\AlarmSetting\AlarmSetting.resx">
+      <DependentUpon>AlarmSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\AlarmSetting\AlarmSettingAdd.resx">
+      <DependentUpon>AlarmSettingAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\AlarmSetting\AlarmSettingDetail.resx">
+      <DependentUpon>AlarmSettingDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\AlarmSetting\AlarmSettingEdit.resx">
+      <DependentUpon>AlarmSettingEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Company\CommpanyEdit.resx">
+      <DependentUpon>CommpanyEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Company\Company.resx">
+      <DependentUpon>Company.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Company\CompanyAdd.resx">
+      <DependentUpon>CompanyAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Company\CompanyDetail.resx">
+      <DependentUpon>CompanyDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Menu\MenuBar.resx">
+      <DependentUpon>MenuBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Menu\MenuBarAdd.resx">
+      <DependentUpon>MenuBarAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Menu\MenuBarDetail.resx">
+      <DependentUpon>MenuBarDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Menu\MenuBarEdit.resx">
+      <DependentUpon>MenuBarEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Role\Role.resx">
+      <DependentUpon>Role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Role\RoleAdd.resx">
+      <DependentUpon>RoleAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Role\RoleDetial.resx">
+      <DependentUpon>RoleDetial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\Role\RoleEdit.resx">
+      <DependentUpon>RoleEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\User\User.resx">
+      <DependentUpon>User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\User\UserAdd.resx">
+      <DependentUpon>UserAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\User\UserDetail.resx">
+      <DependentUpon>UserDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemSetup\User\UserEdit.resx">
+      <DependentUpon>UserEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkerManagementParent\WorkerManagement\WorkerManagement.resx">
       <DependentUpon>WorkerManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WorkerManagementParent\WorkerManagement\WorkerManagementAdd.resx">
+      <DependentUpon>WorkerManagementAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkerManagementParent\WorkerManagement\WorkerManagementEdit.resx">
+      <DependentUpon>WorkerManagementEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WorkRecordsParent\WorkRecords\WorkRecords.resx">
       <DependentUpon>WorkRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkRecordsParent\WorkRecords\WorkRecordsAdd.resx">
+      <DependentUpon>WorkRecordsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkRecordsParent\WorkRecords\WorkRecordsEdit.resx">
+      <DependentUpon>WorkRecordsEdit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

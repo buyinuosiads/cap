@@ -118,7 +118,7 @@
             this.Controls.Add(this.edtName);
             this.Controls.Add(this.uiLabel2);
             this.Name = "WidthOfClothAdd";
-            this.Text = "WidthOfClothAdd";
+            this.Text = "添加";
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             this.Load += new System.EventHandler(this.WidthOfClothAdd_Load);
             this.Controls.SetChildIndex(this.uiLabel2, 0);

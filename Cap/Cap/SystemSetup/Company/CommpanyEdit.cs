@@ -13,9 +13,13 @@ namespace Cap.SystemSetup
 {
     public partial class CommpanyEdit : UIEditForm
     {
-        public CommpanyEdit()
+        public CommpanyEdit(string Column2)
         {
             InitializeComponent();
+            edtName.Text = Column2;
         }
+
+     
+
     }
 }

@@ -35,23 +35,22 @@
             // 
             // pnlBtm
             // 
-            this.pnlBtm.Location = new System.Drawing.Point(1, 106);
-            this.pnlBtm.Size = new System.Drawing.Size(354, 55);
+            this.pnlBtm.Size = new System.Drawing.Size(798, 55);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(226, 12);
+            this.btnCancel.Location = new System.Drawing.Point(670, 12);
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(111, 12);
+            this.btnOK.Location = new System.Drawing.Point(555, 12);
             // 
             // edtName
             // 
             this.edtName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.edtName.EnterAsTab = true;
             this.edtName.Font = new System.Drawing.Font("宋体", 12F);
-            this.edtName.Location = new System.Drawing.Point(112, 52);
+            this.edtName.Location = new System.Drawing.Point(305, 155);
             this.edtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.edtName.MinimumSize = new System.Drawing.Size(1, 16);
             this.edtName.Name = "edtName";
@@ -67,7 +66,7 @@
             this.uiLabel2.AutoSize = true;
             this.uiLabel2.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(18, 60);
+            this.uiLabel2.Location = new System.Drawing.Point(211, 163);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(71, 16);
             this.uiLabel2.TabIndex = 25;
@@ -77,7 +76,7 @@
             // CommpanyEdit
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(356, 164);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.edtName);
             this.Controls.Add(this.uiLabel2);
             this.Name = "CommpanyEdit";

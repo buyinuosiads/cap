@@ -52,8 +52,8 @@
             this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.编辑 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.uiCheckBoxGroup1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
@@ -78,6 +78,7 @@
             this.uiPagination1.Text = "uiDataGridPage1";
             this.uiPagination1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiPagination1.TotalCount = 40000;
+            this.uiPagination1.PageChanged += new Sunny.UI.UIPagination.OnPageChangeEventHandler(this.uiPagination1_PageChanged);
             // 
             // edtName
             // 
@@ -134,6 +135,7 @@
             this.btnAdd.TabIndex = 27;
             this.btnAdd.Text = "增加";
             this.btnAdd.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // uiCheckBoxGroup1
             // 
@@ -160,7 +162,7 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.uiDataGridView1);
             this.groupBox1.Controls.Add(this.uiPagination1);
-            this.groupBox1.Location = new System.Drawing.Point(-2, 151);
+            this.groupBox1.Location = new System.Drawing.Point(0, 109);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1043, 494);
             this.groupBox1.TabIndex = 16;
@@ -192,8 +194,8 @@
             this.CreationTime,
             this.CreationName,
             this.Column5,
-            this.编辑,
-            this.Column6});
+            this.Edit,
+            this.Delete});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -228,6 +230,7 @@
             this.uiDataGridView1.SelectedIndex = -1;
             this.uiDataGridView1.Size = new System.Drawing.Size(1037, 433);
             this.uiDataGridView1.TabIndex = 9;
+            this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick_1);
             // 
             // CustomName
             // 
@@ -280,27 +283,27 @@
             this.Column5.ReadOnly = true;
             this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // 编辑
+            // Edit
             // 
-            this.编辑.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.NullValue = "编辑";
-            this.编辑.DefaultCellStyle = dataGridViewCellStyle4;
-            this.编辑.HeaderText = "操作";
-            this.编辑.Name = "编辑";
-            this.编辑.ReadOnly = true;
+            this.Edit.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Edit.HeaderText = "操作";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
             // 
-            // Column6
+            // Delete
             // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.NullValue = "删除";
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column6.HeaderText = "操作";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Delete.HeaderText = "操作";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Custom
             // 
@@ -310,6 +313,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Custom";
             this.Text = "客户";
+            this.Initialize += new System.EventHandler(this.Custom_Initialize);
             this.uiCheckBoxGroup1.ResumeLayout(false);
             this.uiCheckBoxGroup1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -336,7 +340,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationName;
         private System.Windows.Forms.DataGridViewButtonColumn Column5;
-        private System.Windows.Forms.DataGridViewButtonColumn 编辑;
-        private System.Windows.Forms.DataGridViewButtonColumn Column6;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
     }
 }

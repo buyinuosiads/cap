@@ -1,4 +1,5 @@
 ﻿using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,13 @@ namespace Cap.WorkRecordsParent.WorkRecords
 {
     public partial class WorkRecordsEdit : UIEditForm
     {
-        public WorkRecordsEdit()
+        public WorkRecordsEdit(string rowData, string Column2, string Column3)
         {
             InitializeComponent();
+
+            Name.Text = rowData;
+            Account.Text = Column2;
+            Phone.Text = Column3;
         }
     }
 }

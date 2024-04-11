@@ -28,12 +28,144 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.uiTextBox2 = new Sunny.UI.UITextBox();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.uiTextBox1 = new Sunny.UI.UITextBox();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.MenuText = new Sunny.UI.UITextBox();
+            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.pnlBtm.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // pnlBtm
+            // 
+            this.pnlBtm.Size = new System.Drawing.Size(798, 55);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(670, 12);
+            // 
+            // btnOK
+            // 
+            this.btnOK.Location = new System.Drawing.Point(555, 12);
+            // 
+            // uiTextBox2
+            // 
+            this.uiTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.uiTextBox2.EnterAsTab = true;
+            this.uiTextBox2.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiTextBox2.Location = new System.Drawing.Point(269, 215);
+            this.uiTextBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiTextBox2.MinimumSize = new System.Drawing.Size(1, 16);
+            this.uiTextBox2.Name = "uiTextBox2";
+            this.uiTextBox2.Padding = new System.Windows.Forms.Padding(5);
+            this.uiTextBox2.ShowText = false;
+            this.uiTextBox2.Size = new System.Drawing.Size(340, 29);
+            this.uiTextBox2.TabIndex = 57;
+            this.uiTextBox2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.uiTextBox2.Watermark = "";
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.AutoSize = true;
+            this.uiLabel2.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel2.Location = new System.Drawing.Point(191, 222);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel2.TabIndex = 59;
+            this.uiLabel2.Text = "工艺管理";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiTextBox1
+            // 
+            this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.uiTextBox1.EnterAsTab = true;
+            this.uiTextBox1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiTextBox1.Location = new System.Drawing.Point(269, 176);
+            this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 16);
+            this.uiTextBox1.Name = "uiTextBox1";
+            this.uiTextBox1.Padding = new System.Windows.Forms.Padding(5);
+            this.uiTextBox1.ShowText = false;
+            this.uiTextBox1.Size = new System.Drawing.Size(340, 29);
+            this.uiTextBox1.TabIndex = 58;
+            this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.uiTextBox1.Watermark = "";
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.AutoSize = true;
+            this.uiLabel1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel1.Location = new System.Drawing.Point(191, 183);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel1.TabIndex = 60;
+            this.uiLabel1.Text = "基本信息";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // MenuText
+            // 
+            this.MenuText.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.MenuText.EnterAsTab = true;
+            this.MenuText.Font = new System.Drawing.Font("宋体", 12F);
+            this.MenuText.Location = new System.Drawing.Point(269, 137);
+            this.MenuText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MenuText.MinimumSize = new System.Drawing.Size(1, 16);
+            this.MenuText.Name = "MenuText";
+            this.MenuText.Padding = new System.Windows.Forms.Padding(5);
+            this.MenuText.ShowText = false;
+            this.MenuText.Size = new System.Drawing.Size(340, 29);
+            this.MenuText.TabIndex = 55;
+            this.MenuText.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.MenuText.Watermark = "";
+            // 
+            // uiLabel3
+            // 
+            this.uiLabel3.AutoSize = true;
+            this.uiLabel3.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel3.Location = new System.Drawing.Point(191, 144);
+            this.uiLabel3.Name = "uiLabel3";
+            this.uiLabel3.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel3.TabIndex = 56;
+            this.uiLabel3.Text = "工人管理";
+            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // WorkerManagementAdd
+            // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "WorkerManagementAdd";
+            this.Controls.Add(this.uiTextBox2);
+            this.Controls.Add(this.uiLabel2);
+            this.Controls.Add(this.MenuText);
+            this.Controls.Add(this.uiTextBox1);
+            this.Controls.Add(this.uiLabel3);
+            this.Controls.Add(this.uiLabel1);
+            this.Name = "WorkerManagementAdd";
+            this.Text = "添加";
+            this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
+            this.Controls.SetChildIndex(this.uiLabel1, 0);
+            this.Controls.SetChildIndex(this.uiLabel3, 0);
+            this.Controls.SetChildIndex(this.uiTextBox1, 0);
+            this.Controls.SetChildIndex(this.MenuText, 0);
+            this.Controls.SetChildIndex(this.uiLabel2, 0);
+            this.Controls.SetChildIndex(this.pnlBtm, 0);
+            this.Controls.SetChildIndex(this.uiTextBox2, 0);
+            this.pnlBtm.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private Sunny.UI.UITextBox uiTextBox2;
+        private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UITextBox uiTextBox1;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UITextBox MenuText;
+        private Sunny.UI.UILabel uiLabel3;
     }
 }

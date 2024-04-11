@@ -89,6 +89,22 @@ namespace Cap.BasicSettings.Accessories
                 frm.ShowDialog();
                 frm.Dispose();
             }
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                if (ShowAskDialog("确定要删除吗？"))
+                {
+                    ShowSuccessTip("删除成功");
+                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                }
+                else
+                {
+                    ShowErrorTip("取消当前操作");
+                }
+            }
+
+
         }
         public class Data
         {
@@ -112,6 +128,15 @@ namespace Cap.BasicSettings.Accessories
             AccessoriesAdd frm = new AccessoriesAdd();
             frm.Render();
             frm.ShowDialog();
+        }
+
+        private void Accessories_Initialize(object sender, EventArgs e)
+        {
+            // 获取 uiCheckBoxGroup1 的宽度
+            int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
+
+            // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
+            groupBox1.Width = checkBoxGroupWidth;
         }
     }
 }

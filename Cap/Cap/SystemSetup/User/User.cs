@@ -149,8 +149,6 @@ namespace Cap.SystemSetup
         private void Company_Initialize(object sender, EventArgs e)
         {
 
-
-
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
 
@@ -164,8 +162,7 @@ namespace Cap.SystemSetup
             frm.Render();
             frm.ShowDialog();
             if (frm.IsOK)
-            {
-                ShowSuccessDialog(frm.Person.ToString());
+            { 
             }
 
             frm.Dispose();
@@ -173,16 +170,21 @@ namespace Cap.SystemSetup
 
         private void uiDataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+
+            // 获取所点击的行
+            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+            // 获取行数据
+            string Column1 = row.Cells["Column1"].Value.ToString();  
+            string Account = row.Cells["Account"].Value.ToString();  
+            string Column2 = row.Cells["Column2"].Value.ToString();  
+            string Column3 = row.Cells["Column3"].Value.ToString();
+            string Sex = row.Cells["Sex"].Value.ToString();
+            string Position = row.Cells["Position"].Value.ToString();
+
             // 确保点击的是按钮列
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                // 获取所点击的行
-                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
-                // 获取行数据
-                string rowData = row.Cells["Column1"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                string Column2 = row.Cells["Column2"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                string Column3 = row.Cells["Column3"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                UserDetail userDetail = new UserDetail();
+                UserDetail userDetail = new UserDetail(Column1, Account, Column2, Column3, Sex, Position);
                 userDetail.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
                 userDetail.ShowDialog();///显示窗体 
 
@@ -193,7 +195,7 @@ namespace Cap.SystemSetup
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
 
-                UserEdit user = new UserEdit();///实例化窗体
+                UserEdit user = new UserEdit(Column1, Account, Column2, Column3, Sex, Position);///实例化窗体
                 user.ShowDialog();
 
             }
@@ -214,7 +216,9 @@ namespace Cap.SystemSetup
         }
 
 
-        private void btnAdd_Click_1(object sender, EventArgs e)
+         
+
+        private void uiSymbolButton2_Click(object sender, EventArgs e)
         {
             UserAdd userAdd = new UserAdd();
             userAdd.Render();

@@ -154,7 +154,7 @@ namespace Cap.SystemSetup.Role
             // 确保点击的是按钮列
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                RoleDetial roleDetial = new RoleDetial();///实例化窗体
+                RoleDetial roleDetial = new RoleDetial(RoleName);///实例化窗体
                 roleDetial.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
                 roleDetial.ShowDialog();///显示窗体 
             }
@@ -162,7 +162,7 @@ namespace Cap.SystemSetup.Role
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
-                RoleEdit roleEdit = new RoleEdit(RoleId);///实例化窗体
+                RoleEdit roleEdit = new RoleEdit(RoleId, RoleName);///实例化窗体
                 roleEdit.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
 
                 roleEdit.Render();
@@ -194,7 +194,9 @@ namespace Cap.SystemSetup.Role
 
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+     
+
+        private void uiSymbolButton2_Click(object sender, EventArgs e)
         {
             RoleAdd roleAdd = new RoleAdd();
             roleAdd.Render();

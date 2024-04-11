@@ -163,7 +163,7 @@
             this.Controls.Add(this.edtName);
             this.Controls.Add(this.uiLabel2);
             this.Name = "SpecificationsAdd";
-            this.Text = "SpecificationsAdd";
+            this.Text = "添加";
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             this.Controls.SetChildIndex(this.pnlBtm, 0);
             this.Controls.SetChildIndex(this.uiLabel2, 0);

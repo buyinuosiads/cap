@@ -113,5 +113,14 @@ namespace Cap.BasicSettings.Ingredients
             frm.Render();
             frm.ShowDialog();
         }
+
+        private void Ingredients_Initialize(object sender, EventArgs e)
+        {
+            // 获取 uiCheckBoxGroup1 的宽度
+            int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
+
+            // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
+            groupBox1.Width = checkBoxGroupWidth;
+        }
     }
 }

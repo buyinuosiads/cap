@@ -13,9 +13,10 @@ namespace Cap.SystemSetup.Role
 {
     public partial class RoleDetial : UIEditForm
     {
-        public RoleDetial()
+        public RoleDetial(string RoleName)
         {
             InitializeComponent();
+            Name.Text = RoleName;
         }
     }
 }

@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.uiTextBox2 = new Sunny.UI.UITextBox();
-            this.uiLabel1 = new Sunny.UI.UILabel();
-            this.uiTextBox1 = new Sunny.UI.UITextBox();
-            this.uiLabel4 = new Sunny.UI.UILabel();
             this.edtName = new Sunny.UI.UITextBox();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.pnlBtm.SuspendLayout();
@@ -48,63 +44,6 @@
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(555, 12);
-            // 
-            // uiTextBox2
-            // 
-            this.uiTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox2.EnterAsTab = true;
-            this.uiTextBox2.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox2.Location = new System.Drawing.Point(363, 211);
-            this.uiTextBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox2.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox2.Name = "uiTextBox2";
-            this.uiTextBox2.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox2.ShowText = false;
-            this.uiTextBox2.Size = new System.Drawing.Size(170, 29);
-            this.uiTextBox2.TabIndex = 94;
-            this.uiTextBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox2.Watermark = "";
-            // 
-            // uiLabel1
-            // 
-            this.uiLabel1.AutoSize = true;
-            this.uiLabel1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel1.Location = new System.Drawing.Point(268, 273);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(71, 16);
-            this.uiLabel1.TabIndex = 93;
-            this.uiLabel1.Text = "货物单价";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // uiTextBox1
-            // 
-            this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox1.Location = new System.Drawing.Point(362, 265);
-            this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox1.Name = "uiTextBox1";
-            this.uiTextBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox1.ShowText = false;
-            this.uiTextBox1.Size = new System.Drawing.Size(170, 29);
-            this.uiTextBox1.TabIndex = 92;
-            this.uiTextBox1.Text = "0";
-            this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox1.Type = Sunny.UI.UITextBox.UIEditType.Integer;
-            this.uiTextBox1.Watermark = "";
-            // 
-            // uiLabel4
-            // 
-            this.uiLabel4.AutoSize = true;
-            this.uiLabel4.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel4.Location = new System.Drawing.Point(268, 216);
-            this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(71, 16);
-            this.uiLabel4.TabIndex = 91;
-            this.uiLabel4.Text = "供应货物";
-            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // edtName
             // 
@@ -129,31 +68,23 @@
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel2.Location = new System.Drawing.Point(268, 164);
             this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(87, 16);
+            this.uiLabel2.Size = new System.Drawing.Size(71, 16);
             this.uiLabel2.TabIndex = 90;
-            this.uiLabel2.Text = "供应商名称";
+            this.uiLabel2.Text = "订单补录";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // OrderAdditionalRecordingEdit
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.uiTextBox2);
-            this.Controls.Add(this.uiLabel1);
-            this.Controls.Add(this.uiTextBox1);
-            this.Controls.Add(this.uiLabel4);
             this.Controls.Add(this.edtName);
             this.Controls.Add(this.uiLabel2);
             this.Name = "OrderAdditionalRecordingEdit";
-            this.Text = "OrderAdditionalRecordingEdit";
+            this.Text = "编辑";
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             this.Controls.SetChildIndex(this.pnlBtm, 0);
             this.Controls.SetChildIndex(this.uiLabel2, 0);
             this.Controls.SetChildIndex(this.edtName, 0);
-            this.Controls.SetChildIndex(this.uiLabel4, 0);
-            this.Controls.SetChildIndex(this.uiTextBox1, 0);
-            this.Controls.SetChildIndex(this.uiLabel1, 0);
-            this.Controls.SetChildIndex(this.uiTextBox2, 0);
             this.pnlBtm.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -161,11 +92,6 @@
         }
 
         #endregion
-
-        private Sunny.UI.UITextBox uiTextBox2;
-        private Sunny.UI.UILabel uiLabel1;
-        private Sunny.UI.UITextBox uiTextBox1;
-        private Sunny.UI.UILabel uiLabel4;
         private Sunny.UI.UITextBox edtName;
         private Sunny.UI.UILabel uiLabel2;
     }

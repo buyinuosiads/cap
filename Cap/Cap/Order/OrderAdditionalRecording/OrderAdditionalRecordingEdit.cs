@@ -1,4 +1,5 @@
 ﻿using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,12 @@ namespace Cap.Order.OrderAdditionalRecording
 {
     public partial class OrderAdditionalRecordingEdit : UIEditForm
     {
-        public OrderAdditionalRecordingEdit()
+        public OrderAdditionalRecordingEdit(string rowData)
         {
             InitializeComponent();
+
+            edtName.Text = rowData;
+
         }
     }
 }

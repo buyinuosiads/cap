@@ -44,8 +44,6 @@
             this.btnAdd = new Sunny.UI.UISymbolButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
-            this.uiPagination1 = new Sunny.UI.UIPagination();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.BoxName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullBoxCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConsumablesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +52,8 @@
             this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.编辑 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.uiPagination1 = new Sunny.UI.UIPagination();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.uiCheckBoxGroup1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
@@ -141,7 +141,7 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.uiDataGridView1);
             this.groupBox1.Controls.Add(this.uiPagination1);
-            this.groupBox1.Location = new System.Drawing.Point(-3, 137);
+            this.groupBox1.Location = new System.Drawing.Point(0, 109);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1043, 494);
             this.groupBox1.TabIndex = 10;
@@ -187,7 +187,7 @@
             this.uiDataGridView1.EnableHeadersVisualStyles = false;
             this.uiDataGridView1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            this.uiDataGridView1.Location = new System.Drawing.Point(3, 22);
+            this.uiDataGridView1.Location = new System.Drawing.Point(3, 23);
             this.uiDataGridView1.Name = "uiDataGridView1";
             this.uiDataGridView1.ReadOnly = true;
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -207,30 +207,9 @@
             this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.uiDataGridView1.RowTemplate.Height = 23;
             this.uiDataGridView1.SelectedIndex = -1;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1037, 433);
+            this.uiDataGridView1.Size = new System.Drawing.Size(1037, 432);
             this.uiDataGridView1.TabIndex = 9;
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
-            // 
-            // uiPagination1
-            // 
-            this.uiPagination1.CausesValidation = false;
-            this.uiPagination1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.uiPagination1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiPagination1.Location = new System.Drawing.Point(3, 455);
-            this.uiPagination1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPagination1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPagination1.Name = "uiPagination1";
-            this.uiPagination1.PagerCount = 11;
-            this.uiPagination1.PageSize = 50;
-            this.uiPagination1.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
-            this.uiPagination1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
-            this.uiPagination1.ShowText = false;
-            this.uiPagination1.Size = new System.Drawing.Size(1037, 36);
-            this.uiPagination1.TabIndex = 7;
-            this.uiPagination1.Text = "uiDataGridPage1";
-            this.uiPagination1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiPagination1.TotalCount = 40000;
-            this.uiPagination1.PageChanged += new Sunny.UI.UIPagination.OnPageChangeEventHandler(this.uiPagination1_PageChanged);
             // 
             // BoxName
             // 
@@ -305,6 +284,27 @@
             this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // uiPagination1
+            // 
+            this.uiPagination1.CausesValidation = false;
+            this.uiPagination1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.uiPagination1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiPagination1.Location = new System.Drawing.Point(3, 455);
+            this.uiPagination1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPagination1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPagination1.Name = "uiPagination1";
+            this.uiPagination1.PagerCount = 11;
+            this.uiPagination1.PageSize = 50;
+            this.uiPagination1.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
+            this.uiPagination1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
+            this.uiPagination1.ShowText = false;
+            this.uiPagination1.Size = new System.Drawing.Size(1037, 36);
+            this.uiPagination1.TabIndex = 7;
+            this.uiPagination1.Text = "uiDataGridPage1";
+            this.uiPagination1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiPagination1.TotalCount = 40000;
+            this.uiPagination1.PageChanged += new Sunny.UI.UIPagination.OnPageChangeEventHandler(this.uiPagination1_PageChanged);
+            // 
             // Box
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -313,6 +313,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Box";
             this.Text = "箱规设置";
+            this.Initialize += new System.EventHandler(this.Box_Initialize);
             this.uiCheckBoxGroup1.ResumeLayout(false);
             this.uiCheckBoxGroup1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

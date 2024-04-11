@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sunny.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,12 @@ using System.Windows.Forms;
 
 namespace Cap.SystemSetup.AlarmSetting
 {
-    public partial class AlarmSettingDetail : Form
+    public partial class AlarmSettingDetail : UIEditForm
     {
-        public AlarmSettingDetail()
+        public AlarmSettingDetail(string rowData)
         {
             InitializeComponent();
+            MenuText.Text = rowData;
         }
     }
 }

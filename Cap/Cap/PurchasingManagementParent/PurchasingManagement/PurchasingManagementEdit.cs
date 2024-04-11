@@ -1,4 +1,5 @@
 ﻿using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,13 @@ namespace Cap.PurchasingManagementParent.PurchasingManagement
 {
     public partial class PurchasingManagementEdit : UIEditForm
     {
-        public PurchasingManagementEdit()
+        public PurchasingManagementEdit(string rowData, string Column2, string Column3)
         {
             InitializeComponent();
+
+            edtName.Text = rowData;
+            uiTextBox2.Text = Column2;
+            uiTextBox1.Text = Column3;
         }
     }
 }

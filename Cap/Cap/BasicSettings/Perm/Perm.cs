@@ -115,5 +115,14 @@ namespace Cap.BasicSettings.Perm
                 frm.Dispose();
             }
         }
+
+        private void Perm_Initialize(object sender, EventArgs e)
+        {
+            // 获取 uiCheckBoxGroup1 的宽度
+            int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
+
+            // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
+            groupBox1.Width = checkBoxGroupWidth;
+        }
     }
 }

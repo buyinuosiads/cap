@@ -35,16 +35,15 @@
             // 
             // pnlBtm
             // 
-            this.pnlBtm.Location = new System.Drawing.Point(1, 95);
-            this.pnlBtm.Size = new System.Drawing.Size(449, 55);
+            this.pnlBtm.Size = new System.Drawing.Size(798, 55);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(321, 12);
+            this.btnCancel.Location = new System.Drawing.Point(670, 12);
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(206, 12);
+            this.btnOK.Location = new System.Drawing.Point(555, 12);
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // MenuText
@@ -52,7 +51,7 @@
             this.MenuText.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.MenuText.EnterAsTab = true;
             this.MenuText.Font = new System.Drawing.Font("宋体", 12F);
-            this.MenuText.Location = new System.Drawing.Point(82, 53);
+            this.MenuText.Location = new System.Drawing.Point(230, 179);
             this.MenuText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MenuText.MinimumSize = new System.Drawing.Size(1, 16);
             this.MenuText.Name = "MenuText";
@@ -68,7 +67,7 @@
             this.uiLabel3.AutoSize = true;
             this.uiLabel3.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel3.Location = new System.Drawing.Point(4, 60);
+            this.uiLabel3.Location = new System.Drawing.Point(152, 186);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(71, 16);
             this.uiLabel3.TabIndex = 52;
@@ -78,7 +77,7 @@
             // MenuBarEdit
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(451, 153);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.MenuText);
             this.Controls.Add(this.uiLabel3);
             this.Name = "MenuBarEdit";

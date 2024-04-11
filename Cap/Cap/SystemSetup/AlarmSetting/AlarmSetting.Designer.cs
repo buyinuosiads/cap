@@ -40,19 +40,18 @@
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.uiPagination1 = new Sunny.UI.UIPagination();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
-            this.edtName = new Sunny.UI.UITextBox();
-            this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
             this.uiLabel2 = new Sunny.UI.UILabel();
-            this.btnAdd = new Sunny.UI.UISymbolButton();
+            this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
+            this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
+            this.uiTextBox1 = new Sunny.UI.UITextBox();
+            this.edtName = new Sunny.UI.UITextBox();
+            this.uiSymbolButton2 = new Sunny.UI.UISymbolButton();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.uiCheckBoxGroup1.SuspendLayout();
@@ -80,8 +79,6 @@
             this.uiDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
-            this.Column3,
-            this.Column4,
             this.Search,
             this.Edit,
             this.Delete});
@@ -119,12 +116,13 @@
             this.uiDataGridView1.SelectedIndex = -1;
             this.uiDataGridView1.Size = new System.Drawing.Size(1064, 448);
             this.uiDataGridView1.TabIndex = 9;
+            this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
             // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column1.DataPropertyName = "Column1";
-            this.Column1.HeaderText = "Column1";
+            this.Column1.HeaderText = "告警信息";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
@@ -132,25 +130,9 @@
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column2.DataPropertyName = "Column2";
-            this.Column2.HeaderText = "Column2";
+            this.Column2.HeaderText = "创建时间";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.DataPropertyName = "Column3";
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.DataPropertyName = "Column4";
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
             // 
             // Search
             // 
@@ -217,12 +199,37 @@
             this.uiPagination1.TotalCount = 40000;
             this.uiPagination1.PageChanged += new Sunny.UI.UIPagination.OnPageChangeEventHandler(this.uiPagination1_PageChanged);
             // 
+            // uiLabel2
+            // 
+            this.uiLabel2.AutoSize = true;
+            this.uiLabel2.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel2.Location = new System.Drawing.Point(13, 43);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(39, 16);
+            this.uiLabel2.TabIndex = 29;
+            this.uiLabel2.Text = "姓名";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiSymbolButton1
+            // 
+            this.uiSymbolButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSymbolButton1.Location = new System.Drawing.Point(194, 35);
+            this.uiSymbolButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton1.Name = "uiSymbolButton1";
+            this.uiSymbolButton1.Size = new System.Drawing.Size(100, 35);
+            this.uiSymbolButton1.Symbol = 61442;
+            this.uiSymbolButton1.TabIndex = 3;
+            this.uiSymbolButton1.Text = "查找";
+            this.uiSymbolButton1.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
             // uiCheckBoxGroup1
             // 
-            this.uiCheckBoxGroup1.Controls.Add(this.edtName);
+            this.uiCheckBoxGroup1.Controls.Add(this.uiSymbolButton2);
+            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox1);
             this.uiCheckBoxGroup1.Controls.Add(this.uiSymbolButton1);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel2);
-            this.uiCheckBoxGroup1.Controls.Add(this.btnAdd);
             this.uiCheckBoxGroup1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiCheckBoxGroup1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiCheckBoxGroup1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
@@ -236,6 +243,22 @@
             this.uiCheckBoxGroup1.TabIndex = 5;
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiTextBox1
+            // 
+            this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.uiTextBox1.EnterAsTab = true;
+            this.uiTextBox1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiTextBox1.Location = new System.Drawing.Point(59, 37);
+            this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 16);
+            this.uiTextBox1.Name = "uiTextBox1";
+            this.uiTextBox1.Padding = new System.Windows.Forms.Padding(5);
+            this.uiTextBox1.ShowText = false;
+            this.uiTextBox1.Size = new System.Drawing.Size(128, 29);
+            this.uiTextBox1.TabIndex = 31;
+            this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiTextBox1.Watermark = "";
             // 
             // edtName
             // 
@@ -253,44 +276,21 @@
             this.edtName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.edtName.Watermark = "";
             // 
-            // uiSymbolButton1
+            // uiSymbolButton2
             // 
-            this.uiSymbolButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiSymbolButton1.Location = new System.Drawing.Point(194, 35);
-            this.uiSymbolButton1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton1.Name = "uiSymbolButton1";
-            this.uiSymbolButton1.Size = new System.Drawing.Size(100, 35);
-            this.uiSymbolButton1.Symbol = 61442;
-            this.uiSymbolButton1.TabIndex = 3;
-            this.uiSymbolButton1.Text = "查找";
-            this.uiSymbolButton1.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // uiLabel2
-            // 
-            this.uiLabel2.AutoSize = true;
-            this.uiLabel2.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(13, 43);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(39, 16);
-            this.uiLabel2.TabIndex = 29;
-            this.uiLabel2.Text = "姓名";
-            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnAdd.Location = new System.Drawing.Point(313, 35);
-            this.btnAdd.MinimumSize = new System.Drawing.Size(1, 1);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
-            this.btnAdd.Size = new System.Drawing.Size(100, 35);
-            this.btnAdd.Symbol = 61543;
-            this.btnAdd.TabIndex = 27;
-            this.btnAdd.Text = "增加";
-            this.btnAdd.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSymbolButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton2.FillColor = System.Drawing.Color.ForestGreen;
+            this.uiSymbolButton2.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiSymbolButton2.Location = new System.Drawing.Point(326, 35);
+            this.uiSymbolButton2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton2.Name = "uiSymbolButton2";
+            this.uiSymbolButton2.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
+            this.uiSymbolButton2.Size = new System.Drawing.Size(100, 35);
+            this.uiSymbolButton2.Symbol = 61543;
+            this.uiSymbolButton2.TabIndex = 35;
+            this.uiSymbolButton2.Text = "增加";
+            this.uiSymbolButton2.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSymbolButton2.Click += new System.EventHandler(this.uiSymbolButton2_Click_1);
             // 
             // AlarmSetting
             // 
@@ -313,20 +313,19 @@
         #endregion
 
         private Sunny.UI.UIDataGridView uiDataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewButtonColumn Search;
-        private System.Windows.Forms.DataGridViewButtonColumn Edit;
-        private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.GroupBox groupBox1;
         private Sunny.UI.UIPagination uiPagination1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewButtonColumn Search;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UISymbolButton uiSymbolButton1;
         private Sunny.UI.UICheckBoxGroup uiCheckBoxGroup1;
         private Sunny.UI.UITextBox edtName;
-        private Sunny.UI.UISymbolButton uiSymbolButton1;
-        private Sunny.UI.UILabel uiLabel2;
-        private Sunny.UI.UISymbolButton btnAdd;
+        private Sunny.UI.UITextBox uiTextBox1;
+        private Sunny.UI.UISymbolButton uiSymbolButton2;
     }
 }

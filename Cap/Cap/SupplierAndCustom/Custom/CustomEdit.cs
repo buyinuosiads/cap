@@ -13,9 +13,14 @@ namespace Cap.SupplierAndCustom.Custom
 {
     public partial class CustomEdit : UIEditForm
     {
-        public CustomEdit()
+        public CustomEdit(string Column1, string Column2, string Column3)
         {
             InitializeComponent();
+
+            edtName.Text = Column1;
+            uiTextBox2.Text = Column2;
+            uiTextBox1.Text = Column3;
+
         }
     }
 }

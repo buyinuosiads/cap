@@ -78,7 +78,11 @@ namespace Cap.SystemSetup.WidthOfCloth
         }
         private void WidthOfCloth_Initialize(object sender, EventArgs e)
         {
+            // 获取 uiCheckBoxGroup1 的宽度
+            int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
 
+            // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
+            groupBox1.Width = checkBoxGroupWidth;
         }
         private void uiDataGridView1_SelectIndexChange(object sender, int index)
         {
@@ -102,7 +106,7 @@ namespace Cap.SystemSetup.WidthOfCloth
         {
 
             // 确保点击的是按钮列
-            if (e.ColumnIndex == uiDataGridView1.Columns["编辑"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
                 // 获取所点击的行
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
@@ -110,10 +114,24 @@ namespace Cap.SystemSetup.WidthOfCloth
                 string Column1 = row.Cells["WidthName"].Value.ToString(); // 替换YourColumnName为你需要的列名
                 string Column2 = row.Cells["WidthSize"].Value.ToString(); // 替换YourColumnName为你需要的列名
                 WidthOfClothEdit frm = new WidthOfClothEdit(Column1, Column2);
-                frm.Render(); 
+                frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
             }
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                if (ShowAskDialog("确定要删除吗？"))
+                {
+                    ShowSuccessTip("删除成功");
+                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                }
+                else
+                {
+                    ShowErrorTip("取消当前操作");
+                }
+            }
+
         }
         public class Data
         {

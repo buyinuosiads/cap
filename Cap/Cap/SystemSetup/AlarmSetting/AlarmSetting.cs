@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Cap.SystemSetup.AlarmSetting
 {
@@ -16,17 +17,13 @@ namespace Cap.SystemSetup.AlarmSetting
             for (int i = 0; i < 3610; i++)
             {
                 Data data = new Data();
-                data.Column1 = "告警公司" + i;
-                data.Column2 = i.Mod(2) == 0 ? "A" : "B";
-                data.Column3 = "编辑";
-                data.Column4 = i.Mod(4) == 0;
+                data.Column1 = "告警信息" + i;
+                data.Column2 =  DateTime.Now.ToString(); 
                 dataList.Add(data);
             }
 
             dataTable.Columns.Add("Column1");
-            dataTable.Columns.Add("Column2");
-            dataTable.Columns.Add("Column3");
-            dataTable.Columns.Add("Column4");
+            dataTable.Columns.Add("Column2"); 
             uiDataGridView1.DataSource = dataTable;
 
             //不自动生成列
@@ -80,8 +77,63 @@ namespace Cap.SystemSetup.AlarmSetting
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column4);
+                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2);
             }
+        }
+
+        private void uiDataGridView1_CellContentClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+            // 获取所点击的行
+            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+            // 获取行数据
+            string rowData = row.Cells["Column1"].Value.ToString();
+            string Column2 = row.Cells["Column2"].Value.ToString();
+
+
+            // 确保点击的是按钮列
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            {
+                AlarmSettingDetail companySearchDetail = new AlarmSettingDetail(rowData);///实例化窗体
+                companySearchDetail.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
+                companySearchDetail.ShowDialog();///显示窗体 
+            }
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            {
+                AlarmSettingEdit commpanyEdit = new AlarmSettingEdit(rowData);///实例化窗体
+                commpanyEdit.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
+                commpanyEdit.ShowDialog();///显示窗体 
+            }
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                if (ShowAskDialog("确定要删除吗？"))
+                {
+                    ShowSuccessTip("删除成功");
+                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                }
+                else
+                {
+                    ShowErrorTip("取消当前操作");
+                }
+            }
+        }
+
+     
+
+        private void uiSymbolButton2_Click_1(object sender, EventArgs e)
+        {
+
+            AlarmSettingAdd frm = new AlarmSettingAdd();
+            frm.Render();
+            frm.ShowDialog();
+            if (frm.IsOK)
+            {
+            }
+
+            frm.Dispose();
         }
     }
 }

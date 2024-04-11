@@ -72,9 +72,9 @@
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel1.Location = new System.Drawing.Point(268, 273);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel1.Size = new System.Drawing.Size(55, 16);
             this.uiLabel1.TabIndex = 93;
-            this.uiLabel1.Text = "货物单价";
+            this.uiLabel1.Text = "耗材数";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiTextBox1
@@ -101,9 +101,9 @@
             this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel4.Location = new System.Drawing.Point(268, 216);
             this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel4.Size = new System.Drawing.Size(55, 16);
             this.uiLabel4.TabIndex = 91;
-            this.uiLabel4.Text = "供应货物";
+            this.uiLabel4.Text = "满箱数";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // edtName
@@ -129,9 +129,9 @@
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel2.Location = new System.Drawing.Point(268, 164);
             this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(87, 16);
+            this.uiLabel2.Size = new System.Drawing.Size(71, 16);
             this.uiLabel2.TabIndex = 90;
-            this.uiLabel2.Text = "供应商名称";
+            this.uiLabel2.Text = "箱规名称";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // SupplierEdit

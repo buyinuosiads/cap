@@ -13,9 +13,13 @@ namespace Cap.BasicSettings.Specifications
 {
     public partial class SpecificationsEdit : UIEditForm
     {
-        public SpecificationsEdit()
+        public SpecificationsEdit(string Column1, string Column2, string Column3)
         {
             InitializeComponent();
+
+            edtName.Text = Column1;
+            uiComboBox4.Text = Column2;
+            uiTextBox1.Text = Column3;
         }
     }
 }

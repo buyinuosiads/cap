@@ -43,14 +43,14 @@
             this.btnAdd = new Sunny.UI.UISymbolButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
-            this.uiPagination1 = new Sunny.UI.UIPagination();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.MaterialName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaterialCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.uiPagination1 = new Sunny.UI.UIPagination();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.uiCheckBoxGroup1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
@@ -131,13 +131,14 @@
             this.btnAdd.TabIndex = 27;
             this.btnAdd.Text = "增加";
             this.btnAdd.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.uiDataGridView1);
             this.groupBox1.Controls.Add(this.uiPagination1);
-            this.groupBox1.Location = new System.Drawing.Point(-1, 148);
+            this.groupBox1.Location = new System.Drawing.Point(0, 109);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1043, 494);
             this.groupBox1.TabIndex = 18;
@@ -167,7 +168,7 @@
             this.MaterialCount,
             this.CreationTime,
             this.CreationName,
-            this.Column5,
+            this.Search,
             this.Column6});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
@@ -203,26 +204,7 @@
             this.uiDataGridView1.SelectedIndex = -1;
             this.uiDataGridView1.Size = new System.Drawing.Size(1037, 433);
             this.uiDataGridView1.TabIndex = 9;
-            // 
-            // uiPagination1
-            // 
-            this.uiPagination1.CausesValidation = false;
-            this.uiPagination1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.uiPagination1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiPagination1.Location = new System.Drawing.Point(3, 455);
-            this.uiPagination1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPagination1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPagination1.Name = "uiPagination1";
-            this.uiPagination1.PagerCount = 11;
-            this.uiPagination1.PageSize = 50;
-            this.uiPagination1.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
-            this.uiPagination1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
-            this.uiPagination1.ShowText = false;
-            this.uiPagination1.Size = new System.Drawing.Size(1037, 36);
-            this.uiPagination1.TabIndex = 7;
-            this.uiPagination1.Text = "uiDataGridPage1";
-            this.uiPagination1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiPagination1.TotalCount = 40000;
+            this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
             // 
             // MaterialName
             // 
@@ -256,16 +238,16 @@
             this.CreationName.Name = "CreationName";
             this.CreationName.ReadOnly = true;
             // 
-            // Column5
+            // Search
             // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Search.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.NullValue = "查看";
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column5.HeaderText = "操作";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Search.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Search.HeaderText = "操作";
+            this.Search.Name = "Search";
+            this.Search.ReadOnly = true;
+            this.Search.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Column6
             // 
@@ -279,6 +261,27 @@
             this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // uiPagination1
+            // 
+            this.uiPagination1.CausesValidation = false;
+            this.uiPagination1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.uiPagination1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiPagination1.Location = new System.Drawing.Point(3, 455);
+            this.uiPagination1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPagination1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPagination1.Name = "uiPagination1";
+            this.uiPagination1.PagerCount = 11;
+            this.uiPagination1.PageSize = 50;
+            this.uiPagination1.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
+            this.uiPagination1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
+            this.uiPagination1.ShowText = false;
+            this.uiPagination1.Size = new System.Drawing.Size(1037, 36);
+            this.uiPagination1.TabIndex = 7;
+            this.uiPagination1.Text = "uiDataGridPage1";
+            this.uiPagination1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiPagination1.TotalCount = 40000;
+            this.uiPagination1.PageChanged += new Sunny.UI.UIPagination.OnPageChangeEventHandler(this.uiPagination1_PageChanged);
+            // 
             // Inventory
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -287,6 +290,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Inventory";
             this.Text = "库存";
+            this.Initialize += new System.EventHandler(this.Inventory_Initialize);
             this.uiCheckBoxGroup1.ResumeLayout(false);
             this.uiCheckBoxGroup1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -310,7 +314,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaterialCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationName;
-        private System.Windows.Forms.DataGridViewButtonColumn Column5;
+        private System.Windows.Forms.DataGridViewButtonColumn Search;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
     }
 }

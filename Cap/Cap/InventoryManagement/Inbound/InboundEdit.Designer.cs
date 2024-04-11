@@ -74,7 +74,7 @@
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(71, 16);
             this.uiLabel1.TabIndex = 93;
-            this.uiLabel1.Text = "货物单价";
+            this.uiLabel1.Text = "联系电话";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiTextBox1
@@ -101,9 +101,9 @@
             this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel4.Location = new System.Drawing.Point(268, 216);
             this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel4.Size = new System.Drawing.Size(55, 16);
             this.uiLabel4.TabIndex = 91;
-            this.uiLabel4.Text = "供应货物";
+            this.uiLabel4.Text = "联系人";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // edtName
@@ -129,9 +129,9 @@
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel2.Location = new System.Drawing.Point(268, 164);
             this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(87, 16);
+            this.uiLabel2.Size = new System.Drawing.Size(71, 16);
             this.uiLabel2.TabIndex = 90;
-            this.uiLabel2.Text = "供应商名称";
+            this.uiLabel2.Text = "入库名称";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // InboundEdit
@@ -145,7 +145,7 @@
             this.Controls.Add(this.edtName);
             this.Controls.Add(this.uiLabel2);
             this.Name = "InboundEdit";
-            this.Text = "InboundEdit";
+            this.Text = "编辑";
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
             this.Controls.SetChildIndex(this.pnlBtm, 0);
             this.Controls.SetChildIndex(this.uiLabel2, 0);

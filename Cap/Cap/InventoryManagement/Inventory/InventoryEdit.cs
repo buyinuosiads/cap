@@ -13,9 +13,12 @@ namespace Cap.InventoryManagement.Inventory
 {
     public partial class InventoryEdit : UIEditForm
     {
-        public InventoryEdit()
+        public InventoryEdit(string Column1, string Column2)
         {
             InitializeComponent();
+            edtName.Text = Column1;
+            uiTextBox2.Text = Column2; 
+
         }
     }
 }
