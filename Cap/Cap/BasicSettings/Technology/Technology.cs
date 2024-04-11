@@ -1,5 +1,7 @@
-﻿using Cap.BasicSettings.Accessories;
+﻿using Cap.AlarmManagementParent.AlarmManagement;
+using Cap.BasicSettings.Accessories;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -75,19 +77,44 @@ namespace Cap.BasicSettings.Technology
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // 获取所点击的行
+            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+            // 获取行数据
+            string Column1 = row.Cells["TechnologyName"].Value.ToString();
 
-            // 确保点击的是按钮列
-            if (e.ColumnIndex == uiDataGridView1.Columns["编辑"].Index && e.RowIndex >= 0)
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                // 获取所点击的行
-                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
-                // 获取行数据
-                string Column1 = row.Cells["TechnologyName"].Value.ToString(); // 替换YourColumnName为你需要的列名
                 TechnologyEdit frm = new TechnologyEdit(Column1);
                 frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
             }
+
+
+            // 确保点击的是按钮列
+            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            {
+                TechnologyEdit frm = new TechnologyEdit(Column1);
+                frm.Render();
+                frm.ShowDialog();
+                frm.Dispose();
+            }
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                if (ShowAskDialog("确定要删除吗？"))
+                {
+                    ShowSuccessTip("删除成功");
+                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                }
+                else
+                {
+                    ShowErrorTip("取消当前操作");
+                }
+            }
+
+
         }
         public class Data
         {

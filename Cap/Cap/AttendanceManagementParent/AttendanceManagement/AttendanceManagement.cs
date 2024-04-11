@@ -1,4 +1,5 @@
-﻿using Cap.BasicSettings.Accessories;
+﻿using Cap.AlarmManagementParent.AlarmManagement;
+using Cap.BasicSettings.Accessories;
 using Cap.Order.OrderSplitting;
 using Sunny.UI;
 using System;
@@ -116,6 +117,11 @@ namespace Cap.AttendanceManagementParent.AttendanceManagement
             string Column2 = row.Cells["FullBoxCount"].Value.ToString();
             string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
 
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            {
+                AttendanceManagementEdit order = new AttendanceManagementEdit(Column2, rowData, Column3);///实例化窗体
+                order.ShowDialog();
+            }
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {

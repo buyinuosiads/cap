@@ -1,5 +1,7 @@
-﻿using Cap.BasicSettings.Ingredients;
+﻿using Cap.AttendanceManagementParent.AttendanceManagement;
+using Cap.BasicSettings.Ingredients;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -76,14 +78,27 @@ namespace Cap.BasicSettings.Accessories
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            // 确保点击的是按钮列
-            if (e.ColumnIndex == uiDataGridView1.Columns["编辑"].Index && e.RowIndex >= 0)
+            // 获取所点击的行
+            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+            // 获取行数据
+            string Column1 = row.Cells["AccessoriesName"].Value.ToString();
+            string Column2 = row.Cells["Unit"].Value.ToString();
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                // 获取所点击的行
-                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
-                // 获取行数据
-                string Column1 = row.Cells["AccessoriesName"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                string Column2 = row.Cells["Unit"].Value.ToString(); // 替换YourColumnName为你需要的列名
+                AccessoriesEdit frm = new AccessoriesEdit(Column1, Column2);
+                frm.Render();
+                frm.ShowDialog();
+                frm.Dispose();
+            }
+
+
+
+            // 确保点击的是按钮列
+            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            {
+
                 AccessoriesEdit frm = new AccessoriesEdit(Column1, Column2);
                 frm.Render();
                 frm.ShowDialog();

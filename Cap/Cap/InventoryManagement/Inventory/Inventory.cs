@@ -1,5 +1,7 @@
 ﻿using Cap.BasicSettings.Accessories;
+using Cap.FixedAssetsParent.FixedAssets;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -117,6 +119,22 @@ namespace Cap.InventoryManagement.Inventory
                 frm.ShowDialog();
                 frm.Dispose();
             }
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                if (ShowAskDialog("确定要删除吗？"))
+                {
+                    ShowSuccessTip("删除成功");
+                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                }
+                else
+                {
+                    ShowErrorTip("取消当前操作");
+                }
+            }
+
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

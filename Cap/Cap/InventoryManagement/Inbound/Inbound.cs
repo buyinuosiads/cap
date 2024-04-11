@@ -120,6 +120,15 @@ namespace Cap.InventoryManagement.Inbound
             string Column3 = row.Cells["Telephone"].Value.ToString();
 
             // 确保点击的是按钮列
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            {
+                InboundEdit frm = new InboundEdit(Column1, Column2, Column3);
+                frm.Render();
+                frm.ShowDialog();
+                frm.Dispose();
+            }
+
+            // 确保点击的是按钮列
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
                 InboundEdit frm = new InboundEdit(Column1, Column2, Column3);

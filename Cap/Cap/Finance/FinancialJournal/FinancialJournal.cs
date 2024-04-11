@@ -1,4 +1,5 @@
-﻿using Cap.BasicSettings.Accessories;
+﻿using Cap.AlarmManagementParent.AlarmManagement;
+using Cap.BasicSettings.Accessories;
 using Cap.Order.OrderSplitting;
 using Sunny.UI;
 using System;
@@ -122,7 +123,17 @@ namespace Cap.Finance.FinancialJournal
             // 获取行数据
             string rowData = row.Cells["SupplierName"].Value.ToString();
             string Column2 = row.Cells["FullBoxCount"].Value.ToString();
-            string Column3 = row.Cells["ConsumablesCount"].Value.ToString(); 
+            string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            {
+
+                FinancialJournalEdit order = new FinancialJournalEdit(rowData, Column2, Column3);///实例化窗体
+                order.ShowDialog();
+            }
+
+
 
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)

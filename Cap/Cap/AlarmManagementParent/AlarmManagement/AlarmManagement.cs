@@ -117,7 +117,14 @@ namespace Cap.AlarmManagementParent.AlarmManagement
             // 获取行数据
             string Column2 = row.Cells["ConsumablesCount"].Value.ToString();
             string rowData = row.Cells["Column1"].Value.ToString();
-            string Column3 = row.Cells["Column2"].Value.ToString(); 
+            string Column3 = row.Cells["Column2"].Value.ToString();
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            {
+                AlarmManagementEdit order = new AlarmManagementEdit(Column2, rowData, Column3);///实例化窗体
+                order.ShowDialog();
+            }
 
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)

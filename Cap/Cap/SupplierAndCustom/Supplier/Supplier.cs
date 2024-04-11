@@ -1,6 +1,8 @@
-﻿using Cap.BasicSettings.Specifications;
+﻿using Cap.AlarmManagementParent.AlarmManagement;
+using Cap.BasicSettings.Specifications;
 using Cap.BasicSettings.WidthOfCloth;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +28,7 @@ namespace Cap.SupplierAndCustom.Supplier
                 Data data = new Data();
                 data.Column1 = "供应商名称" + i;
                 data.Column2 = "满箱数" + i;
-                data.Column3 = "耗材数"+i;
+                data.Column3 = "耗材数" + i;
                 data.Column4 = DateTime.Now.ToString();
                 data.Column5 = "管理员";
                 dataList.Add(data);
@@ -112,7 +114,7 @@ namespace Cap.SupplierAndCustom.Supplier
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
-        { 
+        {
 
             SupplierAdd frm = new SupplierAdd();
             frm.Render();
@@ -122,20 +124,47 @@ namespace Cap.SupplierAndCustom.Supplier
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 确保点击的是按钮列
-            if (e.ColumnIndex == uiDataGridView1.Columns["编辑"].Index && e.RowIndex >= 0)
+            // 获取所点击的行
+            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+            // 获取行数据
+            string Column1 = row.Cells["SupplierName"].Value.ToString();
+            string Column2 = row.Cells["FullBoxCount"].Value.ToString();
+            string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                // 获取所点击的行
-                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
-                // 获取行数据
-                string Column1 = row.Cells["SupplierName"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                string Column2 = row.Cells["FullBoxCount"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                string Column3 = row.Cells["ConsumablesCount"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                SupplierEdit frm = new SupplierEdit(Column1, Column2,Column3);
+                SupplierEdit frm = new SupplierEdit(Column1, Column2, Column3);
                 frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
             }
+
+
+            // 确保点击的是按钮列
+            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            {
+                SupplierEdit frm = new SupplierEdit(Column1, Column2, Column3);
+                frm.Render();
+                frm.ShowDialog();
+                frm.Dispose();
+            }
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                if (ShowAskDialog("确定要删除吗？"))
+                {
+                    ShowSuccessTip("删除成功");
+                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                }
+                else
+                {
+                    ShowErrorTip("取消当前操作");
+                }
+            }
+
+
+
         }
     }
 }

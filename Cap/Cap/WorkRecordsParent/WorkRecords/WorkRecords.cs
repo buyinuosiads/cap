@@ -126,12 +126,17 @@ namespace Cap.WorkRecordsParent.WorkRecords
             string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
 
 
-            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
                 WorkRecordsEdit order = new WorkRecordsEdit(rowData, Column2, Column3);///实例化窗体
                 order.ShowDialog();
             }
 
+            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            {
+                WorkRecordsEdit order = new WorkRecordsEdit(rowData, Column2, Column3);///实例化窗体
+                order.ShowDialog();
+            }
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
             {

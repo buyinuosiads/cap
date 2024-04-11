@@ -118,16 +118,26 @@ namespace Cap.Order.OrderManagement
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            // 获取所点击的行
+            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+            // 获取行数据
+            string Column1 = row.Cells["SupplierName"].Value.ToString();
+            string Column2 = row.Cells["FullBoxCount"].Value.ToString();
+            string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            {
+                OrderManagementEdit frm = new OrderManagementEdit(Column1, Column2, Column3);
+                frm.Render();
+                frm.ShowDialog();
+                frm.Dispose();
+            }
+
+
             // 确保点击的是按钮列
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
-                // 获取所点击的行
-                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
-                // 获取行数据
-                string Column1 = row.Cells["SupplierName"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                string Column2 = row.Cells["FullBoxCount"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                string Column3 = row.Cells["ConsumablesCount"].Value.ToString(); // 替换YourColumnName为你需要的列名
-
                 OrderManagementEdit frm = new OrderManagementEdit(Column1, Column2, Column3);
                 frm.Render();
                 frm.ShowDialog();
@@ -147,7 +157,6 @@ namespace Cap.Order.OrderManagement
                     ShowErrorTip("取消当前操作");
                 }
             }
-
 
         }
 

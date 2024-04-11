@@ -1,6 +1,8 @@
-﻿using Cap.BasicSettings.Accessories;
+﻿using Cap.AlarmManagementParent.AlarmManagement;
+using Cap.BasicSettings.Accessories;
 using Cap.BasicSettings.Product;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +39,7 @@ namespace Cap.BasicSettings.Specifications
             dataTable.Columns.Add("Column2");
             dataTable.Columns.Add("Column3");
             dataTable.Columns.Add("Column4");
-            dataTable.Columns.Add("Column5"); 
+            dataTable.Columns.Add("Column5");
             uiDataGridView1.DataSource = dataTable;
 
             //不自动生成列
@@ -111,20 +113,50 @@ namespace Cap.BasicSettings.Specifications
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 确保点击的是按钮列
-            if (e.ColumnIndex == uiDataGridView1.Columns["编辑"].Index && e.RowIndex >= 0)
+
+
+            // 获取所点击的行
+            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+            // 获取行数据
+            string Column1 = row.Cells["BoxName"].Value.ToString();
+            string Column2 = row.Cells["FullBoxCount"].Value.ToString();
+            string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                // 获取所点击的行
-                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
-                // 获取行数据
-                string Column1 = row.Cells["BoxName"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                string Column2 = row.Cells["FullBoxCount"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                string Column3 = row.Cells["ConsumablesCount"].Value.ToString(); // 替换YourColumnName为你需要的列名
                 SpecificationsEdit frm = new SpecificationsEdit(Column1, Column2, Column3);
                 frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
             }
+
+
+
+            // 确保点击的是按钮列
+            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            {
+                SpecificationsEdit frm = new SpecificationsEdit(Column1, Column2, Column3);
+                frm.Render();
+                frm.ShowDialog();
+                frm.Dispose();
+            }
+
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
+            {
+                if (ShowAskDialog("确定要删除吗？"))
+                {
+                    ShowSuccessTip("删除成功");
+                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                }
+                else
+                {
+                    ShowErrorTip("取消当前操作");
+                }
+            }
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

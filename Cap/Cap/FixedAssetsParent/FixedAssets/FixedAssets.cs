@@ -131,6 +131,15 @@ namespace Cap.FixedAssetsParent.FixedAssets
             string Column6 = row.Cells["Column6"].Value.ToString();
             string Column7 = row.Cells["Column7"].Value.ToString();
 
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            {
+
+                FixedAssetsEdit order = new FixedAssetsEdit(rowData, Column2, Column3, Column4, Column5, Column6, Column7);///实例化窗体
+                order.ShowDialog();
+
+            }
+
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
 

@@ -1,5 +1,7 @@
 ﻿using Cap.BasicSettings.Accessories;
+using Cap.PurchasingManagementParent.PurchasingManagement;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -142,6 +144,17 @@ namespace Cap.SupplierAndCustom.Custom
             string Column3 = row.Cells["Telephone"].Value.ToString();
             string Column4 = row.Cells["CreationTime"].Value.ToString();
             string Column5 = row.Cells["CreationName"].Value.ToString();
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            {
+                CustomEdit frm = new CustomEdit(Column1, Column2, Column3);
+                frm.Render();
+                frm.ShowDialog();
+                frm.Dispose();
+            }
+
+
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
                 CustomEdit frm = new CustomEdit(Column1, Column2, Column3);

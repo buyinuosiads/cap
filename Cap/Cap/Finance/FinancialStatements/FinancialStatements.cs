@@ -1,4 +1,5 @@
-﻿using Cap.BasicSettings.Accessories;
+﻿using Cap.AlarmManagementParent.AlarmManagement;
+using Cap.BasicSettings.Accessories;
 using Cap.Order.OrderSplitting;
 using Sunny.UI;
 using System;
@@ -128,6 +129,13 @@ namespace Cap.Finance.FinancialStatements
             string Column3 = row.Cells["Column3"].Value.ToString();
             string Column4 = row.Cells["Column4"].Value.ToString();
             string Column5 = row.Cells["Column5"].Value.ToString();
+
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            {
+                FinancialStatementsEdit order = new FinancialStatementsEdit(rowData, Column2, Column3, Column4, Column5);///实例化窗体
+                order.ShowDialog();
+            }
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {

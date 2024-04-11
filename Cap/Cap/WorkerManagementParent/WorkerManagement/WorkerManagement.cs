@@ -123,6 +123,14 @@ namespace Cap.WorkerManagementParent.WorkerManagement
             string Column5 = row.Cells["CreationName"].Value.ToString();
 
 
+
+            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            {
+                WorkerManagementEdit order = new WorkerManagementEdit(rowData, Column2, Column3);///实例化窗体
+                order.ShowDialog();
+            }
+
+
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
                 WorkerManagementEdit order = new WorkerManagementEdit(rowData, Column2, Column3);///实例化窗体
