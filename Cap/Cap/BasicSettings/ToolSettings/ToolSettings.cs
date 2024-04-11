@@ -30,14 +30,22 @@ namespace Cap.BasicSettings.ToolSettings
                 data.Column3 = i.Mod(2) == 0 ? "0.1%" : "0.2%";
                 data.Column4 = DateTime.Now.ToString();
                 data.Column5 = "管理员";
+                data.fukuan = "幅宽" + i;
+                data.xishu = "系数" + i;
+                data.tangtou = "烫头" + i;
                 dataList.Add(data);
             }
 
             dataTable.Columns.Add("Column1");
             dataTable.Columns.Add("Column2");
             dataTable.Columns.Add("Column3");
+            dataTable.Columns.Add("fukuan");
+            dataTable.Columns.Add("xishu");
+            dataTable.Columns.Add("tangtou");
             dataTable.Columns.Add("Column4");
             dataTable.Columns.Add("Column5");
+
+
             uiDataGridView1.DataSource = dataTable;
 
             //不自动生成列
@@ -68,7 +76,12 @@ namespace Cap.BasicSettings.ToolSettings
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column4, dataList[i].Column5);
+                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3,
+                    dataList[i].fukuan,
+                    dataList[i].xishu,
+                    dataList[i].tangtou,
+                    dataList[i].Column4,
+                    dataList[i].Column5);
             }
 
 
@@ -93,10 +106,14 @@ namespace Cap.BasicSettings.ToolSettings
             string Column1 = row.Cells["ToolName"].Value.ToString();
             string Column2 = row.Cells["ToolQuota"].Value.ToString();
             string Column3 = row.Cells["FaultToleranceValue"].Value.ToString();
+            string fukuan = row.Cells["fukuan"].Value.ToString();
+            string xishu = row.Cells["xishu"].Value.ToString();
+            string tangtou = row.Cells["tangtou"].Value.ToString();
+
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                ToolSettingsEdit frm = new ToolSettingsEdit(Column1, Column2, Column3);
+                ToolSettingsEdit frm = new ToolSettingsEdit(Column1, Column2, Column3, fukuan, xishu,tangtou);
                 frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
@@ -106,7 +123,7 @@ namespace Cap.BasicSettings.ToolSettings
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
 
-                ToolSettingsEdit frm = new ToolSettingsEdit(Column1, Column2, Column3);
+                ToolSettingsEdit frm = new ToolSettingsEdit(Column1, Column2, Column3, fukuan, xishu, tangtou);
                 frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
@@ -138,6 +155,12 @@ namespace Cap.BasicSettings.ToolSettings
 
             public string Column4 { get; set; }
             public string Column5 { get; set; }
+            public string fukuan { get; set; }
+            public string xishu { get; set; }
+            public string tangtou { get; set; }
+
+
+
 
             public override string ToString()
             {

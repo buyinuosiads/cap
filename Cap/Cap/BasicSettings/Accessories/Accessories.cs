@@ -25,7 +25,7 @@ namespace Cap.BasicSettings.Accessories
             {
                 Data data = new Data();
                 data.Column1 = "辅料名称" + i;
-                data.Column2 = i.Mod(2) == 0 ? "10" : "20";
+                data.Column2 = "辅料" + i;
                 data.Column3 = DateTime.Now.ToString();
                 data.Column4 = "管理员";
                 dataList.Add(data);

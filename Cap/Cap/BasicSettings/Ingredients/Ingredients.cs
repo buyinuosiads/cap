@@ -27,7 +27,7 @@ namespace Cap.BasicSettings.Ingredients
             {
                 Data data = new Data();
                 data.Column1 = "主料名称" + i;
-                data.Column2 = i.Mod(2) == 0 ? "10" : "20";
+                data.Column2 = "规格" + i;
                 data.Column3 = DateTime.Now.ToString();
                 data.Column4 = "管理员";
                 dataList.Add(data);
@@ -98,7 +98,7 @@ namespace Cap.BasicSettings.Ingredients
             // 确保点击的是按钮列
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
-           
+
                 IngredientsEdit frm = new IngredientsEdit(Column1, Column2);
                 frm.Render();
                 frm.ShowDialog();

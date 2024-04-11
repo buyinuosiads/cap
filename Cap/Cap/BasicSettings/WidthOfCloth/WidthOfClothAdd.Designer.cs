@@ -32,6 +32,8 @@
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiLabel4 = new Sunny.UI.UILabel();
             this.edtAge = new Sunny.UI.UITextBox();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.uiComboBox4 = new Sunny.UI.UIComboBox();
             this.pnlBtm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +55,7 @@
             this.edtName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.edtName.EnterAsTab = true;
             this.edtName.Font = new System.Drawing.Font("宋体", 12F);
-            this.edtName.Location = new System.Drawing.Point(131, 68);
+            this.edtName.Location = new System.Drawing.Point(190, 87);
             this.edtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.edtName.MinimumSize = new System.Drawing.Size(1, 16);
             this.edtName.Name = "edtName";
@@ -70,7 +72,7 @@
             this.uiLabel2.AutoSize = true;
             this.uiLabel2.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(37, 76);
+            this.uiLabel2.Location = new System.Drawing.Point(96, 95);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(71, 16);
             this.uiLabel2.TabIndex = 21;
@@ -83,7 +85,7 @@
             this.uiLabel4.AutoSize = true;
             this.uiLabel4.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel4.Location = new System.Drawing.Point(37, 141);
+            this.uiLabel4.Location = new System.Drawing.Point(96, 153);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(71, 16);
             this.uiLabel4.TabIndex = 25;
@@ -95,7 +97,7 @@
             // 
             this.edtAge.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.edtAge.Font = new System.Drawing.Font("宋体", 12F);
-            this.edtAge.Location = new System.Drawing.Point(131, 133);
+            this.edtAge.Location = new System.Drawing.Point(190, 145);
             this.edtAge.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.edtAge.MinimumSize = new System.Drawing.Size(1, 16);
             this.edtAge.Name = "edtAge";
@@ -109,10 +111,52 @@
             this.edtAge.Watermark = "";
             this.edtAge.TextChanged += new System.EventHandler(this.edtAge_TextChanged);
             // 
+            // uiLabel1
+            // 
+            this.uiLabel1.AutoSize = true;
+            this.uiLabel1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel1.Location = new System.Drawing.Point(96, 208);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel1.TabIndex = 27;
+            this.uiLabel1.Text = "幅宽类型";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiComboBox4
+            // 
+            this.uiComboBox4.DataSource = null;
+            this.uiComboBox4.FillColor = System.Drawing.Color.White;
+            this.uiComboBox4.FilterMaxCount = 50;
+            this.uiComboBox4.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiComboBox4.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.uiComboBox4.Items.AddRange(new object[] {
+            "前幅",
+            "后幅",
+            "帽顶",
+            "侧幅",
+            "檐边"});
+            this.uiComboBox4.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.uiComboBox4.Location = new System.Drawing.Point(190, 196);
+            this.uiComboBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiComboBox4.MinimumSize = new System.Drawing.Size(63, 0);
+            this.uiComboBox4.Name = "uiComboBox4";
+            this.uiComboBox4.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.uiComboBox4.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
+            this.uiComboBox4.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom;
+            this.uiComboBox4.ShowFilter = true;
+            this.uiComboBox4.Size = new System.Drawing.Size(170, 29);
+            this.uiComboBox4.SymbolSize = 24;
+            this.uiComboBox4.TabIndex = 77;
+            this.uiComboBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiComboBox4.Watermark = "请选择宽幅类型";
+            // 
             // WidthOfClothAdd
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(504, 357);
+            this.Controls.Add(this.uiComboBox4);
+            this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.uiLabel4);
             this.Controls.Add(this.edtAge);
             this.Controls.Add(this.edtName);
@@ -126,6 +170,8 @@
             this.Controls.SetChildIndex(this.edtAge, 0);
             this.Controls.SetChildIndex(this.uiLabel4, 0);
             this.Controls.SetChildIndex(this.pnlBtm, 0);
+            this.Controls.SetChildIndex(this.uiLabel1, 0);
+            this.Controls.SetChildIndex(this.uiComboBox4, 0);
             this.pnlBtm.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -137,5 +183,7 @@
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UILabel uiLabel4;
         private Sunny.UI.UITextBox edtAge;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UIComboBox uiComboBox4;
     }
 }

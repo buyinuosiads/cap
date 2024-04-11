@@ -28,10 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("规格1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("规格2");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("规格3");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("规格4");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("规格5");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("规格6");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("规格7");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("规格8");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("规格9");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("规格10");
             this.uiLabel4 = new Sunny.UI.UILabel();
-            this.edtAge = new Sunny.UI.UITextBox();
             this.edtName = new Sunny.UI.UITextBox();
             this.uiLabel2 = new Sunny.UI.UILabel();
+            this.uiComboTreeView1 = new Sunny.UI.UIComboTreeView();
             this.pnlBtm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,29 +62,12 @@
             this.uiLabel4.AutoSize = true;
             this.uiLabel4.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel4.Location = new System.Drawing.Point(268, 251);
+            this.uiLabel4.Location = new System.Drawing.Point(288, 247);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(39, 16);
             this.uiLabel4.TabIndex = 29;
             this.uiLabel4.Text = "单位";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // edtAge
-            // 
-            this.edtAge.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.edtAge.Font = new System.Drawing.Font("宋体", 12F);
-            this.edtAge.Location = new System.Drawing.Point(362, 243);
-            this.edtAge.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.edtAge.MinimumSize = new System.Drawing.Size(1, 16);
-            this.edtAge.Name = "edtAge";
-            this.edtAge.Padding = new System.Windows.Forms.Padding(5);
-            this.edtAge.ShowText = false;
-            this.edtAge.Size = new System.Drawing.Size(170, 29);
-            this.edtAge.TabIndex = 27;
-            this.edtAge.Text = "0";
-            this.edtAge.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.edtAge.Type = Sunny.UI.UITextBox.UIEditType.Integer;
-            this.edtAge.Watermark = "";
             // 
             // edtName
             // 
@@ -104,12 +97,59 @@
             this.uiLabel2.Text = "主料名称";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // uiComboTreeView1
+            // 
+            this.uiComboTreeView1.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
+            this.uiComboTreeView1.FillColor = System.Drawing.Color.White;
+            this.uiComboTreeView1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiComboTreeView1.Location = new System.Drawing.Point(362, 240);
+            this.uiComboTreeView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiComboTreeView1.MinimumSize = new System.Drawing.Size(63, 0);
+            this.uiComboTreeView1.Name = "uiComboTreeView1";
+            treeNode1.Name = "节点3";
+            treeNode1.Text = "规格1";
+            treeNode2.Name = "节点4";
+            treeNode2.Text = "规格2";
+            treeNode3.Name = "节点5";
+            treeNode3.Text = "规格3";
+            treeNode4.Name = "节点6";
+            treeNode4.Text = "规格4";
+            treeNode5.Name = "节点0";
+            treeNode5.Text = "规格5";
+            treeNode6.Name = "节点1";
+            treeNode6.Text = "规格6";
+            treeNode7.Name = "节点2";
+            treeNode7.Text = "规格7";
+            treeNode8.Name = "节点3";
+            treeNode8.Text = "规格8";
+            treeNode9.Name = "节点4";
+            treeNode9.Text = "规格9";
+            treeNode10.Name = "节点5";
+            treeNode10.Text = "规格10";
+            this.uiComboTreeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9,
+            treeNode10});
+            this.uiComboTreeView1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.uiComboTreeView1.Size = new System.Drawing.Size(170, 29);
+            this.uiComboTreeView1.SymbolSize = 24;
+            this.uiComboTreeView1.TabIndex = 64;
+            this.uiComboTreeView1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiComboTreeView1.Watermark = "";
+            // 
             // IngredientsAdd
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.uiComboTreeView1);
             this.Controls.Add(this.uiLabel4);
-            this.Controls.Add(this.edtAge);
             this.Controls.Add(this.edtName);
             this.Controls.Add(this.uiLabel2);
             this.Name = "IngredientsAdd";
@@ -118,8 +158,8 @@
             this.Controls.SetChildIndex(this.pnlBtm, 0);
             this.Controls.SetChildIndex(this.uiLabel2, 0);
             this.Controls.SetChildIndex(this.edtName, 0);
-            this.Controls.SetChildIndex(this.edtAge, 0);
             this.Controls.SetChildIndex(this.uiLabel4, 0);
+            this.Controls.SetChildIndex(this.uiComboTreeView1, 0);
             this.pnlBtm.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -129,8 +169,8 @@
         #endregion
 
         private Sunny.UI.UILabel uiLabel4;
-        private Sunny.UI.UITextBox edtAge;
         private Sunny.UI.UITextBox edtName;
         private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UIComboTreeView uiComboTreeView1;
     }
 }

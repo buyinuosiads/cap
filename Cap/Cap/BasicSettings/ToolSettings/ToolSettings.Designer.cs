@@ -49,6 +49,9 @@
             this.ToolName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToolQuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FaultToleranceValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fukuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xishu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tangtou = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -82,6 +85,9 @@
             this.ToolName,
             this.ToolQuota,
             this.FaultToleranceValue,
+            this.fukuan,
+            this.xishu,
+            this.tangtou,
             this.CreationTime,
             this.CreationName,
             this.Search,
@@ -244,17 +250,38 @@
             // 
             this.ToolQuota.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ToolQuota.DataPropertyName = "Column2";
-            this.ToolQuota.HeaderText = "定额";
+            this.ToolQuota.HeaderText = "幅宽定额";
             this.ToolQuota.Name = "ToolQuota";
             this.ToolQuota.ReadOnly = true;
             // 
             // FaultToleranceValue
             // 
+            this.FaultToleranceValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.FaultToleranceValue.DataPropertyName = "Column3";
             this.FaultToleranceValue.HeaderText = "容错值";
             this.FaultToleranceValue.Name = "FaultToleranceValue";
             this.FaultToleranceValue.ReadOnly = true;
-            this.FaultToleranceValue.Width = 166;
+            // 
+            // fukuan
+            // 
+            this.fukuan.DataPropertyName = "fukuan";
+            this.fukuan.HeaderText = "幅宽";
+            this.fukuan.Name = "fukuan";
+            this.fukuan.ReadOnly = true;
+            // 
+            // xishu
+            // 
+            this.xishu.DataPropertyName = "xishu";
+            this.xishu.HeaderText = "系数";
+            this.xishu.Name = "xishu";
+            this.xishu.ReadOnly = true;
+            // 
+            // tangtou
+            // 
+            this.tangtou.DataPropertyName = "tangtou";
+            this.tangtou.HeaderText = "烫头";
+            this.tangtou.Name = "tangtou";
+            this.tangtou.ReadOnly = true;
             // 
             // CreationTime
             // 
@@ -337,6 +364,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ToolName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ToolQuota;
         private System.Windows.Forms.DataGridViewTextBoxColumn FaultToleranceValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fukuan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xishu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tangtou;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationName;
         private System.Windows.Forms.DataGridViewButtonColumn Search;

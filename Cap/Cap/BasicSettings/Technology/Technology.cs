@@ -25,14 +25,16 @@ namespace Cap.BasicSettings.Technology
             {
                 Data data = new Data();
                 data.Column1 = "工艺名称" + i;
-
+                data.zhuliao = "主料" + i;
+                data.fuliao = "辅料" + i;
                 data.Column3 = DateTime.Now.ToString();
                 data.Column4 = "管理员";
                 dataList.Add(data);
             }
 
             dataTable.Columns.Add("Column1");
-
+            dataTable.Columns.Add("zhuliao");
+            dataTable.Columns.Add("fuliao");
             dataTable.Columns.Add("Column3");
             dataTable.Columns.Add("Column4");
             uiDataGridView1.DataSource = dataTable;
@@ -70,7 +72,7 @@ namespace Cap.BasicSettings.Technology
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column3, dataList[i].Column4);
+                dataTable.Rows.Add(dataList[i].Column1, dataList[i].zhuliao, dataList[i].fuliao, dataList[i].Column3, dataList[i].Column4);
             }
         }
 
@@ -81,11 +83,12 @@ namespace Cap.BasicSettings.Technology
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
             string Column1 = row.Cells["TechnologyName"].Value.ToString();
-
-
+            string zhuliao = row.Cells["zhuliao"].Value.ToString();
+            string fuliao = row.Cells["fuliao"].Value.ToString();
+            
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                TechnologyEdit frm = new TechnologyEdit(Column1);
+                TechnologyEdit frm = new TechnologyEdit(Column1, zhuliao, fuliao);
                 frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
@@ -95,7 +98,7 @@ namespace Cap.BasicSettings.Technology
             // 确保点击的是按钮列
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
-                TechnologyEdit frm = new TechnologyEdit(Column1);
+                TechnologyEdit frm = new TechnologyEdit(Column1, zhuliao, fuliao);
                 frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
@@ -118,6 +121,8 @@ namespace Cap.BasicSettings.Technology
         }
         public class Data
         {
+            public string fuliao { get; set; }
+            public string zhuliao { get; set; }
             public string Column1 { get; set; }
 
             public string Column2 { get; set; }

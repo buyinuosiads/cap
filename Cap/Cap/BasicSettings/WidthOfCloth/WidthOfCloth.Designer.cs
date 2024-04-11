@@ -48,6 +48,7 @@
             this.btnAdd = new Sunny.UI.UISymbolButton();
             this.WidthName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WidthSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.leixing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -80,6 +81,7 @@
             this.uiDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.WidthName,
             this.WidthSize,
+            this.leixing,
             this.CreationTime,
             this.CreationName,
             this.Search,
@@ -256,6 +258,14 @@
             this.WidthSize.Name = "WidthSize";
             this.WidthSize.ReadOnly = true;
             // 
+            // leixing
+            // 
+            this.leixing.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.leixing.DataPropertyName = "leixing";
+            this.leixing.HeaderText = "幅宽类型";
+            this.leixing.Name = "leixing";
+            this.leixing.ReadOnly = true;
+            // 
             // CreationTime
             // 
             this.CreationTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -340,6 +350,7 @@
         private Sunny.UI.UISymbolButton btnAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn WidthName;
         private System.Windows.Forms.DataGridViewTextBoxColumn WidthSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn leixing;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationName;
         private System.Windows.Forms.DataGridViewButtonColumn Search;

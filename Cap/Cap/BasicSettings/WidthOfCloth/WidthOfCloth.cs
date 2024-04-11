@@ -29,13 +29,15 @@ namespace Cap.SystemSetup.WidthOfCloth
                 data.Column1 = "幅宽名称" + i;
                 data.Column2 = i.Mod(2) == 0 ? "10" : "20";
                 data.Column3 = DateTime.Now.ToString();
+                data.leixing = "前幅";
                 data.Column4 = "管理员";
                 dataList.Add(data);
             }
 
             dataTable.Columns.Add("Column1");
             dataTable.Columns.Add("Column2");
-            dataTable.Columns.Add("Column3");
+            dataTable.Columns.Add("leixing");            
+            dataTable.Columns.Add("Column3"); 
             dataTable.Columns.Add("Column4");
             uiDataGridView1.DataSource = dataTable;
 
@@ -68,7 +70,7 @@ namespace Cap.SystemSetup.WidthOfCloth
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column4);
+                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].leixing, dataList[i].Column3, dataList[i].Column4);
             }
 
 
@@ -111,8 +113,8 @@ namespace Cap.SystemSetup.WidthOfCloth
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            string Column1 = row.Cells["WidthName"].Value.ToString(); // 替换YourColumnName为你需要的列名
-            string Column2 = row.Cells["WidthSize"].Value.ToString(); // 替换YourColumnName为你需要的列名
+            string Column1 = row.Cells["WidthName"].Value.ToString();  
+            string Column2 = row.Cells["WidthSize"].Value.ToString();  
 
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
@@ -151,11 +153,9 @@ namespace Cap.SystemSetup.WidthOfCloth
         public class Data
         {
             public string Column1 { get; set; }
-
             public string Column2 { get; set; }
-
             public string Column3 { get; set; }
-
+            public string leixing { get; set; }
             public string Column4 { get; set; }
 
             public override string ToString()

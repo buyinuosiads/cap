@@ -48,6 +48,8 @@
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.TechnologyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zhuliao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fuliao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -188,6 +190,8 @@
             this.uiDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.uiDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TechnologyName,
+            this.zhuliao,
+            this.fuliao,
             this.CreationTime,
             this.CreationName,
             this.Search,
@@ -236,6 +240,20 @@
             this.TechnologyName.HeaderText = "工艺名称";
             this.TechnologyName.Name = "TechnologyName";
             this.TechnologyName.ReadOnly = true;
+            // 
+            // zhuliao
+            // 
+            this.zhuliao.DataPropertyName = "zhuliao";
+            this.zhuliao.HeaderText = "主料";
+            this.zhuliao.Name = "zhuliao";
+            this.zhuliao.ReadOnly = true;
+            // 
+            // fuliao
+            // 
+            this.fuliao.DataPropertyName = "fuliao";
+            this.fuliao.HeaderText = "辅料";
+            this.fuliao.Name = "fuliao";
+            this.fuliao.ReadOnly = true;
             // 
             // CreationTime
             // 
@@ -316,6 +334,8 @@
         private Sunny.UI.UIDataGridView uiDataGridView1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn TechnologyName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zhuliao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fuliao;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationName;
         private System.Windows.Forms.DataGridViewButtonColumn Search;
