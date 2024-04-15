@@ -18,7 +18,7 @@ namespace Cap.BasicSettings.Specifications
             InitializeComponent();
 
             edtName.Text = Column1;
-            uiComboBox4.Text = Column2;
+            uiComboTreeView1.Text = Column2;
             uiTextBox1.Text = Column3;
         }
     }

@@ -27,8 +27,8 @@ namespace Cap.BasicSettings.Specifications
             for (int i = 0; i < 10; i++)
             {
                 Data data = new Data();
-                data.Column1 = "规格名称" + i;
-                data.Column2 = "满箱数" + i;
+                data.Column1 = "材料名称"+i;
+                data.Column2 = i.Mod(2) == 0 ? "米" : "尺";
                 data.Column3 = i.Mod(2) == 0 ? "100" : "200";
                 data.Column4 = DateTime.Now.ToString();
                 data.Column5 = "管理员";
@@ -118,9 +118,9 @@ namespace Cap.BasicSettings.Specifications
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            string Column1 = row.Cells["BoxName"].Value.ToString();
-            string Column2 = row.Cells["FullBoxCount"].Value.ToString();
-            string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
+            string Column1 = row.Cells["Column1"].Value.ToString();
+            string Column2 = row.Cells["Column2"].Value.ToString();
+            string Column3 = row.Cells["Column3"].Value.ToString();
 
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)

@@ -46,9 +46,9 @@
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.btnAdd = new Sunny.UI.UISymbolButton();
             this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
-            this.BoxName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullBoxCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConsumablesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -90,9 +90,9 @@
             this.uiDataGridView1.ColumnHeadersHeight = 32;
             this.uiDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.uiDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.BoxName,
-            this.FullBoxCount,
-            this.ConsumablesCount,
+            this.Column1,
+            this.Column2,
+            this.Column3,
             this.CreationTime,
             this.CreationName,
             this.Search,
@@ -232,29 +232,29 @@
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // BoxName
+            // Column1
             // 
-            this.BoxName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.BoxName.DataPropertyName = "Column1";
-            this.BoxName.HeaderText = "箱规名称";
-            this.BoxName.Name = "BoxName";
-            this.BoxName.ReadOnly = true;
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "Column1";
+            this.Column1.HeaderText = "材料名称";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
-            // FullBoxCount
+            // Column2
             // 
-            this.FullBoxCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FullBoxCount.DataPropertyName = "Column2";
-            this.FullBoxCount.HeaderText = "满箱数";
-            this.FullBoxCount.Name = "FullBoxCount";
-            this.FullBoxCount.ReadOnly = true;
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.DataPropertyName = "Column2";
+            this.Column2.HeaderText = "单位";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
-            // ConsumablesCount
+            // Column3
             // 
-            this.ConsumablesCount.DataPropertyName = "Column3";
-            this.ConsumablesCount.HeaderText = "耗材数";
-            this.ConsumablesCount.Name = "ConsumablesCount";
-            this.ConsumablesCount.ReadOnly = true;
-            this.ConsumablesCount.Width = 166;
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.DataPropertyName = "Column3";
+            this.Column3.HeaderText = "长度(米)";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // CreationTime
             // 
@@ -333,9 +333,9 @@
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UISymbolButton btnAdd;
         private Sunny.UI.UICheckBoxGroup uiCheckBoxGroup1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BoxName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FullBoxCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ConsumablesCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationName;
         private System.Windows.Forms.DataGridViewButtonColumn Search;

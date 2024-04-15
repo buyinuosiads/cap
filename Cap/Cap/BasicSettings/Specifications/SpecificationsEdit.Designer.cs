@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.uiComboBox4 = new Sunny.UI.UIComboBox();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("米");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("卷");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("尺");
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiTextBox1 = new Sunny.UI.UITextBox();
             this.uiLabel4 = new Sunny.UI.UILabel();
             this.edtName = new Sunny.UI.UITextBox();
             this.uiLabel2 = new Sunny.UI.UILabel();
+            this.uiComboTreeView1 = new Sunny.UI.UIComboTreeView();
             this.pnlBtm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,40 +52,6 @@
             // 
             this.btnOK.Location = new System.Drawing.Point(555, 12);
             // 
-            // uiComboBox4
-            // 
-            this.uiComboBox4.DataSource = null;
-            this.uiComboBox4.FillColor = System.Drawing.Color.White;
-            this.uiComboBox4.FilterMaxCount = 50;
-            this.uiComboBox4.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiComboBox4.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.uiComboBox4.Items.AddRange(new object[] {
-            "工艺名称0",
-            "工艺名称1",
-            "工艺名称2",
-            "工艺名称3",
-            "工艺名称4",
-            "工艺名称5",
-            "工艺名称6",
-            "工艺名称7",
-            "工艺名称8",
-            "工艺名称9",
-            "工艺名称10"});
-            this.uiComboBox4.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.uiComboBox4.Location = new System.Drawing.Point(362, 207);
-            this.uiComboBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiComboBox4.MinimumSize = new System.Drawing.Size(63, 0);
-            this.uiComboBox4.Name = "uiComboBox4";
-            this.uiComboBox4.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox4.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
-            this.uiComboBox4.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom;
-            this.uiComboBox4.ShowFilter = true;
-            this.uiComboBox4.Size = new System.Drawing.Size(170, 29);
-            this.uiComboBox4.SymbolSize = 24;
-            this.uiComboBox4.TabIndex = 82;
-            this.uiComboBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiComboBox4.Watermark = "请选择工艺名称";
-            // 
             // uiLabel1
             // 
             this.uiLabel1.AutoSize = true;
@@ -90,9 +59,9 @@
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel1.Location = new System.Drawing.Point(268, 273);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(39, 16);
+            this.uiLabel1.Size = new System.Drawing.Size(71, 16);
             this.uiLabel1.TabIndex = 81;
-            this.uiLabel1.Text = "价格";
+            this.uiLabel1.Text = "长度(米)";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiTextBox1
@@ -119,9 +88,9 @@
             this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel4.Location = new System.Drawing.Point(268, 216);
             this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel4.Size = new System.Drawing.Size(39, 16);
             this.uiLabel4.TabIndex = 79;
-            this.uiLabel4.Text = "工艺名称";
+            this.uiLabel4.Text = "单位";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // edtName
@@ -149,14 +118,40 @@
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(71, 16);
             this.uiLabel2.TabIndex = 78;
-            this.uiLabel2.Text = "产品名称";
+            this.uiLabel2.Text = "材料名称";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiComboTreeView1
+            // 
+            this.uiComboTreeView1.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
+            this.uiComboTreeView1.FillColor = System.Drawing.Color.White;
+            this.uiComboTreeView1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiComboTreeView1.Location = new System.Drawing.Point(362, 207);
+            this.uiComboTreeView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiComboTreeView1.MinimumSize = new System.Drawing.Size(63, 0);
+            this.uiComboTreeView1.Name = "uiComboTreeView1";
+            treeNode1.Name = "节点0";
+            treeNode1.Text = "米";
+            treeNode2.Name = "节点1";
+            treeNode2.Text = "卷";
+            treeNode3.Name = "节点2";
+            treeNode3.Text = "尺";
+            this.uiComboTreeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
+            this.uiComboTreeView1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.uiComboTreeView1.Size = new System.Drawing.Size(170, 29);
+            this.uiComboTreeView1.SymbolSize = 24;
+            this.uiComboTreeView1.TabIndex = 82;
+            this.uiComboTreeView1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiComboTreeView1.Watermark = "";
             // 
             // SpecificationsEdit
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.uiComboBox4);
+            this.Controls.Add(this.uiComboTreeView1);
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.uiTextBox1);
             this.Controls.Add(this.uiLabel4);
@@ -171,7 +166,7 @@
             this.Controls.SetChildIndex(this.uiLabel4, 0);
             this.Controls.SetChildIndex(this.uiTextBox1, 0);
             this.Controls.SetChildIndex(this.uiLabel1, 0);
-            this.Controls.SetChildIndex(this.uiComboBox4, 0);
+            this.Controls.SetChildIndex(this.uiComboTreeView1, 0);
             this.pnlBtm.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -179,12 +174,11 @@
         }
 
         #endregion
-
-        private Sunny.UI.UIComboBox uiComboBox4;
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UITextBox uiTextBox1;
         private Sunny.UI.UILabel uiLabel4;
         private Sunny.UI.UITextBox edtName;
         private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UIComboTreeView uiComboTreeView1;
     }
 }
