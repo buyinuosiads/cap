@@ -26,15 +26,17 @@ namespace Cap.BasicSettings.Box
                 Data data = new Data();
                 data.Column1 = "箱规名称" + i;
                 data.Column2 = i.Mod(2) == 0 ? "100" : "200";
-                data.Column3 = i.Mod(2) == 0 ? "10" : "20";
+                data.Column3 = "耗材" + i;
                 data.Column4 = DateTime.Now.ToString();
                 data.Column5 = "管理员";
+                data.Column6 = "辅料" + i;
                 dataList.Add(data);
             }
 
             dataTable.Columns.Add("Column1");
             dataTable.Columns.Add("Column2");
             dataTable.Columns.Add("Column3");
+            dataTable.Columns.Add("Column6");
             dataTable.Columns.Add("Column4");
             dataTable.Columns.Add("Column5");
             uiDataGridView1.DataSource = dataTable;
@@ -67,7 +69,7 @@ namespace Cap.BasicSettings.Box
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column4, dataList[i].Column5);
+                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column6, dataList[i].Column4, dataList[i].Column5);
             }
 
 
@@ -82,9 +84,9 @@ namespace Cap.BasicSettings.Box
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            string Column1 = row.Cells["BoxName"].Value.ToString(); // 替换YourColumnName为你需要的列名
-            string Column2 = row.Cells["FullBoxCount"].Value.ToString(); // 替换YourColumnName为你需要的列名
-            string Column3 = row.Cells["ConsumablesCount"].Value.ToString(); // 替换YourColumnName为你需要的列名
+            string Column1 = row.Cells["BoxName"].Value.ToString();
+            string Column2 = row.Cells["Column6"].Value.ToString();
+            string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
@@ -122,14 +124,11 @@ namespace Cap.BasicSettings.Box
         public class Data
         {
             public string Column1 { get; set; }
-
             public string Column2 { get; set; }
-
             public string Column3 { get; set; }
-
             public string Column4 { get; set; }
             public string Column5 { get; set; }
-
+            public string Column6 { get; set; }
             public override string ToString()
             {
                 return Column1;

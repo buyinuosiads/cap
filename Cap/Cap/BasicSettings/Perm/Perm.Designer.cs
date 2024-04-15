@@ -274,6 +274,7 @@
             this.Search.Name = "Search";
             this.Search.ReadOnly = true;
             this.Search.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Search.Text = "";
             // 
             // Edit
             // 

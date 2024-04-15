@@ -46,6 +46,7 @@ namespace Cap.BasicSettings.Perm
             //设置分页控件每页数量
             uiPagination1.PageSize = 10;
             uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
+             
         }
 
         /// <summary>
@@ -110,7 +111,7 @@ namespace Cap.BasicSettings.Perm
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                WidthOfClothEdit frm = new WidthOfClothEdit(Column1, Column2);
+                PermEdit frm = new PermEdit(Column1, Column2);
                 frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
@@ -122,7 +123,7 @@ namespace Cap.BasicSettings.Perm
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
 
-                WidthOfClothEdit frm = new WidthOfClothEdit(Column1, Column2);
+                PermEdit frm = new PermEdit(Column1, Column2);
                 frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
@@ -152,5 +153,12 @@ namespace Cap.BasicSettings.Perm
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
         }
+
+
+         
+
+
+
+
     }
 }

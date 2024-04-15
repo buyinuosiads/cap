@@ -28,12 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("前福");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("后福");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("帽顶");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("侧幅");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("檐边");
             this.edtName = new Sunny.UI.UITextBox();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiLabel4 = new Sunny.UI.UILabel();
             this.edtAge = new Sunny.UI.UITextBox();
             this.uiLabel1 = new Sunny.UI.UILabel();
-            this.uiComboBox4 = new Sunny.UI.UIComboBox();
+            this.uiComboTreeView1 = new Sunny.UI.UIComboTreeView();
             this.pnlBtm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,39 +128,43 @@
             this.uiLabel1.Text = "幅宽类型";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiComboBox4
+            // uiComboTreeView1
             // 
-            this.uiComboBox4.DataSource = null;
-            this.uiComboBox4.FillColor = System.Drawing.Color.White;
-            this.uiComboBox4.FilterMaxCount = 50;
-            this.uiComboBox4.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiComboBox4.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.uiComboBox4.Items.AddRange(new object[] {
-            "前幅",
-            "后幅",
-            "帽顶",
-            "侧幅",
-            "檐边"});
-            this.uiComboBox4.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.uiComboBox4.Location = new System.Drawing.Point(190, 196);
-            this.uiComboBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiComboBox4.MinimumSize = new System.Drawing.Size(63, 0);
-            this.uiComboBox4.Name = "uiComboBox4";
-            this.uiComboBox4.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox4.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
-            this.uiComboBox4.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom;
-            this.uiComboBox4.ShowFilter = true;
-            this.uiComboBox4.Size = new System.Drawing.Size(170, 29);
-            this.uiComboBox4.SymbolSize = 24;
-            this.uiComboBox4.TabIndex = 77;
-            this.uiComboBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiComboBox4.Watermark = "请选择宽幅类型";
+            this.uiComboTreeView1.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
+            this.uiComboTreeView1.FillColor = System.Drawing.Color.White;
+            this.uiComboTreeView1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiComboTreeView1.Location = new System.Drawing.Point(190, 202);
+            this.uiComboTreeView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiComboTreeView1.MinimumSize = new System.Drawing.Size(63, 0);
+            this.uiComboTreeView1.Name = "uiComboTreeView1";
+            treeNode1.Name = "节点0";
+            treeNode1.Text = "前福";
+            treeNode2.Name = "节点1";
+            treeNode2.Text = "后福";
+            treeNode3.Name = "节点2";
+            treeNode3.Text = "帽顶";
+            treeNode4.Name = "节点3";
+            treeNode4.Text = "侧幅";
+            treeNode5.Name = "节点4";
+            treeNode5.Text = "檐边";
+            this.uiComboTreeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5});
+            this.uiComboTreeView1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.uiComboTreeView1.Size = new System.Drawing.Size(170, 29);
+            this.uiComboTreeView1.SymbolSize = 24;
+            this.uiComboTreeView1.TabIndex = 78;
+            this.uiComboTreeView1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiComboTreeView1.Watermark = "";
             // 
             // WidthOfClothAdd
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(504, 357);
-            this.Controls.Add(this.uiComboBox4);
+            this.Controls.Add(this.uiComboTreeView1);
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.uiLabel4);
             this.Controls.Add(this.edtAge);
@@ -171,7 +180,7 @@
             this.Controls.SetChildIndex(this.uiLabel4, 0);
             this.Controls.SetChildIndex(this.pnlBtm, 0);
             this.Controls.SetChildIndex(this.uiLabel1, 0);
-            this.Controls.SetChildIndex(this.uiComboBox4, 0);
+            this.Controls.SetChildIndex(this.uiComboTreeView1, 0);
             this.pnlBtm.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -184,6 +193,6 @@
         private Sunny.UI.UILabel uiLabel4;
         private Sunny.UI.UITextBox edtAge;
         private Sunny.UI.UILabel uiLabel1;
-        private Sunny.UI.UIComboBox uiComboBox4;
+        private Sunny.UI.UIComboTreeView uiComboTreeView1;
     }
 }

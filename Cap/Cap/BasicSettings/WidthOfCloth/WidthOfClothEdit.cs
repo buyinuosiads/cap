@@ -19,6 +19,9 @@ namespace Cap.BasicSettings.WidthOfCloth
             InitializeComponent();
             edtName.Text = Column1;
             edtAge.Text = Column2;
+
+            uiComboTreeView1.Text = "前幅";
+
         }
         private Person person;
         public Person Person

@@ -49,6 +49,7 @@
             this.BoxName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullBoxCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConsumablesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -170,6 +171,7 @@
             this.BoxName,
             this.FullBoxCount,
             this.ConsumablesCount,
+            this.Column6,
             this.CreationTime,
             this.CreationName,
             this.Search,
@@ -256,6 +258,13 @@
             this.ConsumablesCount.ReadOnly = true;
             this.ConsumablesCount.Width = 166;
             // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Column6";
+            this.Column6.HeaderText = "辅料";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
             // CreationTime
             // 
             this.CreationTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -336,6 +345,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BoxName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FullBoxCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsumablesCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationName;
         private System.Windows.Forms.DataGridViewButtonColumn Search;

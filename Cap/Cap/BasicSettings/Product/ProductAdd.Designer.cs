@@ -32,10 +32,10 @@ namespace Cap.BasicSettings.Product
         {
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiTextBox1 = new Sunny.UI.UITextBox();
-            this.uiLabel4 = new Sunny.UI.UILabel();
             this.edtName = new Sunny.UI.UITextBox();
             this.uiLabel2 = new Sunny.UI.UILabel();
-            this.uiComboBox4 = new Sunny.UI.UIComboBox();
+            this.uiComboDataGridView2 = new Sunny.UI.UIComboDataGridView();
+            this.uiLabel3 = new Sunny.UI.UILabel();
             this.pnlBtm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@ namespace Cap.BasicSettings.Product
             this.uiLabel1.AutoSize = true;
             this.uiLabel1.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel1.Location = new System.Drawing.Point(268, 273);
+            this.uiLabel1.Location = new System.Drawing.Point(156, 249);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(39, 16);
             this.uiLabel1.TabIndex = 37;
@@ -67,43 +67,31 @@ namespace Cap.BasicSettings.Product
             // 
             this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.uiTextBox1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox1.Location = new System.Drawing.Point(362, 265);
+            this.uiTextBox1.Location = new System.Drawing.Point(250, 241);
             this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 16);
             this.uiTextBox1.Name = "uiTextBox1";
             this.uiTextBox1.Padding = new System.Windows.Forms.Padding(5);
             this.uiTextBox1.ShowText = false;
-            this.uiTextBox1.Size = new System.Drawing.Size(170, 29);
+            this.uiTextBox1.Size = new System.Drawing.Size(340, 29);
             this.uiTextBox1.TabIndex = 36;
             this.uiTextBox1.Text = "0";
             this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiTextBox1.Type = Sunny.UI.UITextBox.UIEditType.Integer;
             this.uiTextBox1.Watermark = "";
             // 
-            // uiLabel4
-            // 
-            this.uiLabel4.AutoSize = true;
-            this.uiLabel4.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel4.Location = new System.Drawing.Point(268, 216);
-            this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(71, 16);
-            this.uiLabel4.TabIndex = 35;
-            this.uiLabel4.Text = "工艺名称";
-            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // edtName
             // 
             this.edtName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.edtName.EnterAsTab = true;
             this.edtName.Font = new System.Drawing.Font("宋体", 12F);
-            this.edtName.Location = new System.Drawing.Point(362, 156);
+            this.edtName.Location = new System.Drawing.Point(250, 132);
             this.edtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.edtName.MinimumSize = new System.Drawing.Size(1, 16);
             this.edtName.Name = "edtName";
             this.edtName.Padding = new System.Windows.Forms.Padding(5);
             this.edtName.ShowText = false;
-            this.edtName.Size = new System.Drawing.Size(170, 29);
+            this.edtName.Size = new System.Drawing.Size(340, 29);
             this.edtName.TabIndex = 32;
             this.edtName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.edtName.Watermark = "";
@@ -113,67 +101,63 @@ namespace Cap.BasicSettings.Product
             this.uiLabel2.AutoSize = true;
             this.uiLabel2.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(268, 164);
+            this.uiLabel2.Location = new System.Drawing.Point(156, 140);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(71, 16);
             this.uiLabel2.TabIndex = 34;
             this.uiLabel2.Text = "产品名称";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiComboBox4
+            // uiComboDataGridView2
             // 
-            this.uiComboBox4.DataSource = null;
-            this.uiComboBox4.FillColor = System.Drawing.Color.White;
-            this.uiComboBox4.FilterMaxCount = 50;
-            this.uiComboBox4.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiComboBox4.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.uiComboBox4.Items.AddRange(new object[] {
-            "工艺名称0",
-            "工艺名称1",
-            "工艺名称2",
-            "工艺名称3",
-            "工艺名称4",
-            "工艺名称5",
-            "工艺名称6",
-            "工艺名称7",
-            "工艺名称8",
-            "工艺名称9",
-            "工艺名称10"});
-            this.uiComboBox4.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.uiComboBox4.Location = new System.Drawing.Point(362, 207);
-            this.uiComboBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiComboBox4.MinimumSize = new System.Drawing.Size(63, 0);
-            this.uiComboBox4.Name = "uiComboBox4";
-            this.uiComboBox4.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox4.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
-            this.uiComboBox4.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom;
-            this.uiComboBox4.ShowFilter = true;
-            this.uiComboBox4.Size = new System.Drawing.Size(170, 29);
-            this.uiComboBox4.SymbolSize = 24;
-            this.uiComboBox4.TabIndex = 76;
-            this.uiComboBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiComboBox4.Watermark = "请选择工艺名称";
+            this.uiComboDataGridView2.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
+            this.uiComboDataGridView2.FillColor = System.Drawing.Color.White;
+            this.uiComboDataGridView2.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiComboDataGridView2.Location = new System.Drawing.Point(250, 184);
+            this.uiComboDataGridView2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiComboDataGridView2.MinimumSize = new System.Drawing.Size(63, 0);
+            this.uiComboDataGridView2.Name = "uiComboDataGridView2";
+            this.uiComboDataGridView2.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.uiComboDataGridView2.Size = new System.Drawing.Size(340, 29);
+            this.uiComboDataGridView2.SymbolSize = 24;
+            this.uiComboDataGridView2.TabIndex = 80;
+            this.uiComboDataGridView2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiComboDataGridView2.Watermark = "";
+            this.uiComboDataGridView2.ValueChanged += new Sunny.UI.UIComboDataGridView.OnValueChanged(this.uiComboDataGridView2_ValueChanged);
+            // 
+            // uiLabel3
+            // 
+            this.uiLabel3.AutoSize = true;
+            this.uiLabel3.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel3.Location = new System.Drawing.Point(156, 191);
+            this.uiLabel3.Name = "uiLabel3";
+            this.uiLabel3.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel3.TabIndex = 81;
+            this.uiLabel3.Text = "工艺名称";
+            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ProductAdd
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.uiComboBox4);
+            this.Controls.Add(this.uiLabel3);
+            this.Controls.Add(this.uiComboDataGridView2);
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.uiTextBox1);
-            this.Controls.Add(this.uiLabel4);
             this.Controls.Add(this.edtName);
             this.Controls.Add(this.uiLabel2);
             this.Name = "ProductAdd";
             this.Text = "添加";
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
+            this.Load += new System.EventHandler(this.ProductAdd_Load);
             this.Controls.SetChildIndex(this.pnlBtm, 0);
             this.Controls.SetChildIndex(this.uiLabel2, 0);
             this.Controls.SetChildIndex(this.edtName, 0);
-            this.Controls.SetChildIndex(this.uiLabel4, 0);
             this.Controls.SetChildIndex(this.uiTextBox1, 0);
             this.Controls.SetChildIndex(this.uiLabel1, 0);
-            this.Controls.SetChildIndex(this.uiComboBox4, 0);
+            this.Controls.SetChildIndex(this.uiComboDataGridView2, 0);
+            this.Controls.SetChildIndex(this.uiLabel3, 0);
             this.pnlBtm.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -184,9 +168,9 @@ namespace Cap.BasicSettings.Product
 
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UITextBox uiTextBox1;
-        private Sunny.UI.UILabel uiLabel4;
         private Sunny.UI.UITextBox edtName;
         private Sunny.UI.UILabel uiLabel2;
-        private Sunny.UI.UIComboBox uiComboBox4;
+        private Sunny.UI.UIComboDataGridView uiComboDataGridView2;
+        private Sunny.UI.UILabel uiLabel3;
     }
 }
