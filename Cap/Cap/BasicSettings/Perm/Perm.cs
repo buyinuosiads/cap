@@ -46,7 +46,7 @@ namespace Cap.BasicSettings.Perm
             //设置分页控件每页数量
             uiPagination1.PageSize = 10;
             uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
-             
+
         }
 
         /// <summary>
@@ -75,10 +75,13 @@ namespace Cap.BasicSettings.Perm
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            PermAdd frm = new PermAdd();
-            frm.Render();
-            frm.ShowDialog();
-            frm.Dispose();
+            //PermAdd frm = new PermAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            //frm.Dispose();
+
+            dataTable.Rows.Add(edtName.Text, edtAge.Text, uiTextBox2.Text, uiTextBox1.Text);
+
         }
         private void uiDataGridView1_SelectIndexChange(object sender, int index)
         {
@@ -149,16 +152,30 @@ namespace Cap.BasicSettings.Perm
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
-
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Column1 = row.Cells["PermName"].Value.ToString();
+                string Column2 = row.Cells["PermSpecifications"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
 
-         
-
-
-
-
+                edtName.Text = Column1;
+                edtAge.Text = Column2;
+                uiTextBox2.Text = CreationTime;
+                uiTextBox1.Text = CreationName;
+            }
+        }
     }
 }

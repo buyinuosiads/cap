@@ -50,6 +50,41 @@ namespace Cap.BasicSettings.Box
             //设置分页控件每页数量
             uiPagination1.PageSize = 15;
             uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
+
+
+
+
+
+
+
+            uiComboDataGridView2.DataGridView.Init();
+            uiComboDataGridView2.DataGridView.MultiSelect = true;//设置可多选
+            uiComboDataGridView2.DataGridView.ReadOnly = false;
+            uiComboDataGridView2.ShowFilter = true;
+            // 添加多选按钮列
+            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
+            checkBoxColumn.HeaderText = "多选";
+            checkBoxColumn.Name = "checkBoxColumn";
+            uiComboDataGridView2.DataGridView.Columns.Insert(0, checkBoxColumn);
+
+
+            // 添加其他列
+            DataGridViewTextBoxColumn column1 = new DataGridViewTextBoxColumn();
+            column1.HeaderText = "辅料";
+            column1.Name = "辅料";
+            uiComboDataGridView2.DataGridView.Columns.Add(column1);
+
+
+            DataGridViewTextBoxColumn editableColumn = new DataGridViewTextBoxColumn();
+            editableColumn.HeaderText = "辅料数量";
+            editableColumn.Name = "EditableColumn";
+            uiComboDataGridView2.DataGridView.Columns.Add(editableColumn);
+            for (int i = 1; i <= 20; i++)
+            {
+                uiComboDataGridView2.DataGridView.Rows.Add(false, "辅料" + i);
+            }
+
+
         }
         /// <summary>
         /// 分页控件页面切换事件
@@ -137,19 +172,121 @@ namespace Cap.BasicSettings.Box
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            BoxAdd frm = new BoxAdd();
-            frm.Render();
-            frm.ShowDialog();
-            frm.Dispose();
+            //BoxAdd frm = new BoxAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            //frm.Dispose();
+            dataTable.Rows.Add(uiTextBox1.Text, uiTextBox2.Text, uiComboTreeView2.Text, uiComboDataGridView2.Text, DateTime.Now, uiTextBox4.Text);
         }
 
         private void Box_Initialize(object sender, EventArgs e)
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
-
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Column1 = row.Cells["BoxName"].Value.ToString();
+                string Column2 = row.Cells["Column6"].Value.ToString();
+                string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
+                string FullBoxCount = row.Cells["FullBoxCount"].Value.ToString();
+                string uiTextBox = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+
+                uiTextBox1.Text = Column1;
+                uiComboTreeView2.Text = Column3;
+                uiComboDataGridView2.Text = Column2;
+                uiTextBox2.Text = FullBoxCount;
+                uiTextBox3.Text = uiTextBox;
+                uiTextBox4.Text = CreationName;
+
+
+                if (!string.IsNullOrEmpty(Column3))
+                {
+                    string[] role = Column3.Split(';');
+                    foreach (TreeNode item in uiComboTreeView2.Nodes)
+                    {
+                        string im = item.ToString().Replace("TreeNode: ", null);
+                        for (int i = 0; i < role.Length; i++)
+                        {
+                            if (im == role[i].ToString())
+                            {
+                                item.Checked = true;
+                            }
+                            else
+                            {
+                                item.Checked = false;
+                            }
+                        }
+                    }
+                }
+                uiComboTreeView2.Text = Column3;
+                uiComboDataGridView2.DataGridView.Rows.Clear();
+                uiComboDataGridView2.DataGridView.DataSource = null;
+
+                for (int i = 1; i <= 20; i++)
+                {
+                    if (Column2 == "辅料" + i)
+                    {
+                        uiComboDataGridView2.DataGridView.Rows.Add(true, "辅料" + i);
+                    }
+                    else
+                    {
+                        uiComboDataGridView2.DataGridView.Rows.Add(false, "辅料" + i);
+                    }
+                }
+
+            }
+
+        }
+
+        private void uiComboDataGridView2_ValueChanged(object sender, object value)
+        {
+            string txt = string.Empty;
+            // 遍历 DataGridView 中的所有行
+            foreach (DataGridViewRow row in uiComboDataGridView2.DataGridView.Rows)
+            {
+                string check = string.Empty;//是否选中
+                string gongyimingcheng = string.Empty; //辅料名称 
+                int shuliang = 0;  //辅料数量
+                int num = 0;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null)
+                    {
+                        if (num == 0)
+                        {
+                            check = cell.Value.ToString();
+                        }
+                        else if (num == 1)
+                        {
+                            gongyimingcheng = cell.Value.ToString();
+                        }
+                        else
+                        {
+                            shuliang += int.Parse(cell.Value.ToString());
+                        }
+                    }
+                    num++;
+                }
+                if (check == "True")
+                {
+                    txt += gongyimingcheng + ";";
+                }
+            }
+            uiComboDataGridView2.Text = txt;
         }
     }
 }

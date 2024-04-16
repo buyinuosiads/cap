@@ -134,9 +134,10 @@ namespace Cap.SystemSetup.Role
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
-
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
 
@@ -194,18 +195,44 @@ namespace Cap.SystemSetup.Role
 
         }
 
-     
+
 
         private void uiSymbolButton2_Click(object sender, EventArgs e)
         {
-            RoleAdd roleAdd = new RoleAdd();
-            roleAdd.Render();
-            roleAdd.ShowDialog();
-            if (roleAdd.IsOK)
+            //RoleAdd roleAdd = new RoleAdd();
+            //roleAdd.Render();
+            //roleAdd.ShowDialog();
+            //if (roleAdd.IsOK)
+            //{
+            //    SearchList();
+            //}
+            //roleAdd.Dispose();
+
+
+
+
+            dataTable.Rows.Add("菜单", edtName.Text, DateTime.Now);
+
+
+
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
             {
-                SearchList();
+
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string RoleId = row.Cells["RoleId"].Value.ToString();
+                string RoleName = row.Cells["RoleName"].Value.ToString();
+                string CreateTime = row.Cells["CreateTime"].Value.ToString();
+
+                edtName.Text = RoleName;
+
             }
-            roleAdd.Dispose();
         }
     }
 }

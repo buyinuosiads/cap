@@ -27,7 +27,7 @@ namespace Cap.BasicSettings.Specifications
             for (int i = 0; i < 10; i++)
             {
                 Data data = new Data();
-                data.Column1 = "材料名称"+i;
+                data.Column1 = "材料名称" + i;
                 data.Column2 = i.Mod(2) == 0 ? "米" : "尺";
                 data.Column3 = i.Mod(2) == 0 ? "100" : "200";
                 data.Column4 = DateTime.Now.ToString();
@@ -161,9 +161,38 @@ namespace Cap.BasicSettings.Specifications
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            SpecificationsAdd frm = new SpecificationsAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //SpecificationsAdd frm = new SpecificationsAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+
+            dataTable.Rows.Add(edtName.Text, uiComboTreeView1.Text, uiTextBox1.Text, uiTextBox2.Text, uiTextBox3.Text);
+
+
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Column1 = row.Cells["Column1"].Value.ToString();
+                string Column2 = row.Cells["Column2"].Value.ToString();
+                string Column3 = row.Cells["Column3"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+                edtName.Text = Column1;
+                uiComboTreeView1.Text = Column2;
+                uiTextBox1.Text = Column3;
+                uiTextBox2.Text = CreationTime;
+                uiTextBox3.Text = CreationName;
+
+            }
+
+
         }
     }
 }

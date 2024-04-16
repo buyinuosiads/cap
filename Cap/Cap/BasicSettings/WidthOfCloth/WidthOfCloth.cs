@@ -36,8 +36,8 @@ namespace Cap.SystemSetup.WidthOfCloth
 
             dataTable.Columns.Add("Column1");
             dataTable.Columns.Add("Column2");
-            dataTable.Columns.Add("leixing");            
-            dataTable.Columns.Add("Column3"); 
+            dataTable.Columns.Add("leixing");
+            dataTable.Columns.Add("Column3");
             dataTable.Columns.Add("Column4");
             uiDataGridView1.DataSource = dataTable;
 
@@ -84,9 +84,10 @@ namespace Cap.SystemSetup.WidthOfCloth
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
-
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
         private void uiDataGridView1_SelectIndexChange(object sender, int index)
         {
@@ -95,15 +96,21 @@ namespace Cap.SystemSetup.WidthOfCloth
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            WidthOfClothAdd frm = new WidthOfClothAdd();
-            frm.Render();
-            frm.ShowDialog();
-            if (frm.IsOK)
-            {
-                ShowSuccessDialog(frm.Person.ToString());
-            }
+            //WidthOfClothAdd frm = new WidthOfClothAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            //if (frm.IsOK)
+            //{
+            //    ShowSuccessDialog(frm.Person.ToString());
+            //}
+            //frm.Dispose();
 
-            frm.Dispose();
+            //edtName
+            //    edtAge
+            //    uiComboTreeView1
+            dataTable.Rows.Add(uiTextBox1.Text, edtAge.Text, uiComboTreeView1.Text, DateTime.Now, uiTextBox2.Text);
+
+
         }
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -113,8 +120,8 @@ namespace Cap.SystemSetup.WidthOfCloth
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            string Column1 = row.Cells["WidthName"].Value.ToString();  
-            string Column2 = row.Cells["WidthSize"].Value.ToString();  
+            string Column1 = row.Cells["WidthName"].Value.ToString();
+            string Column2 = row.Cells["WidthSize"].Value.ToString();
 
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
@@ -192,6 +199,33 @@ namespace Cap.SystemSetup.WidthOfCloth
         private void uiSymbolButton1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+
+
+
+                string Column1 = row.Cells["WidthName"].Value.ToString();
+                string Column2 = row.Cells["WidthSize"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+
+
+                uiTextBox1.Text = Column1;
+                edtAge.Text = Column2;
+                uiComboTreeView1.Text = "前幅";
+                edtName.Text = CreationTime;
+                uiTextBox2.Text = CreationName;
+
+            }
         }
     }
 }

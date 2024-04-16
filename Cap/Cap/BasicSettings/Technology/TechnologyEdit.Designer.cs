@@ -226,13 +226,13 @@
             this.Name = "TechnologyEdit";
             this.Text = "编辑";
             this.ZoomScaleRect = new System.Drawing.Rectangle(15, 15, 800, 450);
-            this.Controls.SetChildIndex(this.pnlBtm, 0);
             this.Controls.SetChildIndex(this.uiLabel2, 0);
             this.Controls.SetChildIndex(this.edtName, 0);
             this.Controls.SetChildIndex(this.uiComboTreeView1, 0);
             this.Controls.SetChildIndex(this.uiLabel5, 0);
             this.Controls.SetChildIndex(this.uiComboTreeView3, 0);
             this.Controls.SetChildIndex(this.uiLabel6, 0);
+            this.Controls.SetChildIndex(this.pnlBtm, 0);
             this.pnlBtm.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

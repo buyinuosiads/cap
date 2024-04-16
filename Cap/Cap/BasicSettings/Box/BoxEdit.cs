@@ -41,34 +41,7 @@ namespace Cap.BasicSettings.Box
             uiComboTreeView2.Text = Column3;
 
 
-
-
-            //DataTable dt = new DataTable(); 
-            //dt.Columns.Add("Column1", typeof(string));
-            //for (int i = 0; i < 100; i++)
-            //{
-            //    dt.Rows.Add("辅料" + i);
-            //}
-            //uiComboDataGridView2.DataGridView.Init();
-            //uiComboDataGridView2.DataGridView.MultiSelect = true;//设置可多选
-            //uiComboDataGridView2.ItemSize = new System.Drawing.Size(360, 240);
-            //uiComboDataGridView2.DataGridView.AddColumn("辅料", "Column1");
-            //uiComboDataGridView2.DataGridView.ReadOnly = false;
-            //uiComboDataGridView2.ShowFilter = true;
-            //uiComboDataGridView2.DataGridView.DataSource = dt;
-            //uiComboDataGridView2.FilterColumnName = "Column1"; //不设置则全部列过滤
-            //// 在 DataGridView 中添加一个复选框列用于多选功能
-            //DataGridViewCheckBoxColumn multiSelectColumn = new DataGridViewCheckBoxColumn();
-            //multiSelectColumn.HeaderText = "选择";
-            //multiSelectColumn.Name = "MultiSelectColumn";
-            //uiComboDataGridView2.DataGridView.Columns.Insert(0, multiSelectColumn);
-            //// 在 DataGridView 中添加一个可编辑的列
-            //DataGridViewTextBoxColumn editableColumn = new DataGridViewTextBoxColumn();
-            //editableColumn.HeaderText = "辅料数量";
-            //editableColumn.Name = "EditableColumn";
-            //uiComboDataGridView2.DataGridView.Columns.Add(editableColumn);
-
-
+             
 
             uiComboDataGridView2.DataGridView.Init();
             uiComboDataGridView2.DataGridView.MultiSelect = true;//设置可多选

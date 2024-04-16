@@ -73,7 +73,6 @@ namespace Cap
 
 
             TreeNode parent = uiNavMenu1.CreateNode("系统设置", 61451, 24, pageIndex);
-
             //通过设置PageIndex关联，节点文字、图标由相应的Page的Text、Symbol提供
             uiNavMenu1.CreateChildNode(parent, AddPage(new SystemSetup.User(), ++pageIndex)); //用户管理
             uiNavMenu1.CreateChildNode(parent, AddPage(new Company(), ++pageIndex));  //公司管理
@@ -143,8 +142,7 @@ namespace Cap
 
             //选中第一个节点
             uiNavMenu1.SelectPage(1002);
-
-
+            uiNavMenu1.Font = new System.Drawing.Font("宋体", 16); // 这里设置为 宋体 字体，大小为 16
             timer1.Start();
         }
 

@@ -18,12 +18,12 @@ namespace Cap.SystemSetup.AlarmSetting
             {
                 Data data = new Data();
                 data.Column1 = "告警信息" + i;
-                data.Column2 =  DateTime.Now.ToString(); 
+                data.Column2 = DateTime.Now.ToString();
                 dataList.Add(data);
             }
 
             dataTable.Columns.Add("Column1");
-            dataTable.Columns.Add("Column2"); 
+            dataTable.Columns.Add("Column2");
             uiDataGridView1.DataSource = dataTable;
 
             //不自动生成列
@@ -42,9 +42,10 @@ namespace Cap.SystemSetup.AlarmSetting
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
-
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
         private void uiDataGridView1_SelectIndexChange(object sender, int index)
@@ -121,19 +122,38 @@ namespace Cap.SystemSetup.AlarmSetting
             }
         }
 
-     
+
 
         private void uiSymbolButton2_Click_1(object sender, EventArgs e)
         {
 
-            AlarmSettingAdd frm = new AlarmSettingAdd();
-            frm.Render();
-            frm.ShowDialog();
-            if (frm.IsOK)
-            {
-            }
+            //AlarmSettingAdd frm = new AlarmSettingAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            //if (frm.IsOK)
+            //{
+            //}
+            //frm.Dispose();
+            dataTable.Rows.Add(uiTextBox1.Text, DateTime.Now);
 
-            frm.Dispose();
+
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string rowData = row.Cells["Column1"].Value.ToString();
+                string Column2 = row.Cells["Column2"].Value.ToString();
+
+                uiTextBox1.Text = rowData;
+                uiTextBox2.Text = Column2;
+
+            }
         }
     }
 }

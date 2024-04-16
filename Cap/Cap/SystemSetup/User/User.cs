@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -151,9 +152,11 @@ namespace Cap.SystemSetup
 
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
 
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -162,7 +165,7 @@ namespace Cap.SystemSetup
             frm.Render();
             frm.ShowDialog();
             if (frm.IsOK)
-            { 
+            {
             }
 
             frm.Dispose();
@@ -174,9 +177,9 @@ namespace Cap.SystemSetup
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            string Column1 = row.Cells["Column1"].Value.ToString();  
-            string Account = row.Cells["Account"].Value.ToString();  
-            string Column2 = row.Cells["Column2"].Value.ToString();  
+            string Column1 = row.Cells["Column1"].Value.ToString();
+            string Account = row.Cells["Account"].Value.ToString();
+            string Column2 = row.Cells["Column2"].Value.ToString();
             string Column3 = row.Cells["Column3"].Value.ToString();
             string Sex = row.Cells["Sex"].Value.ToString();
             string Position = row.Cells["Position"].Value.ToString();
@@ -216,7 +219,7 @@ namespace Cap.SystemSetup
         }
 
 
-         
+
 
         private void uiSymbolButton2_Click(object sender, EventArgs e)
         {
@@ -228,6 +231,38 @@ namespace Cap.SystemSetup
                 GetList();
             }
             userAdd.Dispose();
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string _Column1 = row.Cells["Column1"].Value.ToString();
+                string _Account = row.Cells["Account"].Value.ToString();
+                string _Column2 = row.Cells["Column2"].Value.ToString();
+                string _Column3 = row.Cells["Column3"].Value.ToString();
+                string _Sex = row.Cells["Sex"].Value.ToString();
+                string _Position = row.Cells["Position"].Value.ToString();
+
+                if (_Sex == "女")
+                {
+                    rbFemale.Checked = true;
+                }
+                else
+                {
+                    rbMale.Checked = true;
+                }
+                Name.Text = _Column1;
+                uiTextBox1.Text = _Account;
+                Phone.Text = _Column2;
+                Address.Text = _Column3;
+                uiComboBox1.Text = _Position;
+
+            }
         }
     }
 }

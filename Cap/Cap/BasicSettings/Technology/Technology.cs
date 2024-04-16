@@ -85,7 +85,7 @@ namespace Cap.BasicSettings.Technology
             string Column1 = row.Cells["TechnologyName"].Value.ToString();
             string zhuliao = row.Cells["zhuliao"].Value.ToString();
             string fuliao = row.Cells["fuliao"].Value.ToString();
-            
+
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
                 TechnologyEdit frm = new TechnologyEdit(Column1, zhuliao, fuliao);
@@ -139,18 +139,88 @@ namespace Cap.BasicSettings.Technology
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            TechnologyAdd frm = new TechnologyAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //TechnologyAdd frm = new TechnologyAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            dataTable.Rows.Add(edtName.Text, uiComboTreeView1.Text, uiComboTreeView3.Text, uiTextBox1.Text, uiTextBox2.Text);
         }
 
         private void Technology_Initialize(object sender, EventArgs e)
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
-
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Column1 = row.Cells["TechnologyName"].Value.ToString();
+                string zhuliao = row.Cells["zhuliao"].Value.ToString();
+                string fuliao = row.Cells["fuliao"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+                uiTextBox1.Text = CreationTime;
+                uiTextBox2.Text = CreationName;
+
+
+                edtName.Text = Column1;
+
+
+                if (!string.IsNullOrEmpty(zhuliao))
+                {
+                    string[] role = zhuliao.Split(';');
+                    foreach (TreeNode item in uiComboTreeView1.Nodes)
+                    {
+                        string im = item.ToString().Replace("TreeNode: ", null);
+                        for (int i = 0; i < role.Length; i++)
+                        {
+                            if (im == role[i].ToString())
+                            {
+                                item.Checked = true;
+                            }
+                            else
+                            {
+                                item.Checked = false;
+                            }
+                        }
+                    }
+                }
+                uiComboTreeView1.Text = zhuliao;
+
+
+
+                if (!string.IsNullOrEmpty(fuliao))
+                {
+                    string[] role = fuliao.Split(';');
+                    foreach (TreeNode item in uiComboTreeView3.Nodes)
+                    {
+                        string im = item.ToString().Replace("TreeNode: ", null);
+                        for (int i = 0; i < role.Length; i++)
+                        {
+                            if (im == role[i].ToString())
+                            {
+                                item.Checked = true;
+                            }
+                            else
+                            {
+                                item.Checked = false;
+                            }
+                        }
+                    }
+                }
+                uiComboTreeView3.Text = fuliao;
+            }
         }
     }
 }

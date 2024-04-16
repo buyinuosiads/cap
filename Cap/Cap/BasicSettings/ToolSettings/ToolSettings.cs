@@ -92,10 +92,18 @@ namespace Cap.BasicSettings.ToolSettings
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            ToolSettingsAdd frm = new ToolSettingsAdd();
-            frm.Render();
-            frm.ShowDialog();
-            frm.Dispose();
+            //ToolSettingsAdd frm = new ToolSettingsAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            //frm.Dispose();
+              dataTable.Rows.Add(edtName.Text,
+              edtAge.Text,
+              uiTextBox1.Text,
+              uiComboTreeView2.Text,
+              uiComboTreeView1.Text,
+              uiComboTreeView3.Text,
+              DateTime.Now,
+              uiTextBox3.Text);
         }
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -113,7 +121,7 @@ namespace Cap.BasicSettings.ToolSettings
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                ToolSettingsEdit frm = new ToolSettingsEdit(Column1, Column2, Column3, fukuan, xishu,tangtou);
+                ToolSettingsEdit frm = new ToolSettingsEdit(Column1, Column2, Column3, fukuan, xishu, tangtou);
                 frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
@@ -172,9 +180,117 @@ namespace Cap.BasicSettings.ToolSettings
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
-
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                uiComboTreeView2.Text = null;
+                uiComboTreeView1.Text = null;
+                uiComboTreeView3.Text = null;
+
+
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Column1 = row.Cells["ToolName"].Value.ToString();
+                string Column2 = row.Cells["ToolQuota"].Value.ToString();
+                string Column3 = row.Cells["FaultToleranceValue"].Value.ToString();
+                string fukuan = row.Cells["fukuan"].Value.ToString();
+                string xishu = row.Cells["xishu"].Value.ToString();
+                string tangtou = row.Cells["tangtou"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+
+                edtName.Text = Column1;
+                edtAge.Text = Column2;
+                uiTextBox1.Text = Column3;
+                uiTextBox2.Text = CreationTime;
+                uiTextBox3.Text = CreationName;
+
+
+                if (!string.IsNullOrEmpty(fukuan))
+                {
+                    string[] role = fukuan.Split(';');
+                    foreach (TreeNode item in uiComboTreeView2.Nodes)
+                    {
+                        string im = item.ToString().Replace("TreeNode: ", null);
+                        for (int i = 0; i < role.Length; i++)
+                        {
+
+                            if (im == role[i].ToString())
+                            {
+                                item.Checked = true;
+                            }
+                            else
+                            {
+                                item.Checked = false;
+                            }
+                        }
+                    }
+                }
+                uiComboTreeView2.Text = fukuan;
+
+
+
+                if (!string.IsNullOrEmpty(xishu))
+                {
+                    string[] role = xishu.Split(';');
+                    foreach (TreeNode item in uiComboTreeView1.Nodes)
+                    {
+                        string im = item.ToString().Replace("TreeNode: ", null);
+                        for (int i = 0; i < role.Length; i++)
+                        {
+
+                            if (im == role[i].ToString())
+                            {
+                                item.Checked = true;
+                            }
+                            else
+                            {
+                                item.Checked = false;
+                            }
+                        }
+                    }
+                }
+                uiComboTreeView1.Text = xishu;
+
+
+
+
+                if (!string.IsNullOrEmpty(tangtou))
+                {
+                    string[] role = tangtou.Split(';');
+                    foreach (TreeNode item in uiComboTreeView3.Nodes)
+                    {
+                        string im = item.ToString().Replace("TreeNode: ", null);
+                        for (int i = 0; i < role.Length; i++)
+                        {
+
+                            if (im == role[i].ToString())
+                            {
+                                item.Checked = true;
+                            }
+                            else
+                            {
+                                item.Checked = false;
+                            }
+                        }
+                    }
+                }
+                uiComboTreeView3.Text = tangtou;
+
+
+
+
+            }
         }
     }
 }
