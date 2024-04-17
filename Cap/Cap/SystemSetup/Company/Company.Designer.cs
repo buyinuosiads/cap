@@ -42,11 +42,11 @@
             this.uiPagination1 = new Sunny.UI.UIPagination();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
-            this.uiSymbolButton2 = new Sunny.UI.UISymbolButton();
-            this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
+            this.uiButton5 = new Sunny.UI.UIButton();
             this.edtName = new Sunny.UI.UITextBox();
             this.uiLabel2 = new Sunny.UI.UILabel();
-            this.uiButton5 = new Sunny.UI.UIButton();
+            this.uiSymbolButton2 = new Sunny.UI.UISymbolButton();
+            this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -94,7 +94,7 @@
             this.uiDataGridView1.EnableHeadersVisualStyles = false;
             this.uiDataGridView1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            this.uiDataGridView1.Location = new System.Drawing.Point(3, 23);
+            this.uiDataGridView1.Location = new System.Drawing.Point(3, 22);
             this.uiDataGridView1.Name = "uiDataGridView1";
             this.uiDataGridView1.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -114,7 +114,7 @@
             this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.uiDataGridView1.RowTemplate.Height = 23;
             this.uiDataGridView1.SelectedIndex = -1;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 475);
+            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 476);
             this.uiDataGridView1.TabIndex = 9;
             this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
@@ -173,34 +173,29 @@
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // uiSymbolButton2
+            // uiButton5
             // 
-            this.uiSymbolButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton2.FillColor = System.Drawing.Color.ForestGreen;
-            this.uiSymbolButton2.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiSymbolButton2.Location = new System.Drawing.Point(493, 22);
-            this.uiSymbolButton2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton2.Name = "uiSymbolButton2";
-            this.uiSymbolButton2.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
-            this.uiSymbolButton2.Size = new System.Drawing.Size(100, 35);
-            this.uiSymbolButton2.Symbol = 61543;
-            this.uiSymbolButton2.TabIndex = 34;
-            this.uiSymbolButton2.Text = "增加";
-            this.uiSymbolButton2.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiSymbolButton2.Click += new System.EventHandler(this.uiSymbolButton2_Click);
-            // 
-            // uiSymbolButton1
-            // 
-            this.uiSymbolButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiSymbolButton1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiSymbolButton1.Location = new System.Drawing.Point(377, 22);
-            this.uiSymbolButton1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolButton1.Name = "uiSymbolButton1";
-            this.uiSymbolButton1.Size = new System.Drawing.Size(100, 35);
-            this.uiSymbolButton1.Symbol = 61442;
-            this.uiSymbolButton1.TabIndex = 3;
-            this.uiSymbolButton1.Text = "查找";
-            this.uiSymbolButton1.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.uiButton5.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.uiButton5.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
+            this.uiButton5.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiButton5.Location = new System.Drawing.Point(612, 22);
+            this.uiButton5.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton5.Name = "uiButton5";
+            this.uiButton5.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.uiButton5.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
+            this.uiButton5.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.ShowFocusLine = true;
+            this.uiButton5.Size = new System.Drawing.Size(100, 35);
+            this.uiButton5.Style = Sunny.UI.UIStyle.Custom;
+            this.uiButton5.StyleCustomMode = true;
+            this.uiButton5.TabIndex = 88;
+            this.uiButton5.Text = "修改";
+            this.uiButton5.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
             // edtName
             // 
@@ -230,29 +225,34 @@
             this.uiLabel2.Text = "公司名称";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiButton5
+            // uiSymbolButton2
             // 
-            this.uiButton5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
-            this.uiButton5.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
-            this.uiButton5.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
-            this.uiButton5.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton5.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton5.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiButton5.Location = new System.Drawing.Point(612, 22);
-            this.uiButton5.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton5.Name = "uiButton5";
-            this.uiButton5.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
-            this.uiButton5.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
-            this.uiButton5.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton5.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton5.ShowFocusLine = true;
-            this.uiButton5.Size = new System.Drawing.Size(100, 35);
-            this.uiButton5.Style = Sunny.UI.UIStyle.Custom;
-            this.uiButton5.StyleCustomMode = true;
-            this.uiButton5.TabIndex = 88;
-            this.uiButton5.Text = "修改";
-            this.uiButton5.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSymbolButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton2.FillColor = System.Drawing.Color.ForestGreen;
+            this.uiSymbolButton2.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiSymbolButton2.Location = new System.Drawing.Point(493, 22);
+            this.uiSymbolButton2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton2.Name = "uiSymbolButton2";
+            this.uiSymbolButton2.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
+            this.uiSymbolButton2.Size = new System.Drawing.Size(100, 35);
+            this.uiSymbolButton2.Symbol = 61543;
+            this.uiSymbolButton2.TabIndex = 34;
+            this.uiSymbolButton2.Text = "增加";
+            this.uiSymbolButton2.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSymbolButton2.Click += new System.EventHandler(this.uiSymbolButton2_Click);
+            // 
+            // uiSymbolButton1
+            // 
+            this.uiSymbolButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiSymbolButton1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSymbolButton1.Location = new System.Drawing.Point(377, 22);
+            this.uiSymbolButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolButton1.Name = "uiSymbolButton1";
+            this.uiSymbolButton1.Size = new System.Drawing.Size(100, 35);
+            this.uiSymbolButton1.Symbol = 61442;
+            this.uiSymbolButton1.TabIndex = 3;
+            this.uiSymbolButton1.Text = "查找";
+            this.uiSymbolButton1.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
             // Column1
             // 
@@ -280,6 +280,7 @@
             this.Search.Name = "Search";
             this.Search.ReadOnly = true;
             this.Search.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Search.Visible = false;
             // 
             // Edit
             // 
@@ -290,6 +291,7 @@
             this.Edit.HeaderText = "编辑";
             this.Edit.Name = "Edit";
             this.Edit.ReadOnly = true;
+            this.Edit.Visible = false;
             // 
             // Delete
             // 

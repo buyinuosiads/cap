@@ -33,25 +33,25 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuBar));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuBar));
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.uiPagination1 = new Sunny.UI.UIPagination();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
+            this.uiButton5 = new Sunny.UI.UIButton();
+            this.uiSymbolButton2 = new Sunny.UI.UISymbolButton();
+            this.edtName = new Sunny.UI.UITextBox();
+            this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
+            this.uiLabel2 = new Sunny.UI.UILabel();
             this.MenuText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.uiPagination1 = new Sunny.UI.UIPagination();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
-            this.uiSymbolButton2 = new Sunny.UI.UISymbolButton();
-            this.edtName = new Sunny.UI.UITextBox();
-            this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
-            this.uiLabel2 = new Sunny.UI.UILabel();
-            this.uiButton5 = new Sunny.UI.UIButton();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.uiCheckBoxGroup1.SuspendLayout();
@@ -94,7 +94,7 @@
             this.uiDataGridView1.EnableHeadersVisualStyles = false;
             this.uiDataGridView1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            this.uiDataGridView1.Location = new System.Drawing.Point(3, 23);
+            this.uiDataGridView1.Location = new System.Drawing.Point(3, 22);
             this.uiDataGridView1.Name = "uiDataGridView1";
             this.uiDataGridView1.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -114,59 +114,10 @@
             this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.uiDataGridView1.RowTemplate.Height = 23;
             this.uiDataGridView1.SelectedIndex = -1;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 448);
+            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 449);
             this.uiDataGridView1.TabIndex = 9;
             this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
-            // 
-            // MenuText
-            // 
-            this.MenuText.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MenuText.DataPropertyName = "MenuText";
-            this.MenuText.HeaderText = "菜单名称";
-            this.MenuText.Name = "MenuText";
-            this.MenuText.ReadOnly = true;
-            // 
-            // CreateTime
-            // 
-            this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CreateTime.DataPropertyName = "CreateTime";
-            this.CreateTime.HeaderText = "创建时间";
-            this.CreateTime.Name = "CreateTime";
-            this.CreateTime.ReadOnly = true;
-            // 
-            // Search
-            // 
-            this.Search.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = "查看";
-            this.Search.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Search.HeaderText = "查看";
-            this.Search.Name = "Search";
-            this.Search.ReadOnly = true;
-            this.Search.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Edit
-            // 
-            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.NullValue = "编辑";
-            this.Edit.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Edit.HeaderText = "编辑";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            // 
-            // Delete
-            // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = "删除";
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Delete.HeaderText = "删除";
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // groupBox1
             // 
@@ -221,6 +172,30 @@
             this.uiCheckBoxGroup1.TabIndex = 9;
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiButton5
+            // 
+            this.uiButton5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.uiButton5.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.uiButton5.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
+            this.uiButton5.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiButton5.Location = new System.Drawing.Point(561, 29);
+            this.uiButton5.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton5.Name = "uiButton5";
+            this.uiButton5.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.uiButton5.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
+            this.uiButton5.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.ShowFocusLine = true;
+            this.uiButton5.Size = new System.Drawing.Size(100, 35);
+            this.uiButton5.Style = Sunny.UI.UIStyle.Custom;
+            this.uiButton5.StyleCustomMode = true;
+            this.uiButton5.TabIndex = 88;
+            this.uiButton5.Text = "修改";
+            this.uiButton5.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
             // uiSymbolButton2
             // 
@@ -279,29 +254,56 @@
             this.uiLabel2.Text = "菜单名称";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiButton5
+            // MenuText
             // 
-            this.uiButton5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
-            this.uiButton5.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
-            this.uiButton5.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
-            this.uiButton5.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton5.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton5.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiButton5.Location = new System.Drawing.Point(561, 29);
-            this.uiButton5.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton5.Name = "uiButton5";
-            this.uiButton5.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
-            this.uiButton5.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
-            this.uiButton5.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton5.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton5.ShowFocusLine = true;
-            this.uiButton5.Size = new System.Drawing.Size(100, 35);
-            this.uiButton5.Style = Sunny.UI.UIStyle.Custom;
-            this.uiButton5.StyleCustomMode = true;
-            this.uiButton5.TabIndex = 88;
-            this.uiButton5.Text = "修改";
-            this.uiButton5.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.MenuText.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MenuText.DataPropertyName = "MenuText";
+            this.MenuText.HeaderText = "菜单名称";
+            this.MenuText.Name = "MenuText";
+            this.MenuText.ReadOnly = true;
+            // 
+            // CreateTime
+            // 
+            this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CreateTime.DataPropertyName = "CreateTime";
+            this.CreateTime.HeaderText = "创建时间";
+            this.CreateTime.Name = "CreateTime";
+            this.CreateTime.ReadOnly = true;
+            // 
+            // Search
+            // 
+            this.Search.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = "查看";
+            this.Search.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Search.HeaderText = "查看";
+            this.Search.Name = "Search";
+            this.Search.ReadOnly = true;
+            this.Search.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Search.Visible = false;
+            // 
+            // Edit
+            // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.NullValue = "编辑";
+            this.Edit.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Edit.HeaderText = "编辑";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Visible = false;
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = "删除";
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Delete.HeaderText = "删除";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // MenuBar
             // 
@@ -331,12 +333,12 @@
         private Sunny.UI.UITextBox edtName;
         private Sunny.UI.UISymbolButton uiSymbolButton1;
         private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UISymbolButton uiSymbolButton2;
+        private Sunny.UI.UIButton uiButton5;
         private System.Windows.Forms.DataGridViewTextBoxColumn MenuText;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime;
         private System.Windows.Forms.DataGridViewButtonColumn Search;
         private System.Windows.Forms.DataGridViewButtonColumn Edit;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
-        private Sunny.UI.UISymbolButton uiSymbolButton2;
-        private Sunny.UI.UIButton uiButton5;
     }
 }
