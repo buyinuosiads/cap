@@ -208,6 +208,7 @@ namespace Cap.FixedAssetsParent.FixedAssets
                 string Column5 = row.Cells["Column5"].Value.ToString();
                 string Column6 = row.Cells["Column6"].Value.ToString();
                 string Column7 = row.Cells["Column7"].Value.ToString();
+                string Column11 = row.Cells["Column11"].Value.ToString();
                 edtName.Text = rowData;
                 uiTextBox3.Text = Column2;
                 uiTextBox6.Text = Column3;
@@ -215,6 +216,7 @@ namespace Cap.FixedAssetsParent.FixedAssets
                 uiTextBox4.Text = Column5;
                 uiTextBox5.Text = Column6;
                 uiTextBox1.Text = Column7;
+                uiTextBox7.Text = Column11;
             }
         }
     }
