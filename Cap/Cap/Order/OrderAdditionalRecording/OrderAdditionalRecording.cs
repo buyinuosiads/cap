@@ -1,6 +1,7 @@
 ﻿using Cap.BasicSettings.Accessories;
 using Cap.Order.OrderSplitting;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -137,9 +138,30 @@ namespace Cap.Order.OrderAdditionalRecording
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            OrderAdditionalRecordingAdd frm = new OrderAdditionalRecordingAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //OrderAdditionalRecordingAdd frm = new OrderAdditionalRecordingAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+
+            dataTable.Rows.Add(edtName.Text, uiTextBox1.Text, uiTextBox2.Text);
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string rowData = row.Cells["SupplierName"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+                edtName.Text = rowData;
+                uiTextBox1.Text = CreationTime;
+                uiTextBox2.Text = CreationName;
+
+            }
         }
     }
 }

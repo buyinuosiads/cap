@@ -99,9 +99,10 @@ namespace Cap.InventoryManagement.Inventory
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
-
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -112,8 +113,8 @@ namespace Cap.InventoryManagement.Inventory
                 // 获取所点击的行
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据
-                string Column1 = row.Cells["MaterialName"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                string Column2 = row.Cells["MaterialCount"].Value.ToString(); // 替换YourColumnName为你需要的列名
+                string Column1 = row.Cells["MaterialName"].Value.ToString();
+                string Column2 = row.Cells["MaterialCount"].Value.ToString();
                 InventoryEdit frm = new InventoryEdit(Column1, Column2);
                 frm.Render();
                 frm.ShowDialog();
@@ -139,9 +140,32 @@ namespace Cap.InventoryManagement.Inventory
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            InventoryAdd frm = new InventoryAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //InventoryAdd frm = new InventoryAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            dataTable.Rows.Add(edtName.Text, uiTextBox2.Text, uiTextBox3.Text, uiTextBox1.Text);
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Column1 = row.Cells["MaterialName"].Value.ToString();
+                string Column2 = row.Cells["MaterialCount"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+                edtName.Text = Column1;
+                uiTextBox2.Text = Column2;
+                uiTextBox3.Text = CreationTime;
+                uiTextBox1.Text = CreationName;
+
+
+            }
         }
     }
 }

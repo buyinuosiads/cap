@@ -69,8 +69,8 @@ namespace Cap.SupplierAndCustom.Custom
                 // 获取所点击的行
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据
-                string Column1 = row.Cells["AccessoriesName"].Value.ToString(); // 替换YourColumnName为你需要的列名
-                string Column2 = row.Cells["Unit"].Value.ToString(); // 替换YourColumnName为你需要的列名
+                string Column1 = row.Cells["AccessoriesName"].Value.ToString();
+                string Column2 = row.Cells["Unit"].Value.ToString();
                 AccessoriesEdit frm = new AccessoriesEdit(Column1, Column2);
                 frm.Render();
                 frm.ShowDialog();
@@ -82,16 +82,21 @@ namespace Cap.SupplierAndCustom.Custom
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
 
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CustomAdd frm = new CustomAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //CustomAdd frm = new CustomAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+
+            dataTable.Rows.Add(edtName.Text, uiTextBox2.Text, uiTextBox1.Text, uiTextBox3.Text, uiTextBox4.Text);
+
         }
 
 
@@ -175,6 +180,33 @@ namespace Cap.SupplierAndCustom.Custom
                 {
                     ShowErrorTip("取消当前操作");
                 }
+            }
+
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Column1 = row.Cells["CustomName"].Value.ToString();
+                string Column2 = row.Cells["Contacts"].Value.ToString();
+                string Telephone = row.Cells["Telephone"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+                edtName.Text = Column1;
+                uiTextBox2.Text = Column2;
+                uiTextBox1.Text = Telephone;
+                uiTextBox3.Text = CreationTime;
+                uiTextBox4.Text = CreationName;
+
+
+
             }
 
         }

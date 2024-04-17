@@ -162,9 +162,45 @@ namespace Cap.Order.OrderManagement
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            OrderManagementAdd frm = new OrderManagementAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //OrderManagementAdd frm = new OrderManagementAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            dataTable.Rows.Add(edtName.Text, uiTextBox2.Text, uiTextBox1.Text, uiTextBox3.Text, uiTextBox4.Text, uiTextBox5.Text, uiTextBox6.Text);
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Column1 = row.Cells["SupplierName"].Value.ToString();
+                string Column2 = row.Cells["FullBoxCount"].Value.ToString();
+                string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
+                string Column4 = row.Cells["Column4"].Value.ToString();
+                string Column5 = row.Cells["Column5"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+
+
+                edtName.Text = Column1;
+                uiTextBox2.Text = Column2;
+                uiTextBox1.Text = Column3;
+                uiTextBox3.Text = Column4;
+                uiTextBox4.Text = Column5;
+                uiTextBox5.Text = CreationTime;
+                uiTextBox6.Text = CreationName;
+
+
+
+            }
+
+
+
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Cap.BasicSettings.Accessories;
 using Cap.Order.OrderSplitting;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -154,9 +155,34 @@ namespace Cap.WorkRecordsParent.WorkRecords
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            WorkRecordsAdd frm = new WorkRecordsAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //WorkRecordsAdd frm = new WorkRecordsAdd();
+            //frm.Render();
+            //frm.ShowDialog();          
+            dataTable.Rows.Add(Name.Text, Account.Text, Phone.Text, uiTextBox1.Text, uiTextBox2.Text);
+
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string rowData = row.Cells["SupplierName"].Value.ToString();
+                string Column2 = row.Cells["FullBoxCount"].Value.ToString();
+                string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+                Name.Text = rowData;
+                Account.Text = Column2;
+                Phone.Text = Column3;
+                uiTextBox1.Text = CreationTime;
+                uiTextBox2.Text = CreationName;
+
+            }
         }
     }
 }

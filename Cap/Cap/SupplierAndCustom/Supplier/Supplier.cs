@@ -27,8 +27,9 @@ namespace Cap.SupplierAndCustom.Supplier
             {
                 Data data = new Data();
                 data.Column1 = "供应商名称" + i;
-                data.Column2 = "满箱数" + i;
-                data.Column3 = "耗材数" + i;
+                data.Column2 = "供应商信息" + i;
+                data.Column3 = "供货情况" + i;
+                data.huowudanjia = "货物单价" + i;
                 data.Column4 = DateTime.Now.ToString();
                 data.Column5 = "管理员";
                 dataList.Add(data);
@@ -37,6 +38,7 @@ namespace Cap.SupplierAndCustom.Supplier
             dataTable.Columns.Add("Column1");
             dataTable.Columns.Add("Column2");
             dataTable.Columns.Add("Column3");
+            dataTable.Columns.Add("huowudanjia");
             dataTable.Columns.Add("Column4");
             dataTable.Columns.Add("Column5");
             uiDataGridView1.DataSource = dataTable;
@@ -74,7 +76,7 @@ namespace Cap.SupplierAndCustom.Supplier
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column4, dataList[i].Column5);
+                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].huowudanjia, dataList[i].Column4, dataList[i].Column5);
             }
 
 
@@ -94,7 +96,7 @@ namespace Cap.SupplierAndCustom.Supplier
             public string Column2 { get; set; }
 
             public string Column3 { get; set; }
-
+            public string huowudanjia { get; set; }
             public string Column4 { get; set; }
             public string Column5 { get; set; }
 
@@ -106,20 +108,22 @@ namespace Cap.SupplierAndCustom.Supplier
 
         private void Supplier_Initialize(object sender, EventArgs e)
         {
+
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
 
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
-            SupplierAdd frm = new SupplierAdd();
-            frm.Render();
-            frm.ShowDialog();
-
+            //SupplierAdd frm = new SupplierAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            dataTable.Rows.Add(edtName.Text, uiTextBox2.Text, uiTextBox1.Text, uiTextBox3.Text, uiTextBox4.Text, uiTextBox5.Text);
         }
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -162,6 +166,36 @@ namespace Cap.SupplierAndCustom.Supplier
                     ShowErrorTip("取消当前操作");
                 }
             }
+
+
+
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Column1 = row.Cells["SupplierName"].Value.ToString();
+                string Column2 = row.Cells["FullBoxCount"].Value.ToString();
+                string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
+                string huowudanjia = row.Cells["huowudanjia"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+                edtName.Text = Column1;
+                uiTextBox2.Text = Column2;
+                uiTextBox1.Text = Column3;
+                uiTextBox3.Text = huowudanjia;
+                uiTextBox4.Text = CreationTime;
+                uiTextBox5.Text = CreationName;
+
+            }
+
+
 
 
 

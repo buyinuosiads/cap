@@ -24,9 +24,9 @@ namespace Cap.WorkerManagementParent.WorkerManagement
             for (int i = 0; i < 10; i++)
             {
                 Data data = new Data();
-                data.Column1 = "工人管理" + i;
+                data.Column1 = "工人名称" + i;
                 data.Column2 = "基本信息" + i;
-                data.Column3 = "工艺管理" + i;
+                data.Column3 = "工艺信息" + i;
                 data.Column4 = DateTime.Now.ToString();
                 data.Column5 = "创建人" + i;
                 dataList.Add(data);
@@ -80,11 +80,14 @@ namespace Cap.WorkerManagementParent.WorkerManagement
 
         private void WorkerManagement_Initialize(object sender, EventArgs e)
         {
+
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
 
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
 
@@ -154,9 +157,35 @@ namespace Cap.WorkerManagementParent.WorkerManagement
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            WorkerManagementAdd frm = new WorkerManagementAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //WorkerManagementAdd frm = new WorkerManagementAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            dataTable.Rows.Add(MenuText.Text, uiTextBox1.Text, uiTextBox2.Text, uiTextBox3.Text, uiTextBox4.Text);
+
+        }
+
+        private void uiSymbolButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 获取所点击的行
+            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+            // 获取行数据
+            string SupplierName = row.Cells["SupplierName"].Value.ToString();
+            string FullBoxCount = row.Cells["FullBoxCount"].Value.ToString();
+            string ConsumablesCount = row.Cells["ConsumablesCount"].Value.ToString();
+            string CreationTime = row.Cells["CreationTime"].Value.ToString();
+            string CreationName = row.Cells["CreationName"].Value.ToString();
+
+            MenuText.Text = SupplierName;
+            uiTextBox1.Text = FullBoxCount;
+            uiTextBox2.Text = ConsumablesCount;
+            uiTextBox3.Text = CreationTime;
+            uiTextBox4.Text = CreationName;
+
         }
     }
 }

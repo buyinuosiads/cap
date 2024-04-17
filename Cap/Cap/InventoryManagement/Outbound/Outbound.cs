@@ -88,7 +88,7 @@ namespace Cap.InventoryManagement.Outbound
             public string Column2 { get; set; }
             public string Column3 { get; set; }
             public string Column4 { get; set; }
-             
+
             public string Column5 { get; set; }
 
             public override string ToString()
@@ -102,9 +102,11 @@ namespace Cap.InventoryManagement.Outbound
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
 
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -112,10 +114,10 @@ namespace Cap.InventoryManagement.Outbound
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            string Column1 = row.Cells["CustomName"].Value.ToString(); // 替换YourColumnName为你需要的列名
-            string Column2 = row.Cells["Contacts"].Value.ToString(); // 替换YourColumnName为你需要的列名
-            string Column3 = row.Cells["Telephone"].Value.ToString(); // 替换YourColumnName为你需要的列名
-            string Column4 = row.Cells["CreationName"].Value.ToString(); // 替换YourColumnName为你需要的列名
+            string Column1 = row.Cells["CustomName"].Value.ToString();
+            string Column2 = row.Cells["Contacts"].Value.ToString();
+            string Column3 = row.Cells["Telephone"].Value.ToString();
+            string Column4 = row.Cells["CreationName"].Value.ToString();
             // 确保点击的是按钮列
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
@@ -154,9 +156,38 @@ namespace Cap.InventoryManagement.Outbound
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            OutboundAdd frm = new OutboundAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //OutboundAdd frm = new OutboundAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+
+
+
+            dataTable.Rows.Add(uiTextBox4.Text, uiTextBox2.Text, uiTextBox1.Text, uiTextBox5.Text, uiTextBox3.Text);
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Column1 = row.Cells["CustomName"].Value.ToString();
+                string Column2 = row.Cells["Contacts"].Value.ToString();
+                string Column3 = row.Cells["Telephone"].Value.ToString();
+                string Column4 = row.Cells["CreationName"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                uiTextBox4.Text = Column1;
+                uiTextBox2.Text = Column2;
+                uiTextBox1.Text = Column3;
+                uiTextBox3.Text = Column4;
+                uiTextBox5.Text = CreationTime;
+
+            }
+
+
         }
     }
 }

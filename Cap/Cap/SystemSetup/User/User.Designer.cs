@@ -115,7 +115,7 @@
             this.uiDataGridView1.EnableHeadersVisualStyles = false;
             this.uiDataGridView1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            this.uiDataGridView1.Location = new System.Drawing.Point(3, 23);
+            this.uiDataGridView1.Location = new System.Drawing.Point(3, 22);
             this.uiDataGridView1.Name = "uiDataGridView1";
             this.uiDataGridView1.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -135,7 +135,7 @@
             this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.uiDataGridView1.RowTemplate.Height = 23;
             this.uiDataGridView1.SelectedIndex = -1;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 325);
+            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 348);
             this.uiDataGridView1.TabIndex = 9;
             this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick_1);
@@ -226,9 +226,9 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.uiDataGridView1);
             this.groupBox1.Controls.Add(this.uiPagination1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 232);
+            this.groupBox1.Location = new System.Drawing.Point(0, 210);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1070, 386);
+            this.groupBox1.Size = new System.Drawing.Size(1070, 408);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
@@ -237,7 +237,7 @@
             this.uiPagination1.CausesValidation = false;
             this.uiPagination1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uiPagination1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiPagination1.Location = new System.Drawing.Point(3, 348);
+            this.uiPagination1.Location = new System.Drawing.Point(3, 370);
             this.uiPagination1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPagination1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPagination1.Name = "uiPagination1";
@@ -284,7 +284,7 @@
             this.uiCheckBoxGroup1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiCheckBoxGroup1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
             this.uiCheckBoxGroup1.SelectedIndexes = ((System.Collections.Generic.List<int>)(resources.GetObject("uiCheckBoxGroup1.SelectedIndexes")));
-            this.uiCheckBoxGroup1.Size = new System.Drawing.Size(1041, 224);
+            this.uiCheckBoxGroup1.Size = new System.Drawing.Size(1041, 202);
             this.uiCheckBoxGroup1.TabIndex = 5;
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -371,7 +371,7 @@
             this.Phone.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Phone.EnterAsTab = true;
             this.Phone.Font = new System.Drawing.Font("宋体", 12F);
-            this.Phone.Location = new System.Drawing.Point(535, 58);
+            this.Phone.Location = new System.Drawing.Point(534, 60);
             this.Phone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Phone.MinimumSize = new System.Drawing.Size(1, 16);
             this.Phone.Name = "Phone";
@@ -387,7 +387,7 @@
             this.uiLabel4.AutoSize = true;
             this.uiLabel4.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel4.Location = new System.Drawing.Point(457, 62);
+            this.uiLabel4.Location = new System.Drawing.Point(457, 64);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(39, 16);
             this.uiLabel4.TabIndex = 83;
@@ -427,7 +427,7 @@
             this.Password.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Password.EnterAsTab = true;
             this.Password.Font = new System.Drawing.Font("宋体", 12F);
-            this.Password.Location = new System.Drawing.Point(90, 52);
+            this.Password.Location = new System.Drawing.Point(90, 60);
             this.Password.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Password.MinimumSize = new System.Drawing.Size(1, 16);
             this.Password.Name = "Password";
@@ -443,7 +443,7 @@
             this.uiLabel7.AutoSize = true;
             this.uiLabel7.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel7.Location = new System.Drawing.Point(12, 58);
+            this.uiLabel7.Location = new System.Drawing.Point(12, 66);
             this.uiLabel7.Name = "uiLabel7";
             this.uiLabel7.Size = new System.Drawing.Size(39, 16);
             this.uiLabel7.TabIndex = 78;
@@ -602,9 +602,9 @@
         private Sunny.UI.UIRadioButton rbFemale;
         private Sunny.UI.UIRadioButton rbMale;
         private Sunny.UI.UILabel uiLabel3;
-        private Sunny.UI.UITextBox Name;
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UISymbolButton uiSymbolButton2;
         private Sunny.UI.UIButton uiButton5;
+        private Sunny.UI.UITextBox Name;
     }
 }

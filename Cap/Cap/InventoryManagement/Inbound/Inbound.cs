@@ -105,9 +105,10 @@ namespace Cap.InventoryManagement.Inbound
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
-
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -155,9 +156,36 @@ namespace Cap.InventoryManagement.Inbound
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            InboundAdd frm = new InboundAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //InboundAdd frm = new InboundAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            dataTable.Rows.Add(uiTextBox3.Text, uiTextBox2.Text, uiTextBox1.Text, uiTextBox4.Text, uiTextBox5.Text);
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Column1 = row.Cells["CustomName"].Value.ToString();
+                string Column2 = row.Cells["Contacts"].Value.ToString();
+                string Column3 = row.Cells["Telephone"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+                uiTextBox3.Text = Column1;
+                uiTextBox2.Text = Column2;
+                uiTextBox1.Text = Column3;
+                uiTextBox4.Text = CreationTime;
+                uiTextBox5.Text = CreationName;
+
+            }
+
+
+
         }
     }
 }
