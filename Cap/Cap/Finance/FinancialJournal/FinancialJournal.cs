@@ -2,6 +2,7 @@
 using Cap.BasicSettings.Accessories;
 using Cap.Order.OrderSplitting;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -88,9 +89,11 @@ namespace Cap.Finance.FinancialJournal
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
 
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
 
@@ -161,9 +164,37 @@ namespace Cap.Finance.FinancialJournal
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            FinancialJournalAdd frm = new FinancialJournalAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //FinancialJournalAdd frm = new FinancialJournalAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+
+
+
+            dataTable.Rows.Add(edtName.Text, uiTextBox2.Text, uiTextBox1.Text, uiTextBox3.Text, uiTextBox4.Text);
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string rowData = row.Cells["SupplierName"].Value.ToString();
+                string Column2 = row.Cells["FullBoxCount"].Value.ToString();
+                string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+                edtName.Text = rowData;
+                uiTextBox2.Text = Column2;
+                uiTextBox1.Text = Column3;
+                uiTextBox3.Text = CreationTime;
+                uiTextBox4.Text = CreationName;
+
+            }
+
         }
     }
 }

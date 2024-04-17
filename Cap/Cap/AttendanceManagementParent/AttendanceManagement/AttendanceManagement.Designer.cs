@@ -38,15 +38,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
-            this.edtName = new Sunny.UI.UITextBox();
             this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
-            this.uiLabel2 = new Sunny.UI.UILabel();
             this.btnAdd = new Sunny.UI.UISymbolButton();
             this.uiPagination1 = new Sunny.UI.UIPagination();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
-            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Account = new Sunny.UI.UITextBox();
+            this.uiLabel8 = new Sunny.UI.UILabel();
+            this.Password = new Sunny.UI.UITextBox();
+            this.uiLabel7 = new Sunny.UI.UILabel();
+            this.Name = new Sunny.UI.UITextBox();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.uiTextBox1 = new Sunny.UI.UITextBox();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.uiButton5 = new Sunny.UI.UIButton();
             this.FullBoxCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ConsumablesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,9 +67,16 @@
             // 
             // uiCheckBoxGroup1
             // 
-            this.uiCheckBoxGroup1.Controls.Add(this.edtName);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiSymbolButton1);
+            this.uiCheckBoxGroup1.Controls.Add(this.uiButton5);
+            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox1);
+            this.uiCheckBoxGroup1.Controls.Add(this.uiLabel1);
+            this.uiCheckBoxGroup1.Controls.Add(this.Account);
+            this.uiCheckBoxGroup1.Controls.Add(this.uiLabel8);
+            this.uiCheckBoxGroup1.Controls.Add(this.Password);
+            this.uiCheckBoxGroup1.Controls.Add(this.uiLabel7);
+            this.uiCheckBoxGroup1.Controls.Add(this.Name);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel2);
+            this.uiCheckBoxGroup1.Controls.Add(this.uiSymbolButton1);
             this.uiCheckBoxGroup1.Controls.Add(this.btnAdd);
             this.uiCheckBoxGroup1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiCheckBoxGroup1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -75,32 +88,16 @@
             this.uiCheckBoxGroup1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
             this.uiCheckBoxGroup1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
             this.uiCheckBoxGroup1.SelectedIndexes = ((System.Collections.Generic.List<int>)(resources.GetObject("uiCheckBoxGroup1.SelectedIndexes")));
-            this.uiCheckBoxGroup1.Size = new System.Drawing.Size(1108, 101);
+            this.uiCheckBoxGroup1.Size = new System.Drawing.Size(1108, 150);
             this.uiCheckBoxGroup1.TabIndex = 21;
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // edtName
-            // 
-            this.edtName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.edtName.EnterAsTab = true;
-            this.edtName.Font = new System.Drawing.Font("宋体", 12F);
-            this.edtName.Location = new System.Drawing.Point(72, 37);
-            this.edtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.edtName.MinimumSize = new System.Drawing.Size(1, 16);
-            this.edtName.Name = "edtName";
-            this.edtName.Padding = new System.Windows.Forms.Padding(5);
-            this.edtName.ShowText = false;
-            this.edtName.Size = new System.Drawing.Size(128, 29);
-            this.edtName.TabIndex = 30;
-            this.edtName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.edtName.Watermark = "";
             // 
             // uiSymbolButton1
             // 
             this.uiSymbolButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiSymbolButton1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiSymbolButton1.Location = new System.Drawing.Point(216, 35);
+            this.uiSymbolButton1.Location = new System.Drawing.Point(88, 104);
             this.uiSymbolButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiSymbolButton1.Name = "uiSymbolButton1";
             this.uiSymbolButton1.Size = new System.Drawing.Size(100, 35);
@@ -109,24 +106,12 @@
             this.uiSymbolButton1.Text = "查找";
             this.uiSymbolButton1.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
-            // uiLabel2
-            // 
-            this.uiLabel2.AutoSize = true;
-            this.uiLabel2.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(12, 44);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(55, 16);
-            this.uiLabel2.TabIndex = 29;
-            this.uiLabel2.Text = "考勤人";
-            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // btnAdd
             // 
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.FillColor = System.Drawing.Color.ForestGreen;
             this.btnAdd.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnAdd.Location = new System.Drawing.Point(322, 35);
+            this.btnAdd.Location = new System.Drawing.Point(194, 104);
             this.btnAdd.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);
@@ -142,7 +127,7 @@
             this.uiPagination1.CausesValidation = false;
             this.uiPagination1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uiPagination1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiPagination1.Location = new System.Drawing.Point(3, 455);
+            this.uiPagination1.Location = new System.Drawing.Point(3, 406);
             this.uiPagination1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPagination1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPagination1.Name = "uiPagination1";
@@ -163,9 +148,9 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.uiDataGridView1);
             this.groupBox1.Controls.Add(this.uiPagination1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 109);
+            this.groupBox1.Location = new System.Drawing.Point(0, 158);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1043, 494);
+            this.groupBox1.Size = new System.Drawing.Size(1043, 445);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             // 
@@ -189,7 +174,6 @@
             this.uiDataGridView1.ColumnHeadersHeight = 32;
             this.uiDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.uiDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SupplierName,
             this.FullBoxCount,
             this.ConsumablesCount,
             this.CreationTime,
@@ -229,17 +213,146 @@
             this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.uiDataGridView1.RowTemplate.Height = 23;
             this.uiDataGridView1.SelectedIndex = -1;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1037, 433);
+            this.uiDataGridView1.Size = new System.Drawing.Size(1037, 384);
             this.uiDataGridView1.TabIndex = 9;
+            this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
             // 
-            // SupplierName
+            // Account
             // 
-            this.SupplierName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SupplierName.DataPropertyName = "Column1";
-            this.SupplierName.HeaderText = "考勤";
-            this.SupplierName.Name = "SupplierName";
-            this.SupplierName.ReadOnly = true;
+            this.Account.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Account.EnterAsTab = true;
+            this.Account.Font = new System.Drawing.Font("宋体", 12F);
+            this.Account.Location = new System.Drawing.Point(90, 28);
+            this.Account.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Account.MinimumSize = new System.Drawing.Size(1, 16);
+            this.Account.Name = "Account";
+            this.Account.Padding = new System.Windows.Forms.Padding(5);
+            this.Account.ShowText = false;
+            this.Account.Size = new System.Drawing.Size(340, 29);
+            this.Account.TabIndex = 52;
+            this.Account.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Account.Watermark = "";
+            // 
+            // uiLabel8
+            // 
+            this.uiLabel8.AutoSize = true;
+            this.uiLabel8.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel8.Location = new System.Drawing.Point(12, 34);
+            this.uiLabel8.Name = "uiLabel8";
+            this.uiLabel8.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel8.TabIndex = 54;
+            this.uiLabel8.Text = "考勤天数";
+            this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Password
+            // 
+            this.Password.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Password.EnterAsTab = true;
+            this.Password.Font = new System.Drawing.Font("宋体", 12F);
+            this.Password.Location = new System.Drawing.Point(90, 67);
+            this.Password.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Password.MinimumSize = new System.Drawing.Size(1, 16);
+            this.Password.Name = "Password";
+            this.Password.Padding = new System.Windows.Forms.Padding(5);
+            this.Password.ShowText = false;
+            this.Password.Size = new System.Drawing.Size(340, 29);
+            this.Password.TabIndex = 53;
+            this.Password.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Password.Watermark = "";
+            // 
+            // uiLabel7
+            // 
+            this.uiLabel7.AutoSize = true;
+            this.uiLabel7.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel7.Location = new System.Drawing.Point(12, 73);
+            this.uiLabel7.Name = "uiLabel7";
+            this.uiLabel7.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel7.TabIndex = 55;
+            this.uiLabel7.Text = "创建时间";
+            this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Name
+            // 
+            this.Name.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Name.EnterAsTab = true;
+            this.Name.Font = new System.Drawing.Font("宋体", 12F);
+            this.Name.Location = new System.Drawing.Point(515, 28);
+            this.Name.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Name.MinimumSize = new System.Drawing.Size(1, 16);
+            this.Name.Name = "Name";
+            this.Name.Padding = new System.Windows.Forms.Padding(5);
+            this.Name.ShowText = false;
+            this.Name.Size = new System.Drawing.Size(340, 29);
+            this.Name.TabIndex = 50;
+            this.Name.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Name.Watermark = "";
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.AutoSize = true;
+            this.uiLabel2.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel2.Location = new System.Drawing.Point(437, 35);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(55, 16);
+            this.uiLabel2.TabIndex = 51;
+            this.uiLabel2.Text = "考勤人";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiTextBox1
+            // 
+            this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.uiTextBox1.EnterAsTab = true;
+            this.uiTextBox1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiTextBox1.Location = new System.Drawing.Point(515, 67);
+            this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 16);
+            this.uiTextBox1.Name = "uiTextBox1";
+            this.uiTextBox1.Padding = new System.Windows.Forms.Padding(5);
+            this.uiTextBox1.ShowText = false;
+            this.uiTextBox1.Size = new System.Drawing.Size(340, 29);
+            this.uiTextBox1.TabIndex = 56;
+            this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiTextBox1.Watermark = "";
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.AutoSize = true;
+            this.uiLabel1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel1.Location = new System.Drawing.Point(437, 73);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(55, 16);
+            this.uiLabel1.TabIndex = 57;
+            this.uiLabel1.Text = "创建人";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiButton5
+            // 
+            this.uiButton5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.uiButton5.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.uiButton5.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
+            this.uiButton5.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiButton5.Location = new System.Drawing.Point(300, 104);
+            this.uiButton5.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton5.Name = "uiButton5";
+            this.uiButton5.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.uiButton5.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
+            this.uiButton5.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.ShowFocusLine = true;
+            this.uiButton5.Size = new System.Drawing.Size(100, 35);
+            this.uiButton5.Style = Sunny.UI.UIStyle.Custom;
+            this.uiButton5.StyleCustomMode = true;
+            this.uiButton5.TabIndex = 88;
+            this.uiButton5.Text = "修改";
+            this.uiButton5.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
             // FullBoxCount
             // 
@@ -283,6 +396,7 @@
             this.Search.Name = "Search";
             this.Search.ReadOnly = true;
             this.Search.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Search.Visible = false;
             // 
             // Edit
             // 
@@ -293,6 +407,7 @@
             this.Edit.HeaderText = "操作";
             this.Edit.Name = "Edit";
             this.Edit.ReadOnly = true;
+            this.Edit.Visible = false;
             // 
             // Delete
             // 
@@ -311,8 +426,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1108, 708);
             this.Controls.Add(this.uiCheckBoxGroup1);
-            this.Controls.Add(this.groupBox1);
-            this.Name = "AttendanceManagement";
+            this.Controls.Add(this.groupBox1); 
             this.Text = "考勤管理";
             this.Initialize += new System.EventHandler(this.AttendanceManagement_Initialize);
             this.uiCheckBoxGroup1.ResumeLayout(false);
@@ -327,15 +441,21 @@
         #endregion
 
         private Sunny.UI.UICheckBoxGroup uiCheckBoxGroup1;
-        private Sunny.UI.UITextBox edtName;
         private Sunny.UI.UISymbolButton uiSymbolButton1;
-        private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UISymbolButton btnAdd;
         private Sunny.UI.UIPagination uiPagination1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox1;
         private Sunny.UI.UIDataGridView uiDataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
+        private Sunny.UI.UITextBox uiTextBox1;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UITextBox Account;
+        private Sunny.UI.UILabel uiLabel8;
+        private Sunny.UI.UITextBox Password;
+        private Sunny.UI.UILabel uiLabel7;
+        private Sunny.UI.UITextBox Name;
+        private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UIButton uiButton5;
         private System.Windows.Forms.DataGridViewTextBoxColumn FullBoxCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsumablesCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;

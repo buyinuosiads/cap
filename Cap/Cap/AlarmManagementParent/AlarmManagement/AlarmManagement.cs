@@ -1,12 +1,14 @@
 ﻿using Cap.BasicSettings.Accessories;
 using Cap.Order.OrderSplitting;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -56,9 +58,11 @@ namespace Cap.AlarmManagementParent.AlarmManagement
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
 
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
 
@@ -152,9 +156,34 @@ namespace Cap.AlarmManagementParent.AlarmManagement
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AlarmManagementAdd frm = new AlarmManagementAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //AlarmManagementAdd frm = new AlarmManagementAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            dataTable.Rows.Add(edtName.Text, uiTextBox2.Text, uiTextBox3.Text, uiTextBox1.Text, uiTextBox4.Text);
+
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Column2 = row.Cells["ConsumablesCount"].Value.ToString();
+                string rowData = row.Cells["Column1"].Value.ToString();
+                string Column3 = row.Cells["Column2"].Value.ToString();
+                string CreationTime = row.Cells["CreationTime"].Value.ToString();
+                string CreationName = row.Cells["CreationName"].Value.ToString();
+
+
+                edtName.Text = Column2;
+                uiTextBox2.Text = rowData;
+                uiTextBox3.Text = Column3;
+                uiTextBox1.Text = CreationTime;
+                uiTextBox4.Text = CreationName;
+            }
         }
     }
 }

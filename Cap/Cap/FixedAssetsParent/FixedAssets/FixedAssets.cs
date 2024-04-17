@@ -1,6 +1,7 @@
 ﻿using Cap.BasicSettings.Accessories;
 using Cap.Order.OrderSplitting;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,9 +70,11 @@ namespace Cap.FixedAssetsParent.FixedAssets
         {
             // 获取 uiCheckBoxGroup1 的宽度
             int checkBoxGroupWidth = uiCheckBoxGroup1.Width;
+            int checkBoxGroupHeigth = uiCheckBoxGroup1.Height;
 
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
 
@@ -165,9 +168,54 @@ namespace Cap.FixedAssetsParent.FixedAssets
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            FixedAssetsAdd frm = new FixedAssetsAdd();
-            frm.Render();
-            frm.ShowDialog();
+            //FixedAssetsAdd frm = new FixedAssetsAdd();
+            //frm.Render();
+            //frm.ShowDialog();
+            dataTable.Rows.Add(
+                   edtName.Text,
+               uiTextBox3.Text,
+               uiTextBox6.Text,
+                 uiTextBox2.Text,
+               uiTextBox4.Text,
+               uiTextBox5.Text,
+                uiTextBox1.Text
+               );
+
+
+
+
+
+
+
+
+
+
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
+            {
+
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string rowData = row.Cells["Column1"].Value.ToString();
+                string Column2 = row.Cells["Column2"].Value.ToString();
+                string Column3 = row.Cells["Column3"].Value.ToString();
+                string Column4 = row.Cells["Column4"].Value.ToString();
+                string Column5 = row.Cells["Column5"].Value.ToString();
+                string Column6 = row.Cells["Column6"].Value.ToString();
+                string Column7 = row.Cells["Column7"].Value.ToString();
+                edtName.Text = rowData;
+                uiTextBox3.Text = Column2;
+                uiTextBox6.Text = Column3;
+                uiTextBox2.Text = Column4;
+                uiTextBox4.Text = Column5;
+                uiTextBox5.Text = Column6;
+                uiTextBox1.Text = Column7;
+            }
         }
     }
 }
