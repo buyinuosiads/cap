@@ -172,23 +172,14 @@ namespace Cap.FixedAssetsParent.FixedAssets
             //frm.Render();
             //frm.ShowDialog();
             dataTable.Rows.Add(
-                   edtName.Text,
-               uiTextBox3.Text,
-               uiTextBox6.Text,
-                 uiTextBox2.Text,
-               uiTextBox4.Text,
-               uiTextBox5.Text,
-                uiTextBox1.Text
-               );
-
-
-
-
-
-
-
-
-
+            edtName.Text,
+            uiTextBox3.Text,
+            uiTextBox6.Text,
+            uiTextBox2.Text,
+            uiTextBox4.Text,
+            uiTextBox5.Text,
+            uiTextBox1.Text
+            );
 
         }
 
@@ -197,7 +188,6 @@ namespace Cap.FixedAssetsParent.FixedAssets
             // 确保点击的不是表头
             if (e.RowIndex >= 0)
             {
-
                 // 获取所点击的行
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据
