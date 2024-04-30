@@ -30,25 +30,33 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User));
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
+            this.UserId_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Account_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sex_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Position_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.uiPagination1 = new Sunny.UI.UIPagination();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
+            this.uiButton6 = new Sunny.UI.UIButton();
+            this.uiRadioButton1 = new Sunny.UI.UIRadioButton();
             this.uiButton5 = new Sunny.UI.UIButton();
             this.uiSymbolButton2 = new Sunny.UI.UISymbolButton();
-            this.uiComboBox1 = new Sunny.UI.UIComboBox();
+            this.Position = new Sunny.UI.UIComboBox();
             this.uiLabel5 = new Sunny.UI.UILabel();
             this.Phone = new Sunny.UI.UITextBox();
             this.uiLabel4 = new Sunny.UI.UILabel();
-            this.uiTextBox1 = new Sunny.UI.UITextBox();
+            this.Account = new Sunny.UI.UITextBox();
             this.uiLabel8 = new Sunny.UI.UILabel();
             this.Password = new Sunny.UI.UITextBox();
             this.uiLabel7 = new Sunny.UI.UILabel();
@@ -57,18 +65,9 @@
             this.rbFemale = new Sunny.UI.UIRadioButton();
             this.rbMale = new Sunny.UI.UIRadioButton();
             this.uiLabel3 = new Sunny.UI.UILabel();
-            this.Name = new Sunny.UI.UITextBox();
+            this.UserName = new Sunny.UI.UITextBox();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Account = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.uiCheckBoxGroup1.SuspendLayout();
@@ -94,51 +93,118 @@
             this.uiDataGridView1.ColumnHeadersHeight = 32;
             this.uiDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.uiDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Account,
-            this.Column2,
-            this.Column3,
-            this.Sex,
-            this.Position,
-            this.Search,
-            this.Edit,
+            this.UserId_Manager,
+            this.Name_Manager,
+            this.Account_Manager,
+            this.Phone_Manager,
+            this.Address_Manager,
+            this.Sex_Manager,
+            this.Position_Manager,
             this.Delete});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.uiDataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            this.uiDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiDataGridView1.EnableHeadersVisualStyles = false;
+            this.uiDataGridView1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
+            this.uiDataGridView1.Location = new System.Drawing.Point(3, 23);
+            this.uiDataGridView1.Name = "uiDataGridView1";
+            this.uiDataGridView1.ReadOnly = true;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.uiDataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.uiDataGridView1.RowHeadersVisible = false;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.uiDataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.uiDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiDataGridView1.EnableHeadersVisualStyles = false;
-            this.uiDataGridView1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            this.uiDataGridView1.Location = new System.Drawing.Point(3, 22);
-            this.uiDataGridView1.Name = "uiDataGridView1";
-            this.uiDataGridView1.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.uiDataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.uiDataGridView1.RowHeadersVisible = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.uiDataGridView1.RowTemplate.Height = 23;
             this.uiDataGridView1.SelectedIndex = -1;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 348);
+            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 347);
             this.uiDataGridView1.TabIndex = 9;
             this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick_1);
+            // 
+            // UserId_Manager
+            // 
+            this.UserId_Manager.DataPropertyName = "UserId_Manager";
+            this.UserId_Manager.HeaderText = "UserId";
+            this.UserId_Manager.Name = "UserId_Manager";
+            this.UserId_Manager.ReadOnly = true;
+            this.UserId_Manager.Visible = false;
+            // 
+            // Name_Manager
+            // 
+            this.Name_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Name_Manager.DataPropertyName = "Name_Manager";
+            this.Name_Manager.HeaderText = "姓名";
+            this.Name_Manager.Name = "Name_Manager";
+            this.Name_Manager.ReadOnly = true;
+            // 
+            // Account_Manager
+            // 
+            this.Account_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Account_Manager.DataPropertyName = "Account_Manager";
+            this.Account_Manager.HeaderText = "账号";
+            this.Account_Manager.Name = "Account_Manager";
+            this.Account_Manager.ReadOnly = true;
+            // 
+            // Phone_Manager
+            // 
+            this.Phone_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Phone_Manager.DataPropertyName = "Phone_Manager";
+            this.Phone_Manager.HeaderText = "电话";
+            this.Phone_Manager.Name = "Phone_Manager";
+            this.Phone_Manager.ReadOnly = true;
+            // 
+            // Address_Manager
+            // 
+            this.Address_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Address_Manager.DataPropertyName = "Address_Manager";
+            this.Address_Manager.HeaderText = "地址";
+            this.Address_Manager.Name = "Address_Manager";
+            this.Address_Manager.ReadOnly = true;
+            // 
+            // Sex_Manager
+            // 
+            this.Sex_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Sex_Manager.DataPropertyName = "Sex_Manager";
+            this.Sex_Manager.HeaderText = "性别";
+            this.Sex_Manager.Name = "Sex_Manager";
+            this.Sex_Manager.ReadOnly = true;
+            // 
+            // Position_Manager
+            // 
+            this.Position_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Position_Manager.DataPropertyName = "Position_Manager";
+            this.Position_Manager.HeaderText = "职位";
+            this.Position_Manager.Name = "Position_Manager";
+            this.Position_Manager.ReadOnly = true;
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = "删除";
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Delete.HeaderText = "删除";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // groupBox1
             // 
@@ -175,13 +241,15 @@
             // uiCheckBoxGroup1
             // 
             this.uiCheckBoxGroup1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.uiCheckBoxGroup1.Controls.Add(this.uiButton6);
+            this.uiCheckBoxGroup1.Controls.Add(this.uiRadioButton1);
             this.uiCheckBoxGroup1.Controls.Add(this.uiButton5);
             this.uiCheckBoxGroup1.Controls.Add(this.uiSymbolButton2);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiComboBox1);
+            this.uiCheckBoxGroup1.Controls.Add(this.Position);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel5);
             this.uiCheckBoxGroup1.Controls.Add(this.Phone);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel4);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox1);
+            this.uiCheckBoxGroup1.Controls.Add(this.Account);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel8);
             this.uiCheckBoxGroup1.Controls.Add(this.Password);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel7);
@@ -190,7 +258,7 @@
             this.uiCheckBoxGroup1.Controls.Add(this.rbFemale);
             this.uiCheckBoxGroup1.Controls.Add(this.rbMale);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel3);
-            this.uiCheckBoxGroup1.Controls.Add(this.Name);
+            this.uiCheckBoxGroup1.Controls.Add(this.UserName);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel2);
             this.uiCheckBoxGroup1.Controls.Add(this.uiSymbolButton1);
             this.uiCheckBoxGroup1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -207,6 +275,44 @@
             this.uiCheckBoxGroup1.TabIndex = 5;
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiButton6
+            // 
+            this.uiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiButton6.Location = new System.Drawing.Point(777, 140);
+            this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton6.Name = "uiButton6";
+            this.uiButton6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.ShowFocusLine = true;
+            this.uiButton6.Size = new System.Drawing.Size(108, 35);
+            this.uiButton6.Style = Sunny.UI.UIStyle.Custom;
+            this.uiButton6.StyleCustomMode = true;
+            this.uiButton6.TabIndex = 89;
+            this.uiButton6.Text = "清空文本框";
+            this.uiButton6.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
+            // 
+            // uiRadioButton1
+            // 
+            this.uiRadioButton1.Checked = true;
+            this.uiRadioButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiRadioButton1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiRadioButton1.Location = new System.Drawing.Point(705, 101);
+            this.uiRadioButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiRadioButton1.Name = "uiRadioButton1";
+            this.uiRadioButton1.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
+            this.uiRadioButton1.Size = new System.Drawing.Size(82, 29);
+            this.uiRadioButton1.TabIndex = 88;
+            this.uiRadioButton1.Text = "全部";
             // 
             // uiButton5
             // 
@@ -231,6 +337,7 @@
             this.uiButton5.TabIndex = 87;
             this.uiButton5.Text = "修改";
             this.uiButton5.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton5.Click += new System.EventHandler(this.uiButton5_Click);
             // 
             // uiSymbolButton2
             // 
@@ -246,32 +353,32 @@
             this.uiSymbolButton2.TabIndex = 86;
             this.uiSymbolButton2.Text = "增加";
             this.uiSymbolButton2.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSymbolButton2.Click += new System.EventHandler(this.uiSymbolButton2_Click_1);
             // 
-            // uiComboBox1
+            // Position
             // 
-            this.uiComboBox1.DataSource = null;
-            this.uiComboBox1.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
-            this.uiComboBox1.DropDownWidth = 300;
-            this.uiComboBox1.FillColor = System.Drawing.Color.White;
-            this.uiComboBox1.FilterMaxCount = 50;
-            this.uiComboBox1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiComboBox1.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.uiComboBox1.Items.AddRange(new object[] {
-            "员工一",
-            "员工二",
-            "员工三"});
-            this.uiComboBox1.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.uiComboBox1.Location = new System.Drawing.Point(90, 101);
-            this.uiComboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiComboBox1.MinimumSize = new System.Drawing.Size(63, 0);
-            this.uiComboBox1.Name = "uiComboBox1";
-            this.uiComboBox1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox1.ShowClearButton = true;
-            this.uiComboBox1.Size = new System.Drawing.Size(340, 29);
-            this.uiComboBox1.SymbolSize = 24;
-            this.uiComboBox1.TabIndex = 85;
-            this.uiComboBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiComboBox1.Watermark = "";
+            this.Position.DataSource = null;
+            this.Position.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
+            this.Position.DropDownWidth = 300;
+            this.Position.FillColor = System.Drawing.Color.White;
+            this.Position.FilterMaxCount = 50;
+            this.Position.Font = new System.Drawing.Font("宋体", 12F);
+            this.Position.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.Position.Items.AddRange(new object[] {
+            "经理",
+            "员工"});
+            this.Position.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.Position.Location = new System.Drawing.Point(90, 101);
+            this.Position.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Position.MinimumSize = new System.Drawing.Size(63, 0);
+            this.Position.Name = "Position";
+            this.Position.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.Position.ShowClearButton = true;
+            this.Position.Size = new System.Drawing.Size(340, 29);
+            this.Position.SymbolSize = 24;
+            this.Position.TabIndex = 85;
+            this.Position.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Position.Watermark = "";
             // 
             // uiLabel5
             // 
@@ -313,21 +420,21 @@
             this.uiLabel4.Text = "电话";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiTextBox1
+            // Account
             // 
-            this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox1.EnterAsTab = true;
-            this.uiTextBox1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox1.Location = new System.Drawing.Point(535, 13);
-            this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox1.Name = "uiTextBox1";
-            this.uiTextBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox1.ShowText = false;
-            this.uiTextBox1.Size = new System.Drawing.Size(340, 29);
-            this.uiTextBox1.TabIndex = 75;
-            this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox1.Watermark = "";
+            this.Account.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Account.EnterAsTab = true;
+            this.Account.Font = new System.Drawing.Font("宋体", 12F);
+            this.Account.Location = new System.Drawing.Point(535, 13);
+            this.Account.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Account.MinimumSize = new System.Drawing.Size(1, 16);
+            this.Account.Name = "Account";
+            this.Account.Padding = new System.Windows.Forms.Padding(5);
+            this.Account.ShowText = false;
+            this.Account.Size = new System.Drawing.Size(340, 29);
+            this.Account.TabIndex = 75;
+            this.Account.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Account.Watermark = "";
             // 
             // uiLabel8
             // 
@@ -410,7 +517,6 @@
             // 
             // rbMale
             // 
-            this.rbMale.Checked = true;
             this.rbMale.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbMale.Font = new System.Drawing.Font("宋体", 12F);
             this.rbMale.Location = new System.Drawing.Point(529, 101);
@@ -433,21 +539,21 @@
             this.uiLabel3.Text = "性别";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Name
+            // UserName
             // 
-            this.Name.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Name.EnterAsTab = true;
-            this.Name.Font = new System.Drawing.Font("宋体", 12F);
-            this.Name.Location = new System.Drawing.Point(90, 13);
-            this.Name.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name.MinimumSize = new System.Drawing.Size(1, 16);
-            this.Name.Name = "Name";
-            this.Name.Padding = new System.Windows.Forms.Padding(5);
-            this.Name.ShowText = false;
-            this.Name.Size = new System.Drawing.Size(340, 29);
-            this.Name.TabIndex = 71;
-            this.Name.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Name.Watermark = "";
+            this.UserName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.UserName.EnterAsTab = true;
+            this.UserName.Font = new System.Drawing.Font("宋体", 12F);
+            this.UserName.Location = new System.Drawing.Point(90, 13);
+            this.UserName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.UserName.MinimumSize = new System.Drawing.Size(1, 16);
+            this.UserName.Name = "UserName";
+            this.UserName.Padding = new System.Windows.Forms.Padding(5);
+            this.UserName.ShowText = false;
+            this.UserName.Size = new System.Drawing.Size(340, 29);
+            this.UserName.TabIndex = 71;
+            this.UserName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.UserName.Watermark = "";
             // 
             // uiLabel2
             // 
@@ -473,96 +579,15 @@
             this.uiSymbolButton1.TabIndex = 3;
             this.uiSymbolButton1.Text = "查找";
             this.uiSymbolButton1.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "Name";
-            this.Column1.HeaderText = "姓名";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Account
-            // 
-            this.Account.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Account.DataPropertyName = "Account";
-            this.Account.HeaderText = "账号";
-            this.Account.Name = "Account";
-            this.Account.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.DataPropertyName = "Phone";
-            this.Column2.HeaderText = "电话";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.DataPropertyName = "Address";
-            this.Column3.HeaderText = "地址";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Sex
-            // 
-            this.Sex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Sex.DataPropertyName = "Sex";
-            this.Sex.HeaderText = "性别";
-            this.Sex.Name = "Sex";
-            this.Sex.ReadOnly = true;
-            // 
-            // Position
-            // 
-            this.Position.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Position.DataPropertyName = "Position";
-            this.Position.HeaderText = "职位";
-            this.Position.Name = "Position";
-            this.Position.ReadOnly = true;
-            // 
-            // Search
-            // 
-            this.Search.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = "查看";
-            this.Search.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Search.HeaderText = "查看";
-            this.Search.Name = "Search";
-            this.Search.ReadOnly = true;
-            this.Search.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Search.Visible = false;
-            // 
-            // Edit
-            // 
-            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.NullValue = "编辑";
-            this.Edit.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Edit.HeaderText = "编辑";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Visible = false;
-            // 
-            // Delete
-            // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = "删除";
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Delete.HeaderText = "删除";
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.uiSymbolButton1.Click += new System.EventHandler(this.uiSymbolButton1_Click);
             // 
             // User
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1041, 627);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.uiCheckBoxGroup1); 
+            this.Controls.Add(this.uiCheckBoxGroup1);
+            this.Name = "User";
             this.Text = "用户管理";
             this.Initialize += new System.EventHandler(this.Company_Initialize);
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).EndInit();
@@ -582,11 +607,11 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Sunny.UI.UICheckBoxGroup uiCheckBoxGroup1;
         private Sunny.UI.UISymbolButton uiSymbolButton1;
-        private Sunny.UI.UIComboBox uiComboBox1;
+        private Sunny.UI.UIComboBox Position;
         private Sunny.UI.UILabel uiLabel5;
         private Sunny.UI.UITextBox Phone;
         private Sunny.UI.UILabel uiLabel4;
-        private Sunny.UI.UITextBox uiTextBox1;
+        private Sunny.UI.UITextBox Account;
         private Sunny.UI.UILabel uiLabel8;
         private Sunny.UI.UITextBox Password;
         private Sunny.UI.UILabel uiLabel7;
@@ -598,15 +623,16 @@
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UISymbolButton uiSymbolButton2;
         private Sunny.UI.UIButton uiButton5;
-        private Sunny.UI.UITextBox Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Account;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Position;
-        private System.Windows.Forms.DataGridViewButtonColumn Search;
-        private System.Windows.Forms.DataGridViewButtonColumn Edit;
+        private Sunny.UI.UITextBox UserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserId_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Account_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Phone_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Address_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sex_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Position_Manager;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private Sunny.UI.UIRadioButton uiRadioButton1;
+        private Sunny.UI.UIButton uiButton6;
     }
 }

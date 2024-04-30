@@ -78,7 +78,6 @@ namespace Cap.SystemSetup.Role
 
                     }
                 }
-
             }
 
         }

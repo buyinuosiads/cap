@@ -1,49 +1,56 @@
 ﻿using Cap.SystemSetup.Menu;
 using Model;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cap.SystemSetup.Role
 {
     public partial class Role : UIPage
     {
-        List<Data> dataList = new List<Data>();
-        //List<Sys_Role> dataList = new List<Sys_Role>();
-        DataTable dataTable = new DataTable("DataTable");
 
+        List<Sys_Role> dataList = new List<Sys_Role>();
+        DataTable dataTable = new DataTable("DataTable");
+        string Id = string.Empty;
+        string sort = string.Empty;
 
         public Role()
         {
             InitializeComponent();
-
-
-
             #region 列表列名
             dataTable.Columns.Add("RoleId");
             dataTable.Columns.Add("RoleName");
+            dataTable.Columns.Add("MenuName");
+            dataTable.Columns.Add("Sort");
             dataTable.Columns.Add("CreateTime");
             #endregion
 
-
-            for (int i = 0; i < 3610; i++)
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            List<Sys_Menu> sys_MenusList = capProjectDb.Sys_Menu.OrderBy(t => t.Sort).ToList();
+            foreach (var item in sys_MenusList)
             {
-                Data data = new Data();
-                data.RoleId = "菜单" + i;
-                data.RoleName = "角色" + i;
-                data.CreateTime = DateTime.Now.ToString();
-
-                dataList.Add(data);
+                TreeNode treeNode = new TreeNode();
+                treeNode.Text = item.MenuText;
+                FPCD.Nodes.Add(treeNode);
             }
+            SearchList();
+        }
 
-
+        public void SearchList()
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            dataList.Clear();
+            dataList = capProjectDb.Sys_Role.OrderByDescending(t => t.CreateTime).ToList();
             uiDataGridView1.DataSource = dataTable;
 
             //不自动生成列
@@ -60,37 +67,8 @@ namespace Cap.SystemSetup.Role
             for (int i = (1 - 1) * 15; i < 1 * 15; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].RoleId, dataList[i].RoleName, dataList[i].CreateTime);
+                dataTable.Rows.Add(dataList[i].RoleId, dataList[i].RoleName, dataList[i].MenuName, dataList[i].Sort, dataList[i].CreateTime);
             }
-
-
-
-            SearchList();
-        }
-
-        public void SearchList()
-        {
-            //CapProjectDataContext capProjectDb = new CapProjectDataContext();
-            //dataList.Clear();
-            //dataList = capProjectDb.Sys_Role.OrderByDescending(t => t.CreateTime).ToList();
-            //uiDataGridView1.DataSource = dataTable;
-
-            ////不自动生成列
-            //uiDataGridView1.AutoGenerateColumns = false;
-
-            ////设置分页控件总数
-            //uiPagination1.TotalCount = dataList.Count;
-
-            ////设置分页控件每页数量
-            //uiPagination1.PageSize = 15;
-            //uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
-
-            //dataTable.Rows.Clear();
-            //for (int i = (1 - 1) * 15; i < 1 * 15; i++)
-            //{
-            //    if (i >= dataList.Count) break;
-            //    dataTable.Rows.Add(dataList[i].RoleId, dataList[i].RoleName, dataList[i].CreateTime);
-            //}
         }
 
 
@@ -199,20 +177,42 @@ namespace Cap.SystemSetup.Role
 
         private void uiSymbolButton2_Click(object sender, EventArgs e)
         {
-            //RoleAdd roleAdd = new RoleAdd();
-            //roleAdd.Render();
-            //roleAdd.ShowDialog();
-            //if (roleAdd.IsOK)
-            //{
-            //    SearchList();
-            //}
-            //roleAdd.Dispose();
 
 
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            string sort_Manager = string.Empty;
+
+            List<Sys_Menu> roleList = capProjectDb.Sys_Menu.OrderBy(a => a.Sort).ToList(); //全查询
+            string Menu = string.Empty;
+            foreach (TreeNode item in FPCD.Nodes)
+            {
+                if (item.Checked == true)
+                {
+                    Menu += item.ToString().Replace("TreeNode: ", null) + ";";
+                }
+            }
 
 
-            dataTable.Rows.Add("菜单", edtName.Text, DateTime.Now);
+            string[] MenuList = Menu.Split(";");
+            for (int i = 0; i < MenuList.Length; i++)
+            {
+                string name = MenuList[i].ToString();
+                if (!string.IsNullOrEmpty(name))
+                {
+                    Sys_Menu role = roleList.Where(t => t.MenuText.Equals(name)).FirstOrDefault();
+                    sort_Manager += role.Sort + ";";
+                }
+            }
 
+            Sys_Role sys_Role = new Sys_Role();
+            sys_Role.RoleName = RoleName_Manager.Text;
+            sys_Role.MenuName = Menu;
+            sys_Role.Sort = sort_Manager;
+            sys_Role.CreateTime = DateTime.Now;
+            capProjectDb.Sys_Role.InsertOnSubmit(sys_Role);
+            capProjectDb.SubmitChanges();
+            ShowSuccessDialog("添加成功");
+            SearchList();
 
 
         }
@@ -223,16 +223,96 @@ namespace Cap.SystemSetup.Role
             if (e.RowIndex >= 0)
             {
 
+
                 // 获取所点击的行
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据
                 string RoleId = row.Cells["RoleId"].Value.ToString();
                 string RoleName = row.Cells["RoleName"].Value.ToString();
                 string CreateTime = row.Cells["CreateTime"].Value.ToString();
+                string MenuName = row.Cells["MenuName"].Value.ToString();
+                string Sort = row.Cells["Sort"].Value.ToString();
 
-                edtName.Text = RoleName;
+                Id = RoleId;
+                sort = Sort;
+                RoleName_Manager.Text = RoleName;
+                FPCD.Text = MenuName;
 
+                if (!string.IsNullOrEmpty(MenuName))
+                {
+                    string[] role = MenuName.Split(';');
+                    foreach (TreeNode item in FPCD.Nodes)
+                    {
+                        string im = item.ToString().Replace("TreeNode: ", null);
+                        for (int i = 0; i < role.Length; i++)
+                        {
+                            if (im == role[i].ToString())
+                            {
+                                item.Checked = true;
+                                break;
+                            }
+                            else
+                            {
+                                item.Checked = false;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (TreeNode item in FPCD.Nodes)
+                    {
+                        item.Checked = false;
+                    }
+                }
             }
+        }
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton5_Click(object sender, EventArgs e)
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            string sort_Manager = string.Empty;
+
+            List<Sys_Menu> roleList = capProjectDb.Sys_Menu.OrderBy(a => a.Sort).ToList(); //全查询
+            string Menu = string.Empty;
+            foreach (TreeNode item in FPCD.Nodes)
+            {
+                if (item.Checked == true)
+                {
+                    Menu += item.ToString().Replace("TreeNode: ", null) + ";";
+                }
+            }
+
+
+            string[] MenuList = Menu.Split(";");
+            for (int i = 0; i < MenuList.Length; i++)
+            {
+                string name = MenuList[i].ToString();
+                if (!string.IsNullOrEmpty(name))
+                {
+                    Sys_Menu role = roleList.Where(t => t.MenuText.Equals(name)).FirstOrDefault();
+                    sort_Manager += role.Sort + ";";
+                }
+            }
+
+
+            Sys_Role sys_Role = capProjectDb.Sys_Role.Where(t => t.RoleId == int.Parse(Id)).FirstOrDefault();
+            sys_Role.RoleName = RoleName_Manager.Text;
+            sys_Role.MenuName = Menu;
+            sys_Role.Sort = sort_Manager;
+            capProjectDb.SubmitChanges();
+
+            ShowSuccessDialog("修改成功");
+            SearchList();
+        }
+
+        private void uiSymbolButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

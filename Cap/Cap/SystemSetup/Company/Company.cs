@@ -6,47 +6,88 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cap.SystemSetup
 {
     public partial class Company : UIPage
     {
 
-        List<Data> dataList = new List<Data>();
+        List<Cap_Company> dataList = new List<Cap_Company>();
         DataTable dataTable = new DataTable("DataTable");
-        //CapProjectDataContext capProjectDb = new CapProjectDataContext();
-
+        string Id = null;
         public Company()
         {
             InitializeComponent();
 
-            for (int i = 0; i < 3610; i++)
-            {
-                Data data = new Data();
-                data.Column1 = "大力公司" + i;
-                data.Column2 = DateTime.Now.ToString();
+            dataTable.Columns.Add("Id_Manager");
+            dataTable.Columns.Add("Company_Name_Manager");
+            dataTable.Columns.Add("Authorization_Manager");
+            dataTable.Columns.Add("CreateTime_Manager");
 
-                dataList.Add(data);
+
+            GetList();
+        }
+
+
+
+
+        public void GetList()
+        {
+
+            Expression<Func<Cap_Company, bool>> where = s => s.Id != null && s.IsDelete == 0;
+            if (!string.IsNullOrEmpty(Company_Name.Text))
+            {
+                where = ExpressionBuilder.And(where, f => f.Company_Name.Contains(Company_Name.Text));
+            };
+
+            if (!string.IsNullOrEmpty(Authorization.Text))
+            {
+                int Authorization_Manager = 0;
+                if (Authorization.Text == "否")
+                {
+                    Authorization_Manager = 0;
+                }
+                else
+                {
+                    Authorization_Manager = 1;
+                }
+                where = ExpressionBuilder.And(where, f => f.Authorization == Authorization_Manager);
             }
 
-            dataTable.Columns.Add("Column1");
-            dataTable.Columns.Add("Column2");
-            uiDataGridView1.DataSource = dataTable;
 
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            dataList.Clear();
+            List<Cap_Company> sys_Users = capProjectDb.Cap_Company.Where(where).OrderByDescending(t => t.CreateTime).ToList();
+            foreach (var item in sys_Users)
+            {
+                dataList.Add(item);
+            }
+
+            uiDataGridView1.DataSource = dataTable;
             //不自动生成列
             uiDataGridView1.AutoGenerateColumns = false;
-
             //设置分页控件总数
-            uiPagination1.TotalCount = dataList.Count;
-
+            uiPagination1.TotalCount = sys_Users.Count;
             //设置分页控件每页数量
             uiPagination1.PageSize = 15;
             uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
 
+            dataTable.Rows.Clear();
+            for (int i = (1 - 1) * 15; i < 1 * 15; i++)
+            {
+                if (i >= dataList.Count) break;
+                string Authorization = string.Empty;
+                if (dataList[i].Authorization == 0) { Authorization = "否"; } else { Authorization = "是"; }
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].Company_Name, Authorization, dataList[i].CreateTime);
+            }
         }
+
 
 
         /// <summary>
@@ -63,7 +104,9 @@ namespace Cap.SystemSetup
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2);
+                string Authorization = string.Empty;
+                if (dataList[i].Authorization == 0) { Authorization = "否"; } else { Authorization = "是"; }
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].Company_Name, dataList[i].Authorization, dataList[i].CreateTime);
             }
         }
 
@@ -74,18 +117,6 @@ namespace Cap.SystemSetup
         }
 
 
-        public class Data
-        {
-            public string Column1 { get; set; }
-
-            public string Column2 { get; set; }
-
-            public string Column3 { get; set; }
-
-            public bool Column4 { get; set; }
-
-
-        }
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -93,14 +124,14 @@ namespace Cap.SystemSetup
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            string rowData = row.Cells["Column1"].Value.ToString();
-            string Column2 = row.Cells["Column2"].Value.ToString();
+            string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+            string Company_Name_Manager = row.Cells["Company_Name_Manager"].Value.ToString();
 
 
             // 确保点击的是按钮列
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                CompanyDetail companySearchDetail = new CompanyDetail(rowData);///实例化窗体
+                CompanyDetail companySearchDetail = new CompanyDetail(Id_Manager);///实例化窗体
                 companySearchDetail.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
                 companySearchDetail.ShowDialog();///显示窗体 
             }
@@ -108,7 +139,7 @@ namespace Cap.SystemSetup
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
-                CommpanyEdit commpanyEdit = new CommpanyEdit(rowData);///实例化窗体
+                CommpanyEdit commpanyEdit = new CommpanyEdit(Id_Manager);///实例化窗体
                 commpanyEdit.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
                 commpanyEdit.ShowDialog();///显示窗体 
             }
@@ -118,8 +149,13 @@ namespace Cap.SystemSetup
             {
                 if (ShowAskDialog("确定要删除吗？"))
                 {
+                    CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                    Cap_Company cap_Company = capProjectDb.Cap_Company.Where(t => t.Id == Id).FirstOrDefault();
+                    cap_Company.IsDelete = 99;
+                    capProjectDb.SubmitChanges();
                     ShowSuccessTip("删除成功");
-                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                    uiButton6_Click(sender, e); //调用清空文本框方法
+                    GetList();
                 }
                 else
                 {
@@ -144,22 +180,36 @@ namespace Cap.SystemSetup
         private void uiSymbolButton2_Click(object sender, EventArgs e)
         {
 
-            Data data = new Data();
-            data.Column1 = edtName.Text;
-            data.Column2 = DateTime.Now.ToString();
-            dataTable.Rows.Add(data.Column1, data.Column2);
-         
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            //公司表
+            Cap_Company cap_Company = new Cap_Company();
+            //主键ID
+            cap_Company.Id = Guid.NewGuid().ToString();
+            //公司名称
+            cap_Company.Company_Name = Company_Name.Text;
+            //是否授权(0否,1是
+            int Authorization_Manager = 0;
+            if (Authorization.Text == "否")
+            {
+                Authorization_Manager = 0;
+            }
+            else
+            {
+                Authorization_Manager = 1;
+            }
+            cap_Company.Authorization = Authorization_Manager;
+            //创建时间
+            cap_Company.CreateTime = DateTime.Now;
+            //是否删除(0否, 99是)
+            cap_Company.IsDelete = 0;
+            //保存
+            capProjectDb.Cap_Company.InsertOnSubmit(cap_Company);
+            capProjectDb.SubmitChanges();
 
-            //CompanyAdd frm = new CompanyAdd();
-            //frm.Render();
-            //frm.ShowDialog();
-            //if (frm.IsOK)
-            //{
-            //}
-            //frm.Dispose();
-
-
-
+            ShowSuccessDialog("添加成功");
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            //查询数据
+            GetList();
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -171,11 +221,63 @@ namespace Cap.SystemSetup
                 // 获取所点击的行
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据
-                string rowData = row.Cells["Column1"].Value.ToString();
-                string Column2 = row.Cells["Column2"].Value.ToString();
-
-                edtName.Text = rowData;
+                string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+                string Company_Name_Manager = row.Cells["Company_Name_Manager"].Value.ToString();
+                string Authorization_Manager = row.Cells["Authorization_Manager"].Value.ToString();
+                Id = Id_Manager;
+                Company_Name.Text = Company_Name_Manager;
+                Authorization.Text = Authorization_Manager;
             }
+        }
+
+        /// <summary>
+        /// 清空文本框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton6_Click(object sender, EventArgs e)
+        {
+            Company_Name.Text = null;
+            Authorization.Text = null;
+            Id = null;
+        }
+
+        /// <summary>
+        /// 查询数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiSymbolButton1_Click(object sender, EventArgs e)
+        {
+            GetList();
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton5_Click(object sender, EventArgs e)
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Cap_Company sys_Users = capProjectDb.Cap_Company.Where(t => t.Id == Id).FirstOrDefault();
+            sys_Users.Company_Name = Company_Name.Text;
+            //是否授权(0否,1是
+            int Authorization_Manager = 0;
+            if (Authorization.Text == "否")
+            {
+                Authorization_Manager = 0;
+            }
+            else
+            {
+                Authorization_Manager = 1;
+            }
+            sys_Users.Authorization = Authorization_Manager;
+            capProjectDb.SubmitChanges();
+            ShowSuccessDialog("修改成功");
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            GetList();
+
         }
     }
 }
