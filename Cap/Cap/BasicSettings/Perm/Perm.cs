@@ -1,53 +1,81 @@
 ﻿using Cap.BasicSettings.WidthOfCloth;
 using Cap.SystemSetup;
+using Model;
 using Sunny.UI;
+using Sunny.UI.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Net;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cap.BasicSettings.Perm
 {
     public partial class Perm : UIPage
     {
-        List<Data> dataList = new List<Data>();
+        List<PermSetting> dataList = new List<PermSetting>();
         DataTable dataTable = new DataTable("DataTable");
+        string Id = string.Empty;
         public Perm()
         {
             InitializeComponent();
+            dataTable.Columns.Add("Id_Manager");
+            dataTable.Columns.Add("PermName_Manager");
+            dataTable.Columns.Add("PermSpecifications_Manager");
+            dataTable.Columns.Add("CreateTime_Manager");
+            dataTable.Columns.Add("CreateName_Manager");
+            GetList();
+        }
 
-            for (int i = 0; i < 10; i++)
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        public void GetList()
+        {
+
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Expression<Func<PermSetting, bool>> where = s => s.Id != null && s.IsDelete == 0;
+            if (!string.IsNullOrEmpty(PermName.Text))
             {
-                Data data = new Data();
-                data.Column1 = "烫头名称" + i;
-                data.Column2 = i.Mod(2) == 0 ? "120" : "130";
-                data.Column3 = DateTime.Now.ToString();
-                data.Column4 = "管理员";
-                dataList.Add(data);
+                where = ExpressionBuilder.And(where, f => f.PermName.Contains(PermName.Text));
+            };
+            if (!string.IsNullOrEmpty(PermSpecifications.Text))
+            {
+                where = ExpressionBuilder.And(where, f => f.PermSpecifications.Contains(PermSpecifications.Text));
+            };
+
+            dataList.Clear();
+            List<PermSetting> sys_Users = capProjectDb.PermSetting.Where(where).OrderBy(a => a.Id).OrderByDescending(t => t.CreateTime).ToList(); //全查询
+            foreach (var item in sys_Users)
+            {
+                dataList.Add(item);
             }
-
-            dataTable.Columns.Add("Column1");
-            dataTable.Columns.Add("Column2");
-            dataTable.Columns.Add("Column3");
-            dataTable.Columns.Add("Column4");
             uiDataGridView1.DataSource = dataTable;
-
             //不自动生成列
             uiDataGridView1.AutoGenerateColumns = false;
-
             //设置分页控件总数
-            uiPagination1.TotalCount = dataList.Count;
-
+            uiPagination1.TotalCount = sys_Users.Count;
             //设置分页控件每页数量
-            uiPagination1.PageSize = 10;
+            uiPagination1.PageSize = 15;
             uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
 
+            dataTable.Rows.Clear();
+            for (int i = (1 - 1) * 15; i < 1 * 15; i++)
+            {
+                if (i >= dataList.Count) break;
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].PermName, dataList[i].PermSpecifications, dataList[i].CreateTime, dataList[i].CreateName);
+            }
         }
+
 
         /// <summary>
         /// 分页控件页面切换事件
@@ -58,63 +86,51 @@ namespace Cap.BasicSettings.Perm
         /// <param name="count"></param>
         private void uiPagination1_PageChanged(object sender, object pagingSource, int pageIndex, int count)
         {
-            //未连接数据库，通过模拟数据来实现
-            //一般通过ORM的分页去取数据来填充
-            //pageIndex：第几页，和界面对应，从1开始，取数据可能要用pageIndex - 1
-            //count：单页数据量，也就是PageSize值
-
             dataTable.Rows.Clear();
-            for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
+            for (int i = (1 - 1) * 15; i < 1 * 15; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column4);
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].PermName, dataList[i].PermSpecifications, dataList[i].CreateTime, dataList[i].CreateName);
             }
-
-
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //PermAdd frm = new PermAdd();
-            //frm.Render();
-            //frm.ShowDialog();
-            //frm.Dispose();
 
-            dataTable.Rows.Add(edtName.Text, edtAge.Text, uiTextBox2.Text, uiTextBox1.Text);
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            PermSetting permSetting = new PermSetting();
+            permSetting.Id = Guid.NewGuid().ToString();
+            permSetting.PermName = PermName.Text;
+            permSetting.PermSpecifications = PermSpecifications.Text;
+            permSetting.CreateTime = DateTime.Now;
+            permSetting.CreateName = CreateName.Text;
+            permSetting.IsDelete = 0;
+            //保存数据
+            capProjectDb.PermSetting.InsertOnSubmit(permSetting);
+            capProjectDb.SubmitChanges();
+            ShowSuccessDialog("添加成功");
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            //查询数据
+            GetList();
 
         }
         private void uiDataGridView1_SelectIndexChange(object sender, int index)
         {
             index.WriteConsole("SelectedIndex");
         }
-        public class Data
-        {
-            public string Column1 { get; set; }
-
-            public string Column2 { get; set; }
-
-            public string Column3 { get; set; }
-
-            public string Column4 { get; set; }
-
-            public override string ToString()
-            {
-                return Column1;
-            }
-        }
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
-            // 获取行数据
-            string Column1 = row.Cells["PermName"].Value.ToString();
-            string Column2 = row.Cells["PermSpecifications"].Value.ToString();
-
+            // 获取行数据            
+            string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+            string PermName_Manager = row.Cells["PermName_Manager"].Value.ToString();
+            string PermSpecifications_Manager = row.Cells["PermSpecifications_Manager"].Value.ToString();
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
             {
-                PermEdit frm = new PermEdit(Column1, Column2);
+                PermEdit frm = new PermEdit(PermName_Manager, PermSpecifications_Manager);
                 frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
@@ -126,7 +142,7 @@ namespace Cap.BasicSettings.Perm
             if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
 
-                PermEdit frm = new PermEdit(Column1, Column2);
+                PermEdit frm = new PermEdit(PermName_Manager, PermSpecifications_Manager);
                 frm.Render();
                 frm.ShowDialog();
                 frm.Dispose();
@@ -137,15 +153,19 @@ namespace Cap.BasicSettings.Perm
             {
                 if (ShowAskDialog("确定要删除吗？"))
                 {
+                    CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                    PermSetting sys_User = capProjectDb.PermSetting.Where(t => t.Id == Id_Manager).FirstOrDefault();
+                    sys_User.IsDelete = 99;
+                    capProjectDb.SubmitChanges();
                     ShowSuccessTip("删除成功");
-                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                    uiButton6_Click(sender, e); //调用清空文本框方法
+                    GetList();
                 }
                 else
                 {
                     ShowErrorTip("取消当前操作");
                 }
             }
-
         }
 
         private void Perm_Initialize(object sender, EventArgs e)
@@ -166,16 +186,62 @@ namespace Cap.BasicSettings.Perm
                 // 获取所点击的行
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据
-                string Column1 = row.Cells["PermName"].Value.ToString();
-                string Column2 = row.Cells["PermSpecifications"].Value.ToString();
-                string CreationTime = row.Cells["CreationTime"].Value.ToString();
-                string CreationName = row.Cells["CreationName"].Value.ToString();
-
-                edtName.Text = Column1;
-                edtAge.Text = Column2;
-                uiTextBox2.Text = CreationTime;
-                uiTextBox1.Text = CreationName;
+                string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+                string PermName_Manager = row.Cells["PermName_Manager"].Value.ToString();
+                string PermSpecifications_Manager = row.Cells["PermSpecifications_Manager"].Value.ToString();
+                string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
+                string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
+                Id = Id_Manager;
+                PermName.Text = PermName_Manager;
+                PermSpecifications.Text = PermSpecifications_Manager;
+                CreateTime.Text = CreateTime_Manager;
+                CreateName.Text = CreateName_Manager;
             }
+        }
+
+        /// <summary>
+        /// 清空文本框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton6_Click(object sender, EventArgs e)
+        {
+            Id = null;
+            PermName.Text = null;
+            PermSpecifications.Text = null;
+            CreateTime.Text = null;
+            CreateName.Text = null;
+        }
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiSymbolButton1_Click(object sender, EventArgs e)
+        {
+            //查询数据
+            GetList();
+        }
+
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton5_Click(object sender, EventArgs e)
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            PermSetting permSetting = capProjectDb.PermSetting.Where(t => t.Id == Id).FirstOrDefault();
+            permSetting.PermName = PermName.Text;
+            permSetting.PermSpecifications = PermSpecifications.Text;
+            capProjectDb.SubmitChanges();
+            ShowSuccessDialog("修改成功");
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            //查询数据
+            GetList();
+
         }
     }
 }

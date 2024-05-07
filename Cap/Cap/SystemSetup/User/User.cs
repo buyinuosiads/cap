@@ -180,34 +180,37 @@ namespace Cap.SystemSetup
 
         private void uiDataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-
-            // 获取所点击的行
-            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
-            // 获取行数据
-            string UserId_Manager = row.Cells["UserId_Manager"].Value.ToString();
-            string Name_Manager = row.Cells["Name_Manager"].Value.ToString();
-            string Account_Manager = row.Cells["Account_Manager"].Value.ToString();
-            string Phone_Manager = row.Cells["Phone_Manager"].Value.ToString();
-            string Address_Manager = row.Cells["Address_Manager"].Value.ToString();
-            string Sex_Manager = row.Cells["Sex_Manager"].Value.ToString();
-            string Position_Manager = row.Cells["Position_Manager"].Value.ToString();
-
-            if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
             {
-                if (ShowAskDialog("确定要删除吗？"))
-                {
-                    CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-                    Sys_User sys_User = capProjectDb.Sys_User.Where(t => t.UserId == int.Parse(UserId_Manager)).FirstOrDefault();
-                    sys_User.IsDelete = 99;
-                    capProjectDb.SubmitChanges();
-                    ShowSuccessTip("删除成功");
-                    uiButton6_Click(sender, e); //调用清空文本框方法
-                    GetList();
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string UserId_Manager = row.Cells["UserId_Manager"].Value.ToString();
+                string Name_Manager = row.Cells["Name_Manager"].Value.ToString();
+                string Account_Manager = row.Cells["Account_Manager"].Value.ToString();
+                string Phone_Manager = row.Cells["Phone_Manager"].Value.ToString();
+                string Address_Manager = row.Cells["Address_Manager"].Value.ToString();
+                string Sex_Manager = row.Cells["Sex_Manager"].Value.ToString();
+                string Position_Manager = row.Cells["Position_Manager"].Value.ToString();
 
-                }
-                else
+                if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
                 {
-                    ShowErrorTip("取消当前操作");
+                    if (ShowAskDialog("确定要删除吗？"))
+                    {
+                        CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                        Sys_User sys_User = capProjectDb.Sys_User.Where(t => t.UserId == int.Parse(UserId_Manager)).FirstOrDefault();
+                        sys_User.IsDelete = 99;
+                        capProjectDb.SubmitChanges();
+                        ShowSuccessTip("删除成功");
+                        uiButton6_Click(sender, e); //调用清空文本框方法
+                        GetList();
+
+                    }
+                    else
+                    {
+                        ShowErrorTip("取消当前操作");
+                    }
                 }
             }
         }
@@ -371,8 +374,6 @@ namespace Cap.SystemSetup
             sys_User.Position = Position.Text;
             //地址
             sys_User.Address = Address.Text;
-            //创建时间
-            sys_User.CreateTime = DateTime.Now;
             //保存数据
             capProjectDb.SubmitChanges();
             ShowSuccessDialog("修改成功");

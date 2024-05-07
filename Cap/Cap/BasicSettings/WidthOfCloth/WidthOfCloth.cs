@@ -1,5 +1,6 @@
 ﻿using Cap.AlarmManagementParent.AlarmManagement;
 using Cap.BasicSettings.WidthOfCloth;
+using Model;
 using Sunny.UI;
 using Sunny.UI.Win32;
 using System;
@@ -8,49 +9,87 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Net;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Cap.SystemSetup.Company;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cap.SystemSetup.WidthOfCloth
 {
     public partial class WidthOfCloth : UIPage
     {
-        List<Data> dataList = new List<Data>();
+        List<Breadth> dataList = new List<Breadth>();
         DataTable dataTable = new DataTable("DataTable");
+        string Id = string.Empty;
         public WidthOfCloth()
         {
             InitializeComponent();
+            dataTable.Columns.Add("Id_Manager");
+            dataTable.Columns.Add("BreadthName_Manager");
+            dataTable.Columns.Add("WidthSize_Manager");
+            dataTable.Columns.Add("WidthType_Manager");
+            dataTable.Columns.Add("CreateTime_Manager");
+            dataTable.Columns.Add("CreateName_Manager");
+            GetList();
+        }
 
-            for (int i = 0; i < 10; i++)
+
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        public void GetList()
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Expression<Func<Breadth, bool>> where = s => s.Id != null && s.IsDelete == 0;
+
+            if (!string.IsNullOrEmpty(BreadthName.Text))
             {
-                Data data = new Data();
-                data.Column1 = "幅宽名称" + i;
-                data.Column2 = i.Mod(2) == 0 ? "10" : "20";
-                data.Column3 = DateTime.Now.ToString();
-                data.leixing = "前幅";
-                data.Column4 = "管理员";
-                dataList.Add(data);
+                where = ExpressionBuilder.And(where, f => f.BreadthName.Contains(BreadthName.Text));
+            }
+            else if (!string.IsNullOrEmpty(WidthSize.Text))
+            {
+                where = ExpressionBuilder.And(where, f => f.WidthSize.Contains(WidthSize.Text));
+            }
+            else if (!string.IsNullOrEmpty(WidthType.Text))
+            {
+                where = ExpressionBuilder.And(where, f => f.WidthType.Contains(WidthType.Text));
             }
 
-            dataTable.Columns.Add("Column1");
-            dataTable.Columns.Add("Column2");
-            dataTable.Columns.Add("leixing");
-            dataTable.Columns.Add("Column3");
-            dataTable.Columns.Add("Column4");
-            uiDataGridView1.DataSource = dataTable;
 
+            dataList.Clear();
+
+
+            List<Breadth> sys_Users = capProjectDb.Breadth.Where(where).OrderByDescending(t => t.CreateTime).ToList(); //全查询
+            foreach (var item in sys_Users)
+            {
+                dataList.Add(item);
+            }
+            uiDataGridView1.DataSource = dataTable;
             //不自动生成列
             uiDataGridView1.AutoGenerateColumns = false;
-
             //设置分页控件总数
-            uiPagination1.TotalCount = dataList.Count;
-
+            uiPagination1.TotalCount = sys_Users.Count;
             //设置分页控件每页数量
             uiPagination1.PageSize = 15;
             uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
+
+            dataTable.Rows.Clear();
+            for (int i = (1 - 1) * 15; i < 1 * 15; i++)
+            {
+                if (i >= dataList.Count) break;
+
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].BreadthName, dataList[i].WidthSize, dataList[i].WidthType, dataList[i].CreateTime, dataList[i].CreateName);
+            }
         }
+
+
+
+
 
         /// <summary>
         /// 分页控件页面切换事件
@@ -61,25 +100,17 @@ namespace Cap.SystemSetup.WidthOfCloth
         /// <param name="count"></param>
         private void uiPagination1_PageChanged(object sender, object pagingSource, int pageIndex, int count)
         {
-            //未连接数据库，通过模拟数据来实现
-            //一般通过ORM的分页去取数据来填充
-            //pageIndex：第几页，和界面对应，从1开始，取数据可能要用pageIndex - 1
-            //count：单页数据量，也就是PageSize值
 
             dataTable.Rows.Clear();
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].leixing, dataList[i].Column3, dataList[i].Column4);
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].BreadthName, dataList[i].WidthSize, dataList[i].WidthType, dataList[i].CreateTime, dataList[i].CreateName);
             }
 
 
         }
 
-        private void uiPagination1_Click(object sender, EventArgs e)
-        {
-
-        }
         private void WidthOfCloth_Initialize(object sender, EventArgs e)
         {
             // 获取 uiCheckBoxGroup1 的宽度
@@ -94,87 +125,184 @@ namespace Cap.SystemSetup.WidthOfCloth
             index.WriteConsole("SelectedIndex");
         }
 
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //WidthOfClothAdd frm = new WidthOfClothAdd();
-            //frm.Render();
-            //frm.ShowDialog();
-            //if (frm.IsOK)
-            //{
-            //    ShowSuccessDialog(frm.Person.ToString());
-            //}
-            //frm.Dispose();
 
-            //edtName
-            //    edtAge
-            //    uiComboTreeView1
-            dataTable.Rows.Add(uiTextBox1.Text, edtAge.Text, uiComboTreeView1.Text, DateTime.Now, uiTextBox2.Text);
+            if (string.IsNullOrEmpty(BreadthName.Text))
+            {
+                ShowWarningDialog("幅宽名称不能为空");
+                return;
+            }
+            else if (string.IsNullOrEmpty(WidthSize.Text))
+            {
+                ShowWarningDialog("幅宽大小不能为空");
+                return;
+            }
+            else if (string.IsNullOrEmpty(WidthType.Text))
+            {
+                ShowWarningDialog("幅宽类型不能为空");
+                return;
+            }
 
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Breadth breadth = new Breadth();
+            breadth.Id = Guid.NewGuid().ToString();
+            breadth.BreadthName = BreadthName.Text;
+            breadth.WidthSize = WidthSize.Text;
+            breadth.WidthType = WidthType.Text;
+            breadth.CreateTime = DateTime.Now;
+            breadth.CreateName = "管理员";
+            breadth.IsDelete = 0;
+            capProjectDb.Breadth.InsertOnSubmit(breadth);
+            capProjectDb.SubmitChanges();
+
+
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            ShowSuccessDialog("添加成功");
+            GetList();
 
         }
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-
-            // 获取所点击的行
-            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
-            // 获取行数据
-            string Column1 = row.Cells["WidthName"].Value.ToString();
-            string Column2 = row.Cells["WidthSize"].Value.ToString();
-
-
-            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
             {
-                WidthOfClothEdit frm = new WidthOfClothEdit(Column1, Column2);
-                frm.Render();
-                frm.ShowDialog();
-                frm.Dispose();
-            }
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据 
+                string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+                string BreadthName_Manager = row.Cells["BreadthName_Manager"].Value.ToString();
+                string WidthSize_Manager = row.Cells["WidthSize_Manager"].Value.ToString();
+                string WidthType_Manager = row.Cells["WidthType_Manager"].Value.ToString();
+                string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
+                string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
 
 
+                //if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+                //{
+                //    WidthOfClothEdit frm = new WidthOfClothEdit(Column1, Column2);
+                //    frm.Render();
+                //    frm.ShowDialog();
+                //    frm.Dispose();
+                //}
+                //// 确保点击的是按钮列
+                //if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+                //{
+                //    WidthOfClothEdit frm = new WidthOfClothEdit(Column1, Column2);
+                //    frm.Render();
+                //    frm.ShowDialog();
+                //    frm.Dispose();
+                //}
 
-            // 确保点击的是按钮列
-            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
-            {
-                WidthOfClothEdit frm = new WidthOfClothEdit(Column1, Column2);
-                frm.Render();
-                frm.ShowDialog();
-                frm.Dispose();
-            }
-
-            if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
-            {
-                if (ShowAskDialog("确定要删除吗？"))
+                if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
                 {
-                    ShowSuccessTip("删除成功");
-                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
-                }
-                else
-                {
-                    ShowErrorTip("取消当前操作");
+                    if (ShowAskDialog("确定要删除吗？"))
+                    {
+
+                        CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                        Breadth alarm_Setting = capProjectDb.Breadth.Where(t => t.Id == Id_Manager).FirstOrDefault();
+                        alarm_Setting.IsDelete = 99;
+                        capProjectDb.SubmitChanges();
+                        ShowSuccessTip("删除成功");
+                        uiButton6_Click(sender, e); //调用清空文本框方法
+                        GetList();
+                    }
+                    else
+                    {
+                        ShowErrorTip("取消当前操作");
+                    }
                 }
             }
-
         }
-        public class Data
-        {
-            public string Column1 { get; set; }
-            public string Column2 { get; set; }
-            public string Column3 { get; set; }
-            public string leixing { get; set; }
-            public string Column4 { get; set; }
 
-            public override string ToString()
+
+
+
+        private void uiSymbolButton1_Click(object sender, EventArgs e)
+        {
+            GetList();
+        }
+
+        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
             {
-                return Column1;
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据 
+                string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+                string BreadthName_Manager = row.Cells["BreadthName_Manager"].Value.ToString();
+                string WidthSize_Manager = row.Cells["WidthSize_Manager"].Value.ToString();
+                string WidthType_Manager = row.Cells["WidthType_Manager"].Value.ToString();
+                string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
+                string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
+
+
+                Id = Id_Manager;
+                BreadthName.Text = BreadthName_Manager;
+                WidthSize.Text = WidthSize_Manager;
+                WidthType.Text = WidthType_Manager;
+                CreateTime.Text = CreateTime_Manager;
+                CreateName.Text = CreateName_Manager;
+
             }
         }
 
-        private void uiLabel2_Click(object sender, EventArgs e)
+        private void uiButton6_Click(object sender, EventArgs e)
+        {
+            Id = null;
+            BreadthName.Text = null;
+            WidthSize.Text = null;
+            WidthType.Text = null;
+            CreateTime.Text = null;
+            CreateName.Text = null;
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton5_Click(object sender, EventArgs e)
         {
 
+            if (string.IsNullOrEmpty(BreadthName.Text))
+            {
+                ShowWarningDialog("幅宽名称不能为空");
+                return;
+            }
+            else if (string.IsNullOrEmpty(WidthSize.Text))
+            {
+                ShowWarningDialog("幅宽大小不能为空");
+                return;
+            }
+            else if (string.IsNullOrEmpty(WidthType.Text))
+            {
+                ShowWarningDialog("幅宽类型不能为空");
+                return;
+            }
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Breadth breadth = capProjectDb.Breadth.Where(t => t.Id == Id).FirstOrDefault();
+            breadth.BreadthName = BreadthName.Text;
+            breadth.WidthSize = WidthSize.Text;
+            breadth.WidthType = WidthType.Text;
+            CreateName.Text = "修改";
+            capProjectDb.SubmitChanges();
+            ShowSuccessDialog("修改成功");
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            //查询数据
+            GetList();
         }
+
+
+
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -190,42 +318,10 @@ namespace Cap.SystemSetup.WidthOfCloth
         {
 
         }
-
-        private void edtName_TextChanged(object sender, EventArgs e)
+        private void uiPagination1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void uiSymbolButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // 确保点击的不是表头
-            if (e.RowIndex >= 0)
-            {
-                // 获取所点击的行
-                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
-                // 获取行数据
-
-
-
-                string Column1 = row.Cells["WidthName"].Value.ToString();
-                string Column2 = row.Cells["WidthSize"].Value.ToString();
-                string CreationTime = row.Cells["CreationTime"].Value.ToString();
-                string CreationName = row.Cells["CreationName"].Value.ToString();
-
-
-
-                uiTextBox1.Text = Column1;
-                edtAge.Text = Column2;
-                uiComboTreeView1.Text = "前幅";
-                edtName.Text = CreationTime;
-                uiTextBox2.Text = CreationName;
-
-            }
-        }
     }
 }

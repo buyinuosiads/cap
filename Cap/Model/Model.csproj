@@ -59,6 +59,7 @@
     <Compile Include="Sex.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="CapDbContext.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>CapDbContext.designer.cs</LastGenOutput>

@@ -122,53 +122,56 @@ namespace Cap.SystemSetup.Role
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 获取所点击的行
-            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
-            // 获取行数据
-            string RoleId = row.Cells["RoleId"].Value.ToString();
-            string RoleName = row.Cells["RoleName"].Value.ToString();
-            string CreateTime = row.Cells["CreateTime"].Value.ToString();
-
-
-            // 确保点击的是按钮列
-            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
             {
-                RoleDetial roleDetial = new RoleDetial(RoleName);///实例化窗体
-                roleDetial.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
-                roleDetial.ShowDialog();///显示窗体 
-            }
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string RoleId = row.Cells["RoleId"].Value.ToString();
+                string RoleName = row.Cells["RoleName"].Value.ToString();
+                string CreateTime = row.Cells["CreateTime"].Value.ToString();
 
 
-            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
-            {
-                RoleEdit roleEdit = new RoleEdit(RoleId, RoleName);///实例化窗体
-                roleEdit.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
-
-                roleEdit.Render();
-                roleEdit.ShowDialog();
-                if (roleEdit.IsOK)
+                // 确保点击的是按钮列
+                if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
                 {
+                    RoleDetial roleDetial = new RoleDetial(RoleName);///实例化窗体
+                    roleDetial.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
+                    roleDetial.ShowDialog();///显示窗体 
+                }
+
+
+                if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+                {
+                    RoleEdit roleEdit = new RoleEdit(RoleId, RoleName);///实例化窗体
+                    roleEdit.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
+
+                    roleEdit.Render();
+                    roleEdit.ShowDialog();
+                    if (roleEdit.IsOK)
+                    {
+
+                    }
+                    roleEdit.Dispose();
+                    SearchList();
 
                 }
-                roleEdit.Dispose();
-                SearchList();
-
-            }
 
 
-            if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
-            {
-                if (ShowAskDialog("确定要删除吗？"))
+                if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
                 {
-                    ShowSuccessTip("删除成功");
-                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
-                }
-                else
-                {
-                    ShowErrorTip("取消当前操作");
+                    if (ShowAskDialog("确定要删除吗？"))
+                    {
+                        ShowSuccessTip("删除成功");
+                        uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                    }
+                    else
+                    {
+                        ShowErrorTip("取消当前操作");
+                    }
                 }
             }
-
 
 
         }

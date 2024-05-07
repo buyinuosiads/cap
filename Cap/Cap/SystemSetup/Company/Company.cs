@@ -120,46 +120,49 @@ namespace Cap.SystemSetup
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            // 获取所点击的行
-            DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
-            // 获取行数据
-            string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
-            string Company_Name_Manager = row.Cells["Company_Name_Manager"].Value.ToString();
-
-
-            // 确保点击的是按钮列
-            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            // 确保点击的不是表头
+            if (e.RowIndex >= 0)
             {
-                CompanyDetail companySearchDetail = new CompanyDetail(Id_Manager);///实例化窗体
-                companySearchDetail.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
-                companySearchDetail.ShowDialog();///显示窗体 
-            }
+                // 获取所点击的行
+                DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
+                // 获取行数据
+                string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+                string Company_Name_Manager = row.Cells["Company_Name_Manager"].Value.ToString();
 
 
-            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
-            {
-                CommpanyEdit commpanyEdit = new CommpanyEdit(Id_Manager);///实例化窗体
-                commpanyEdit.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
-                commpanyEdit.ShowDialog();///显示窗体 
-            }
-
-
-            if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
-            {
-                if (ShowAskDialog("确定要删除吗？"))
+                // 确保点击的是按钮列
+                if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
                 {
-                    CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-                    Cap_Company cap_Company = capProjectDb.Cap_Company.Where(t => t.Id == Id).FirstOrDefault();
-                    cap_Company.IsDelete = 99;
-                    capProjectDb.SubmitChanges();
-                    ShowSuccessTip("删除成功");
-                    uiButton6_Click(sender, e); //调用清空文本框方法
-                    GetList();
+                    CompanyDetail companySearchDetail = new CompanyDetail(Id_Manager);///实例化窗体
+                    companySearchDetail.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
+                    companySearchDetail.ShowDialog();///显示窗体 
                 }
-                else
+
+
+                if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
                 {
-                    ShowErrorTip("取消当前操作");
+                    CommpanyEdit commpanyEdit = new CommpanyEdit(Id_Manager);///实例化窗体
+                    commpanyEdit.StartPosition = FormStartPosition.CenterScreen; ///确定窗体第一次显示的位置
+                    commpanyEdit.ShowDialog();///显示窗体 
+                }
+
+
+                if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
+                {
+                    if (ShowAskDialog("确定要删除吗？"))
+                    {
+                        CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                        Cap_Company cap_Company = capProjectDb.Cap_Company.Where(t => t.Id == Id).FirstOrDefault();
+                        cap_Company.IsDelete = 99;
+                        capProjectDb.SubmitChanges();
+                        ShowSuccessTip("删除成功");
+                        uiButton6_Click(sender, e); //调用清空文本框方法
+                        GetList();
+                    }
+                    else
+                    {
+                        ShowErrorTip("取消当前操作");
+                    }
                 }
             }
 

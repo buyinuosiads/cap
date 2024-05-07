@@ -30,15 +30,21 @@
         {
             this.SuspendLayout();
             // 
+            // lblTitle
+            // 
+            this.lblTitle.Text = "帽子后台管理";
+            // 
             // lblSubText
             // 
             this.lblSubText.Location = new System.Drawing.Point(376, 421);
+            this.lblSubText.Text = "";
             // 
             // Login
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(750, 450);
             this.Name = "Login";
+            this.SubText = "";
             this.Text = "Form1";
             this.ButtonLoginClick += new System.EventHandler(this.FLogin_ButtonLoginClick);
             this.ResumeLayout(false);

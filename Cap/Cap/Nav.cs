@@ -174,7 +174,7 @@ namespace Cap
                         WidthOfCloth widthOf = new WidthOfCloth();
                         widthOf.Text = _Menu.MenuText;
                         widthOf.Symbol = int.Parse(_Menu.Icon);
-                        uiNavMenu1.CreateChildNode(parent, AddPage(widthOf, Guid.NewGuid()));    //6
+                        uiNavMenu1.CreateChildNode(parent, AddPage(widthOf, Guid.NewGuid()));    //6 幅宽设置
                         //uiNavMenu1.CreateChildNode(parent, AddPage(new WidthOfCloth(), Guid.NewGuid()));    //6
                     }
                     else if (num == "7")
@@ -188,7 +188,7 @@ namespace Cap
                         Perm perm = new Perm();
                         perm.Text = _Menu.MenuText;
                         perm.Symbol = int.Parse(_Menu.Icon);
-                        uiNavMenu1.CreateChildNode(parent, AddPage(perm, Guid.NewGuid()));    //7
+                        uiNavMenu1.CreateChildNode(parent, AddPage(perm, Guid.NewGuid()));    // 7 烫头设置
                         //uiNavMenu1.CreateChildNode(parent, AddPage(new Perm(), Guid.NewGuid()));   //7
                     }
                     else if (num == "8")
@@ -202,7 +202,7 @@ namespace Cap
                         ToolSettings tool = new ToolSettings();
                         tool.Text = _Menu.MenuText;
                         tool.Symbol = int.Parse(_Menu.Icon);
-                        uiNavMenu1.CreateChildNode(parent, AddPage(tool, Guid.NewGuid()));      //8
+                        uiNavMenu1.CreateChildNode(parent, AddPage(tool, Guid.NewGuid()));      //8  刀具设置
                         //uiNavMenu1.CreateChildNode(parent, AddPage(new ToolSettings(), Guid.NewGuid()));//8
                     }
                     else if (num == "9")
@@ -216,7 +216,7 @@ namespace Cap
                         Ingredients ingredients = new Ingredients();
                         ingredients.Text = _Menu.MenuText;
                         ingredients.Symbol = int.Parse(_Menu.Icon);
-                        uiNavMenu1.CreateChildNode(parent, AddPage(ingredients, Guid.NewGuid())); //9
+                        uiNavMenu1.CreateChildNode(parent, AddPage(ingredients, Guid.NewGuid()));   //9     主料设置
                         //uiNavMenu1.CreateChildNode(parent, AddPage(new Ingredients(), Guid.NewGuid())); //9
                     }
                     else if (num == "10")
@@ -508,8 +508,7 @@ namespace Cap
                 }
             }
 
-
-
+            #region 之前的
 
 
             //parent = uiNavMenu1.CreateNode("基础设置", 61818, 24, pageIndex);
@@ -550,14 +549,13 @@ namespace Cap
             //uiNavMenu1.CreateNode(AddPage(new PurchasingManagement())); // 28
             //uiNavMenu1.CreateNode(AddPage(new FixedAssets()));  //29
             //uiNavMenu1.CreateNode(AddPage(new AlarmManagement())); //30
-
-
+            #endregion
 
 
 
             //选中第一个节点
             uiNavMenu1.SelectPage(1002);
-            uiNavMenu1.Font = new System.Drawing.Font("宋体", 16); // 这里设置为 宋体 字体，大小为 16
+            uiNavMenu1.Font = new System.Drawing.Font("宋体", 12); // 这里设置为 宋体 字体，大小为 12
             timer1.Start();
         }
 
