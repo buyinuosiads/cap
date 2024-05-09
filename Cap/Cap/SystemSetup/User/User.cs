@@ -309,10 +309,10 @@ namespace Cap.SystemSetup
             sys_User.Address = Address.Text;
             //创建时间
             sys_User.CreateTime = DateTime.Now;
-            //添加数据
-            capProjectDb.Sys_User.InsertOnSubmit(sys_User);
             //是否删除
             sys_User.IsDelete = 0;
+            //添加数据
+            capProjectDb.Sys_User.InsertOnSubmit(sys_User);
             //保存数据
             capProjectDb.SubmitChanges();
             ShowSuccessDialog("添加成功");

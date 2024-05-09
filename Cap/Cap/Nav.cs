@@ -230,7 +230,7 @@ namespace Cap
                         Accessories accessories = new Accessories();
                         accessories.Text = _Menu.MenuText;
                         accessories.Symbol = int.Parse(_Menu.Icon);
-                        uiNavMenu1.CreateChildNode(parent, AddPage(accessories, Guid.NewGuid())); //10
+                        uiNavMenu1.CreateChildNode(parent, AddPage(accessories, Guid.NewGuid())); //10 辅料设置
                         //uiNavMenu1.CreateChildNode(parent, AddPage(new Accessories(), Guid.NewGuid())); //10
                     }
                     else if (num == "11")
@@ -245,8 +245,8 @@ namespace Cap
                         Technology technology = new Technology();
                         technology.Text = _Menu.MenuText;
                         technology.Symbol = int.Parse(_Menu.Icon);
-                        uiNavMenu1.CreateChildNode(parent, AddPage(technology, Guid.NewGuid()));  //11
-                        //uiNavMenu1.CreateChildNode(parent, AddPage(new Technology(), Guid.NewGuid())); //11
+                        uiNavMenu1.CreateChildNode(parent, AddPage(technology, Guid.NewGuid()));  //11     工艺设置
+                        //uiNavMenu1.CreateChildNode(parent, AddPage(new Technology(), Guid.NewGuid())); //11    
                     }
                     else if (num == "12")
                     {
@@ -259,7 +259,7 @@ namespace Cap
                         Product product = new Product();
                         product.Text = _Menu.MenuText;
                         product.Symbol = int.Parse(_Menu.Icon);
-                        uiNavMenu1.CreateChildNode(parent, AddPage(product, Guid.NewGuid()));  //12
+                        uiNavMenu1.CreateChildNode(parent, AddPage(product, Guid.NewGuid()));  //12  产品设置
                         //uiNavMenu1.CreateChildNode(parent, AddPage(new Product(), Guid.NewGuid()));  //12
                     }
                     else if (num == "13")
