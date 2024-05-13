@@ -1,5 +1,6 @@
 ﻿using Cap.BasicSettings.Accessories;
 using Cap.PurchasingManagementParent.PurchasingManagement;
+using Model;
 using Sunny.UI;
 using Sunny.UI.Win32;
 using System;
@@ -8,48 +9,71 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Net;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cap.SupplierAndCustom.Custom
 {
     public partial class Custom : UIPage
     {
 
-        List<Data> dataList = new List<Data>();
+        List<Consumer> dataList = new List<Consumer>();
         DataTable dataTable = new DataTable("DataTable");
+        string Id = string.Empty;
         public Custom()
         {
             InitializeComponent();
 
-            for (int i = 0; i < 10; i++)
+            dataTable.Columns.Add("Id_Manager");
+            dataTable.Columns.Add("CustomerName_Manager");
+            dataTable.Columns.Add("Contact_Manager");
+            dataTable.Columns.Add("Phone_Manager");
+            dataTable.Columns.Add("CreateTime_Manager");
+            dataTable.Columns.Add("CreateName_Manager");
+
+            GetList();
+        }
+
+
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        public void GetList()
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Expression<Func<Consumer, bool>> where = s => s.Id != null && s.IsDelete == 0;
+            if (!string.IsNullOrEmpty(CustomerName.Text))
             {
-                Data data = new Data();
-                data.Column1 = "客户名称" + i;
-                data.Column2 = "联系人" + i;
-                data.Column3 = "联系电话" + i;
-                data.Column4 = DateTime.Now.ToString();
-                data.Column5 = "创建人" + i;
-                dataList.Add(data);
+                where = ExpressionBuilder.And(where, f => f.CustomerName.Contains(CustomerName.Text));
+            };
+
+            dataList.Clear();
+            List<Consumer> consumers = capProjectDb.Consumer.Where(where).OrderByDescending(t => t.CreateTime).ToList(); //全查询
+            foreach (var item in consumers)
+            {
+                dataList.Add(item);
             }
-
-            dataTable.Columns.Add("Column1");
-            dataTable.Columns.Add("Column2");
-            dataTable.Columns.Add("Column3");
-            dataTable.Columns.Add("Column4");
-            dataTable.Columns.Add("Column5");
             uiDataGridView1.DataSource = dataTable;
-
             //不自动生成列
             uiDataGridView1.AutoGenerateColumns = false;
-
             //设置分页控件总数
-            uiPagination1.TotalCount = dataList.Count;
-
+            uiPagination1.TotalCount = consumers.Count;
             //设置分页控件每页数量
             uiPagination1.PageSize = 15;
             uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
+
+            dataTable.Rows.Clear();
+            for (int i = (1 - 1) * 15; i < 1 * 15; i++)
+            {
+                if (i >= dataList.Count) break;
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].CustomerName, dataList[i].Contact, dataList[i].Phone, dataList[i].CreateTime, dataList[i].CreateName);
+            }
         }
 
 
@@ -89,33 +113,36 @@ namespace Cap.SupplierAndCustom.Custom
             groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
         }
 
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //CustomAdd frm = new CustomAdd();
             //frm.Render();
             //frm.ShowDialog();
+            //dataTable.Rows.Add(CustomerName.Text, Contact.Text, Phone.Text, CreateTime.Text, CreateName.Text);
 
-            dataTable.Rows.Add(edtName.Text, uiTextBox2.Text, uiTextBox1.Text, uiTextBox3.Text, uiTextBox4.Text);
 
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Consumer consumer = new Consumer();
+            consumer.Id = Guid.NewGuid().ToString();
+            consumer.CustomerName = CustomerName.Text;
+            consumer.Contact = Contact.Text;
+            consumer.Phone = Phone.Text;
+            consumer.CreateTime = DateTime.Now;
+            consumer.CreateName = CreateName.Text;
+            consumer.IsDelete = 0;
+            capProjectDb.Consumer.InsertOnSubmit(consumer);
+            capProjectDb.SubmitChanges();
+            ShowSuccessDialog("添加成功");
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            GetList();
         }
 
 
-        public class Data
-        {
-            public string Column1 { get; set; }
-
-            public string Column2 { get; set; }
-
-            public string Column3 { get; set; }
-
-            public string Column4 { get; set; }
-            public string Column5 { get; set; }
-
-            public override string ToString()
-            {
-                return Column1;
-            }
-        }
 
         /// <summary>
         /// 分页控件页面切换事件
@@ -126,16 +153,11 @@ namespace Cap.SupplierAndCustom.Custom
         /// <param name="count"></param>
         private void uiPagination1_PageChanged(object sender, object pagingSource, int pageIndex, int count)
         {
-            //未连接数据库，通过模拟数据来实现
-            //一般通过ORM的分页去取数据来填充
-            //pageIndex：第几页，和界面对应，从1开始，取数据可能要用pageIndex - 1
-            //count：单页数据量，也就是PageSize值
-
             dataTable.Rows.Clear();
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column4, dataList[i].Column5);
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].CustomerName, dataList[i].Contact, dataList[i].Phone, dataList[i].CreateTime, dataList[i].CreateName);
             }
         }
 
@@ -144,70 +166,109 @@ namespace Cap.SupplierAndCustom.Custom
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            string Column1 = row.Cells["CustomName"].Value.ToString();
-            string Column2 = row.Cells["Contacts"].Value.ToString();
-            string Column3 = row.Cells["Telephone"].Value.ToString();
-            string Column4 = row.Cells["CreationTime"].Value.ToString();
-            string Column5 = row.Cells["CreationName"].Value.ToString();
-
-
-            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
-            {
-                CustomEdit frm = new CustomEdit(Column1, Column2, Column3);
-                frm.Render();
-                frm.ShowDialog();
-                frm.Dispose();
-            }
-
-
-            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
-            {
-                CustomEdit frm = new CustomEdit(Column1, Column2, Column3);
-                frm.Render();
-                frm.ShowDialog();
-                frm.Dispose();
-            }
-
-
+            string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+            //string Column2 = row.Cells["Contacts"].Value.ToString();
+            //string Column3 = row.Cells["Telephone"].Value.ToString();
+            //string Column4 = row.Cells["CreationTime"].Value.ToString();
+            //string Column5 = row.Cells["CreationName"].Value.ToString();
+            //if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            //{
+            //    CustomEdit frm = new CustomEdit(Column1, Column2, Column3);
+            //    frm.Render();
+            //    frm.ShowDialog();
+            //    frm.Dispose();
+            //}
+            //if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            //{
+            //    CustomEdit frm = new CustomEdit(Column1, Column2, Column3);
+            //    frm.Render();
+            //    frm.ShowDialog();
+            //    frm.Dispose();
+            //}
             if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
             {
                 if (ShowAskDialog("确定要删除吗？"))
                 {
+
+                    CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                    Consumer consumer = capProjectDb.Consumer.Where(t => t.Id == Id_Manager).FirstOrDefault();
+                    consumer.IsDelete = 99;
+                    capProjectDb.SubmitChanges();
                     ShowSuccessTip("删除成功");
-                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                    uiButton6_Click(sender, e); //调用清空文本框方法
+                    GetList();
                 }
                 else
                 {
                     ShowErrorTip("取消当前操作");
                 }
             }
-
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             // 确保点击的不是表头
             if (e.RowIndex >= 0)
             {
                 // 获取所点击的行
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据
-                string Column1 = row.Cells["CustomName"].Value.ToString();
-                string Column2 = row.Cells["Contacts"].Value.ToString();
-                string Telephone = row.Cells["Telephone"].Value.ToString();
-                string CreationTime = row.Cells["CreationTime"].Value.ToString();
-                string CreationName = row.Cells["CreationName"].Value.ToString();
+                string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+                string CustomerName_Manager = row.Cells["CustomerName_Manager"].Value.ToString();
+                string Contact_Manager = row.Cells["Contact_Manager"].Value.ToString();
+                string Phone_Manager = row.Cells["Phone_Manager"].Value.ToString();
+                string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
+                string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
 
-                edtName.Text = Column1;
-                uiTextBox2.Text = Column2;
-                uiTextBox1.Text = Telephone;
-                uiTextBox3.Text = CreationTime;
-                uiTextBox4.Text = CreationName;
-
-
-
+                Id = Id_Manager;
+                CustomerName.Text = CustomerName_Manager;
+                Contact.Text = Contact_Manager;
+                Phone.Text = Phone_Manager;
+                CreateTime.Text = CreateTime_Manager;
+                CreateName.Text = CreateName_Manager;
             }
+        }
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiSymbolButton1_Click(object sender, EventArgs e)
+        {
+            GetList();
+        }
+        /// <summary>
+        /// 清空文本框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton6_Click(object sender, EventArgs e)
+        {
+            Id = null;
+            CustomerName.Text = null;
+            Contact.Text = null;
+            Phone.Text = null;
+            CreateTime.Text = null;
+            CreateName.Text = null;
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton5_Click(object sender, EventArgs e)
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Consumer consumer = capProjectDb.Consumer.Where(t => t.Id == Id).FirstOrDefault();
+            consumer.CustomerName = CustomerName.Text;
+            consumer.Contact = Contact.Text;
+            consumer.Phone = Phone.Text;
+            consumer.CreateName = CreateName.Text;
+            capProjectDb.SubmitChanges();
+            ShowSuccessDialog("修改成功");
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            GetList();
 
         }
     }

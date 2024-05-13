@@ -42,30 +42,32 @@
             this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
             this.btnAdd = new Sunny.UI.UISymbolButton();
             this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
+            this.uiButton6 = new Sunny.UI.UIButton();
             this.uiButton5 = new Sunny.UI.UIButton();
             this.uiLabel7 = new Sunny.UI.UILabel();
-            this.uiTextBox6 = new Sunny.UI.UITextBox();
+            this.CreateName = new Sunny.UI.UITextBox();
             this.uiLabel6 = new Sunny.UI.UILabel();
-            this.uiTextBox5 = new Sunny.UI.UITextBox();
+            this.CreateTime = new Sunny.UI.UITextBox();
             this.uiLabel5 = new Sunny.UI.UILabel();
-            this.uiTextBox4 = new Sunny.UI.UITextBox();
+            this.State = new Sunny.UI.UITextBox();
             this.uiLabel3 = new Sunny.UI.UILabel();
-            this.uiTextBox3 = new Sunny.UI.UITextBox();
-            this.uiTextBox2 = new Sunny.UI.UITextBox();
+            this.Schedule = new Sunny.UI.UITextBox();
+            this.Quantity = new Sunny.UI.UITextBox();
             this.uiLabel1 = new Sunny.UI.UILabel();
-            this.uiTextBox1 = new Sunny.UI.UITextBox();
+            this.Customer = new Sunny.UI.UITextBox();
             this.uiLabel4 = new Sunny.UI.UILabel();
-            this.edtName = new Sunny.UI.UITextBox();
+            this.ProductManagement = new Sunny.UI.UITextBox();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
-            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullBoxCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConsumablesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductManagement_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Schedule_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateTime_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateName_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -107,6 +109,7 @@
             this.uiSymbolButton1.TabIndex = 3;
             this.uiSymbolButton1.Text = "查找";
             this.uiSymbolButton1.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSymbolButton1.Click += new System.EventHandler(this.uiSymbolButton1_Click);
             // 
             // btnAdd
             // 
@@ -126,20 +129,21 @@
             // 
             // uiCheckBoxGroup1
             // 
+            this.uiCheckBoxGroup1.Controls.Add(this.uiButton6);
             this.uiCheckBoxGroup1.Controls.Add(this.uiButton5);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel7);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox6);
+            this.uiCheckBoxGroup1.Controls.Add(this.CreateName);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel6);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox5);
+            this.uiCheckBoxGroup1.Controls.Add(this.CreateTime);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel5);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox4);
+            this.uiCheckBoxGroup1.Controls.Add(this.State);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel3);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox3);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox2);
+            this.uiCheckBoxGroup1.Controls.Add(this.Schedule);
+            this.uiCheckBoxGroup1.Controls.Add(this.Quantity);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel1);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox1);
+            this.uiCheckBoxGroup1.Controls.Add(this.Customer);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel4);
-            this.uiCheckBoxGroup1.Controls.Add(this.edtName);
+            this.uiCheckBoxGroup1.Controls.Add(this.ProductManagement);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel2);
             this.uiCheckBoxGroup1.Controls.Add(this.uiSymbolButton1);
             this.uiCheckBoxGroup1.Controls.Add(this.btnAdd);
@@ -157,6 +161,31 @@
             this.uiCheckBoxGroup1.TabIndex = 17;
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiButton6
+            // 
+            this.uiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiButton6.Location = new System.Drawing.Point(798, 127);
+            this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton6.Name = "uiButton6";
+            this.uiButton6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.ShowFocusLine = true;
+            this.uiButton6.Size = new System.Drawing.Size(108, 35);
+            this.uiButton6.Style = Sunny.UI.UIStyle.Custom;
+            this.uiButton6.StyleCustomMode = true;
+            this.uiButton6.TabIndex = 110;
+            this.uiButton6.Text = "清空文本框";
+            this.uiButton6.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
             // 
             // uiButton5
             // 
@@ -181,6 +210,7 @@
             this.uiButton5.TabIndex = 109;
             this.uiButton5.Text = "修改";
             this.uiButton5.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton5.Click += new System.EventHandler(this.uiButton5_Click);
             // 
             // uiLabel7
             // 
@@ -194,20 +224,20 @@
             this.uiLabel7.Text = "创建人";
             this.uiLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiTextBox6
+            // CreateName
             // 
-            this.uiTextBox6.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox6.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox6.Location = new System.Drawing.Point(106, 121);
-            this.uiTextBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox6.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox6.Name = "uiTextBox6";
-            this.uiTextBox6.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox6.ShowText = false;
-            this.uiTextBox6.Size = new System.Drawing.Size(340, 29);
-            this.uiTextBox6.TabIndex = 107;
-            this.uiTextBox6.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox6.Watermark = "";
+            this.CreateName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.CreateName.Font = new System.Drawing.Font("宋体", 12F);
+            this.CreateName.Location = new System.Drawing.Point(106, 121);
+            this.CreateName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CreateName.MinimumSize = new System.Drawing.Size(1, 16);
+            this.CreateName.Name = "CreateName";
+            this.CreateName.Padding = new System.Windows.Forms.Padding(5);
+            this.CreateName.ShowText = false;
+            this.CreateName.Size = new System.Drawing.Size(340, 29);
+            this.CreateName.TabIndex = 107;
+            this.CreateName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CreateName.Watermark = "";
             // 
             // uiLabel6
             // 
@@ -221,20 +251,20 @@
             this.uiLabel6.Text = "创建时间";
             this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiTextBox5
+            // CreateTime
             // 
-            this.uiTextBox5.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox5.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox5.Location = new System.Drawing.Point(586, 82);
-            this.uiTextBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox5.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox5.Name = "uiTextBox5";
-            this.uiTextBox5.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox5.ShowText = false;
-            this.uiTextBox5.Size = new System.Drawing.Size(340, 29);
-            this.uiTextBox5.TabIndex = 105;
-            this.uiTextBox5.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox5.Watermark = "";
+            this.CreateTime.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.CreateTime.Font = new System.Drawing.Font("宋体", 12F);
+            this.CreateTime.Location = new System.Drawing.Point(586, 82);
+            this.CreateTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CreateTime.MinimumSize = new System.Drawing.Size(1, 16);
+            this.CreateTime.Name = "CreateTime";
+            this.CreateTime.Padding = new System.Windows.Forms.Padding(5);
+            this.CreateTime.ShowText = false;
+            this.CreateTime.Size = new System.Drawing.Size(340, 29);
+            this.CreateTime.TabIndex = 105;
+            this.CreateTime.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CreateTime.Watermark = "";
             // 
             // uiLabel5
             // 
@@ -248,20 +278,20 @@
             this.uiLabel5.Text = "状态";
             this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiTextBox4
+            // State
             // 
-            this.uiTextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox4.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox4.Location = new System.Drawing.Point(106, 82);
-            this.uiTextBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox4.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox4.Name = "uiTextBox4";
-            this.uiTextBox4.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox4.ShowText = false;
-            this.uiTextBox4.Size = new System.Drawing.Size(340, 29);
-            this.uiTextBox4.TabIndex = 103;
-            this.uiTextBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox4.Watermark = "";
+            this.State.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.State.Font = new System.Drawing.Font("宋体", 12F);
+            this.State.Location = new System.Drawing.Point(106, 82);
+            this.State.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.State.MinimumSize = new System.Drawing.Size(1, 16);
+            this.State.Name = "State";
+            this.State.Padding = new System.Windows.Forms.Padding(5);
+            this.State.ShowText = false;
+            this.State.Size = new System.Drawing.Size(340, 29);
+            this.State.TabIndex = 103;
+            this.State.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.State.Watermark = "";
             // 
             // uiLabel3
             // 
@@ -275,36 +305,36 @@
             this.uiLabel3.Text = "进度";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiTextBox3
+            // Schedule
             // 
-            this.uiTextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox3.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox3.Location = new System.Drawing.Point(586, 41);
-            this.uiTextBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox3.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox3.Name = "uiTextBox3";
-            this.uiTextBox3.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox3.ShowText = false;
-            this.uiTextBox3.Size = new System.Drawing.Size(340, 29);
-            this.uiTextBox3.TabIndex = 101;
-            this.uiTextBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox3.Watermark = "";
+            this.Schedule.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Schedule.Font = new System.Drawing.Font("宋体", 12F);
+            this.Schedule.Location = new System.Drawing.Point(586, 41);
+            this.Schedule.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Schedule.MinimumSize = new System.Drawing.Size(1, 16);
+            this.Schedule.Name = "Schedule";
+            this.Schedule.Padding = new System.Windows.Forms.Padding(5);
+            this.Schedule.ShowText = false;
+            this.Schedule.Size = new System.Drawing.Size(340, 29);
+            this.Schedule.TabIndex = 101;
+            this.Schedule.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Schedule.Watermark = "";
             // 
-            // uiTextBox2
+            // Quantity
             // 
-            this.uiTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox2.EnterAsTab = true;
-            this.uiTextBox2.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox2.Location = new System.Drawing.Point(586, 1);
-            this.uiTextBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox2.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox2.Name = "uiTextBox2";
-            this.uiTextBox2.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox2.ShowText = false;
-            this.uiTextBox2.Size = new System.Drawing.Size(340, 29);
-            this.uiTextBox2.TabIndex = 100;
-            this.uiTextBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox2.Watermark = "";
+            this.Quantity.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Quantity.EnterAsTab = true;
+            this.Quantity.Font = new System.Drawing.Font("宋体", 12F);
+            this.Quantity.Location = new System.Drawing.Point(586, 1);
+            this.Quantity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Quantity.MinimumSize = new System.Drawing.Size(1, 16);
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Padding = new System.Windows.Forms.Padding(5);
+            this.Quantity.ShowText = false;
+            this.Quantity.Size = new System.Drawing.Size(340, 29);
+            this.Quantity.TabIndex = 100;
+            this.Quantity.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Quantity.Watermark = "";
             // 
             // uiLabel1
             // 
@@ -318,20 +348,20 @@
             this.uiLabel1.Text = "客户";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // uiTextBox1
+            // Customer
             // 
-            this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox1.Location = new System.Drawing.Point(106, 41);
-            this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox1.Name = "uiTextBox1";
-            this.uiTextBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox1.ShowText = false;
-            this.uiTextBox1.Size = new System.Drawing.Size(340, 29);
-            this.uiTextBox1.TabIndex = 98;
-            this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox1.Watermark = "";
+            this.Customer.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Customer.Font = new System.Drawing.Font("宋体", 12F);
+            this.Customer.Location = new System.Drawing.Point(106, 41);
+            this.Customer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Customer.MinimumSize = new System.Drawing.Size(1, 16);
+            this.Customer.Name = "Customer";
+            this.Customer.Padding = new System.Windows.Forms.Padding(5);
+            this.Customer.ShowText = false;
+            this.Customer.Size = new System.Drawing.Size(340, 29);
+            this.Customer.TabIndex = 98;
+            this.Customer.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Customer.Watermark = "";
             // 
             // uiLabel4
             // 
@@ -345,21 +375,21 @@
             this.uiLabel4.Text = "数量";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // edtName
+            // ProductManagement
             // 
-            this.edtName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.edtName.EnterAsTab = true;
-            this.edtName.Font = new System.Drawing.Font("宋体", 12F);
-            this.edtName.Location = new System.Drawing.Point(106, 1);
-            this.edtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.edtName.MinimumSize = new System.Drawing.Size(1, 16);
-            this.edtName.Name = "edtName";
-            this.edtName.Padding = new System.Windows.Forms.Padding(5);
-            this.edtName.ShowText = false;
-            this.edtName.Size = new System.Drawing.Size(340, 29);
-            this.edtName.TabIndex = 95;
-            this.edtName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.edtName.Watermark = "";
+            this.ProductManagement.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.ProductManagement.EnterAsTab = true;
+            this.ProductManagement.Font = new System.Drawing.Font("宋体", 12F);
+            this.ProductManagement.Location = new System.Drawing.Point(106, 1);
+            this.ProductManagement.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ProductManagement.MinimumSize = new System.Drawing.Size(1, 16);
+            this.ProductManagement.Name = "ProductManagement";
+            this.ProductManagement.Padding = new System.Windows.Forms.Padding(5);
+            this.ProductManagement.ShowText = false;
+            this.ProductManagement.Size = new System.Drawing.Size(340, 29);
+            this.ProductManagement.TabIndex = 95;
+            this.ProductManagement.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ProductManagement.Watermark = "";
             // 
             // uiLabel2
             // 
@@ -404,13 +434,14 @@
             this.uiDataGridView1.ColumnHeadersHeight = 32;
             this.uiDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.uiDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SupplierName,
-            this.FullBoxCount,
-            this.ConsumablesCount,
-            this.Column4,
-            this.Column5,
-            this.CreationTime,
-            this.CreationName,
+            this.Id_Manager,
+            this.ProductManagement_Manager,
+            this.Quantity_Manager,
+            this.Customer_Manager,
+            this.Schedule_Manager,
+            this.State_Manager,
+            this.CreateTime_Manager,
+            this.CreateName_Manager,
             this.Search,
             this.Edit,
             this.Delete});
@@ -426,7 +457,7 @@
             this.uiDataGridView1.EnableHeadersVisualStyles = false;
             this.uiDataGridView1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            this.uiDataGridView1.Location = new System.Drawing.Point(3, 22);
+            this.uiDataGridView1.Location = new System.Drawing.Point(3, 23);
             this.uiDataGridView1.Name = "uiDataGridView1";
             this.uiDataGridView1.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -446,64 +477,72 @@
             this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.uiDataGridView1.RowTemplate.Height = 23;
             this.uiDataGridView1.SelectedIndex = -1;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1037, 366);
+            this.uiDataGridView1.Size = new System.Drawing.Size(1037, 365);
             this.uiDataGridView1.TabIndex = 9;
             this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
             // 
-            // SupplierName
+            // Id_Manager
             // 
-            this.SupplierName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SupplierName.DataPropertyName = "Column1";
-            this.SupplierName.HeaderText = "产品信息";
-            this.SupplierName.Name = "SupplierName";
-            this.SupplierName.ReadOnly = true;
+            this.Id_Manager.DataPropertyName = "Id_Manager";
+            this.Id_Manager.HeaderText = "Id_Manager";
+            this.Id_Manager.Name = "Id_Manager";
+            this.Id_Manager.ReadOnly = true;
+            this.Id_Manager.Visible = false;
             // 
-            // FullBoxCount
+            // ProductManagement_Manager
             // 
-            this.FullBoxCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FullBoxCount.DataPropertyName = "Column2";
-            this.FullBoxCount.HeaderText = "数量";
-            this.FullBoxCount.Name = "FullBoxCount";
-            this.FullBoxCount.ReadOnly = true;
+            this.ProductManagement_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ProductManagement_Manager.DataPropertyName = "ProductManagement_Manager";
+            this.ProductManagement_Manager.HeaderText = "产品信息";
+            this.ProductManagement_Manager.Name = "ProductManagement_Manager";
+            this.ProductManagement_Manager.ReadOnly = true;
             // 
-            // ConsumablesCount
+            // Quantity_Manager
             // 
-            this.ConsumablesCount.DataPropertyName = "Column3";
-            this.ConsumablesCount.HeaderText = "客户";
-            this.ConsumablesCount.Name = "ConsumablesCount";
-            this.ConsumablesCount.ReadOnly = true;
-            this.ConsumablesCount.Width = 166;
+            this.Quantity_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Quantity_Manager.DataPropertyName = "Quantity_Manager";
+            this.Quantity_Manager.HeaderText = "数量";
+            this.Quantity_Manager.Name = "Quantity_Manager";
+            this.Quantity_Manager.ReadOnly = true;
             // 
-            // Column4
+            // Customer_Manager
             // 
-            this.Column4.DataPropertyName = "Column4";
-            this.Column4.HeaderText = "进度";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.Customer_Manager.DataPropertyName = "Customer_Manager";
+            this.Customer_Manager.HeaderText = "客户";
+            this.Customer_Manager.Name = "Customer_Manager";
+            this.Customer_Manager.ReadOnly = true;
+            this.Customer_Manager.Width = 166;
             // 
-            // Column5
+            // Schedule_Manager
             // 
-            this.Column5.DataPropertyName = "Column5";
-            this.Column5.HeaderText = "状态";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
+            this.Schedule_Manager.DataPropertyName = "Schedule_Manager";
+            this.Schedule_Manager.HeaderText = "进度";
+            this.Schedule_Manager.Name = "Schedule_Manager";
+            this.Schedule_Manager.ReadOnly = true;
             // 
-            // CreationTime
+            // State_Manager
             // 
-            this.CreationTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CreationTime.DataPropertyName = "Column6";
-            this.CreationTime.HeaderText = "创建时间";
-            this.CreationTime.Name = "CreationTime";
-            this.CreationTime.ReadOnly = true;
+            this.State_Manager.DataPropertyName = "State_Manager";
+            this.State_Manager.HeaderText = "状态";
+            this.State_Manager.Name = "State_Manager";
+            this.State_Manager.ReadOnly = true;
             // 
-            // CreationName
+            // CreateTime_Manager
             // 
-            this.CreationName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CreationName.DataPropertyName = "Column7";
-            this.CreationName.HeaderText = "创建人";
-            this.CreationName.Name = "CreationName";
-            this.CreationName.ReadOnly = true;
+            this.CreateTime_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CreateTime_Manager.DataPropertyName = "CreateTime_Manager";
+            this.CreateTime_Manager.HeaderText = "创建时间";
+            this.CreateTime_Manager.Name = "CreateTime_Manager";
+            this.CreateTime_Manager.ReadOnly = true;
+            // 
+            // CreateName_Manager
+            // 
+            this.CreateName_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CreateName_Manager.DataPropertyName = "CreateName_Manager";
+            this.CreateName_Manager.HeaderText = "创建人";
+            this.CreateName_Manager.Name = "CreateName_Manager";
+            this.CreateName_Manager.ReadOnly = true;
             // 
             // Search
             // 
@@ -566,28 +605,30 @@
         private Sunny.UI.UICheckBoxGroup uiCheckBoxGroup1;
         private System.Windows.Forms.GroupBox groupBox1;
         private Sunny.UI.UIDataGridView uiDataGridView1;
-        private Sunny.UI.UITextBox uiTextBox2;
+        private Sunny.UI.UITextBox Quantity;
         private Sunny.UI.UILabel uiLabel1;
-        private Sunny.UI.UITextBox uiTextBox1;
+        private Sunny.UI.UITextBox Customer;
         private Sunny.UI.UILabel uiLabel4;
-        private Sunny.UI.UITextBox edtName;
+        private Sunny.UI.UITextBox ProductManagement;
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UILabel uiLabel7;
-        private Sunny.UI.UITextBox uiTextBox6;
+        private Sunny.UI.UITextBox CreateName;
         private Sunny.UI.UILabel uiLabel6;
-        private Sunny.UI.UITextBox uiTextBox5;
+        private Sunny.UI.UITextBox CreateTime;
         private Sunny.UI.UILabel uiLabel5;
-        private Sunny.UI.UITextBox uiTextBox4;
+        private Sunny.UI.UITextBox State;
         private Sunny.UI.UILabel uiLabel3;
-        private Sunny.UI.UITextBox uiTextBox3;
+        private Sunny.UI.UITextBox Schedule;
         private Sunny.UI.UIButton uiButton5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FullBoxCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ConsumablesCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreationName;
+        private Sunny.UI.UIButton uiButton6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductManagement_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Customer_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Schedule_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn State_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateTime_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateName_Manager;
         private System.Windows.Forms.DataGridViewButtonColumn Search;
         private System.Windows.Forms.DataGridViewButtonColumn Edit;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;

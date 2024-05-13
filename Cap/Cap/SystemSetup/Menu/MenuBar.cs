@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 
 namespace Cap.SystemSetup.Menu
@@ -33,7 +34,14 @@ namespace Cap.SystemSetup.Menu
         {
             CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
 
-            dataList = capProjectDb.Sys_Menu.OrderByDescending(t => t.CreateTime).OrderBy(t => t.Sort).ToList();
+            Expression<Func<Sys_Menu, bool>> where = s => s.Id != null;
+            if (!string.IsNullOrEmpty(Menu_Name.Text))
+            {
+                where = ExpressionBuilder.And(where, f => f.MenuText.Contains(Menu_Name.Text));
+            }; 
+
+            dataList.Clear(); 
+            dataList = capProjectDb.Sys_Menu.Where(where).OrderByDescending(t => t.CreateTime).OrderBy(t => t.Sort).ToList();
 
             uiDataGridView1.DataSource = dataTable;
             //不自动生成列

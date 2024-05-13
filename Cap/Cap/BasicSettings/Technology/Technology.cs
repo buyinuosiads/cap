@@ -320,7 +320,7 @@ namespace Cap.BasicSettings.Technology
                 Accessory.Text = Accessory_Manager;
 
 
-                 
+
 
             }
         }

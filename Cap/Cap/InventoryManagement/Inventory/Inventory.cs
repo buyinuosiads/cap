@@ -1,5 +1,6 @@
 ﻿using Cap.BasicSettings.Accessories;
 using Cap.FixedAssetsParent.FixedAssets;
+using Model;
 using Sunny.UI;
 using Sunny.UI.Win32;
 using System;
@@ -8,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,37 +18,73 @@ namespace Cap.InventoryManagement.Inventory
 {
     public partial class Inventory : UIPage
     {
-        List<Data> dataList = new List<Data>();
+        List<Stocks> dataList = new List<Stocks>();
         DataTable dataTable = new DataTable("DataTable");
+        string Id = string.Empty;
+
         public Inventory()
         {
             InitializeComponent();
-            for (int i = 0; i < 10; i++)
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Data data = new Data();
+            //    data.Column1 = "物料名称" + i;
+            //    data.Column2 = "物料数量" + i;
+            //    data.Column4 = DateTime.Now.ToString();
+            //    data.Column5 = "管理员";
+            //    dataList.Add(data);
+            //}
+
+
+            dataTable.Columns.Add("Id_Manager");
+            dataTable.Columns.Add("NameOfMaterial_Manager");
+            dataTable.Columns.Add("QuantityOfMaterial_Manager");
+            dataTable.Columns.Add("CreateTime_Manager");
+            dataTable.Columns.Add("CreateName_Manager");
+            GetList();
+
+
+        }
+
+
+
+
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        public void GetList()
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Expression<Func<Stocks, bool>> where = s => s.Id != null && s.IsDelete == 0;
+            if (!string.IsNullOrEmpty(NameOfMaterial.Text))
             {
-                Data data = new Data();
-                data.Column1 = "物料名称" + i;
-                data.Column2 = "物料数量" + i;
-                data.Column4 = DateTime.Now.ToString();
-                data.Column5 = "管理员";
-                dataList.Add(data);
+                where = ExpressionBuilder.And(where, f => f.NameOfMaterial.Contains(NameOfMaterial.Text));
+            };
+
+            dataList.Clear();
+            List<Stocks> productSetups = capProjectDb.Stocks.Where(where).OrderBy(a => a.Id).ToList(); //全查询
+            foreach (var item in productSetups)
+            {
+                dataList.Add(item);
             }
-
-            dataTable.Columns.Add("Column1");
-            dataTable.Columns.Add("Column2");
-            dataTable.Columns.Add("Column4");
-            dataTable.Columns.Add("Column5");
             uiDataGridView1.DataSource = dataTable;
-
             //不自动生成列
             uiDataGridView1.AutoGenerateColumns = false;
-
             //设置分页控件总数
-            uiPagination1.TotalCount = dataList.Count;
-
+            uiPagination1.TotalCount = productSetups.Count;
             //设置分页控件每页数量
             uiPagination1.PageSize = 15;
             uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
+
+            dataTable.Rows.Clear();
+            for (int i = (1 - 1) * 15; i < 1 * 15; i++)
+            {
+                if (i >= dataList.Count) break;
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].NameOfMaterial, dataList[i].QuantityOfMaterial, dataList[i].CreateTime, dataList[i].CreateName);
+            }
         }
+
 
 
         private void uiDataGridView1_SelectIndexChange(object sender, int index)
@@ -54,22 +92,6 @@ namespace Cap.InventoryManagement.Inventory
             index.WriteConsole("SelectedIndex");
         }
 
-
-        public class Data
-        {
-            public string Column1 { get; set; }
-
-            public string Column2 { get; set; }
-
-            public string Column4 { get; set; }
-
-            public string Column5 { get; set; }
-
-            public override string ToString()
-            {
-                return Column1;
-            }
-        }
 
 
         /// <summary>
@@ -90,7 +112,7 @@ namespace Cap.InventoryManagement.Inventory
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column4, dataList[i].Column5);
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].NameOfMaterial, dataList[i].QuantityOfMaterial, dataList[i].CreateTime, dataList[i].CreateName);
             }
         }
 
@@ -126,24 +148,49 @@ namespace Cap.InventoryManagement.Inventory
             {
                 if (ShowAskDialog("确定要删除吗？"))
                 {
+                    CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                    Stocks stocks = capProjectDb.Stocks.Where(t => t.Id == Id).FirstOrDefault();
+                    stocks.IsDelete = 99;
+                    capProjectDb.SubmitChanges();
                     ShowSuccessTip("删除成功");
-                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                    uiButton6_Click(sender, e); //调用清空文本框方法
+                    GetList();
                 }
                 else
                 {
                     ShowErrorTip("取消当前操作");
                 }
             }
-
-
         }
 
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //InventoryAdd frm = new InventoryAdd();
-            //frm.Render();
-            //frm.ShowDialog();
-            dataTable.Rows.Add(edtName.Text, uiTextBox2.Text, uiTextBox3.Text, uiTextBox1.Text);
+
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Stocks stocks = new Stocks();
+            stocks.Id = Guid.NewGuid().ToString();
+            stocks.NameOfMaterial = NameOfMaterial.Text;
+            stocks.QuantityOfMaterial = int.Parse(QuantityOfMaterial.Text);
+            stocks.CreateTime = DateTime.Now;
+            stocks.CreateName = "创建人";
+            stocks.IsDelete = 0;
+
+
+            //添加数据
+            capProjectDb.Stocks.InsertOnSubmit(stocks);
+            //保存数据
+            capProjectDb.SubmitChanges();
+            ShowSuccessDialog("添加成功");
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            //查询数据
+            GetList();
+
+
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -154,18 +201,66 @@ namespace Cap.InventoryManagement.Inventory
                 // 获取所点击的行
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据
-                string Column1 = row.Cells["MaterialName"].Value.ToString();
-                string Column2 = row.Cells["MaterialCount"].Value.ToString();
-                string CreationTime = row.Cells["CreationTime"].Value.ToString();
-                string CreationName = row.Cells["CreationName"].Value.ToString();
+                string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+                string NameOfMaterial_Manager = row.Cells["NameOfMaterial_Manager"].Value.ToString();
+                string QuantityOfMaterial_Manager = row.Cells["QuantityOfMaterial_Manager"].Value.ToString();
+                string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
+                string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
 
-                edtName.Text = Column1;
-                uiTextBox2.Text = Column2;
-                uiTextBox3.Text = CreationTime;
-                uiTextBox1.Text = CreationName;
 
+                Id = Id_Manager;
+                NameOfMaterial.Text = NameOfMaterial_Manager;
+                QuantityOfMaterial.Text = QuantityOfMaterial_Manager;
+                CreateTime.Text = CreateTime_Manager;
+                CreateName.Text = CreateName_Manager;
 
             }
+        }
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiSymbolButton1_Click(object sender, EventArgs e)
+        {
+            GetList();
+        }
+
+        /// <summary>
+        /// 清空文本框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton6_Click(object sender, EventArgs e)
+        {
+            Id = null;
+            NameOfMaterial.Text = null;
+            QuantityOfMaterial.Text = null;
+            CreateTime.Text = null;
+            CreateName.Text = null;
+        }
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton5_Click(object sender, EventArgs e)
+        {
+
+
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Stocks stocks = capProjectDb.Stocks.Where(t => t.Id == Id).FirstOrDefault();
+            stocks.NameOfMaterial = NameOfMaterial.Text;
+            stocks.QuantityOfMaterial = int.Parse(QuantityOfMaterial.Text);
+            //保存数据
+            capProjectDb.SubmitChanges();
+            ShowSuccessDialog("修改成功");
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            //查询数据
+            GetList();
+
+
         }
     }
 }

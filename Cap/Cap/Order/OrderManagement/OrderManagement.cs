@@ -1,5 +1,6 @@
 ﻿using Cap.BasicSettings.Accessories;
 using Cap.InventoryManagement.Inventory;
+using Model;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,42 +17,58 @@ namespace Cap.Order.OrderManagement
 {
     public partial class OrderManagement : UIPage
     {
-        List<Data> dataList = new List<Data>();
+        List<Cap_OrderManagement> dataList = new List<Cap_OrderManagement>();
         DataTable dataTable = new DataTable("DataTable");
+        string Id = string.Empty;
         public OrderManagement()
         {
             InitializeComponent();
-            for (int i = 0; i < 10; i++)
+
+            dataTable.Columns.Add("Id_Manager");
+            dataTable.Columns.Add("ProductManagement_Manager");
+            dataTable.Columns.Add("Quantity_Manager");
+            dataTable.Columns.Add("Customer_Manager");
+            dataTable.Columns.Add("Schedule_Manager");
+            dataTable.Columns.Add("State_Manager");
+            dataTable.Columns.Add("CreateTime_Manager");
+            dataTable.Columns.Add("CreateName_Manager");
+            GetList();
+        }
+
+
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        public void GetList()
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Expression<Func<Cap_OrderManagement, bool>> where = s => s.Id != null && s.IsDelete == 0;
+            if (!string.IsNullOrEmpty(ProductManagement.Text))
             {
-                Data data = new Data();
-                data.Column1 = "订单管理" + i;
-                data.Column2 = "数量" + i;
-                data.Column3 = "客户" + i;
-                data.Column4 = "进度" + i;
-                data.Column5 = "状态" + i;
-                data.Column6 = DateTime.Now.ToString();
-                data.Column7 = "创建人" + i;
-                dataList.Add(data);
+                where = ExpressionBuilder.And(where, f => f.ProductManagement.Contains(ProductManagement.Text));
+            };
+            dataList.Clear();
+            List<Cap_OrderManagement> outbounds = capProjectDb.Cap_OrderManagement.Where(where).OrderByDescending(t => t.CreateTime).ToList(); //全查询
+            foreach (var item in outbounds)
+            {
+                dataList.Add(item);
             }
-
-            dataTable.Columns.Add("Column1");
-            dataTable.Columns.Add("Column2");
-            dataTable.Columns.Add("Column3");
-            dataTable.Columns.Add("Column4");
-            dataTable.Columns.Add("Column5");
-            dataTable.Columns.Add("Column6");
-            dataTable.Columns.Add("Column7");
             uiDataGridView1.DataSource = dataTable;
-
             //不自动生成列
             uiDataGridView1.AutoGenerateColumns = false;
-
             //设置分页控件总数
-            uiPagination1.TotalCount = dataList.Count;
-
+            uiPagination1.TotalCount = outbounds.Count;
             //设置分页控件每页数量
             uiPagination1.PageSize = 15;
             uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
+
+            dataTable.Rows.Clear();
+            for (int i = (1 - 1) * 15; i < 1 * 15; i++)
+            {
+                if (i >= dataList.Count) break;
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].ProductManagement, dataList[i].Quantity, dataList[i].Customer, dataList[i].Schedule, dataList[i].State, dataList[i].CreateTime, dataList[i].CreateName);
+            }
         }
 
 
@@ -58,7 +76,6 @@ namespace Cap.Order.OrderManagement
         {
             index.WriteConsole("SelectedIndex");
         }
-
 
 
         /// <summary>
@@ -70,19 +87,14 @@ namespace Cap.Order.OrderManagement
         /// <param name="count"></param>
         private void uiPagination1_PageChanged(object sender, object pagingSource, int pageIndex, int count)
         {
-            //未连接数据库，通过模拟数据来实现
-            //一般通过ORM的分页去取数据来填充
-            //pageIndex：第几页，和界面对应，从1开始，取数据可能要用pageIndex - 1
-            //count：单页数据量，也就是PageSize值
 
             dataTable.Rows.Clear();
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column4, dataList[i].Column5, dataList[i].Column6, dataList[i].Column7);
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].ProductManagement, dataList[i].Quantity, dataList[i].Customer, dataList[i].Schedule, dataList[i].State, dataList[i].CreateTime, dataList[i].CreateName);
             }
         }
-
 
 
 
@@ -99,75 +111,78 @@ namespace Cap.Order.OrderManagement
 
 
 
-        public class Data
-        {
-            public string Column1 { get; set; }
-
-            public string Column2 { get; set; }
-            public string Column3 { get; set; }
-
-            public string Column4 { get; set; }
-
-            public string Column5 { get; set; }
-
-            public string Column6 { get; set; }
-            public string Column7 { get; set; }
-            public override string ToString()
-            {
-                return Column1;
-            }
-        }
-
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            string Column1 = row.Cells["SupplierName"].Value.ToString();
-            string Column2 = row.Cells["FullBoxCount"].Value.ToString();
-            string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
+            string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+            //string Column1 = row.Cells["SupplierName"].Value.ToString();
+            //string Column2 = row.Cells["FullBoxCount"].Value.ToString();
+            //string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
 
-            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
-            {
-                OrderManagementEdit frm = new OrderManagementEdit(Column1, Column2, Column3);
-                frm.Render();
-                frm.ShowDialog();
-                frm.Dispose();
-            }
+            //if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            //{
+            //    OrderManagementEdit frm = new OrderManagementEdit(Column1, Column2, Column3);
+            //    frm.Render();
+            //    frm.ShowDialog();
+            //    frm.Dispose();
+            //}
 
 
-            // 确保点击的是按钮列
-            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
-            {
-                OrderManagementEdit frm = new OrderManagementEdit(Column1, Column2, Column3);
-                frm.Render();
-                frm.ShowDialog();
-                frm.Dispose();
-            }
+            //// 确保点击的是按钮列
+            //if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            //{
+            //    OrderManagementEdit frm = new OrderManagementEdit(Column1, Column2, Column3);
+            //    frm.Render();
+            //    frm.ShowDialog();
+            //    frm.Dispose();
+            //}
 
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
             {
                 if (ShowAskDialog("确定要删除吗？"))
                 {
+                    CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                    Cap_OrderManagement sys_User = capProjectDb.Cap_OrderManagement.Where(t => t.Id == Id_Manager).FirstOrDefault();
+                    sys_User.IsDelete = 99;
+                    capProjectDb.SubmitChanges();
                     ShowSuccessTip("删除成功");
-                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                    uiButton6_Click(sender, e); //调用清空文本框方法
+                    GetList();
                 }
                 else
                 {
                     ShowErrorTip("取消当前操作");
                 }
             }
-
         }
 
+        /// <summary>
+        /// 增加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //OrderManagementAdd frm = new OrderManagementAdd();
-            //frm.Render();
-            //frm.ShowDialog();
-            dataTable.Rows.Add(edtName.Text, uiTextBox2.Text, uiTextBox1.Text, uiTextBox3.Text, uiTextBox4.Text, uiTextBox5.Text, uiTextBox6.Text);
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Cap_OrderManagement outbound = new Cap_OrderManagement();
+            outbound.Id = Guid.NewGuid().ToString();
+            outbound.ProductManagement = ProductManagement.Text;
+            outbound.Quantity = Quantity.Text;
+            outbound.Customer = Customer.Text;
+            outbound.Schedule = Schedule.Text;
+            outbound.State = State.Text;
+            outbound.CreateName = CreateName.Text;
+            outbound.IsDelete = 0;
+            capProjectDb.Cap_OrderManagement.InsertOnSubmit(outbound);
+            capProjectDb.SubmitChanges();
+            ShowSuccessDialog("添加成功");
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            //查询数据
+            GetList();
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -175,34 +190,77 @@ namespace Cap.Order.OrderManagement
             // 确保点击的不是表头
             if (e.RowIndex >= 0)
             {
-
                 // 获取所点击的行
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据
-                string Column1 = row.Cells["SupplierName"].Value.ToString();
-                string Column2 = row.Cells["FullBoxCount"].Value.ToString();
-                string Column3 = row.Cells["ConsumablesCount"].Value.ToString();
-                string Column4 = row.Cells["Column4"].Value.ToString();
-                string Column5 = row.Cells["Column5"].Value.ToString();
-                string CreationTime = row.Cells["CreationTime"].Value.ToString();
-                string CreationName = row.Cells["CreationName"].Value.ToString();
+                string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+                string ProductManagement_Manager = row.Cells["ProductManagement_Manager"].Value.ToString();
+                string Quantity_Manager = row.Cells["Quantity_Manager"].Value.ToString();
+                string Customer_Manager = row.Cells["Customer_Manager"].Value.ToString();
+                string Schedule_Manager = row.Cells["Schedule_Manager"].Value.ToString();
+                string State_Manager = row.Cells["State_Manager"].Value.ToString();
+                string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
+                string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
 
 
-
-                edtName.Text = Column1;
-                uiTextBox2.Text = Column2;
-                uiTextBox1.Text = Column3;
-                uiTextBox3.Text = Column4;
-                uiTextBox4.Text = Column5;
-                uiTextBox5.Text = CreationTime;
-                uiTextBox6.Text = CreationName;
-
-
-
+                Id = Id_Manager;
+                ProductManagement.Text = ProductManagement_Manager;
+                Quantity.Text = Quantity_Manager;
+                Customer.Text = Customer_Manager;
+                Schedule.Text = Schedule_Manager;
+                State.Text = State_Manager;
+                CreateTime.Text = CreateTime_Manager;
+                CreateName.Text = CreateName_Manager;
             }
+        }
 
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiSymbolButton1_Click(object sender, EventArgs e)
+        {
+            GetList();
+        }
 
+        /// <summary>
+        /// 清空文本框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton6_Click(object sender, EventArgs e)
+        {
+            Id = null;
+            ProductManagement.Text = null;
+            Quantity.Text = null;
+            Customer.Text = null;
+            Schedule.Text = null;
+            State.Text = null;
+            CreateTime.Text = null;
+            CreateName.Text = null;
+        }
 
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton5_Click(object sender, EventArgs e)
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Cap_OrderManagement outbound = capProjectDb.Cap_OrderManagement.Where(t => t.Id == Id).FirstOrDefault();
+            outbound.ProductManagement = ProductManagement.Text;
+            outbound.Quantity = Quantity.Text;
+            outbound.Customer = Customer.Text;
+            outbound.Schedule = Schedule.Text;
+            outbound.State = State.Text;
+            outbound.CreateName = CreateName.Text;
+            capProjectDb.SubmitChanges();
+            ShowSuccessDialog("修改成功");
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            //查询数据
+            GetList();
         }
     }
 }
