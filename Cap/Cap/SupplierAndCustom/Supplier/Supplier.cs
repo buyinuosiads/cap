@@ -105,10 +105,7 @@ namespace Cap.SupplierAndCustom.Supplier
             }
         }
 
-
-
-
-
+         
         /// <summary>
         /// 分页控件页面切换事件
         /// </summary>
@@ -153,11 +150,7 @@ namespace Cap.SupplierAndCustom.Supplier
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //SupplierAdd frm = new SupplierAdd();
-            //frm.Render();
-            //frm.ShowDialog();
-            //dataTable.Rows.Add(NameOfTheSupplier.Text, SuppliersList.Text, SupplyPosition.Text, Price.Text, CreateTime.Text, CreateName.Text);
-
+           
             CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
             SupplierName supplierName = new SupplierName();
             supplierName.Id = Guid.NewGuid().ToString();
@@ -214,7 +207,7 @@ namespace Cap.SupplierAndCustom.Supplier
                 if (ShowAskDialog("确定要删除吗？"))
                 {
                     CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-                    SupplierName supplierName = capProjectDb.SupplierName.Where(t => t.Id == Id).FirstOrDefault();
+                    SupplierName supplierName = capProjectDb.SupplierName.Where(t => t.Id == Id_Manager).FirstOrDefault();
                     supplierName.IsDelete = 99;
                     capProjectDb.SubmitChanges();
                     ShowSuccessTip("删除成功");

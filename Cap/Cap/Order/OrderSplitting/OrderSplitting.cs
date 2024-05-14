@@ -88,11 +88,6 @@ namespace Cap.Order.OrderSplitting
         /// <param name="count"></param>
         private void uiPagination1_PageChanged(object sender, object pagingSource, int pageIndex, int count)
         {
-            //未连接数据库，通过模拟数据来实现
-            //一般通过ORM的分页去取数据来填充
-            //pageIndex：第几页，和界面对应，从1开始，取数据可能要用pageIndex - 1
-            //count：单页数据量，也就是PageSize值
-
             dataTable.Rows.Clear();
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
@@ -123,25 +118,31 @@ namespace Cap.Order.OrderSplitting
                 // 获取行数据
                 string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
 
-                if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
-                {
-                    OrderSplittingEdit order = new OrderSplittingEdit();///实例化窗体
-                    order.ShowDialog();
-                }
+                //if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+                //{
+                //    OrderSplittingEdit order = new OrderSplittingEdit();///实例化窗体
+                //    order.ShowDialog();
+                //}
 
-                if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
-                {
-                    OrderSplittingEdit order = new OrderSplittingEdit();///实例化窗体
-                    order.ShowDialog();
-                }
-
+                //if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+                //{
+                //    OrderSplittingEdit order = new OrderSplittingEdit();///实例化窗体
+                //    order.ShowDialog();
+                //}
 
                 if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
                 {
                     if (ShowAskDialog("确定要删除吗？"))
                     {
+                        CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                        Cap_OrderSplitting cap = capProjectDb.Cap_OrderSplitting.Where(t => t.Id == Id).FirstOrDefault();
+                        cap.IsDelete = 99;
+                        //保存数据
+                        capProjectDb.SubmitChanges();
                         ShowSuccessTip("删除成功");
-                        uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                        uiButton6_Click(sender, e); //调用清空文本框方法
+                                                    //查询数据
+                        GetList();
                     }
                     else
                     {
@@ -159,7 +160,6 @@ namespace Cap.Order.OrderSplitting
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
-
             CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
             Cap_OrderSplitting cap = new Cap_OrderSplitting();
             cap.Id = Guid.NewGuid().ToString();
@@ -175,11 +175,6 @@ namespace Cap.Order.OrderSplitting
             uiButton6_Click(sender, e); //调用清空文本框方法
             //查询数据
             GetList();
-
-
-
-
-
 
         }
 
@@ -234,6 +229,15 @@ namespace Cap.Order.OrderSplitting
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Cap_OrderSplitting cap = capProjectDb.Cap_OrderSplitting.Where(t => t.Id == Id).FirstOrDefault();
+            cap.OrderName = OrderName.Text;
+            //保存数据
+            capProjectDb.SubmitChanges();
+            ShowSuccessDialog("修改成功");
+            uiButton6_Click(sender, e); //调用清空文本框方法
+            //查询数据
+            GetList();
 
         }
     }
