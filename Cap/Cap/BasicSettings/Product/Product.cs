@@ -26,7 +26,8 @@ namespace Cap.BasicSettings.Product
         List<ProcessSetting> processSettings = new List<ProcessSetting>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = null;
-        public Product()
+        string _Name = string.Empty;
+        public Product(string name)
         {
 
 
@@ -84,6 +85,7 @@ namespace Cap.BasicSettings.Product
 
 
             GetList();
+            _Name = name;
         }
 
 
@@ -218,7 +220,7 @@ namespace Cap.BasicSettings.Product
                 productSetup.ProductName = ProductName.Text;
                 productSetup.ProcessName = ProcessName.Text;
                 productSetup.Price = decimal.Parse(Price.Text);
-                productSetup.CreateName = CreateName.Text;
+                productSetup.CreateName = _Name;
                 //创建时间
                 productSetup.CreateTime = DateTime.Now;
                 //是否删除
@@ -429,8 +431,7 @@ namespace Cap.BasicSettings.Product
                 ProductSetup productSetup = capProjectDb.ProductSetup.Where(t => t.Id == Id).FirstOrDefault();
                 productSetup.ProductName = ProductName.Text;
                 productSetup.ProcessName = ProcessName.Text;
-                productSetup.Price = decimal.Parse(Price.Text);
-                productSetup.CreateName = CreateName.Text;
+                productSetup.Price = decimal.Parse(Price.Text); 
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法

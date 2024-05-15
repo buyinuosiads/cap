@@ -22,7 +22,8 @@ namespace Cap.Order.OrderAdditionalRecording
         List<OrderSupplement> dataList = new List<OrderSupplement>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public OrderAdditionalRecording()
+        string _Name = string.Empty;
+        public OrderAdditionalRecording(string name)
         {
             InitializeComponent();
             dataTable.Columns.Add("Id_Manager");
@@ -30,6 +31,7 @@ namespace Cap.Order.OrderAdditionalRecording
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreationName_Manager");
             GetList();
+            _Name = name;
         }
 
 
@@ -164,7 +166,7 @@ namespace Cap.Order.OrderAdditionalRecording
                 orderSupplement.Id = Guid.NewGuid().ToString();
                 orderSupplement.AdditionalRecording = AdditionalRecording.Text;
                 orderSupplement.CreateTime = DateTime.Now;
-                orderSupplement.CreateName = CreateName.Text;
+                orderSupplement.CreateName = _Name;
                 orderSupplement.IsDelete = 0;
                 capProjectDb.OrderSupplement.InsertOnSubmit(orderSupplement);
                 capProjectDb.SubmitChanges();
@@ -178,7 +180,7 @@ namespace Cap.Order.OrderAdditionalRecording
             {
                 ShowErrorTip("取消当前操作");
             }
-          
+
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -226,7 +228,6 @@ namespace Cap.Order.OrderAdditionalRecording
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 OrderSupplement orderSupplement = capProjectDb.OrderSupplement.Where(t => t.Id == Id).FirstOrDefault();
                 orderSupplement.AdditionalRecording = AdditionalRecording.Text;
-                orderSupplement.CreateName = CreateName.Text;
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法

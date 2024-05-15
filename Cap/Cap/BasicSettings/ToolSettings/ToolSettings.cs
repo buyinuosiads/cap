@@ -25,22 +25,10 @@ namespace Cap.BasicSettings.ToolSettings
         List<ToolSetup> dataList = new List<ToolSetup>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public ToolSettings()
+        string _Name = string.Empty;
+        public ToolSettings(string name)
         {
             InitializeComponent();
-            //for (int i = 0; i < 10; i++)
-            //{
-            //Data data = new Data();
-            //data.Column1 = "刀具名称" + i;
-            //data.Column2 = i.Mod(2) == 0 ? "10" : "20";
-            //data.Column3 = i.Mod(2) == 0 ? "0.1%" : "0.2%";
-            //data.Column4 = DateTime.Now.ToString();
-            //data.Column5 = "管理员";
-            //data.fukuan = "幅宽" + i;
-            //data.xishu = "系数" + i;
-            //data.tangtou = "烫头" + i;
-            //dataList.Add(data);
-            //}
 
             dataTable.Columns.Add("Id_Manager");
             dataTable.Columns.Add("ToolName_Manager");
@@ -52,7 +40,7 @@ namespace Cap.BasicSettings.ToolSettings
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
-
+            _Name = name;
         }
 
 
@@ -146,7 +134,7 @@ namespace Cap.BasicSettings.ToolSettings
                 toolSetup.Coefficient = Coefficient.Text;
                 toolSetup.PermName = PermName.Text;
                 toolSetup.CreateTime = DateTime.Now;
-                toolSetup.CreateName = CreateName.Text;
+                toolSetup.CreateName = _Name;
                 toolSetup.IsDelete = 0;
                 //保存数据
                 capProjectDb.ToolSetup.InsertOnSubmit(toolSetup);

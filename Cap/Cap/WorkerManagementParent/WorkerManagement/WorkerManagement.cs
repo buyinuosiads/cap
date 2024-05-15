@@ -14,6 +14,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cap.WorkerManagementParent.WorkerManagement
@@ -23,7 +24,8 @@ namespace Cap.WorkerManagementParent.WorkerManagement
         List<Cap_WorkerManagement> dataList = new List<Cap_WorkerManagement>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public WorkerManagement()
+        string _Name = string.Empty;
+        public WorkerManagement(string name)
         {
             InitializeComponent();
 
@@ -35,6 +37,7 @@ namespace Cap.WorkerManagementParent.WorkerManagement
             dataTable.Columns.Add("CreateName_Manager");
 
             GetList();
+            _Name = name;
         }
 
         /// <summary>
@@ -168,6 +171,7 @@ namespace Cap.WorkerManagementParent.WorkerManagement
                 cap_WorkerManagement.Message = Message.Text;
                 cap_WorkerManagement.BasicInformation = BasicInformation.Text;
                 cap_WorkerManagement.CreateTime = DateTime.Now;
+                cap_WorkerManagement.CreateName = _Name;
                 cap_WorkerManagement.IsDelete = 0;
                 //保存数据
                 capProjectDb.Cap_WorkerManagement.InsertOnSubmit(cap_WorkerManagement);

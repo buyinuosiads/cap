@@ -20,7 +20,8 @@ namespace Cap.InventoryManagement.Outbound
         List<OutboundManager> dataList = new List<OutboundManager>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public Outbound()
+        string _Name = string.Empty;
+        public Outbound(string name)
         {
             InitializeComponent();
             dataTable.Columns.Add("Id_Manager");
@@ -30,6 +31,7 @@ namespace Cap.InventoryManagement.Outbound
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
+            _Name = name;
         }
 
 
@@ -175,7 +177,7 @@ namespace Cap.InventoryManagement.Outbound
                 outbound.OutboundName = OutboundName.Text;
                 outbound.Contact = Contact.Text; ;
                 outbound.Phone = Phone.Text;
-                outbound.CreateName = CreateName.Text;
+                outbound.CreateName = _Name;
                 outbound.CreateTime = DateTime.Now;
                 outbound.IsDelete = 0;
                 //添加数据
@@ -255,8 +257,7 @@ namespace Cap.InventoryManagement.Outbound
                 OutboundManager outbound = capProjectDb.OutboundManager.Where(t => t.Id == Id).FirstOrDefault();
                 outbound.OutboundName = OutboundName.Text;
                 outbound.Contact = Contact.Text; ;
-                outbound.Phone = Phone.Text;
-                outbound.CreateName = CreateName.Text;
+                outbound.Phone = Phone.Text; 
                 outbound.IsDelete = 0;
                 //保存数据
                 capProjectDb.SubmitChanges();

@@ -24,7 +24,8 @@ namespace Cap.FixedAssetsParent.FixedAssets
         List<Cap_FixedAssets> dataList = new List<Cap_FixedAssets>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public FixedAssets()
+        string _Name = string.Empty;
+        public FixedAssets(string name)
         {
             InitializeComponent();
             AcquisitionDate.Text = DateTime.Now.ToString();
@@ -41,6 +42,7 @@ namespace Cap.FixedAssetsParent.FixedAssets
             dataTable.Columns.Add("CreateName_Manager");
 
             GetList();
+            _Name = name;
         }
 
 
@@ -183,7 +185,7 @@ namespace Cap.FixedAssetsParent.FixedAssets
                 cap_Fixed.AssetStatus = AssetStatus.Text;
                 cap_Fixed.Remark = Remark.Text;
                 cap_Fixed.CreateTime = DateTime.Now;
-                cap_Fixed.CreateName = CreateName.Text;
+                cap_Fixed.CreateName = _Name;
                 cap_Fixed.IsDelete = 0;
                 //添加数据
                 capProjectDb.Cap_FixedAssets.InsertOnSubmit(cap_Fixed);
@@ -283,8 +285,7 @@ namespace Cap.FixedAssetsParent.FixedAssets
                 cap_Fixed.PurchaseAmount = decimal.Parse(PurchaseAmount.Text);
                 cap_Fixed.AssetsClass = AssetsClass.Text;
                 cap_Fixed.AssetStatus = AssetStatus.Text;
-                cap_Fixed.Remark = Remark.Text;
-                cap_Fixed.CreateName = CreateName.Text;
+                cap_Fixed.Remark = Remark.Text; 
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法

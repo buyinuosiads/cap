@@ -25,7 +25,8 @@ namespace Cap.SupplierAndCustom.Custom
         List<Consumer> dataList = new List<Consumer>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public Custom()
+        string _Name = string.Empty;
+        public Custom(string name)
         {
             InitializeComponent();
 
@@ -37,6 +38,7 @@ namespace Cap.SupplierAndCustom.Custom
             dataTable.Columns.Add("CreateName_Manager");
 
             GetList();
+            _Name = name;
         }
 
 
@@ -130,7 +132,7 @@ namespace Cap.SupplierAndCustom.Custom
                 consumer.Contact = Contact.Text;
                 consumer.Phone = Phone.Text;
                 consumer.CreateTime = DateTime.Now;
-                consumer.CreateName = CreateName.Text;
+                consumer.CreateName = _Name;
                 consumer.IsDelete = 0;
                 capProjectDb.Consumer.InsertOnSubmit(consumer);
                 capProjectDb.SubmitChanges();
@@ -269,7 +271,7 @@ namespace Cap.SupplierAndCustom.Custom
                 consumer.CustomerName = CustomerName.Text;
                 consumer.Contact = Contact.Text;
                 consumer.Phone = Phone.Text;
-                consumer.CreateName = CreateName.Text;
+                 
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法

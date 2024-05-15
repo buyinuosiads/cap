@@ -24,7 +24,8 @@ namespace Cap.WorkRecordsParent.WorkRecords
         List<Cap_WorkRecord> dataList = new List<Cap_WorkRecord>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = null;
-        public WorkRecords()
+        string _Name = string.Empty;
+        public WorkRecords(string name)
         {
             InitializeComponent();
 
@@ -36,6 +37,7 @@ namespace Cap.WorkRecordsParent.WorkRecords
             dataTable.Columns.Add("CreateName_Manager");
 
             GetList();
+            _Name = name;
         }
 
         /// <summary>
@@ -177,7 +179,7 @@ namespace Cap.WorkRecordsParent.WorkRecords
                 cap_Work.Logging = Logging.Text;
                 cap_Work.Statistics = Statistics.Text;
                 cap_Work.CreateTime = DateTime.Now;
-                cap_Work.CreateName = CreateName.Text;
+                cap_Work.CreateName = _Name;
                 cap_Work.IsDelete = 0;
                 //添加数据
                 capProjectDb.Cap_WorkRecord.InsertOnSubmit(cap_Work);
@@ -254,7 +256,6 @@ namespace Cap.WorkRecordsParent.WorkRecords
                 cap_Work.JobTitle = JobTitle.Text;
                 cap_Work.Logging = Logging.Text;
                 cap_Work.Statistics = Statistics.Text;
-                cap_Work.CreateName = CreateName.Text;
                 //保存数据
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");

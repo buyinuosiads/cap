@@ -21,7 +21,8 @@ namespace Cap.BasicSettings.Accessories
         List<ChargeTime> dataList = new List<ChargeTime>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public Accessories()
+        string _Name = string.Empty;
+        public Accessories(string name)
         {
             InitializeComponent();
 
@@ -31,6 +32,7 @@ namespace Cap.BasicSettings.Accessories
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
+            _Name = name;
         }
 
 
@@ -159,7 +161,7 @@ namespace Cap.BasicSettings.Accessories
                 chargeTime.AccessoryName = AccessoryName.Text;
                 chargeTime.Unit = Unit.Text;
                 chargeTime.CreateTime = DateTime.Now;
-                chargeTime.CreateName = CreateName.Text;
+                chargeTime.CreateName = _Name;
                 chargeTime.IsDelete = 0;
                 //保存数据
                 capProjectDb.ChargeTime.InsertOnSubmit(chargeTime);
@@ -244,7 +246,7 @@ namespace Cap.BasicSettings.Accessories
                 ChargeTime chargeTime = capProjectDb.ChargeTime.Where(t => t.Id == Id).FirstOrDefault();
                 chargeTime.AccessoryName = AccessoryName.Text;
                 chargeTime.Unit = Unit.Text;
-                chargeTime.CreateName = CreateName.Text;
+                chargeTime.CreateName = _Name;
                 //保存数据
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");

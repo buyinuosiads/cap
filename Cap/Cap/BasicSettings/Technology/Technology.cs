@@ -15,6 +15,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static Cap.SystemSetup.Menu.MenuBarAdd;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -25,10 +26,11 @@ namespace Cap.BasicSettings.Technology
         List<ProcessSetting> dataList = new List<ProcessSetting>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = null;
-        public Technology()
+        string _Name = string.Empty;
+        public Technology(string name)
         {
             InitializeComponent();
-
+            _Name = name;
             //主料
             CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
             List<MajorIngredient> majorIngredients = capProjectDb.MajorIngredient.Where(t => t.IsDelete == 0).ToList();
@@ -204,7 +206,7 @@ namespace Cap.BasicSettings.Technology
                 processSetting.Price = decimal.Parse(Price.Text);
                 //创建时间
                 processSetting.CreateTime = DateTime.Now;
-                processSetting.CreateName = CreateName.Text;
+                processSetting.CreateName = _Name;
                 //添加数据
                 processSetting.IsDelete = 0;
                 //是否删除
@@ -390,8 +392,7 @@ namespace Cap.BasicSettings.Technology
                 ProcessSetting processSetting = capProjectDb.ProcessSetting.Where(t => t.Id == Id).FirstOrDefault();
                 processSetting.ProcessName = ProcessName.Text;
                 processSetting.Main = MainIngredient.Text;
-                processSetting.Accessory = Accessory.Text;
-                processSetting.CreateName = CreateName.Text;
+                processSetting.Accessory = Accessory.Text; 
                 processSetting.Price = decimal.Parse(Price.Text);
                 //保存数据
                 capProjectDb.SubmitChanges();

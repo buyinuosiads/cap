@@ -20,7 +20,8 @@ namespace Cap.Order.OrderSplitting
         List<Cap_OrderSplitting> dataList = new List<Cap_OrderSplitting>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public OrderSplitting()
+        string _Name = string.Empty;
+        public OrderSplitting(string name)
         {
             InitializeComponent();
 
@@ -29,6 +30,7 @@ namespace Cap.Order.OrderSplitting
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
+            _Name = name;
         }
 
 
@@ -161,13 +163,13 @@ namespace Cap.Order.OrderSplitting
         {
 
             if (ShowAskDialog("确定要添加吗？"))
-            { 
+            {
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_OrderSplitting cap = new Cap_OrderSplitting();
                 cap.Id = Guid.NewGuid().ToString();
                 cap.OrderName = OrderName.Text;
                 cap.CreateTime = DateTime.Now;
-                cap.CreateName = CreateName.Text;
+                cap.CreateName = _Name;
                 cap.IsDelete = 0;
                 //添加数据
                 capProjectDb.Cap_OrderSplitting.InsertOnSubmit(cap);

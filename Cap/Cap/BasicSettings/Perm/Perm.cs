@@ -24,7 +24,8 @@ namespace Cap.BasicSettings.Perm
         List<PermSetting> dataList = new List<PermSetting>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public Perm()
+        string _Name = string.Empty;
+        public Perm(string name)
         {
             InitializeComponent();
             dataTable.Columns.Add("Id_Manager");
@@ -33,6 +34,7 @@ namespace Cap.BasicSettings.Perm
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
+            _Name = name;
         }
 
 
@@ -103,14 +105,13 @@ namespace Cap.BasicSettings.Perm
 
             if (ShowAskDialog("确定要添加吗？"))
             {
-
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 PermSetting permSetting = new PermSetting();
                 permSetting.Id = Guid.NewGuid().ToString();
                 permSetting.PermName = PermName.Text;
                 permSetting.PermSpecifications = PermSpecifications.Text;
                 permSetting.CreateTime = DateTime.Now;
-                permSetting.CreateName = CreateName.Text;
+                permSetting.CreateName = _Name;
                 permSetting.IsDelete = 0;
                 //保存数据
                 capProjectDb.PermSetting.InsertOnSubmit(permSetting);
@@ -248,7 +249,6 @@ namespace Cap.BasicSettings.Perm
 
             if (ShowAskDialog("确定要修改吗？"))
             {
-
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 PermSetting permSetting = capProjectDb.PermSetting.Where(t => t.Id == Id).FirstOrDefault();
                 permSetting.PermName = PermName.Text;

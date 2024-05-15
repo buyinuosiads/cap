@@ -1,4 +1,5 @@
-﻿using Sunny.UI;
+﻿using Model;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,17 +22,30 @@ namespace Cap
         private void FLogin_ButtonLoginClick(object sender, System.EventArgs e)
         {
 
-            IsLogin = true;
-            Nav form = new Nav();
-            form.Show();
+            //IsLogin = true;
+            //Nav form = new Nav();
+            //form.Show();
+
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Sys_User _User = capProjectDb.Sys_User.Where(t => t.Account == "admin" && t.Password == "123456" && t.IsDelete == 0).FirstOrDefault();
+            if (_User != null)
+            {
+                IsLogin = true;
+                Nav form = new Nav(_User.Name, _User.Position);
+                form.Show();
+                this.Hide(); // 隐藏当前窗体，不关闭
+            }
+            else
+            {
+                ShowErrorTip("用户名或者密码错误。");
+            }
+
 
             //if (UserName == "1" && Password == "1")
             //{
             //    IsLogin = true;
             //    Nav form = new Nav();
             //    form.Show();
-
-
             //}
             //else
             //{

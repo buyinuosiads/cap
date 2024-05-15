@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.SuspendLayout();
             // 
             // lblTitle
             // 
-            this.lblTitle.Text = "帽子后台管理";
+            this.lblTitle.Text = "帽业生产管理系统";
             // 
             // lblSubText
             // 
@@ -42,10 +43,12 @@
             // Login
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(750, 450);
             this.Name = "Login";
             this.SubText = "";
             this.Text = "Form1";
+            this.Title = "帽业生产管理系统";
             this.ButtonLoginClick += new System.EventHandler(this.FLogin_ButtonLoginClick);
             this.ResumeLayout(false);
 

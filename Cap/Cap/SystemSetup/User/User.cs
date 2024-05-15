@@ -27,7 +27,7 @@ namespace Cap.SystemSetup
 
         DataTable dataTable = new DataTable("DataTable");
         public UserEdit userEdit = null;
-
+   
         public User()
         {
             InitializeComponent();
@@ -49,6 +49,7 @@ namespace Cap.SystemSetup
             Position.DataSource = infoList;
             Position.Text = null;
             GetList();
+         
         }
 
 
@@ -286,43 +287,53 @@ namespace Cap.SystemSetup
                     return;
                 }
 
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-                Sys_User sys_User = new Sys_User();
-                int Sex_Manager = 0;
-                if (rbMale.Checked == true)
+
+                Sys_User _User = capProjectDb.Sys_User.Where(t => t.Account == Account.Text).FirstOrDefault();
+                if (_User == null)
                 {
-                    Sex_Manager = 0;
+                    Sys_User sys_User = new Sys_User();
+                    int Sex_Manager = 0;
+                    if (rbMale.Checked == true)
+                    {
+                        Sex_Manager = 0;
+                    }
+                    else
+                    {
+                        Sex_Manager = 1;
+                    }
+                    //姓名
+                    sys_User.Name = UserName.Text;
+                    //性别
+                    sys_User.Sex = Sex_Manager;
+                    //账号
+                    sys_User.Account = Account.Text;
+                    //密码
+                    sys_User.Password = Password.Text;
+                    //电话
+                    sys_User.Phone = Phone.Text;
+                    //职位
+                    sys_User.Position = Position.Text;
+                    //地址
+                    sys_User.Address = Address.Text;
+                    //创建时间
+                    sys_User.CreateTime = DateTime.Now;
+                    //是否删除
+                    sys_User.IsDelete = 0;
+                    //添加数据
+                    capProjectDb.Sys_User.InsertOnSubmit(sys_User);
+                    //保存数据
+                    capProjectDb.SubmitChanges();
+                    ShowSuccessDialog("添加成功");
+                    uiButton6_Click(sender, e); //调用清空文本框方法
+                                                //查询数据
+                    GetList();
                 }
                 else
                 {
-                    Sex_Manager = 1;
+                    ShowErrorTip("账号已存在");
                 }
-                //姓名
-                sys_User.Name = UserName.Text;
-                //性别
-                sys_User.Sex = Sex_Manager;
-                //账号
-                sys_User.Account = Account.Text;
-                //密码
-                sys_User.Password = Password.Text;
-                //电话
-                sys_User.Phone = Phone.Text;
-                //职位
-                sys_User.Position = Position.Text;
-                //地址
-                sys_User.Address = Address.Text;
-                //创建时间
-                sys_User.CreateTime = DateTime.Now;
-                //是否删除
-                sys_User.IsDelete = 0;
-                //添加数据
-                capProjectDb.Sys_User.InsertOnSubmit(sys_User);
-                //保存数据
-                capProjectDb.SubmitChanges();
-                ShowSuccessDialog("添加成功");
-                uiButton6_Click(sender, e); //调用清空文本框方法
-                                            //查询数据
-                GetList();
             }
             else
             {
@@ -365,11 +376,11 @@ namespace Cap.SystemSetup
                 int Sex_Manager = 0;
                 if (rbFemale.Checked == true)
                 {
-                    Sex_Manager = 0;
+                    Sex_Manager = 1;
                 }
                 else
                 {
-                    Sex_Manager = 1;
+                    Sex_Manager = 0;
                 }
                 //姓名
                 sys_User.Name = UserName.Text;

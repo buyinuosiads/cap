@@ -13,6 +13,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Cap.InventoryManagement.Inventory
 {
@@ -21,9 +22,10 @@ namespace Cap.InventoryManagement.Inventory
         List<Stocks> dataList = new List<Stocks>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-
-        public Inventory()
+        string _Name = string.Empty;
+        public Inventory(string name)
         {
+            _Name = name;
             InitializeComponent();
             //for (int i = 0; i < 10; i++)
             //{
@@ -180,7 +182,7 @@ namespace Cap.InventoryManagement.Inventory
                 stocks.NameOfMaterial = NameOfMaterial.Text;
                 stocks.QuantityOfMaterial = int.Parse(QuantityOfMaterial.Text);
                 stocks.CreateTime = DateTime.Now;
-                stocks.CreateName = "创建人";
+                stocks.CreateName = _Name;
                 stocks.IsDelete = 0;
                 //添加数据
                 capProjectDb.Stocks.InsertOnSubmit(stocks);

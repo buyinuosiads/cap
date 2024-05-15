@@ -15,6 +15,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cap.BasicSettings.Box
@@ -25,11 +26,12 @@ namespace Cap.BasicSettings.Box
         DataTable dataTable = new DataTable("DataTable");
 
         string Id = null;
-        public Box()
+        string _Name = string.Empty;
+        public Box(string name)
         {
             InitializeComponent();
 
-
+            _Name = name;
             dataTable.Columns.Add("Id_Manager");
             dataTable.Columns.Add("CaseGaugeName_Manager");
             dataTable.Columns.Add("ContainerLoad_Manager");
@@ -187,7 +189,7 @@ namespace Cap.BasicSettings.Box
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (ShowAskDialog("确定要添加吗？"))
-            { 
+            {
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 BoxGaugeSetting boxGaugeSetting = new BoxGaugeSetting();
                 boxGaugeSetting.Id = Guid.NewGuid().ToString();
@@ -197,7 +199,7 @@ namespace Cap.BasicSettings.Box
                 boxGaugeSetting.AccessoryName = AccessoryName.Text;
                 boxGaugeSetting.AccessoryNum = AccessoryNum.Text;
                 boxGaugeSetting.CreateTime = DateTime.Now;
-                boxGaugeSetting.CreateName = CreateName.Text;
+                boxGaugeSetting.CreateName = _Name;
                 boxGaugeSetting.IsDelete = 0;
                 //添加数据
                 capProjectDb.BoxGaugeSetting.InsertOnSubmit(boxGaugeSetting);
@@ -408,15 +410,14 @@ namespace Cap.BasicSettings.Box
         private void uiButton5_Click(object sender, EventArgs e)
         {
             if (ShowAskDialog("确定要修改吗？"))
-            { 
+            {
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 BoxGaugeSetting boxGaugeSetting = capProjectDb.BoxGaugeSetting.Where(t => t.Id == Id).FirstOrDefault();
                 boxGaugeSetting.CaseGaugeName = CaseGaugeName.Text;
                 boxGaugeSetting.ContainerLoad = ContainerLoad.Text;
                 boxGaugeSetting.ConsumableNumber = ConsumableNumber.Text;
                 boxGaugeSetting.AccessoryName = AccessoryName.Text;
-                boxGaugeSetting.AccessoryNum = AccessoryNum.Text;
-                boxGaugeSetting.CreateName = CreateName.Text;
+                boxGaugeSetting.AccessoryNum = AccessoryNum.Text; 
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法

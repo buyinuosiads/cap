@@ -25,7 +25,8 @@ namespace Cap.AttendanceManagementParent.AttendanceManagement
         List<Cap_AttendanceManagement> dataList = new List<Cap_AttendanceManagement>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public AttendanceManagement()
+        string _Name = string.Empty;
+        public AttendanceManagement(string name)
         {
             InitializeComponent();
 
@@ -35,7 +36,7 @@ namespace Cap.AttendanceManagementParent.AttendanceManagement
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
-
+            _Name = name;
         }
 
         /// <summary>
@@ -171,7 +172,7 @@ namespace Cap.AttendanceManagementParent.AttendanceManagement
                 cap_Attendance.AttendanceDays = AttendanceDays.Text;
                 cap_Attendance.Timekeeper = Timekeeper.Text;
                 cap_Attendance.CreateTime = DateTime.Now;
-                cap_Attendance.CreateName = CreateName.Text;
+                cap_Attendance.CreateName = _Name;
                 cap_Attendance.IsDelete = 0;
                 capProjectDb.Cap_AttendanceManagement.InsertOnSubmit(cap_Attendance);
                 capProjectDb.SubmitChanges();
@@ -232,8 +233,7 @@ namespace Cap.AttendanceManagementParent.AttendanceManagement
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_AttendanceManagement cap_Attendance = capProjectDb.Cap_AttendanceManagement.Where(t => t.Id == Id).FirstOrDefault();
                 cap_Attendance.AttendanceDays = AttendanceDays.Text;
-                cap_Attendance.Timekeeper = Timekeeper.Text;
-                cap_Attendance.CreateName = CreateName.Text;
+                cap_Attendance.Timekeeper = Timekeeper.Text; 
                 cap_Attendance.IsDelete = 0;
                 capProjectDb.SubmitChanges();
                 ShowSuccessTip("修改成功");

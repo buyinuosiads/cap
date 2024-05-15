@@ -24,7 +24,9 @@ namespace Cap.PurchasingManagementParent.PurchasingManagement
         List<Cap_PurchasingManagement> dataList = new List<Cap_PurchasingManagement>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public PurchasingManagement()
+        string _Name = string.Empty;
+
+        public PurchasingManagement(string name)
         {
             InitializeComponent();
 
@@ -35,6 +37,7 @@ namespace Cap.PurchasingManagementParent.PurchasingManagement
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
+            _Name = name;
         }
 
         /// <summary>
@@ -180,7 +183,7 @@ namespace Cap.PurchasingManagementParent.PurchasingManagement
                 cap_PurchasingManagement.OrderQuantity = int.Parse(OrderQuantity.Text);
                 cap_PurchasingManagement.OrderName = OrderName.Text;
                 cap_PurchasingManagement.CreateTime = DateTime.Now;
-                cap_PurchasingManagement.CreateName = CreateName.Text;
+                cap_PurchasingManagement.CreateName = _Name;
                 cap_PurchasingManagement.IsDelete = 0;
                 //保存数据
                 capProjectDb.Cap_PurchasingManagement.InsertOnSubmit(cap_PurchasingManagement);
@@ -259,7 +262,6 @@ namespace Cap.PurchasingManagementParent.PurchasingManagement
                 Cap_PurchasingManagement cap_PurchasingManagement = capProjectDb.Cap_PurchasingManagement.Where(t => t.Id == Id).FirstOrDefault();
                 cap_PurchasingManagement.OrderQuantity = int.Parse(OrderQuantity.Text);
                 cap_PurchasingManagement.OrderName = OrderName.Text;
-                cap_PurchasingManagement.CreateName = CreateName.Text;
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("添加成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法

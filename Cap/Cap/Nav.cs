@@ -47,17 +47,22 @@ namespace Cap
     public partial class Nav : UIForm2
     {
         CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-        public Nav()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Name">登录人名称</param>
+        /// <param name="Position">登录人职位</param>
+        public Nav(string Name, string Position)
         {
             InitializeComponent();
 
             #region 设置窗体全屏 
             this.WindowState = FormWindowState.Maximized;
             #endregion 
+            uiLabel1.Text += Name;
 
-
-            string aa = "老板";
-            Sys_Role sys_Role = capProjectDb.Sys_Role.Where(t => t.RoleName.Equals(aa)).FirstOrDefault();
+            //string aa = "老板";
+            Sys_Role sys_Role = capProjectDb.Sys_Role.Where(t => t.RoleName.Equals(Position)).FirstOrDefault(); //查询当前职位
             List<Sys_Menu> sys_MenuList = capProjectDb.Sys_Menu.ToList();
 
 
@@ -170,7 +175,7 @@ namespace Cap
                             //parent = uiNavMenu1.CreateNode("基础设置", 61818, 24, pageIndex);
                             JCSZ = true;
                         }
-                        WidthOfCloth widthOf = new WidthOfCloth();
+                        WidthOfCloth widthOf = new WidthOfCloth(Name);
                         widthOf.Text = _Menu.MenuText;
                         widthOf.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(widthOf, Guid.NewGuid()));    //6 幅宽设置
@@ -184,7 +189,7 @@ namespace Cap
                             //parent = uiNavMenu1.CreateNode("基础设置", 61818, 24, pageIndex);
                             JCSZ = true;
                         }
-                        Perm perm = new Perm();
+                        Perm perm = new Perm(Name);
                         perm.Text = _Menu.MenuText;
                         perm.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(perm, Guid.NewGuid()));    // 7 烫头设置
@@ -198,7 +203,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(jcsz_Manager.MenuText, int.Parse(jcsz_Manager.Icon), 24, pageIndex);
                             JCSZ = true;
                         }
-                        ToolSettings tool = new ToolSettings();
+                        ToolSettings tool = new ToolSettings(Name);
                         tool.Text = _Menu.MenuText;
                         tool.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(tool, Guid.NewGuid()));      //8  刀具设置
@@ -212,7 +217,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(jcsz_Manager.MenuText, int.Parse(jcsz_Manager.Icon), 24, pageIndex);
                             JCSZ = true;
                         }
-                        Ingredients ingredients = new Ingredients();
+                        Ingredients ingredients = new Ingredients(Name);
                         ingredients.Text = _Menu.MenuText;
                         ingredients.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(ingredients, Guid.NewGuid()));   //9     主料设置
@@ -226,7 +231,7 @@ namespace Cap
                             //parent = uiNavMenu1.CreateNode("基础设置", 61818, 24, pageIndex);
                             JCSZ = true;
                         }
-                        Accessories accessories = new Accessories();
+                        Accessories accessories = new Accessories(Name);
                         accessories.Text = _Menu.MenuText;
                         accessories.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(accessories, Guid.NewGuid())); //10 辅料设置
@@ -241,7 +246,7 @@ namespace Cap
                             JCSZ = true;
                         }
 
-                        Technology technology = new Technology();
+                        Technology technology = new Technology(Name);
                         technology.Text = _Menu.MenuText;
                         technology.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(technology, Guid.NewGuid()));  //11     工艺设置
@@ -255,7 +260,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(jcsz_Manager.MenuText, int.Parse(jcsz_Manager.Icon), 24, pageIndex);
                             JCSZ = true;
                         }
-                        Product product = new Product();
+                        Product product = new Product(Name);
                         product.Text = _Menu.MenuText;
                         product.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(product, Guid.NewGuid()));  //12  产品设置
@@ -269,7 +274,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(jcsz_Manager.MenuText, int.Parse(jcsz_Manager.Icon), 24, pageIndex);
                             JCSZ = true;
                         }
-                        Box box = new Box();
+                        Box box = new Box(Name);
                         box.Text = _Menu.MenuText;
                         box.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(box, Guid.NewGuid()));   //13     箱规设置
@@ -283,7 +288,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(jcsz_Manager.MenuText, int.Parse(jcsz_Manager.Icon), 24, pageIndex);
                             JCSZ = true;
                         }
-                        Specifications specifications = new Specifications();
+                        Specifications specifications = new Specifications(Name);
                         specifications.Text = _Menu.MenuText;
                         specifications.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(specifications, Guid.NewGuid()));  //14    规格设置
@@ -300,7 +305,7 @@ namespace Cap
 
                             GYSKH = true;
                         }
-                        Supplier supplier = new Supplier();
+                        Supplier supplier = new Supplier(Name);
                         supplier.Text = _Menu.MenuText;
                         supplier.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(supplier));  //15  供应商
@@ -314,7 +319,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(gys_Manager.MenuText, int.Parse(gys_Manager.Icon), 24, pageIndex);
                             GYSKH = true;
                         }
-                        Custom custom = new Custom();
+                        Custom custom = new Custom(Name);
                         custom.Text = _Menu.MenuText;
                         custom.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(custom));  //16  客户
@@ -330,7 +335,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(kcgl_Manager.MenuText, int.Parse(kcgl_Manager.Icon), 24, pageIndex);
                             KCGL = true;
                         }
-                        Inventory inventory = new Inventory();
+                        Inventory inventory = new Inventory(Name);
                         inventory.Text = _Menu.MenuText;
                         inventory.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(inventory)); //17  库存
@@ -342,7 +347,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(kcgl_Manager.MenuText, int.Parse(kcgl_Manager.Icon), 24, pageIndex);
                             KCGL = true;
                         }
-                        Inbound inbound = new Inbound();
+                        Inbound inbound = new Inbound(Name);
                         inbound.Text = _Menu.MenuText;
                         inbound.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(inbound));   //18   入库
@@ -354,7 +359,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(kcgl_Manager.MenuText, int.Parse(kcgl_Manager.Icon), 24, pageIndex);
                             KCGL = true;
                         }
-                        Outbound outbound = new Outbound();
+                        Outbound outbound = new Outbound(Name);
                         outbound.Text = _Menu.MenuText;
                         outbound.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(outbound));  //19    出库
@@ -371,7 +376,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(dd_Manager.MenuText, int.Parse(dd_Manager.Icon), 24, pageIndex);
                             DD = true;
                         }
-                        OrderManagement orderManagement = new OrderManagement();
+                        OrderManagement orderManagement = new OrderManagement(Name);
                         orderManagement.Text = _Menu.MenuText;
                         orderManagement.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(orderManagement)); //20   订单管理
@@ -383,7 +388,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(dd_Manager.MenuText, int.Parse(dd_Manager.Icon), 24, pageIndex);
                             DD = true;
                         }
-                        OrderSplitting orderSplitting = new OrderSplitting();
+                        OrderSplitting orderSplitting = new OrderSplitting(Name);
                         orderSplitting.Text = _Menu.MenuText;
                         orderSplitting.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(orderSplitting));  //21    订单拆分
@@ -395,7 +400,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(dd_Manager.MenuText, int.Parse(dd_Manager.Icon), 24, pageIndex);
                             DD = true;
                         }
-                        OrderAdditionalRecording orderAdditionalRecording = new OrderAdditionalRecording();
+                        OrderAdditionalRecording orderAdditionalRecording = new OrderAdditionalRecording(Name);
                         orderAdditionalRecording.Text = _Menu.MenuText;
                         orderAdditionalRecording.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(orderAdditionalRecording));  //22  订单补录
@@ -407,7 +412,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(dd_Manager.MenuText, int.Parse(dd_Manager.Icon), 24, pageIndex);
                             DD = true;
                         }
-                        WorkerManagement worker = new WorkerManagement();
+                        WorkerManagement worker = new WorkerManagement(Name);
                         worker.Text = _Menu.MenuText;
                         worker.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateNode(AddPage(worker)); // 23 工人管理
@@ -420,7 +425,7 @@ namespace Cap
                             DD = true;
                         }
 
-                        WorkRecords workRecords = new WorkRecords();
+                        WorkRecords workRecords = new WorkRecords(Name);
                         workRecords.Text = _Menu.MenuText;
                         workRecords.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateNode(AddPage(workRecords)); //24 工作记录
@@ -437,7 +442,7 @@ namespace Cap
                             CW = true;
                         }
 
-                        FinancialJournal financialJournal = new FinancialJournal();
+                        FinancialJournal financialJournal = new FinancialJournal(Name);
                         financialJournal.Text = _Menu.MenuText;
                         financialJournal.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(financialJournal)); //25  财务日账
@@ -449,7 +454,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(cw_Manager.MenuText, int.Parse(cw_Manager.Icon), 24, pageIndex);
                             CW = true;
                         }
-                        FinancialStatements financialStatements = new FinancialStatements();
+                        FinancialStatements financialStatements = new FinancialStatements(Name);
                         financialStatements.Text = _Menu.MenuText;
                         financialStatements.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(financialStatements)); //26  财务报表
@@ -462,7 +467,7 @@ namespace Cap
                             CW = true;
                         }
 
-                        AttendanceManagement attendanceManagement = new AttendanceManagement();
+                        AttendanceManagement attendanceManagement = new AttendanceManagement(Name);
                         attendanceManagement.Text = _Menu.MenuText;
                         attendanceManagement.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateNode(AddPage(attendanceManagement));  //27  考勤管理
@@ -474,7 +479,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(cw_Manager.MenuText, int.Parse(cw_Manager.Icon), 24, pageIndex);
                             CW = true;
                         }
-                        PurchasingManagement purchasingManagement = new PurchasingManagement();
+                        PurchasingManagement purchasingManagement = new PurchasingManagement(Name);
                         purchasingManagement.Text = _Menu.MenuText;
                         purchasingManagement.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateNode(AddPage(purchasingManagement)); // 28  采购管理
@@ -486,7 +491,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(cw_Manager.MenuText, int.Parse(cw_Manager.Icon), 24, pageIndex);
                             CW = true;
                         }
-                        FixedAssets fixedAssets = new FixedAssets();
+                        FixedAssets fixedAssets = new FixedAssets(Name);
                         fixedAssets.Text = _Menu.MenuText;
                         fixedAssets.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateNode(AddPage(fixedAssets));  //29   固定资产
@@ -498,7 +503,7 @@ namespace Cap
                             parent = uiNavMenu1.CreateNode(cw_Manager.MenuText, int.Parse(cw_Manager.Icon), 24, pageIndex);
                             CW = true;
                         }
-                        AlarmManagement alarmManagement = new AlarmManagement();
+                        AlarmManagement alarmManagement = new AlarmManagement(Name);
                         alarmManagement.Text = _Menu.MenuText;
                         alarmManagement.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateNode(AddPage(alarmManagement)); //30    告警管理
@@ -590,5 +595,37 @@ namespace Cap
         }
 
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+
+            DateTime now = DateTime.Now;
+            string timeOfDay = null;
+
+            if (now.Hour >= 5 && now.Hour < 12)
+            {
+                timeOfDay = "早上好";
+            }
+            else if (now.Hour >= 12 && now.Hour < 18)
+            {
+                timeOfDay = "下午好";
+            }
+            else if (now.Hour >= 18 && now.Hour < 21)
+            {
+                timeOfDay = "傍晚好";
+            }
+            else
+            {
+                timeOfDay = "晚上好";
+            }
+
+
+            uiLabel2.Text = timeOfDay + " " + DateTime.Now.DateTimeString();
+        }
+
+        private void Nav_FormClosed(object sender, FormClosedEventArgs e)
+        { 
+            Application.Exit();//关闭的时候杀死所有线程
+        }
     }
 }

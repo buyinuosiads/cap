@@ -15,6 +15,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static Cap.SystemSetup.Company;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -25,7 +26,8 @@ namespace Cap.SystemSetup.WidthOfCloth
         List<Breadth> dataList = new List<Breadth>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public WidthOfCloth()
+        string _Name = string.Empty;
+        public WidthOfCloth(string Name)
         {
             InitializeComponent();
             dataTable.Columns.Add("Id_Manager");
@@ -35,6 +37,7 @@ namespace Cap.SystemSetup.WidthOfCloth
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
+            _Name = Name;
         }
 
 
@@ -157,7 +160,7 @@ namespace Cap.SystemSetup.WidthOfCloth
                 breadth.WidthSize = WidthSize.Text;
                 breadth.WidthType = WidthType.Text;
                 breadth.CreateTime = DateTime.Now;
-                breadth.CreateName = "管理员";
+                breadth.CreateName = _Name;
                 breadth.IsDelete = 0;
                 capProjectDb.Breadth.InsertOnSubmit(breadth);
                 capProjectDb.SubmitChanges();
@@ -299,7 +302,6 @@ namespace Cap.SystemSetup.WidthOfCloth
                 breadth.BreadthName = BreadthName.Text;
                 breadth.WidthSize = WidthSize.Text;
                 breadth.WidthType = WidthType.Text;
-                CreateName.Text = "修改";
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法

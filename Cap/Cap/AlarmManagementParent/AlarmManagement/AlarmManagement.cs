@@ -24,7 +24,9 @@ namespace Cap.AlarmManagementParent.AlarmManagement
         List<Cap_AlarmManagement> dataList = new List<Cap_AlarmManagement>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public AlarmManagement()
+        string _Name = string.Empty;
+
+        public AlarmManagement(string name)
         {
             InitializeComponent();
 
@@ -35,6 +37,7 @@ namespace Cap.AlarmManagementParent.AlarmManagement
             dataTable.Columns.Add("Createtime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
+            _Name = name;
         }
 
 
@@ -176,7 +179,7 @@ namespace Cap.AlarmManagementParent.AlarmManagement
                 cap_AlarmManagement.AlarmCause = AlarmCause.Text;
                 cap_AlarmManagement.WhetherTimelyProcessing = WhetherTimelyProcessing.Text;
                 cap_AlarmManagement.CreateTime = DateTime.Now;
-                cap_AlarmManagement.CreateName = CreateName.Text;
+                cap_AlarmManagement.CreateName = _Name;
                 cap_AlarmManagement.IsDelete = 0;
                 capProjectDb.Cap_AlarmManagement.InsertOnSubmit(cap_AlarmManagement);
                 capProjectDb.SubmitChanges();
@@ -191,7 +194,7 @@ namespace Cap.AlarmManagementParent.AlarmManagement
             }
 
 
-        
+
 
 
         }

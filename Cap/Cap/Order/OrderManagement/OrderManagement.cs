@@ -20,7 +20,8 @@ namespace Cap.Order.OrderManagement
         List<Cap_OrderManagement> dataList = new List<Cap_OrderManagement>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public OrderManagement()
+        string _Name = string.Empty;
+        public OrderManagement(string name)
         {
             InitializeComponent();
 
@@ -33,6 +34,7 @@ namespace Cap.Order.OrderManagement
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
+            _Name = name;
         }
 
 
@@ -178,7 +180,7 @@ namespace Cap.Order.OrderManagement
                 outbound.Customer = Customer.Text;
                 outbound.Schedule = Schedule.Text;
                 outbound.State = State.Text;
-                outbound.CreateName = CreateName.Text;
+                outbound.CreateName = _Name;
                 outbound.IsDelete = 0;
                 capProjectDb.Cap_OrderManagement.InsertOnSubmit(outbound);
                 capProjectDb.SubmitChanges();
@@ -267,8 +269,7 @@ namespace Cap.Order.OrderManagement
                 outbound.Quantity = Quantity.Text;
                 outbound.Customer = Customer.Text;
                 outbound.Schedule = Schedule.Text;
-                outbound.State = State.Text;
-                outbound.CreateName = CreateName.Text;
+                outbound.State = State.Text; 
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法

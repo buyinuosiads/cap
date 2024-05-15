@@ -26,8 +26,8 @@ namespace Cap.BasicSettings.Ingredients
         List<MajorIngredient> dataList = new List<MajorIngredient>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-
-        public Ingredients()
+        string _Name = string.Empty;
+        public Ingredients(string name)
         {
             InitializeComponent();
             dataTable.Columns.Add("Id_Manager");
@@ -36,6 +36,7 @@ namespace Cap.BasicSettings.Ingredients
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
+            _Name = name;
         }
 
 
@@ -175,7 +176,7 @@ namespace Cap.BasicSettings.Ingredients
                 majorIngredient.Id = Guid.NewGuid().ToString();
                 majorIngredient.MainName = MainName.Text;
                 majorIngredient.Unit = Unit.Text;
-                majorIngredient.CreateName = CreateName.Text;
+                majorIngredient.CreateName = _Name;
                 majorIngredient.CreateTime = DateTime.Now;
                 majorIngredient.IsDelete = 0;
                 capProjectDb.MajorIngredient.InsertOnSubmit(majorIngredient);

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Nav));
             this.uiTabControl1 = new Sunny.UI.UITabControl();
             this.uiPanel3 = new Sunny.UI.UIPanel();
             this.uiContextMenuStrip1 = new Sunny.UI.UIContextMenuStrip();
@@ -41,7 +42,10 @@
             this.uiPanel2 = new Sunny.UI.UIPanel();
             this.uiNavMenu1 = new Sunny.UI.UINavMenu();
             this.uiNavBar1 = new Sunny.UI.UINavBar();
-            this.uiLogo1 = new Sunny.UI.UILogo();
+            this.uiScrollingText2 = new Sunny.UI.UIScrollingText();
+            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.uiLabel1 = new Sunny.UI.UILabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.uiContextMenuStrip1.SuspendLayout();
             this.uiPanel1.SuspendLayout();
@@ -186,7 +190,10 @@
             // uiNavBar1
             // 
             this.uiNavBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.uiNavBar1.Controls.Add(this.uiLogo1);
+            this.uiNavBar1.Controls.Add(this.uiScrollingText2);
+            this.uiNavBar1.Controls.Add(this.uiLabel3);
+            this.uiNavBar1.Controls.Add(this.uiLabel2);
+            this.uiNavBar1.Controls.Add(this.uiLabel1);
             this.uiNavBar1.Controls.Add(this.uiAvatar1);
             this.uiNavBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiNavBar1.DropMenuFont = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -202,16 +209,54 @@
             this.uiNavBar1.Text = "uiNavBar1";
             this.uiNavBar1.MenuItemClick += new Sunny.UI.UINavBar.OnMenuItemClick(this.uiNavBar1_MenuItemClick);
             // 
-            // uiLogo1
+            // uiScrollingText2
             // 
-            this.uiLogo1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiLogo1.Location = new System.Drawing.Point(3, 33);
-            this.uiLogo1.MaximumSize = new System.Drawing.Size(300, 80);
-            this.uiLogo1.MinimumSize = new System.Drawing.Size(300, 80);
-            this.uiLogo1.Name = "uiLogo1";
-            this.uiLogo1.Size = new System.Drawing.Size(300, 80);
-            this.uiLogo1.TabIndex = 7;
-            this.uiLogo1.Text = "uiLogo1";
+            this.uiScrollingText2.Active = true;
+            this.uiScrollingText2.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiScrollingText2.ForeColor = System.Drawing.Color.Red;
+            this.uiScrollingText2.Location = new System.Drawing.Point(442, 33);
+            this.uiScrollingText2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiScrollingText2.Name = "uiScrollingText2";
+            this.uiScrollingText2.Size = new System.Drawing.Size(1052, 82);
+            this.uiScrollingText2.TabIndex = 76;
+            this.uiScrollingText2.Text = "不要忘记自己的目标和努力的意义。每一次困难都是成长的机会，每一次挑战都是迈向成功的阶梯。坚持不懈，勇往直前，你将会创造出令人瞩目的成就！";
+            // 
+            // uiLabel3
+            // 
+            this.uiLabel3.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel3.ForeColor = System.Drawing.Color.Transparent;
+            this.uiLabel3.Image = ((System.Drawing.Image)(resources.GetObject("uiLabel3.Image")));
+            this.uiLabel3.Location = new System.Drawing.Point(3, 33);
+            this.uiLabel3.Name = "uiLabel3";
+            this.uiLabel3.Size = new System.Drawing.Size(433, 82);
+            this.uiLabel3.TabIndex = 10;
+            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.Font = new System.Drawing.Font("宋体", 13F);
+            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel2.Location = new System.Drawing.Point(1512, 74);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(314, 23);
+            this.uiLabel2.TabIndex = 9;
+            this.uiLabel2.Text = "1";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.Font = new System.Drawing.Font("宋体", 13F);
+            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel1.Location = new System.Drawing.Point(1621, 42);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(169, 23);
+            this.uiLabel1.TabIndex = 8;
+            this.uiLabel1.Text = "欢迎您";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Nav
             // 
@@ -223,6 +268,7 @@
             this.Controls.Add(this.uiNavBar1);
             this.Name = "Nav";
             this.Text = "";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Nav_FormClosed);
             this.uiContextMenuStrip1.ResumeLayout(false);
             this.uiPanel1.ResumeLayout(false);
             this.uiNavBar1.ResumeLayout(false);
@@ -244,7 +290,10 @@
         private Sunny.UI.UIPanel uiPanel2;
         private Sunny.UI.UINavMenu uiNavMenu1;
         private Sunny.UI.UINavBar uiNavBar1;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UILabel uiLabel2;
         private System.Windows.Forms.Timer timer1;
-        private Sunny.UI.UILogo uiLogo1;
+        private Sunny.UI.UILabel uiLabel3;
+        private Sunny.UI.UIScrollingText uiScrollingText2;
     }
 }

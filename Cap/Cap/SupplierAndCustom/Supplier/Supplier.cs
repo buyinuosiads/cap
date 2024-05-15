@@ -25,29 +25,10 @@ namespace Cap.SupplierAndCustom.Supplier
         List<SupplierName> dataList = new List<SupplierName>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public Supplier()
+        string _Name = string.Empty;
+        public Supplier(string name)
         {
             InitializeComponent();
-
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    Data data = new Data();
-            //    data.Column1 = "供应商名称" + i;
-            //    data.Column2 = "供应商信息" + i;
-            //    data.Column3 = "供货情况" + i;
-            //    data.huowudanjia = "货物单价" + i;
-            //    data.Column4 = DateTime.Now.ToString();
-            //    data.Column5 = "管理员";
-            //    dataList.Add(data);
-            //}
-            ////不自动生成列
-            //uiDataGridView1.AutoGenerateColumns = false;
-            ////设置分页控件总数
-            //uiPagination1.TotalCount = dataList.Count;
-            ////设置分页控件每页数量
-            //uiPagination1.PageSize = 15;
-            //uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
-
 
             dataTable.Columns.Add("Id_Manager");
             dataTable.Columns.Add("NameOfTheSupplier_Manager");
@@ -58,7 +39,7 @@ namespace Cap.SupplierAndCustom.Supplier
             dataTable.Columns.Add("CreateName_Manager");
             uiDataGridView1.DataSource = dataTable;
             GetList();
-
+            _Name = name;
         }
 
 
@@ -105,7 +86,7 @@ namespace Cap.SupplierAndCustom.Supplier
             }
         }
 
-         
+
         /// <summary>
         /// 分页控件页面切换事件
         /// </summary>
@@ -162,7 +143,7 @@ namespace Cap.SupplierAndCustom.Supplier
                 supplierName.Price = decimal.Parse(Price.Text);
                 supplierName.IsDelete = 0;
                 supplierName.CreateTime = DateTime.Now;
-                supplierName.CreateName = CreateName.Text;
+                supplierName.CreateName = _Name;
                 capProjectDb.SupplierName.InsertOnSubmit(supplierName);
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("添加成功");

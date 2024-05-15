@@ -25,7 +25,8 @@ namespace Cap.Finance.FinancialJournal
         List<Cap_FinancialDailyAccount> dataList = new List<Cap_FinancialDailyAccount>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public FinancialJournal()
+        string _Name = string.Empty;
+        public FinancialJournal(string name)
         {
             InitializeComponent();
 
@@ -36,6 +37,7 @@ namespace Cap.Finance.FinancialJournal
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
+            _Name = name;
         }
 
         /// <summary>
@@ -179,7 +181,7 @@ namespace Cap.Finance.FinancialJournal
                 cap_FinancialDaily.FixedAssets = FixedAssets.Text;
                 cap_FinancialDaily.OtherPurchases = OtherPurchases.Text;
                 cap_FinancialDaily.CreateTime = DateTime.Now;
-                cap_FinancialDaily.CreateName = CreateName.Text;
+                cap_FinancialDaily.CreateName = _Name;
                 cap_FinancialDaily.IsDelete = 0;
                 //添加数据
                 capProjectDb.Cap_FinancialDailyAccount.InsertOnSubmit(cap_FinancialDaily);
@@ -251,8 +253,7 @@ namespace Cap.Finance.FinancialJournal
                 Cap_FinancialDailyAccount cap_Financial = capProjectDb.Cap_FinancialDailyAccount.Where(t => t.Id == Id).FirstOrDefault();
                 cap_Financial.FinancialJournal = FinancialJournal_RZ.Text;
                 cap_Financial.FixedAssets = FixedAssets.Text;
-                cap_Financial.OtherPurchases = OtherPurchases.Text;
-                cap_Financial.CreateName = CreateName.Text;
+                cap_Financial.OtherPurchases = OtherPurchases.Text; 
                 //保存数据
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");

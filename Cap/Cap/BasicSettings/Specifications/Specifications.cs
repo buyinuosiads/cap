@@ -25,7 +25,8 @@ namespace Cap.BasicSettings.Specifications
         string Id = string.Empty;
         List<SpecificationSetting> dataList = new List<SpecificationSetting>();
         DataTable dataTable = new DataTable("DataTable");
-        public Specifications()
+        string _Name = string.Empty;
+        public Specifications(string name)
         {
             InitializeComponent();
 
@@ -36,6 +37,7 @@ namespace Cap.BasicSettings.Specifications
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
+            _Name = name;
         }
 
 
@@ -187,7 +189,7 @@ namespace Cap.BasicSettings.Specifications
                 specificationSetting.Unit = Unit.Text;
                 specificationSetting.LengthUnit = decimal.Parse(LengthUnit.Text);
                 specificationSetting.CreateTime = DateTime.Now;
-                specificationSetting.CreateName = CreateName.Text;
+                specificationSetting.CreateName = _Name;
                 //是否删除
                 specificationSetting.IsDelete = 0;
                 //添加数据
@@ -262,8 +264,7 @@ namespace Cap.BasicSettings.Specifications
                 SpecificationSetting specification = capProjectDb.SpecificationSetting.Where(t => t.Id == Id).FirstOrDefault();
                 specification.NameOfTheMaterial = NameOfTheMaterial.Text;
                 specification.Unit = Unit.Text;
-                specification.LengthUnit = decimal.Parse(LengthUnit.Text);
-                specification.CreateName = CreateName.Text; 
+                specification.LengthUnit = decimal.Parse(LengthUnit.Text); 
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法

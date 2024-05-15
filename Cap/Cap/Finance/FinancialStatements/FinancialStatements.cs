@@ -25,7 +25,8 @@ namespace Cap.Finance.FinancialStatements
         List<Cap_FinancialStatements> dataList = new List<Cap_FinancialStatements>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = string.Empty;
-        public FinancialStatements()
+        string _Name = string.Empty;
+        public FinancialStatements(string name)
         {
             InitializeComponent();
 
@@ -38,7 +39,7 @@ namespace Cap.Finance.FinancialStatements
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
-
+            _Name = name;
         }
         /// <summary>
         /// 查询
@@ -178,7 +179,7 @@ namespace Cap.Finance.FinancialStatements
                 cap_Financial.QuantityOfMaterial = QuantityOfMaterial.Text;
                 cap_Financial.GrossAmount = decimal.Parse(GrossAmount.Text);
                 cap_Financial.CreateTime = DateTime.Now;
-                cap_Financial.CreateName = CreateName.Text;
+                cap_Financial.CreateName = _Name;
                 cap_Financial.IsDelete = 0;
                 //添加数据
                 capProjectDb.Cap_FinancialStatements.InsertOnSubmit(cap_Financial);
@@ -261,8 +262,7 @@ namespace Cap.Finance.FinancialStatements
                 cap_Financial.NameOfMaterial = NameOfMaterial.Text;
                 cap_Financial.MaterialPrice = decimal.Parse(MaterialPrice.Text);
                 cap_Financial.QuantityOfMaterial = QuantityOfMaterial.Text;
-                cap_Financial.GrossAmount = decimal.Parse(GrossAmount.Text);
-                cap_Financial.CreateName = CreateName.Text;
+                cap_Financial.GrossAmount = decimal.Parse(GrossAmount.Text); 
                 //保存数据
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("添加成功");

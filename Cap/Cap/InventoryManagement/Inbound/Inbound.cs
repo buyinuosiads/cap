@@ -23,7 +23,8 @@ namespace Cap.InventoryManagement.Inbound
         List<BePutInStorage> dataList = new List<BePutInStorage>();
         DataTable dataTable = new DataTable("DataTable");
         string Id = null;
-        public Inbound()
+        string _Name = string.Empty;
+        public Inbound(string name)
         {
             InitializeComponent();
 
@@ -35,6 +36,7 @@ namespace Cap.InventoryManagement.Inbound
             dataTable.Columns.Add("CreateName_Manager");
 
             GetList();
+            _Name = name;
         }
 
 
@@ -183,7 +185,7 @@ namespace Cap.InventoryManagement.Inbound
                 bePutInStorage.Contact = Contact.Text;
                 bePutInStorage.Phone = Phone.Text;
                 bePutInStorage.CreateTime = DateTime.Now;
-                bePutInStorage.CreateName = CreateName.Text;
+                bePutInStorage.CreateName = _Name;
                 bePutInStorage.IsDelete = 0;
                 //添加数据
                 capProjectDb.BePutInStorage.InsertOnSubmit(bePutInStorage);
