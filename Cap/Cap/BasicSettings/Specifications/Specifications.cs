@@ -176,24 +176,34 @@ namespace Cap.BasicSettings.Specifications
         private void btnAdd_Click(object sender, EventArgs e)
         {
             //dataTable.Rows.Add(NameOfTheMaterial.Text, Unit.Text, LengthUnit.Text, CreateTime.Text, CreateName.Text);
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            SpecificationSetting specificationSetting = new SpecificationSetting();
-            specificationSetting.Id = Guid.NewGuid().ToString();
-            specificationSetting.NameOfTheMaterial = NameOfTheMaterial.Text;
-            specificationSetting.Unit = Unit.Text;
-            specificationSetting.LengthUnit = decimal.Parse(LengthUnit.Text);
-            specificationSetting.CreateTime = DateTime.Now;
-            specificationSetting.CreateName = CreateName.Text;
-            //是否删除
-            specificationSetting.IsDelete = 0;
-            //添加数据
-            capProjectDb.SpecificationSetting.InsertOnSubmit(specificationSetting);
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                SpecificationSetting specificationSetting = new SpecificationSetting();
+                specificationSetting.Id = Guid.NewGuid().ToString();
+                specificationSetting.NameOfTheMaterial = NameOfTheMaterial.Text;
+                specificationSetting.Unit = Unit.Text;
+                specificationSetting.LengthUnit = decimal.Parse(LengthUnit.Text);
+                specificationSetting.CreateTime = DateTime.Now;
+                specificationSetting.CreateName = CreateName.Text;
+                //是否删除
+                specificationSetting.IsDelete = 0;
+                //添加数据
+                capProjectDb.SpecificationSetting.InsertOnSubmit(specificationSetting);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -245,19 +255,27 @@ namespace Cap.BasicSettings.Specifications
         private void uiButton5_Click(object sender, EventArgs e)
         {
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            SpecificationSetting specification = capProjectDb.SpecificationSetting.Where(t => t.Id == Id).FirstOrDefault();
-            specification.NameOfTheMaterial = NameOfTheMaterial.Text;
-            specification.Unit = Unit.Text;
-            specification.LengthUnit = decimal.Parse(LengthUnit.Text);
-            specification.CreateName = CreateName.Text;
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                 
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                SpecificationSetting specification = capProjectDb.SpecificationSetting.Where(t => t.Id == Id).FirstOrDefault();
+                specification.NameOfTheMaterial = NameOfTheMaterial.Text;
+                specification.Unit = Unit.Text;
+                specification.LengthUnit = decimal.Parse(LengthUnit.Text);
+                specification.CreateName = CreateName.Text; 
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
 
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
 
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
 
         }
         /// <summary>

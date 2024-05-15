@@ -171,24 +171,32 @@ namespace Cap.InventoryManagement.Inventory
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Stocks stocks = new Stocks();
-            stocks.Id = Guid.NewGuid().ToString();
-            stocks.NameOfMaterial = NameOfMaterial.Text;
-            stocks.QuantityOfMaterial = int.Parse(QuantityOfMaterial.Text);
-            stocks.CreateTime = DateTime.Now;
-            stocks.CreateName = "创建人";
-            stocks.IsDelete = 0;
+            if (ShowAskDialog("确定要添加吗？"))
+            {
 
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Stocks stocks = new Stocks();
+                stocks.Id = Guid.NewGuid().ToString();
+                stocks.NameOfMaterial = NameOfMaterial.Text;
+                stocks.QuantityOfMaterial = int.Parse(QuantityOfMaterial.Text);
+                stocks.CreateTime = DateTime.Now;
+                stocks.CreateName = "创建人";
+                stocks.IsDelete = 0;
+                //添加数据
+                capProjectDb.Stocks.InsertOnSubmit(stocks);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
 
-            //添加数据
-            capProjectDb.Stocks.InsertOnSubmit(stocks);
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
 
 
         }
@@ -248,17 +256,25 @@ namespace Cap.InventoryManagement.Inventory
         private void uiButton5_Click(object sender, EventArgs e)
         {
 
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Stocks stocks = capProjectDb.Stocks.Where(t => t.Id == Id).FirstOrDefault();
+                stocks.NameOfMaterial = NameOfMaterial.Text;
+                stocks.QuantityOfMaterial = int.Parse(QuantityOfMaterial.Text);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Stocks stocks = capProjectDb.Stocks.Where(t => t.Id == Id).FirstOrDefault();
-            stocks.NameOfMaterial = NameOfMaterial.Text;
-            stocks.QuantityOfMaterial = int.Parse(QuantityOfMaterial.Text);
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
 
 
         }

@@ -133,26 +133,34 @@ namespace Cap.BasicSettings.ToolSettings
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (ShowAskDialog("确定要添加吗？"))
+            {
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            ToolSetup toolSetup = new ToolSetup();
-            toolSetup.Id = Guid.NewGuid().ToString();
-            toolSetup.ToolName = ToolName.Text;
-            toolSetup.WideRating = WideRating.Text;
-            toolSetup.FaultTolerant = FaultTolerant.Text;
-            toolSetup.Breadth = Breadth.Text;
-            toolSetup.Coefficient = Coefficient.Text;
-            toolSetup.PermName = PermName.Text;
-            toolSetup.CreateTime = DateTime.Now;
-            toolSetup.CreateName = CreateName.Text;
-            toolSetup.IsDelete = 0;
-            //保存数据
-            capProjectDb.ToolSetup.InsertOnSubmit(toolSetup);
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                ToolSetup toolSetup = new ToolSetup();
+                toolSetup.Id = Guid.NewGuid().ToString();
+                toolSetup.ToolName = ToolName.Text;
+                toolSetup.WideRating = WideRating.Text;
+                toolSetup.FaultTolerant = FaultTolerant.Text;
+                toolSetup.Breadth = Breadth.Text;
+                toolSetup.Coefficient = Coefficient.Text;
+                toolSetup.PermName = PermName.Text;
+                toolSetup.CreateTime = DateTime.Now;
+                toolSetup.CreateName = CreateName.Text;
+                toolSetup.IsDelete = 0;
+                //保存数据
+                capProjectDb.ToolSetup.InsertOnSubmit(toolSetup);
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
         }
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -354,21 +362,29 @@ namespace Cap.BasicSettings.ToolSettings
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
+            if (ShowAskDialog("确定要修改吗？"))
+            {
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            ToolSetup toolSetup = capProjectDb.ToolSetup.Where(t => t.Id == Id).FirstOrDefault();
-            toolSetup.ToolName = ToolName.Text;
-            toolSetup.WideRating = WideRating.Text;
-            toolSetup.FaultTolerant = FaultTolerant.Text;
-            toolSetup.Breadth = Breadth.Text;
-            toolSetup.Coefficient = Coefficient.Text;
-            toolSetup.PermName = PermName.Text;
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                ToolSetup toolSetup = capProjectDb.ToolSetup.Where(t => t.Id == Id).FirstOrDefault();
+                toolSetup.ToolName = ToolName.Text;
+                toolSetup.WideRating = WideRating.Text;
+                toolSetup.FaultTolerant = FaultTolerant.Text;
+                toolSetup.Breadth = Breadth.Text;
+                toolSetup.Coefficient = Coefficient.Text;
+                toolSetup.PermName = PermName.Text;
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
 
 
         }

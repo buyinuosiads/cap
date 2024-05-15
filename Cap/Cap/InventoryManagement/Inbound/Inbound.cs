@@ -173,23 +173,32 @@ namespace Cap.InventoryManagement.Inbound
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            BePutInStorage bePutInStorage = new BePutInStorage();
-            bePutInStorage.Id = Guid.NewGuid().ToString();
-            bePutInStorage.IncomingName = IncomingName.Text;
-            bePutInStorage.Contact = Contact.Text;
-            bePutInStorage.Phone = Phone.Text;
-            bePutInStorage.CreateTime = DateTime.Now;
-            bePutInStorage.CreateName = CreateName.Text;
-            bePutInStorage.IsDelete = 0;
-            //添加数据
-            capProjectDb.BePutInStorage.InsertOnSubmit(bePutInStorage);
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                BePutInStorage bePutInStorage = new BePutInStorage();
+                bePutInStorage.Id = Guid.NewGuid().ToString();
+                bePutInStorage.IncomingName = IncomingName.Text;
+                bePutInStorage.Contact = Contact.Text;
+                bePutInStorage.Phone = Phone.Text;
+                bePutInStorage.CreateTime = DateTime.Now;
+                bePutInStorage.CreateName = CreateName.Text;
+                bePutInStorage.IsDelete = 0;
+                //添加数据
+                capProjectDb.BePutInStorage.InsertOnSubmit(bePutInStorage);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -251,18 +260,28 @@ namespace Cap.InventoryManagement.Inbound
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            BePutInStorage bePutInStorage = capProjectDb.BePutInStorage.Where(t => t.Id == Id).FirstOrDefault();
-            bePutInStorage.IncomingName = IncomingName.Text;
-            bePutInStorage.Contact = Contact.Text;
-            bePutInStorage.Phone = Phone.Text;
-            bePutInStorage.CreateName = CreateName.Text;         
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                BePutInStorage bePutInStorage = capProjectDb.BePutInStorage.Where(t => t.Id == Id).FirstOrDefault();
+                bePutInStorage.IncomingName = IncomingName.Text;
+                bePutInStorage.Contact = Contact.Text;
+                bePutInStorage.Phone = Phone.Text;
+                bePutInStorage.CreateName = CreateName.Text;
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
+
         }
     }
 }

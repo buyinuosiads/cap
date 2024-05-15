@@ -209,25 +209,34 @@ namespace Cap.BasicSettings.Product
         /// <param name="e"></param>
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            ProductSetup productSetup = new ProductSetup();
-            productSetup.Id = Guid.NewGuid().ToString();
-            productSetup.ProductName = ProductName.Text;
-            productSetup.ProcessName = ProcessName.Text;
-            productSetup.Price = decimal.Parse(Price.Text);
-            productSetup.CreateName = CreateName.Text;
-            //创建时间
-            productSetup.CreateTime = DateTime.Now;
-            //是否删除
-            productSetup.IsDelete = 0;
-            //添加数据
-            capProjectDb.ProductSetup.InsertOnSubmit(productSetup);
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                ProductSetup productSetup = new ProductSetup();
+                productSetup.Id = Guid.NewGuid().ToString();
+                productSetup.ProductName = ProductName.Text;
+                productSetup.ProcessName = ProcessName.Text;
+                productSetup.Price = decimal.Parse(Price.Text);
+                productSetup.CreateName = CreateName.Text;
+                //创建时间
+                productSetup.CreateTime = DateTime.Now;
+                //是否删除
+                productSetup.IsDelete = 0;
+                //添加数据
+                capProjectDb.ProductSetup.InsertOnSubmit(productSetup);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
         }
 
         private void uiPagination1_Click(object sender, EventArgs e)
@@ -414,17 +423,27 @@ namespace Cap.BasicSettings.Product
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            ProductSetup productSetup = capProjectDb.ProductSetup.Where(t => t.Id == Id).FirstOrDefault();
-            productSetup.ProductName = ProductName.Text;
-            productSetup.ProcessName = ProcessName.Text;
-            productSetup.Price = decimal.Parse(Price.Text);
-            productSetup.CreateName = CreateName.Text;
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                ProductSetup productSetup = capProjectDb.ProductSetup.Where(t => t.Id == Id).FirstOrDefault();
+                productSetup.ProductName = ProductName.Text;
+                productSetup.ProcessName = ProcessName.Text;
+                productSetup.Price = decimal.Parse(Price.Text);
+                productSetup.CreateName = CreateName.Text;
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
+
         }
     }
 }

@@ -120,26 +120,29 @@ namespace Cap.SupplierAndCustom.Custom
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //CustomAdd frm = new CustomAdd();
-            //frm.Render();
-            //frm.ShowDialog();
-            //dataTable.Rows.Add(CustomerName.Text, Contact.Text, Phone.Text, CreateTime.Text, CreateName.Text);
 
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Consumer consumer = new Consumer();
+                consumer.Id = Guid.NewGuid().ToString();
+                consumer.CustomerName = CustomerName.Text;
+                consumer.Contact = Contact.Text;
+                consumer.Phone = Phone.Text;
+                consumer.CreateTime = DateTime.Now;
+                consumer.CreateName = CreateName.Text;
+                consumer.IsDelete = 0;
+                capProjectDb.Consumer.InsertOnSubmit(consumer);
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Consumer consumer = new Consumer();
-            consumer.Id = Guid.NewGuid().ToString();
-            consumer.CustomerName = CustomerName.Text;
-            consumer.Contact = Contact.Text;
-            consumer.Phone = Phone.Text;
-            consumer.CreateTime = DateTime.Now;
-            consumer.CreateName = CreateName.Text;
-            consumer.IsDelete = 0;
-            capProjectDb.Consumer.InsertOnSubmit(consumer);
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            GetList();
         }
 
 
@@ -259,16 +262,26 @@ namespace Cap.SupplierAndCustom.Custom
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Consumer consumer = capProjectDb.Consumer.Where(t => t.Id == Id).FirstOrDefault();
-            consumer.CustomerName = CustomerName.Text;
-            consumer.Contact = Contact.Text;
-            consumer.Phone = Phone.Text;
-            consumer.CreateName = CreateName.Text;
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            GetList();
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Consumer consumer = capProjectDb.Consumer.Where(t => t.Id == Id).FirstOrDefault();
+                consumer.CustomerName = CustomerName.Text;
+                consumer.Contact = Contact.Text;
+                consumer.Phone = Phone.Text;
+                consumer.CreateName = CreateName.Text;
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
+
+
 
         }
     }

@@ -179,40 +179,52 @@ namespace Cap.SystemSetup
 
         }
 
-
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uiSymbolButton2_Click(object sender, EventArgs e)
         {
-
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            //公司表
-            Cap_Company cap_Company = new Cap_Company();
-            //主键ID
-            cap_Company.Id = Guid.NewGuid().ToString();
-            //公司名称
-            cap_Company.Company_Name = Company_Name.Text;
-            //是否授权(0否,1是
-            int Authorization_Manager = 0;
-            if (Authorization.Text == "否")
+            if (ShowAskDialog("确定要添加吗？"))
             {
-                Authorization_Manager = 0;
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                //公司表
+                Cap_Company cap_Company = new Cap_Company();
+                //主键ID
+                cap_Company.Id = Guid.NewGuid().ToString();
+                //公司名称
+                cap_Company.Company_Name = Company_Name.Text;
+                //是否授权(0否,1是
+                int Authorization_Manager = 0;
+                if (Authorization.Text == "否")
+                {
+                    Authorization_Manager = 0;
+                }
+                else
+                {
+                    Authorization_Manager = 1;
+                }
+                cap_Company.Authorization = Authorization_Manager;
+                //创建时间
+                cap_Company.CreateTime = DateTime.Now;
+                //是否删除(0否, 99是)
+                cap_Company.IsDelete = 0;
+                //保存
+                capProjectDb.Cap_Company.InsertOnSubmit(cap_Company);
+                capProjectDb.SubmitChanges();
+
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
             }
             else
             {
-                Authorization_Manager = 1;
+                ShowErrorTip("取消当前操作");
             }
-            cap_Company.Authorization = Authorization_Manager;
-            //创建时间
-            cap_Company.CreateTime = DateTime.Now;
-            //是否删除(0否, 99是)
-            cap_Company.IsDelete = 0;
-            //保存
-            capProjectDb.Cap_Company.InsertOnSubmit(cap_Company);
-            capProjectDb.SubmitChanges();
 
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -262,24 +274,35 @@ namespace Cap.SystemSetup
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Cap_Company sys_Users = capProjectDb.Cap_Company.Where(t => t.Id == Id).FirstOrDefault();
-            sys_Users.Company_Name = Company_Name.Text;
-            //是否授权(0否,1是
-            int Authorization_Manager = 0;
-            if (Authorization.Text == "否")
+            if (ShowAskDialog("确定要修改吗？"))
             {
-                Authorization_Manager = 0;
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Cap_Company sys_Users = capProjectDb.Cap_Company.Where(t => t.Id == Id).FirstOrDefault();
+                sys_Users.Company_Name = Company_Name.Text;
+                //是否授权(0否,1是
+                int Authorization_Manager = 0;
+                if (Authorization.Text == "否")
+                {
+                    Authorization_Manager = 0;
+                }
+                else
+                {
+                    Authorization_Manager = 1;
+                }
+                sys_Users.Authorization = Authorization_Manager;
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                GetList();
+
             }
             else
             {
-                Authorization_Manager = 1;
+                ShowErrorTip("取消当前操作");
             }
-            sys_Users.Authorization = Authorization_Manager;
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            GetList();
+
+
 
         }
     }

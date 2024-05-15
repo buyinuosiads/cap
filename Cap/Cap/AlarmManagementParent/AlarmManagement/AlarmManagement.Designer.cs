@@ -38,7 +38,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
-            this.edtName = new Sunny.UI.UITextBox();
+            this.uiButton5 = new Sunny.UI.UIButton();
+            this.CreateTime = new Sunny.UI.UITextBox();
+            this.uiLabel5 = new Sunny.UI.UILabel();
+            this.CreateName = new Sunny.UI.UITextBox();
+            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.AlarmCause = new Sunny.UI.UITextBox();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.uiLabel4 = new Sunny.UI.UILabel();
+            this.AlarmContent = new Sunny.UI.UITextBox();
             this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.btnAdd = new Sunny.UI.UISymbolButton();
@@ -46,23 +54,17 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
-            this.ConsumablesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AlarmContent_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AlarmCause_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WhetherTimelyProcessing_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Createtime_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreateName_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.uiTextBox2 = new Sunny.UI.UITextBox();
-            this.uiLabel1 = new Sunny.UI.UILabel();
-            this.uiTextBox3 = new Sunny.UI.UITextBox();
-            this.uiLabel4 = new Sunny.UI.UILabel();
-            this.uiLabel3 = new Sunny.UI.UILabel();
-            this.uiTextBox1 = new Sunny.UI.UITextBox();
-            this.uiTextBox4 = new Sunny.UI.UITextBox();
-            this.uiLabel5 = new Sunny.UI.UILabel();
-            this.uiButton5 = new Sunny.UI.UIButton();
+            this.uiButton6 = new Sunny.UI.UIButton();
+            this.WhetherTimelyProcessing = new Sunny.UI.UIComboBox();
             this.uiCheckBoxGroup1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
@@ -70,16 +72,17 @@
             // 
             // uiCheckBoxGroup1
             // 
+            this.uiCheckBoxGroup1.Controls.Add(this.WhetherTimelyProcessing);
+            this.uiCheckBoxGroup1.Controls.Add(this.uiButton6);
             this.uiCheckBoxGroup1.Controls.Add(this.uiButton5);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox4);
+            this.uiCheckBoxGroup1.Controls.Add(this.CreateTime);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel5);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox1);
+            this.uiCheckBoxGroup1.Controls.Add(this.CreateName);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel3);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox2);
+            this.uiCheckBoxGroup1.Controls.Add(this.AlarmCause);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel1);
-            this.uiCheckBoxGroup1.Controls.Add(this.uiTextBox3);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel4);
-            this.uiCheckBoxGroup1.Controls.Add(this.edtName);
+            this.uiCheckBoxGroup1.Controls.Add(this.AlarmContent);
             this.uiCheckBoxGroup1.Controls.Add(this.uiSymbolButton1);
             this.uiCheckBoxGroup1.Controls.Add(this.uiLabel2);
             this.uiCheckBoxGroup1.Controls.Add(this.btnAdd);
@@ -98,21 +101,142 @@
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // edtName
+            // uiButton5
             // 
-            this.edtName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.edtName.EnterAsTab = true;
-            this.edtName.Font = new System.Drawing.Font("宋体", 12F);
-            this.edtName.Location = new System.Drawing.Point(134, 15);
-            this.edtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.edtName.MinimumSize = new System.Drawing.Size(1, 16);
-            this.edtName.Name = "edtName";
-            this.edtName.Padding = new System.Windows.Forms.Padding(5);
-            this.edtName.ShowText = false;
-            this.edtName.Size = new System.Drawing.Size(340, 29);
-            this.edtName.TabIndex = 30;
-            this.edtName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.edtName.Watermark = "";
+            this.uiButton5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.uiButton5.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.uiButton5.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
+            this.uiButton5.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiButton5.Location = new System.Drawing.Point(733, 87);
+            this.uiButton5.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton5.Name = "uiButton5";
+            this.uiButton5.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
+            this.uiButton5.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
+            this.uiButton5.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
+            this.uiButton5.ShowFocusLine = true;
+            this.uiButton5.Size = new System.Drawing.Size(100, 35);
+            this.uiButton5.Style = Sunny.UI.UIStyle.Custom;
+            this.uiButton5.StyleCustomMode = true;
+            this.uiButton5.TabIndex = 126;
+            this.uiButton5.Text = "修改";
+            this.uiButton5.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton5.Click += new System.EventHandler(this.uiButton5_Click);
+            // 
+            // CreateTime
+            // 
+            this.CreateTime.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.CreateTime.EnterAsTab = true;
+            this.CreateTime.Font = new System.Drawing.Font("宋体", 12F);
+            this.CreateTime.Location = new System.Drawing.Point(134, 93);
+            this.CreateTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CreateTime.MinimumSize = new System.Drawing.Size(1, 16);
+            this.CreateTime.Name = "CreateTime";
+            this.CreateTime.Padding = new System.Windows.Forms.Padding(5);
+            this.CreateTime.ShowText = false;
+            this.CreateTime.Size = new System.Drawing.Size(340, 29);
+            this.CreateTime.TabIndex = 124;
+            this.CreateTime.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CreateTime.Watermark = "";
+            // 
+            // uiLabel5
+            // 
+            this.uiLabel5.AutoSize = true;
+            this.uiLabel5.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel5.Location = new System.Drawing.Point(30, 101);
+            this.uiLabel5.Name = "uiLabel5";
+            this.uiLabel5.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel5.TabIndex = 125;
+            this.uiLabel5.Text = "创建时间";
+            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // CreateName
+            // 
+            this.CreateName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.CreateName.EnterAsTab = true;
+            this.CreateName.Font = new System.Drawing.Font("宋体", 12F);
+            this.CreateName.Location = new System.Drawing.Point(605, 54);
+            this.CreateName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CreateName.MinimumSize = new System.Drawing.Size(1, 16);
+            this.CreateName.Name = "CreateName";
+            this.CreateName.Padding = new System.Windows.Forms.Padding(5);
+            this.CreateName.ShowText = false;
+            this.CreateName.Size = new System.Drawing.Size(340, 29);
+            this.CreateName.TabIndex = 123;
+            this.CreateName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CreateName.Watermark = "";
+            // 
+            // uiLabel3
+            // 
+            this.uiLabel3.AutoSize = true;
+            this.uiLabel3.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel3.Location = new System.Drawing.Point(530, 61);
+            this.uiLabel3.Name = "uiLabel3";
+            this.uiLabel3.Size = new System.Drawing.Size(55, 16);
+            this.uiLabel3.TabIndex = 123;
+            this.uiLabel3.Text = "创建人";
+            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // AlarmCause
+            // 
+            this.AlarmCause.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.AlarmCause.EnterAsTab = true;
+            this.AlarmCause.Font = new System.Drawing.Font("宋体", 12F);
+            this.AlarmCause.Location = new System.Drawing.Point(605, 15);
+            this.AlarmCause.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.AlarmCause.MinimumSize = new System.Drawing.Size(1, 16);
+            this.AlarmCause.Name = "AlarmCause";
+            this.AlarmCause.Padding = new System.Windows.Forms.Padding(5);
+            this.AlarmCause.ShowText = false;
+            this.AlarmCause.Size = new System.Drawing.Size(340, 29);
+            this.AlarmCause.TabIndex = 122;
+            this.AlarmCause.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AlarmCause.Watermark = "";
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.AutoSize = true;
+            this.uiLabel1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel1.Location = new System.Drawing.Point(16, 61);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(103, 16);
+            this.uiLabel1.TabIndex = 121;
+            this.uiLabel1.Text = "是否及时处理";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel4
+            // 
+            this.uiLabel4.AutoSize = true;
+            this.uiLabel4.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel4.Location = new System.Drawing.Point(518, 22);
+            this.uiLabel4.Name = "uiLabel4";
+            this.uiLabel4.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel4.TabIndex = 119;
+            this.uiLabel4.Text = "告警原因";
+            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // AlarmContent
+            // 
+            this.AlarmContent.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.AlarmContent.EnterAsTab = true;
+            this.AlarmContent.Font = new System.Drawing.Font("宋体", 12F);
+            this.AlarmContent.Location = new System.Drawing.Point(134, 15);
+            this.AlarmContent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.AlarmContent.MinimumSize = new System.Drawing.Size(1, 16);
+            this.AlarmContent.Name = "AlarmContent";
+            this.AlarmContent.Padding = new System.Windows.Forms.Padding(5);
+            this.AlarmContent.ShowText = false;
+            this.AlarmContent.Size = new System.Drawing.Size(340, 29);
+            this.AlarmContent.TabIndex = 30;
+            this.AlarmContent.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AlarmContent.Watermark = "";
             // 
             // uiSymbolButton1
             // 
@@ -126,6 +250,7 @@
             this.uiSymbolButton1.TabIndex = 3;
             this.uiSymbolButton1.Text = "查找";
             this.uiSymbolButton1.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSymbolButton1.Click += new System.EventHandler(this.uiSymbolButton1_Click);
             // 
             // uiLabel2
             // 
@@ -207,11 +332,12 @@
             this.uiDataGridView1.ColumnHeadersHeight = 32;
             this.uiDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.uiDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ConsumablesCount,
-            this.Column1,
-            this.Column2,
-            this.CreationTime,
-            this.CreationName,
+            this.Id_Manager,
+            this.AlarmContent_Manager,
+            this.AlarmCause_Manager,
+            this.WhetherTimelyProcessing_Manager,
+            this.Createtime_Manager,
+            this.CreateName_Manager,
             this.Search,
             this.Edit,
             this.Delete});
@@ -252,45 +378,53 @@
             this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
             // 
-            // ConsumablesCount
+            // Id_Manager
             // 
-            this.ConsumablesCount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ConsumablesCount.DataPropertyName = "Column1";
-            this.ConsumablesCount.HeaderText = "告警内容";
-            this.ConsumablesCount.Name = "ConsumablesCount";
-            this.ConsumablesCount.ReadOnly = true;
+            this.Id_Manager.DataPropertyName = "Id_Manager";
+            this.Id_Manager.HeaderText = "Id_Manager";
+            this.Id_Manager.Name = "Id_Manager";
+            this.Id_Manager.ReadOnly = true;
+            this.Id_Manager.Visible = false;
             // 
-            // Column1
+            // AlarmContent_Manager
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "Column2";
-            this.Column1.HeaderText = "告警原因";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.AlarmContent_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AlarmContent_Manager.DataPropertyName = "AlarmContent_Manager";
+            this.AlarmContent_Manager.HeaderText = "告警内容";
+            this.AlarmContent_Manager.Name = "AlarmContent_Manager";
+            this.AlarmContent_Manager.ReadOnly = true;
             // 
-            // Column2
+            // AlarmCause_Manager
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.DataPropertyName = "Column3";
-            this.Column2.HeaderText = "是否及时处理";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.AlarmCause_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AlarmCause_Manager.DataPropertyName = "AlarmCause_Manager";
+            this.AlarmCause_Manager.HeaderText = "告警原因";
+            this.AlarmCause_Manager.Name = "AlarmCause_Manager";
+            this.AlarmCause_Manager.ReadOnly = true;
             // 
-            // CreationTime
+            // WhetherTimelyProcessing_Manager
             // 
-            this.CreationTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CreationTime.DataPropertyName = "Column4";
-            this.CreationTime.HeaderText = "创建时间";
-            this.CreationTime.Name = "CreationTime";
-            this.CreationTime.ReadOnly = true;
+            this.WhetherTimelyProcessing_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.WhetherTimelyProcessing_Manager.DataPropertyName = "WhetherTimelyProcessing_Manager";
+            this.WhetherTimelyProcessing_Manager.HeaderText = "是否及时处理";
+            this.WhetherTimelyProcessing_Manager.Name = "WhetherTimelyProcessing_Manager";
+            this.WhetherTimelyProcessing_Manager.ReadOnly = true;
             // 
-            // CreationName
+            // Createtime_Manager
             // 
-            this.CreationName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CreationName.DataPropertyName = "Column5";
-            this.CreationName.HeaderText = "创建人";
-            this.CreationName.Name = "CreationName";
-            this.CreationName.ReadOnly = true;
+            this.Createtime_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Createtime_Manager.DataPropertyName = "Createtime_Manager";
+            this.Createtime_Manager.HeaderText = "创建时间";
+            this.Createtime_Manager.Name = "Createtime_Manager";
+            this.Createtime_Manager.ReadOnly = true;
+            // 
+            // CreateName_Manager
+            // 
+            this.CreateName_Manager.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CreateName_Manager.DataPropertyName = "CreateName_Manager";
+            this.CreateName_Manager.HeaderText = "创建人";
+            this.CreateName_Manager.Name = "CreateName_Manager";
+            this.CreateName_Manager.ReadOnly = true;
             // 
             // Search
             // 
@@ -302,6 +436,7 @@
             this.Search.Name = "Search";
             this.Search.ReadOnly = true;
             this.Search.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Search.Visible = false;
             // 
             // Edit
             // 
@@ -312,6 +447,7 @@
             this.Edit.HeaderText = "操作";
             this.Edit.Name = "Edit";
             this.Edit.ReadOnly = true;
+            this.Edit.Visible = false;
             // 
             // Delete
             // 
@@ -325,140 +461,55 @@
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // uiTextBox2
+            // uiButton6
             // 
-            this.uiTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox2.EnterAsTab = true;
-            this.uiTextBox2.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox2.Location = new System.Drawing.Point(605, 15);
-            this.uiTextBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox2.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox2.Name = "uiTextBox2";
-            this.uiTextBox2.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox2.ShowText = false;
-            this.uiTextBox2.Size = new System.Drawing.Size(340, 29);
-            this.uiTextBox2.TabIndex = 122;
-            this.uiTextBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox2.Watermark = "";
+            this.uiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiButton6.Location = new System.Drawing.Point(839, 87);
+            this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton6.Name = "uiButton6";
+            this.uiButton6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.ShowFocusLine = true;
+            this.uiButton6.Size = new System.Drawing.Size(108, 35);
+            this.uiButton6.Style = Sunny.UI.UIStyle.Custom;
+            this.uiButton6.StyleCustomMode = true;
+            this.uiButton6.TabIndex = 127;
+            this.uiButton6.Text = "清空文本框";
+            this.uiButton6.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
             // 
-            // uiLabel1
+            // WhetherTimelyProcessing
             // 
-            this.uiLabel1.AutoSize = true;
-            this.uiLabel1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel1.Location = new System.Drawing.Point(16, 61);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(103, 16);
-            this.uiLabel1.TabIndex = 121;
-            this.uiLabel1.Text = "是否及时处理";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // uiTextBox3
-            // 
-            this.uiTextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox3.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox3.Location = new System.Drawing.Point(134, 54);
-            this.uiTextBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox3.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox3.Name = "uiTextBox3";
-            this.uiTextBox3.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox3.ShowText = false;
-            this.uiTextBox3.Size = new System.Drawing.Size(340, 29);
-            this.uiTextBox3.TabIndex = 120;
-            this.uiTextBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox3.Watermark = "";
-            // 
-            // uiLabel4
-            // 
-            this.uiLabel4.AutoSize = true;
-            this.uiLabel4.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel4.Location = new System.Drawing.Point(518, 22);
-            this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(71, 16);
-            this.uiLabel4.TabIndex = 119;
-            this.uiLabel4.Text = "告警原因";
-            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // uiLabel3
-            // 
-            this.uiLabel3.AutoSize = true;
-            this.uiLabel3.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel3.Location = new System.Drawing.Point(530, 61);
-            this.uiLabel3.Name = "uiLabel3";
-            this.uiLabel3.Size = new System.Drawing.Size(55, 16);
-            this.uiLabel3.TabIndex = 123;
-            this.uiLabel3.Text = "创建人";
-            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // uiTextBox1
-            // 
-            this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox1.EnterAsTab = true;
-            this.uiTextBox1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox1.Location = new System.Drawing.Point(605, 54);
-            this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox1.Name = "uiTextBox1";
-            this.uiTextBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox1.ShowText = false;
-            this.uiTextBox1.Size = new System.Drawing.Size(340, 29);
-            this.uiTextBox1.TabIndex = 123;
-            this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox1.Watermark = "";
-            // 
-            // uiTextBox4
-            // 
-            this.uiTextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox4.EnterAsTab = true;
-            this.uiTextBox4.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiTextBox4.Location = new System.Drawing.Point(134, 93);
-            this.uiTextBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox4.MinimumSize = new System.Drawing.Size(1, 16);
-            this.uiTextBox4.Name = "uiTextBox4";
-            this.uiTextBox4.Padding = new System.Windows.Forms.Padding(5);
-            this.uiTextBox4.ShowText = false;
-            this.uiTextBox4.Size = new System.Drawing.Size(340, 29);
-            this.uiTextBox4.TabIndex = 124;
-            this.uiTextBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox4.Watermark = "";
-            // 
-            // uiLabel5
-            // 
-            this.uiLabel5.AutoSize = true;
-            this.uiLabel5.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel5.Location = new System.Drawing.Point(30, 101);
-            this.uiLabel5.Name = "uiLabel5";
-            this.uiLabel5.Size = new System.Drawing.Size(71, 16);
-            this.uiLabel5.TabIndex = 125;
-            this.uiLabel5.Text = "创建时间";
-            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // uiButton5
-            // 
-            this.uiButton5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
-            this.uiButton5.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
-            this.uiButton5.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
-            this.uiButton5.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton5.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton5.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiButton5.Location = new System.Drawing.Point(733, 87);
-            this.uiButton5.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton5.Name = "uiButton5";
-            this.uiButton5.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
-            this.uiButton5.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(175)))), ((int)(((byte)(83)))));
-            this.uiButton5.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton5.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
-            this.uiButton5.ShowFocusLine = true;
-            this.uiButton5.Size = new System.Drawing.Size(100, 35);
-            this.uiButton5.Style = Sunny.UI.UIStyle.Custom;
-            this.uiButton5.StyleCustomMode = true;
-            this.uiButton5.TabIndex = 126;
-            this.uiButton5.Text = "修改";
-            this.uiButton5.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.WhetherTimelyProcessing.DataSource = null;
+            this.WhetherTimelyProcessing.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
+            this.WhetherTimelyProcessing.DropDownWidth = 300;
+            this.WhetherTimelyProcessing.FillColor = System.Drawing.Color.White;
+            this.WhetherTimelyProcessing.FilterMaxCount = 50;
+            this.WhetherTimelyProcessing.Font = new System.Drawing.Font("宋体", 12F);
+            this.WhetherTimelyProcessing.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.WhetherTimelyProcessing.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.WhetherTimelyProcessing.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.WhetherTimelyProcessing.Location = new System.Drawing.Point(134, 54);
+            this.WhetherTimelyProcessing.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.WhetherTimelyProcessing.MinimumSize = new System.Drawing.Size(63, 0);
+            this.WhetherTimelyProcessing.Name = "WhetherTimelyProcessing";
+            this.WhetherTimelyProcessing.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.WhetherTimelyProcessing.ShowClearButton = true;
+            this.WhetherTimelyProcessing.Size = new System.Drawing.Size(340, 29);
+            this.WhetherTimelyProcessing.SymbolSize = 24;
+            this.WhetherTimelyProcessing.TabIndex = 128;
+            this.WhetherTimelyProcessing.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.WhetherTimelyProcessing.Watermark = "";
             // 
             // AlarmManagement
             // 
@@ -481,7 +532,7 @@
         #endregion
 
         private Sunny.UI.UICheckBoxGroup uiCheckBoxGroup1;
-        private Sunny.UI.UITextBox edtName;
+        private Sunny.UI.UITextBox AlarmContent;
         private Sunny.UI.UISymbolButton uiSymbolButton1;
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UISymbolButton btnAdd;
@@ -489,22 +540,24 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.GroupBox groupBox1;
         private Sunny.UI.UIDataGridView uiDataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ConsumablesCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreationTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreationName;
+        private Sunny.UI.UITextBox CreateTime;
+        private Sunny.UI.UILabel uiLabel5;
+        private Sunny.UI.UITextBox CreateName;
+        private Sunny.UI.UILabel uiLabel3;
+        private Sunny.UI.UITextBox AlarmCause;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UILabel uiLabel4;
+        private Sunny.UI.UIButton uiButton5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AlarmContent_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AlarmCause_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WhetherTimelyProcessing_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Createtime_Manager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreateName_Manager;
         private System.Windows.Forms.DataGridViewButtonColumn Search;
         private System.Windows.Forms.DataGridViewButtonColumn Edit;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
-        private Sunny.UI.UITextBox uiTextBox4;
-        private Sunny.UI.UILabel uiLabel5;
-        private Sunny.UI.UITextBox uiTextBox1;
-        private Sunny.UI.UILabel uiLabel3;
-        private Sunny.UI.UITextBox uiTextBox2;
-        private Sunny.UI.UILabel uiLabel1;
-        private Sunny.UI.UITextBox uiTextBox3;
-        private Sunny.UI.UILabel uiLabel4;
-        private Sunny.UI.UIButton uiButton5;
+        private Sunny.UI.UIButton uiButton6;
+        private Sunny.UI.UIComboBox WhetherTimelyProcessing;
     }
 }

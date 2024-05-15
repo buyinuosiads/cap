@@ -185,32 +185,43 @@ namespace Cap.BasicSettings.Technology
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(ProcessName.Text))
+
+            if (ShowAskDialog("确定要添加吗？"))
             {
-                ShowWarningDialog("工艺名称不能为空");
-                return;
+
+                if (string.IsNullOrEmpty(ProcessName.Text))
+                {
+                    ShowWarningDialog("工艺名称不能为空");
+                    return;
+                }
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                ProcessSetting processSetting = new ProcessSetting();
+                processSetting.Id = Guid.NewGuid().ToString();
+                processSetting.ProcessName = ProcessName.Text;
+                processSetting.Main = MainIngredient.Text;
+                processSetting.Accessory = Accessory.Text;
+                processSetting.Price = decimal.Parse(Price.Text);
+                //创建时间
+                processSetting.CreateTime = DateTime.Now;
+                processSetting.CreateName = CreateName.Text;
+                //添加数据
+                processSetting.IsDelete = 0;
+                //是否删除
+                capProjectDb.ProcessSetting.InsertOnSubmit(processSetting);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
             }
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            ProcessSetting processSetting = new ProcessSetting();
-            processSetting.Id = Guid.NewGuid().ToString();
-            processSetting.ProcessName = ProcessName.Text;
-            processSetting.Main = MainIngredient.Text;
-            processSetting.Accessory = Accessory.Text;
-            processSetting.Price = decimal.Parse(Price.Text);
-            //创建时间
-            processSetting.CreateTime = DateTime.Now;
-            processSetting.CreateName = CreateName.Text;
-            //添加数据
-            processSetting.IsDelete = 0;
-            //是否删除
-            capProjectDb.ProcessSetting.InsertOnSubmit(processSetting);
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
         }
 
         private void Technology_Initialize(object sender, EventArgs e)
@@ -372,20 +383,28 @@ namespace Cap.BasicSettings.Technology
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
+            if (ShowAskDialog("确定要修改吗？"))
+            {
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            ProcessSetting processSetting = capProjectDb.ProcessSetting.Where(t => t.Id == Id).FirstOrDefault();
-            processSetting.ProcessName = ProcessName.Text;
-            processSetting.Main = MainIngredient.Text;
-            processSetting.Accessory = Accessory.Text;
-            processSetting.CreateName = CreateName.Text;
-            processSetting.Price = decimal.Parse(Price.Text);
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                ProcessSetting processSetting = capProjectDb.ProcessSetting.Where(t => t.Id == Id).FirstOrDefault();
+                processSetting.ProcessName = ProcessName.Text;
+                processSetting.Main = MainIngredient.Text;
+                processSetting.Accessory = Accessory.Text;
+                processSetting.CreateName = CreateName.Text;
+                processSetting.Price = decimal.Parse(Price.Text);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
 
         }
     }

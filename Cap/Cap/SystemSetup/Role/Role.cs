@@ -177,46 +177,54 @@ namespace Cap.SystemSetup.Role
         }
 
 
-
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uiSymbolButton2_Click(object sender, EventArgs e)
         {
-
-
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            string sort_Manager = string.Empty;
-
-            List<Sys_Menu> roleList = capProjectDb.Sys_Menu.OrderBy(a => a.Sort).ToList(); //全查询
-            string Menu = string.Empty;
-            foreach (TreeNode item in FPCD.Nodes)
+            if (ShowAskDialog("确定要添加吗？"))
             {
-                if (item.Checked == true)
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                string sort_Manager = string.Empty;
+
+                List<Sys_Menu> roleList = capProjectDb.Sys_Menu.OrderBy(a => a.Sort).ToList(); //全查询
+                string Menu = string.Empty;
+                foreach (TreeNode item in FPCD.Nodes)
                 {
-                    Menu += item.ToString().Replace("TreeNode: ", null) + ";";
+                    if (item.Checked == true)
+                    {
+                        Menu += item.ToString().Replace("TreeNode: ", null) + ";";
+                    }
                 }
+
+
+                string[] MenuList = Menu.Split(";");
+                for (int i = 0; i < MenuList.Length; i++)
+                {
+                    string name = MenuList[i].ToString();
+                    if (!string.IsNullOrEmpty(name))
+                    {
+                        Sys_Menu role = roleList.Where(t => t.MenuText.Equals(name)).FirstOrDefault();
+                        sort_Manager += role.Sort + ";";
+                    }
+                }
+
+                Sys_Role sys_Role = new Sys_Role();
+                sys_Role.RoleName = RoleName_Manager.Text;
+                sys_Role.MenuName = Menu;
+                sys_Role.Sort = sort_Manager;
+                sys_Role.CreateTime = DateTime.Now;
+                capProjectDb.Sys_Role.InsertOnSubmit(sys_Role);
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                SearchList();
             }
-
-
-            string[] MenuList = Menu.Split(";");
-            for (int i = 0; i < MenuList.Length; i++)
+            else
             {
-                string name = MenuList[i].ToString();
-                if (!string.IsNullOrEmpty(name))
-                {
-                    Sys_Menu role = roleList.Where(t => t.MenuText.Equals(name)).FirstOrDefault();
-                    sort_Manager += role.Sort + ";";
-                }
+                ShowErrorTip("取消当前操作");
             }
-
-            Sys_Role sys_Role = new Sys_Role();
-            sys_Role.RoleName = RoleName_Manager.Text;
-            sys_Role.MenuName = Menu;
-            sys_Role.Sort = sort_Manager;
-            sys_Role.CreateTime = DateTime.Now;
-            capProjectDb.Sys_Role.InsertOnSubmit(sys_Role);
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            SearchList();
-
 
         }
 
@@ -277,40 +285,47 @@ namespace Cap.SystemSetup.Role
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            string sort_Manager = string.Empty;
-
-            List<Sys_Menu> roleList = capProjectDb.Sys_Menu.OrderBy(a => a.Sort).ToList(); //全查询
-            string Menu = string.Empty;
-            foreach (TreeNode item in FPCD.Nodes)
+            if (ShowAskDialog("确定要修改吗？"))
             {
-                if (item.Checked == true)
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                string sort_Manager = string.Empty;
+
+                List<Sys_Menu> roleList = capProjectDb.Sys_Menu.OrderBy(a => a.Sort).ToList(); //全查询
+                string Menu = string.Empty;
+                foreach (TreeNode item in FPCD.Nodes)
                 {
-                    Menu += item.ToString().Replace("TreeNode: ", null) + ";";
+                    if (item.Checked == true)
+                    {
+                        Menu += item.ToString().Replace("TreeNode: ", null) + ";";
+                    }
                 }
+
+                string[] MenuList = Menu.Split(";");
+                for (int i = 0; i < MenuList.Length; i++)
+                {
+                    string name = MenuList[i].ToString();
+                    if (!string.IsNullOrEmpty(name))
+                    {
+                        Sys_Menu role = roleList.Where(t => t.MenuText.Equals(name)).FirstOrDefault();
+                        sort_Manager += role.Sort + ";";
+                    }
+                }
+                Sys_Role sys_Role = capProjectDb.Sys_Role.Where(t => t.RoleId == int.Parse(Id)).FirstOrDefault();
+                sys_Role.RoleName = RoleName_Manager.Text;
+                sys_Role.MenuName = Menu;
+                sys_Role.Sort = sort_Manager;
+                capProjectDb.SubmitChanges();
+
+                ShowSuccessDialog("修改成功");
+                SearchList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
             }
 
 
-            string[] MenuList = Menu.Split(";");
-            for (int i = 0; i < MenuList.Length; i++)
-            {
-                string name = MenuList[i].ToString();
-                if (!string.IsNullOrEmpty(name))
-                {
-                    Sys_Menu role = roleList.Where(t => t.MenuText.Equals(name)).FirstOrDefault();
-                    sort_Manager += role.Sort + ";";
-                }
-            }
-
-
-            Sys_Role sys_Role = capProjectDb.Sys_Role.Where(t => t.RoleId == int.Parse(Id)).FirstOrDefault();
-            sys_Role.RoleName = RoleName_Manager.Text;
-            sys_Role.MenuName = Menu;
-            sys_Role.Sort = sort_Manager;
-            capProjectDb.SubmitChanges();
-
-            ShowSuccessDialog("修改成功");
-            SearchList();
         }
 
         private void uiSymbolButton1_Click(object sender, EventArgs e)

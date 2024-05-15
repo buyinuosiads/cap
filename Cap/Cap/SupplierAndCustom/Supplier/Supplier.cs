@@ -150,23 +150,30 @@ namespace Cap.SupplierAndCustom.Supplier
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-           
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            SupplierName supplierName = new SupplierName();
-            supplierName.Id = Guid.NewGuid().ToString();
-            supplierName.NameOfTheSupplier = NameOfTheSupplier.Text;
-            supplierName.SuppliersList = SuppliersList.Text;
-            supplierName.SupplyPosition = SupplyPosition.Text;
-            supplierName.Price = decimal.Parse(Price.Text);
-            supplierName.IsDelete = 0;
-            supplierName.CreateTime = DateTime.Now;
-            supplierName.CreateName = CreateName.Text;
-            capProjectDb.SupplierName.InsertOnSubmit(supplierName);
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                SupplierName supplierName = new SupplierName();
+                supplierName.Id = Guid.NewGuid().ToString();
+                supplierName.NameOfTheSupplier = NameOfTheSupplier.Text;
+                supplierName.SuppliersList = SuppliersList.Text;
+                supplierName.SupplyPosition = SupplyPosition.Text;
+                supplierName.Price = decimal.Parse(Price.Text);
+                supplierName.IsDelete = 0;
+                supplierName.CreateTime = DateTime.Now;
+                supplierName.CreateName = CreateName.Text;
+                capProjectDb.SupplierName.InsertOnSubmit(supplierName);
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
 
         }
 
@@ -272,18 +279,23 @@ namespace Cap.SupplierAndCustom.Supplier
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            SupplierName supplierName = capProjectDb.SupplierName.Where(t => t.Id == Id).FirstOrDefault();
-            supplierName.NameOfTheSupplier = NameOfTheSupplier.Text;
-            supplierName.SuppliersList = SuppliersList.Text;
-            supplierName.SupplyPosition = SupplyPosition.Text;
-            supplierName.Price = decimal.Parse(Price.Text);
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            GetList();
-
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                SupplierName supplierName = capProjectDb.SupplierName.Where(t => t.Id == Id).FirstOrDefault();
+                supplierName.NameOfTheSupplier = NameOfTheSupplier.Text;
+                supplierName.SuppliersList = SuppliersList.Text;
+                supplierName.SupplyPosition = SupplyPosition.Text;
+                supplierName.Price = decimal.Parse(Price.Text);
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
         }
 
         /// <summary>

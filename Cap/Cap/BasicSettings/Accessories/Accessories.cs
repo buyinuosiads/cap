@@ -151,21 +151,29 @@ namespace Cap.BasicSettings.Accessories
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            ChargeTime chargeTime = new ChargeTime();
-            chargeTime.Id = Guid.NewGuid().ToString();
-            chargeTime.AccessoryName = AccessoryName.Text;
-            chargeTime.Unit = Unit.Text;
-            chargeTime.CreateTime = DateTime.Now;
-            chargeTime.CreateName = CreateName.Text;
-            chargeTime.IsDelete = 0;
-            //保存数据
-            capProjectDb.ChargeTime.InsertOnSubmit(chargeTime);
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                ChargeTime chargeTime = new ChargeTime();
+                chargeTime.Id = Guid.NewGuid().ToString();
+                chargeTime.AccessoryName = AccessoryName.Text;
+                chargeTime.Unit = Unit.Text;
+                chargeTime.CreateTime = DateTime.Now;
+                chargeTime.CreateName = CreateName.Text;
+                chargeTime.IsDelete = 0;
+                //保存数据
+                capProjectDb.ChargeTime.InsertOnSubmit(chargeTime);
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
         }
 
         private void Accessories_Initialize(object sender, EventArgs e)
@@ -230,19 +238,24 @@ namespace Cap.BasicSettings.Accessories
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            ChargeTime chargeTime = capProjectDb.ChargeTime.Where(t => t.Id == Id).FirstOrDefault();
-            chargeTime.AccessoryName = AccessoryName.Text;
-            chargeTime.Unit = Unit.Text;
-            chargeTime.CreateName = CreateName.Text;
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
-
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                ChargeTime chargeTime = capProjectDb.ChargeTime.Where(t => t.Id == Id).FirstOrDefault();
+                chargeTime.AccessoryName = AccessoryName.Text;
+                chargeTime.Unit = Unit.Text;
+                chargeTime.CreateName = CreateName.Text;
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
         }
     }
 }

@@ -167,20 +167,29 @@ namespace Cap.BasicSettings.Ingredients
         /// <param name="e"></param>
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            MajorIngredient majorIngredient = new MajorIngredient();
-            majorIngredient.Id = Guid.NewGuid().ToString();
-            majorIngredient.MainName = MainName.Text;
-            majorIngredient.Unit = Unit.Text;
-            majorIngredient.CreateName = CreateName.Text;
-            majorIngredient.CreateTime = DateTime.Now;
-            majorIngredient.IsDelete = 0;
-            capProjectDb.MajorIngredient.InsertOnSubmit(majorIngredient);
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+             
+            if (ShowAskDialog("确定要添加吗？"))
+            { 
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                MajorIngredient majorIngredient = new MajorIngredient();
+                majorIngredient.Id = Guid.NewGuid().ToString();
+                majorIngredient.MainName = MainName.Text;
+                majorIngredient.Unit = Unit.Text;
+                majorIngredient.CreateName = CreateName.Text;
+                majorIngredient.CreateTime = DateTime.Now;
+                majorIngredient.IsDelete = 0;
+                capProjectDb.MajorIngredient.InsertOnSubmit(majorIngredient);
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
 
 
         }
@@ -248,19 +257,25 @@ namespace Cap.BasicSettings.Ingredients
         private void uiButton5_Click(object sender, EventArgs e)
         {
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            MajorIngredient majorIngredient = capProjectDb.MajorIngredient.Where(t => t.Id == Id).FirstOrDefault();
-            majorIngredient.MainName = MainName.Text;
-            majorIngredient.Unit = Unit.Text;
-            majorIngredient.CreateName = CreateName.Text;
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                MajorIngredient majorIngredient = capProjectDb.MajorIngredient.Where(t => t.Id == Id).FirstOrDefault();
+                majorIngredient.MainName = MainName.Text;
+                majorIngredient.Unit = Unit.Text;
+                majorIngredient.CreateName = CreateName.Text;
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
 
-
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            } 
         }
     }
 }

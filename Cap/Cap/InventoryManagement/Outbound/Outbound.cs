@@ -165,23 +165,33 @@ namespace Cap.InventoryManagement.Outbound
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            OutboundManager outbound = new OutboundManager();
-            outbound.Id = Guid.NewGuid().ToString();
-            outbound.OutboundName = OutboundName.Text;
-            outbound.Contact = Contact.Text; ;
-            outbound.Phone = Phone.Text;
-            outbound.CreateName = CreateName.Text;
-            outbound.CreateTime = DateTime.Now;
-            outbound.IsDelete = 0;
-            //添加数据
-            capProjectDb.OutboundManager.InsertOnSubmit(outbound);
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                OutboundManager outbound = new OutboundManager();
+                outbound.Id = Guid.NewGuid().ToString();
+                outbound.OutboundName = OutboundName.Text;
+                outbound.Contact = Contact.Text; ;
+                outbound.Phone = Phone.Text;
+                outbound.CreateName = CreateName.Text;
+                outbound.CreateTime = DateTime.Now;
+                outbound.IsDelete = 0;
+                //添加数据
+                capProjectDb.OutboundManager.InsertOnSubmit(outbound);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -239,20 +249,27 @@ namespace Cap.InventoryManagement.Outbound
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                OutboundManager outbound = capProjectDb.OutboundManager.Where(t => t.Id == Id).FirstOrDefault();
+                outbound.OutboundName = OutboundName.Text;
+                outbound.Contact = Contact.Text; ;
+                outbound.Phone = Phone.Text;
+                outbound.CreateName = CreateName.Text;
+                outbound.IsDelete = 0;
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            OutboundManager outbound = capProjectDb.OutboundManager.Where(t => t.Id == Id).FirstOrDefault();
-            outbound.OutboundName = OutboundName.Text;
-            outbound.Contact = Contact.Text; ;
-            outbound.Phone = Phone.Text;
-            outbound.CreateName = CreateName.Text;
-            outbound.IsDelete = 0;
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
         }
     }
 }

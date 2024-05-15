@@ -165,23 +165,35 @@ namespace Cap.WorkRecordsParent.WorkRecords
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Cap_WorkRecord cap_Work = new Cap_WorkRecord();
-            cap_Work.Id = Guid.NewGuid().ToString();
-            cap_Work.JobTitle = JobTitle.Text;
-            cap_Work.Logging = Logging.Text;
-            cap_Work.Statistics = Statistics.Text;
-            cap_Work.CreateTime = DateTime.Now;
-            cap_Work.CreateName = CreateName.Text;
-            cap_Work.IsDelete = 0;
-            //添加数据
-            capProjectDb.Cap_WorkRecord.InsertOnSubmit(cap_Work);
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+
+
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Cap_WorkRecord cap_Work = new Cap_WorkRecord();
+                cap_Work.Id = Guid.NewGuid().ToString();
+                cap_Work.JobTitle = JobTitle.Text;
+                cap_Work.Logging = Logging.Text;
+                cap_Work.Statistics = Statistics.Text;
+                cap_Work.CreateTime = DateTime.Now;
+                cap_Work.CreateName = CreateName.Text;
+                cap_Work.IsDelete = 0;
+                //添加数据
+                capProjectDb.Cap_WorkRecord.InsertOnSubmit(cap_Work);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
 
 
         }
@@ -234,18 +246,28 @@ namespace Cap.WorkRecordsParent.WorkRecords
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Cap_WorkRecord cap_Work = capProjectDb.Cap_WorkRecord.Where(t => t.Id == Id).FirstOrDefault();
-            cap_Work.JobTitle = JobTitle.Text;
-            cap_Work.Logging = Logging.Text;
-            cap_Work.Statistics = Statistics.Text;
-            cap_Work.CreateName = CreateName.Text;
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Cap_WorkRecord cap_Work = capProjectDb.Cap_WorkRecord.Where(t => t.Id == Id).FirstOrDefault();
+                cap_Work.JobTitle = JobTitle.Text;
+                cap_Work.Logging = Logging.Text;
+                cap_Work.Statistics = Statistics.Text;
+                cap_Work.CreateName = CreateName.Text;
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
+
         }
         /// <summary>
         /// 查询

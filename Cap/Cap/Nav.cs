@@ -101,7 +101,6 @@ namespace Cap
                         user.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(user, ++pageIndex)); //用户管理     1
                         //uiNavMenu1.CreateChildNode(parent, AddPage(new SystemSetup.User(), ++pageIndex)); //用户管理     1
-
                     }
                     else if (num == "2")
                     {

@@ -157,19 +157,28 @@ namespace Cap.Order.OrderAdditionalRecording
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            OrderSupplement orderSupplement = new OrderSupplement();
-            orderSupplement.Id = Guid.NewGuid().ToString();
-            orderSupplement.AdditionalRecording = AdditionalRecording.Text;
-            orderSupplement.CreateTime = DateTime.Now;
-            orderSupplement.CreateName = CreateName.Text;
-            orderSupplement.IsDelete = 0;
-            capProjectDb.OrderSupplement.InsertOnSubmit(orderSupplement);
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                OrderSupplement orderSupplement = new OrderSupplement();
+                orderSupplement.Id = Guid.NewGuid().ToString();
+                orderSupplement.AdditionalRecording = AdditionalRecording.Text;
+                orderSupplement.CreateTime = DateTime.Now;
+                orderSupplement.CreateName = CreateName.Text;
+                orderSupplement.IsDelete = 0;
+                capProjectDb.OrderSupplement.InsertOnSubmit(orderSupplement);
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+          
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -211,15 +220,26 @@ namespace Cap.Order.OrderAdditionalRecording
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            OrderSupplement orderSupplement = capProjectDb.OrderSupplement.Where(t => t.Id == Id).FirstOrDefault();
-            orderSupplement.AdditionalRecording = AdditionalRecording.Text;
-            orderSupplement.CreateName = CreateName.Text;
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                OrderSupplement orderSupplement = capProjectDb.OrderSupplement.Where(t => t.Id == Id).FirstOrDefault();
+                orderSupplement.AdditionalRecording = AdditionalRecording.Text;
+                orderSupplement.CreateName = CreateName.Text;
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
+
         }
 
         /// <summary>

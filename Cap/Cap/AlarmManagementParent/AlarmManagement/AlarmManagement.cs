@@ -1,5 +1,6 @@
 ﻿using Cap.BasicSettings.Accessories;
 using Cap.Order.OrderSplitting;
+using Model;
 using Sunny.UI;
 using Sunny.UI.Win32;
 using System;
@@ -8,51 +9,72 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cap.AlarmManagementParent.AlarmManagement
 {
     public partial class AlarmManagement : UIPage
     {
-        List<Data> dataList = new List<Data>();
+        List<Cap_AlarmManagement> dataList = new List<Cap_AlarmManagement>();
         DataTable dataTable = new DataTable("DataTable");
+        string Id = string.Empty;
         public AlarmManagement()
         {
             InitializeComponent();
 
+            dataTable.Columns.Add("Id_Manager");
+            dataTable.Columns.Add("AlarmContent_Manager");
+            dataTable.Columns.Add("AlarmCause_Manager");
+            dataTable.Columns.Add("WhetherTimelyProcessing_Manager");
+            dataTable.Columns.Add("Createtime_Manager");
+            dataTable.Columns.Add("CreateName_Manager");
+            GetList();
+        }
 
-            for (int i = 0; i < 10; i++)
+
+
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        public void GetList()
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Expression<Func<Cap_AlarmManagement, bool>> where = s => s.Id != null && s.IsDelete == 0;
+            if (!string.IsNullOrEmpty(AlarmContent.Text))
             {
-                Data data = new Data();
-                data.Column1 = "资产编号1" + i;
-                data.Column2 = "资产编号1" + i;
-                data.Column3 = "资产编号1" + i;
-                data.Column4 = DateTime.Now.ToString();
-                data.Column5 = "资产类别";
-                dataList.Add(data);
+                where = ExpressionBuilder.And(where, f => f.AlarmContent.Contains(AlarmContent.Text));
+            };
+
+            dataList.Clear();
+            List<Cap_AlarmManagement> sys_Users = capProjectDb.Cap_AlarmManagement.Where(where).OrderByDescending(t => t.CreateTime).ToList(); //全查询
+            foreach (var item in sys_Users)
+            {
+                dataList.Add(item);
             }
-
-            dataTable.Columns.Add("Column1");
-            dataTable.Columns.Add("Column2");
-            dataTable.Columns.Add("Column3");
-            dataTable.Columns.Add("Column4");
-            dataTable.Columns.Add("Column5");
             uiDataGridView1.DataSource = dataTable;
-
             //不自动生成列
             uiDataGridView1.AutoGenerateColumns = false;
-
             //设置分页控件总数
-            uiPagination1.TotalCount = dataList.Count;
-
+            uiPagination1.TotalCount = sys_Users.Count;
             //设置分页控件每页数量
             uiPagination1.PageSize = 15;
             uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
 
+            dataTable.Rows.Clear();
+            for (int i = (1 - 1) * 15; i < 1 * 15; i++)
+            {
+                if (i >= dataList.Count) break;
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].AlarmContent, dataList[i].AlarmCause, dataList[i].WhetherTimelyProcessing, dataList[i].CreateTime, dataList[i].CreateName);
+            }
         }
+
 
         private void AlarmManagement_Initialize(object sender, EventArgs e)
         {
@@ -84,33 +106,15 @@ namespace Cap.AlarmManagementParent.AlarmManagement
         /// <param name="count"></param>
         private void uiPagination1_PageChanged(object sender, object pagingSource, int pageIndex, int count)
         {
-            //未连接数据库，通过模拟数据来实现
-            //一般通过ORM的分页去取数据来填充
-            //pageIndex：第几页，和界面对应，从1开始，取数据可能要用pageIndex - 1
-            //count：单页数据量，也就是PageSize值
-
             dataTable.Rows.Clear();
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column4, dataList[i].Column5);
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].AlarmContent, dataList[i].AlarmCause, dataList[i].WhetherTimelyProcessing, dataList[i].CreateTime, dataList[i].CreateName);
             }
         }
 
 
-        public class Data
-        {
-            public string Column1 { get; set; }
-            public string Column2 { get; set; }
-            public string Column3 { get; set; }
-            public string Column4 { get; set; }
-            public string Column5 { get; set; }
-
-            public override string ToString()
-            {
-                return Column1;
-            }
-        }
 
         private void uiDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -119,33 +123,34 @@ namespace Cap.AlarmManagementParent.AlarmManagement
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            string Column2 = row.Cells["ConsumablesCount"].Value.ToString();
-            string rowData = row.Cells["Column1"].Value.ToString();
-            string Column3 = row.Cells["Column2"].Value.ToString();
-
-
-            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
-            {
-                AlarmManagementEdit order = new AlarmManagementEdit(Column2, rowData, Column3);///实例化窗体
-                order.ShowDialog();
-            }
-
-
-            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
-            {
-
-                AlarmManagementEdit order = new AlarmManagementEdit(Column2, rowData, Column3);///实例化窗体
-                order.ShowDialog();
-
-            }
+            string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+            //string rowData = row.Cells["Column1"].Value.ToString();
+            //string Column3 = row.Cells["Column2"].Value.ToString();
+            //if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            //{
+            //    AlarmManagementEdit order = new AlarmManagementEdit(Column2, rowData, Column3);///实例化窗体
+            //    order.ShowDialog();
+            //}
+            //if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            //{
+            //    AlarmManagementEdit order = new AlarmManagementEdit(Column2, rowData, Column3);///实例化窗体
+            //    order.ShowDialog();
+            //}
 
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
             {
                 if (ShowAskDialog("确定要删除吗？"))
                 {
+
+                    CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                    Cap_AlarmManagement cap_AlarmManagement = capProjectDb.Cap_AlarmManagement.Where(t => t.Id == Id_Manager).FirstOrDefault();
+                    cap_AlarmManagement.IsDelete = 99;
+                    capProjectDb.SubmitChanges();
                     ShowSuccessTip("删除成功");
-                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                    uiButton6_Click(sender, e); //调用清空文本框方法
+                    GetList();
+
                 }
                 else
                 {
@@ -154,12 +159,40 @@ namespace Cap.AlarmManagementParent.AlarmManagement
             }
         }
 
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //AlarmManagementAdd frm = new AlarmManagementAdd();
-            //frm.Render();
-            //frm.ShowDialog();
-            dataTable.Rows.Add(edtName.Text, uiTextBox2.Text, uiTextBox3.Text, uiTextBox1.Text, uiTextBox4.Text);
+
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Cap_AlarmManagement cap_AlarmManagement = new Cap_AlarmManagement();
+                cap_AlarmManagement.Id = Guid.NewGuid().ToString();
+                cap_AlarmManagement.AlarmContent = AlarmContent.Text;
+                cap_AlarmManagement.AlarmCause = AlarmCause.Text;
+                cap_AlarmManagement.WhetherTimelyProcessing = WhetherTimelyProcessing.Text;
+                cap_AlarmManagement.CreateTime = DateTime.Now;
+                cap_AlarmManagement.CreateName = CreateName.Text;
+                cap_AlarmManagement.IsDelete = 0;
+                capProjectDb.Cap_AlarmManagement.InsertOnSubmit(cap_AlarmManagement);
+                capProjectDb.SubmitChanges();
+                ShowSuccessTip("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
+
+        
+
 
         }
 
@@ -171,19 +204,76 @@ namespace Cap.AlarmManagementParent.AlarmManagement
                 // 获取所点击的行
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据
-                string Column2 = row.Cells["ConsumablesCount"].Value.ToString();
-                string rowData = row.Cells["Column1"].Value.ToString();
-                string Column3 = row.Cells["Column2"].Value.ToString();
-                string CreationTime = row.Cells["CreationTime"].Value.ToString();
-                string CreationName = row.Cells["CreationName"].Value.ToString();
 
+                string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+                string AlarmContent_Manager = row.Cells["AlarmContent_Manager"].Value.ToString();
+                string AlarmCause_Manager = row.Cells["AlarmCause_Manager"].Value.ToString();
+                string WhetherTimelyProcessing_Manager = row.Cells["WhetherTimelyProcessing_Manager"].Value.ToString();
+                string CreateTime_Manager = row.Cells["Createtime_Manager"].Value.ToString();
+                string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
 
-                edtName.Text = Column2;
-                uiTextBox2.Text = rowData;
-                uiTextBox3.Text = Column3;
-                uiTextBox1.Text = CreationTime;
-                uiTextBox4.Text = CreationName;
+                Id = Id_Manager;
+                AlarmContent.Text = AlarmContent_Manager;
+                AlarmCause.Text = AlarmCause_Manager;
+                WhetherTimelyProcessing.Text = WhetherTimelyProcessing_Manager;
+                CreateName.Text = CreateName_Manager;
+                CreateTime.Text = CreateTime_Manager;
             }
+        }
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiSymbolButton1_Click(object sender, EventArgs e)
+        {
+            GetList();
+        }
+
+        /// <summary>
+        /// 清空文本框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton6_Click(object sender, EventArgs e)
+        {
+            Id = null;
+            AlarmContent.Text = null;
+            AlarmCause.Text = null;
+            CreateName.Text = null;
+            CreateTime.Text = null;
+            WhetherTimelyProcessing.Text = null;
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton5_Click(object sender, EventArgs e)
+        {
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Cap_AlarmManagement cap_AlarmManagement = capProjectDb.Cap_AlarmManagement.Where(t => t.Id == Id).FirstOrDefault();
+                cap_AlarmManagement.AlarmContent = AlarmContent.Text;
+                cap_AlarmManagement.AlarmCause = AlarmCause.Text;
+                cap_AlarmManagement.WhetherTimelyProcessing = WhetherTimelyProcessing.Text;
+                cap_AlarmManagement.CreateName = CreateName.Text;
+                capProjectDb.SubmitChanges();
+                ShowSuccessTip("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
+
+
+
         }
     }
 }

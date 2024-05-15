@@ -168,23 +168,34 @@ namespace Cap.Finance.FinancialJournal
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Cap_FinancialDailyAccount cap_FinancialDaily = new Cap_FinancialDailyAccount();
-            cap_FinancialDaily.Id = Guid.NewGuid().ToString();
-            cap_FinancialDaily.FinancialJournal = FinancialJournal_RZ.Text;
-            cap_FinancialDaily.FixedAssets = FixedAssets.Text;
-            cap_FinancialDaily.OtherPurchases = OtherPurchases.Text;
-            cap_FinancialDaily.CreateTime = DateTime.Now;
-            cap_FinancialDaily.CreateName = CreateName.Text;
-            cap_FinancialDaily.IsDelete = 0;
-            //添加数据
-            capProjectDb.Cap_FinancialDailyAccount.InsertOnSubmit(cap_FinancialDaily);
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Cap_FinancialDailyAccount cap_FinancialDaily = new Cap_FinancialDailyAccount();
+                cap_FinancialDaily.Id = Guid.NewGuid().ToString();
+                cap_FinancialDaily.FinancialJournal = FinancialJournal_RZ.Text;
+                cap_FinancialDaily.FixedAssets = FixedAssets.Text;
+                cap_FinancialDaily.OtherPurchases = OtherPurchases.Text;
+                cap_FinancialDaily.CreateTime = DateTime.Now;
+                cap_FinancialDaily.CreateName = CreateName.Text;
+                cap_FinancialDaily.IsDelete = 0;
+                //添加数据
+                capProjectDb.Cap_FinancialDailyAccount.InsertOnSubmit(cap_FinancialDaily);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -233,18 +244,29 @@ namespace Cap.Finance.FinancialJournal
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Cap_FinancialDailyAccount cap_Financial = capProjectDb.Cap_FinancialDailyAccount.Where(t => t.Id == Id).FirstOrDefault();
-            cap_Financial.FinancialJournal = FinancialJournal_RZ.Text;
-            cap_Financial.FixedAssets = FixedAssets.Text;
-            cap_Financial.OtherPurchases = OtherPurchases.Text;
-            cap_Financial.CreateName = CreateName.Text;
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Cap_FinancialDailyAccount cap_Financial = capProjectDb.Cap_FinancialDailyAccount.Where(t => t.Id == Id).FirstOrDefault();
+                cap_Financial.FinancialJournal = FinancialJournal_RZ.Text;
+                cap_Financial.FixedAssets = FixedAssets.Text;
+                cap_Financial.OtherPurchases = OtherPurchases.Text;
+                cap_Financial.CreateName = CreateName.Text;
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
+
         }
         /// <summary>
         /// 查询

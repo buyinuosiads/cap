@@ -186,25 +186,32 @@ namespace Cap.BasicSettings.Box
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            BoxGaugeSetting boxGaugeSetting = new BoxGaugeSetting();
-            boxGaugeSetting.Id = Guid.NewGuid().ToString();
-            boxGaugeSetting.CaseGaugeName = CaseGaugeName.Text;
-            boxGaugeSetting.ContainerLoad = ContainerLoad.Text;
-            boxGaugeSetting.ConsumableNumber = ConsumableNumber.Text;
-            boxGaugeSetting.AccessoryName = AccessoryName.Text;
-            boxGaugeSetting.AccessoryNum = AccessoryNum.Text;
-            boxGaugeSetting.CreateTime = DateTime.Now;
-            boxGaugeSetting.CreateName = CreateName.Text;
-            boxGaugeSetting.IsDelete = 0;
-            //添加数据
-            capProjectDb.BoxGaugeSetting.InsertOnSubmit(boxGaugeSetting);
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            if (ShowAskDialog("确定要添加吗？"))
+            { 
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                BoxGaugeSetting boxGaugeSetting = new BoxGaugeSetting();
+                boxGaugeSetting.Id = Guid.NewGuid().ToString();
+                boxGaugeSetting.CaseGaugeName = CaseGaugeName.Text;
+                boxGaugeSetting.ContainerLoad = ContainerLoad.Text;
+                boxGaugeSetting.ConsumableNumber = ConsumableNumber.Text;
+                boxGaugeSetting.AccessoryName = AccessoryName.Text;
+                boxGaugeSetting.AccessoryNum = AccessoryNum.Text;
+                boxGaugeSetting.CreateTime = DateTime.Now;
+                boxGaugeSetting.CreateName = CreateName.Text;
+                boxGaugeSetting.IsDelete = 0;
+                //添加数据
+                capProjectDb.BoxGaugeSetting.InsertOnSubmit(boxGaugeSetting);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
 
         }
 
@@ -400,19 +407,27 @@ namespace Cap.BasicSettings.Box
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            BoxGaugeSetting boxGaugeSetting = capProjectDb.BoxGaugeSetting.Where(t => t.Id == Id).FirstOrDefault();
-            boxGaugeSetting.CaseGaugeName = CaseGaugeName.Text;
-            boxGaugeSetting.ContainerLoad = ContainerLoad.Text;
-            boxGaugeSetting.ConsumableNumber = ConsumableNumber.Text;
-            boxGaugeSetting.AccessoryName = AccessoryName.Text;
-            boxGaugeSetting.AccessoryNum = AccessoryNum.Text;
-            boxGaugeSetting.CreateName = CreateName.Text;
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            if (ShowAskDialog("确定要修改吗？"))
+            { 
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                BoxGaugeSetting boxGaugeSetting = capProjectDb.BoxGaugeSetting.Where(t => t.Id == Id).FirstOrDefault();
+                boxGaugeSetting.CaseGaugeName = CaseGaugeName.Text;
+                boxGaugeSetting.ContainerLoad = ContainerLoad.Text;
+                boxGaugeSetting.ConsumableNumber = ConsumableNumber.Text;
+                boxGaugeSetting.AccessoryName = AccessoryName.Text;
+                boxGaugeSetting.AccessoryNum = AccessoryNum.Text;
+                boxGaugeSetting.CreateName = CreateName.Text;
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
         }
     }
 }

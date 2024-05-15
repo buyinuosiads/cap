@@ -158,21 +158,31 @@ namespace Cap.WorkerManagementParent.WorkerManagement
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Cap_WorkerManagement cap_WorkerManagement = new Cap_WorkerManagement();
-            cap_WorkerManagement.Id = Guid.NewGuid().ToString();
-            cap_WorkerManagement.NameOfWorker = NameOfWorker.Text;
-            cap_WorkerManagement.Message = Message.Text;
-            cap_WorkerManagement.BasicInformation = BasicInformation.Text;
-            cap_WorkerManagement.CreateTime = DateTime.Now;
-            cap_WorkerManagement.IsDelete = 0;
-            //保存数据
-            capProjectDb.Cap_WorkerManagement.InsertOnSubmit(cap_WorkerManagement);
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Cap_WorkerManagement cap_WorkerManagement = new Cap_WorkerManagement();
+                cap_WorkerManagement.Id = Guid.NewGuid().ToString();
+                cap_WorkerManagement.NameOfWorker = NameOfWorker.Text;
+                cap_WorkerManagement.Message = Message.Text;
+                cap_WorkerManagement.BasicInformation = BasicInformation.Text;
+                cap_WorkerManagement.CreateTime = DateTime.Now;
+                cap_WorkerManagement.IsDelete = 0;
+                //保存数据
+                capProjectDb.Cap_WorkerManagement.InsertOnSubmit(cap_WorkerManagement);
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
 
         }
         /// <summary>
@@ -228,19 +238,26 @@ namespace Cap.WorkerManagementParent.WorkerManagement
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Cap_WorkerManagement cap_WorkerManagement = capProjectDb.Cap_WorkerManagement.Where(t => t.Id == Id).FirstOrDefault();
-            cap_WorkerManagement.Id = Guid.NewGuid().ToString();
-            cap_WorkerManagement.NameOfWorker = NameOfWorker.Text;
-            cap_WorkerManagement.Message = Message.Text;
-            cap_WorkerManagement.BasicInformation = BasicInformation.Text;
-            cap_WorkerManagement.IsDelete = 0;
-            //保存数据 
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Cap_WorkerManagement cap_WorkerManagement = capProjectDb.Cap_WorkerManagement.Where(t => t.Id == Id).FirstOrDefault();
+                cap_WorkerManagement.Id = Guid.NewGuid().ToString();
+                cap_WorkerManagement.NameOfWorker = NameOfWorker.Text;
+                cap_WorkerManagement.Message = Message.Text;
+                cap_WorkerManagement.BasicInformation = BasicInformation.Text;
+                cap_WorkerManagement.IsDelete = 0;
+                //保存数据 
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
         }
     }
 }

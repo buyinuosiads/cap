@@ -132,39 +132,44 @@ namespace Cap.SystemSetup.WidthOfCloth
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrEmpty(BreadthName.Text))
+            if (ShowAskDialog("确定要添加吗？"))
             {
-                ShowWarningDialog("幅宽名称不能为空");
-                return;
+                if (string.IsNullOrEmpty(BreadthName.Text))
+                {
+                    ShowWarningDialog("幅宽名称不能为空");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(WidthSize.Text))
+                {
+                    ShowWarningDialog("幅宽大小不能为空");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(WidthType.Text))
+                {
+                    ShowWarningDialog("幅宽类型不能为空");
+                    return;
+                }
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Breadth breadth = new Breadth();
+                breadth.Id = Guid.NewGuid().ToString();
+                breadth.BreadthName = BreadthName.Text;
+                breadth.WidthSize = WidthSize.Text;
+                breadth.WidthType = WidthType.Text;
+                breadth.CreateTime = DateTime.Now;
+                breadth.CreateName = "管理员";
+                breadth.IsDelete = 0;
+                capProjectDb.Breadth.InsertOnSubmit(breadth);
+                capProjectDb.SubmitChanges();
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                ShowSuccessDialog("添加成功");
+                GetList();
+
             }
-            else if (string.IsNullOrEmpty(WidthSize.Text))
+            else
             {
-                ShowWarningDialog("幅宽大小不能为空");
-                return;
+                ShowErrorTip("取消当前操作");
             }
-            else if (string.IsNullOrEmpty(WidthType.Text))
-            {
-                ShowWarningDialog("幅宽类型不能为空");
-                return;
-            }
-
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Breadth breadth = new Breadth();
-            breadth.Id = Guid.NewGuid().ToString();
-            breadth.BreadthName = BreadthName.Text;
-            breadth.WidthSize = WidthSize.Text;
-            breadth.WidthType = WidthType.Text;
-            breadth.CreateTime = DateTime.Now;
-            breadth.CreateName = "管理员";
-            breadth.IsDelete = 0;
-            capProjectDb.Breadth.InsertOnSubmit(breadth);
-            capProjectDb.SubmitChanges();
-
-
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            ShowSuccessDialog("添加成功");
-            GetList();
 
         }
 
@@ -272,33 +277,39 @@ namespace Cap.SystemSetup.WidthOfCloth
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrEmpty(BreadthName.Text))
+            if (ShowAskDialog("确定要修改吗？"))
             {
-                ShowWarningDialog("幅宽名称不能为空");
-                return;
+                if (string.IsNullOrEmpty(BreadthName.Text))
+                {
+                    ShowWarningDialog("幅宽名称不能为空");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(WidthSize.Text))
+                {
+                    ShowWarningDialog("幅宽大小不能为空");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(WidthType.Text))
+                {
+                    ShowWarningDialog("幅宽类型不能为空");
+                    return;
+                }
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Breadth breadth = capProjectDb.Breadth.Where(t => t.Id == Id).FirstOrDefault();
+                breadth.BreadthName = BreadthName.Text;
+                breadth.WidthSize = WidthSize.Text;
+                breadth.WidthType = WidthType.Text;
+                CreateName.Text = "修改";
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
             }
-            else if (string.IsNullOrEmpty(WidthSize.Text))
+            else
             {
-                ShowWarningDialog("幅宽大小不能为空");
-                return;
+                ShowErrorTip("取消当前操作");
             }
-            else if (string.IsNullOrEmpty(WidthType.Text))
-            {
-                ShowWarningDialog("幅宽类型不能为空");
-                return;
-            }
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Breadth breadth = capProjectDb.Breadth.Where(t => t.Id == Id).FirstOrDefault();
-            breadth.BreadthName = BreadthName.Text;
-            breadth.WidthSize = WidthSize.Text;
-            breadth.WidthType = WidthType.Text;
-            CreateName.Text = "修改";
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
         }
 
 

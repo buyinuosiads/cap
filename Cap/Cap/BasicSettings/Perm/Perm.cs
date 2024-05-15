@@ -93,25 +93,38 @@ namespace Cap.BasicSettings.Perm
                 dataTable.Rows.Add(dataList[i].Id, dataList[i].PermName, dataList[i].PermSpecifications, dataList[i].CreateTime, dataList[i].CreateName);
             }
         }
-
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            PermSetting permSetting = new PermSetting();
-            permSetting.Id = Guid.NewGuid().ToString();
-            permSetting.PermName = PermName.Text;
-            permSetting.PermSpecifications = PermSpecifications.Text;
-            permSetting.CreateTime = DateTime.Now;
-            permSetting.CreateName = CreateName.Text;
-            permSetting.IsDelete = 0;
-            //保存数据
-            capProjectDb.PermSetting.InsertOnSubmit(permSetting);
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                PermSetting permSetting = new PermSetting();
+                permSetting.Id = Guid.NewGuid().ToString();
+                permSetting.PermName = PermName.Text;
+                permSetting.PermSpecifications = PermSpecifications.Text;
+                permSetting.CreateTime = DateTime.Now;
+                permSetting.CreateName = CreateName.Text;
+                permSetting.IsDelete = 0;
+                //保存数据
+                capProjectDb.PermSetting.InsertOnSubmit(permSetting);
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
 
         }
         private void uiDataGridView1_SelectIndexChange(object sender, int index)
@@ -232,15 +245,27 @@ namespace Cap.BasicSettings.Perm
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            PermSetting permSetting = capProjectDb.PermSetting.Where(t => t.Id == Id).FirstOrDefault();
-            permSetting.PermName = PermName.Text;
-            permSetting.PermSpecifications = PermSpecifications.Text;
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                PermSetting permSetting = capProjectDb.PermSetting.Where(t => t.Id == Id).FirstOrDefault();
+                permSetting.PermName = PermName.Text;
+                permSetting.PermSpecifications = PermSpecifications.Text;
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
+
 
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Cap.BasicSettings.Accessories;
 using Cap.Order.OrderSplitting;
+using Model;
 using Sunny.UI;
 using Sunny.UI.Win32;
 using System;
@@ -8,63 +9,81 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Net;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cap.FixedAssetsParent.FixedAssets
 {
     public partial class FixedAssets : UIPage
     {
-        List<Data> dataList = new List<Data>();
+        List<Cap_FixedAssets> dataList = new List<Cap_FixedAssets>();
         DataTable dataTable = new DataTable("DataTable");
+        string Id = string.Empty;
         public FixedAssets()
         {
             InitializeComponent();
+            AcquisitionDate.Text = DateTime.Now.ToString();
+            AcquisitionDate.Value = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            dataTable.Columns.Add("Id_Manager");
+            dataTable.Columns.Add("AssetNumber_Manager");
+            dataTable.Columns.Add("AssetName_Manager");
+            dataTable.Columns.Add("AcquisitionDate_Manager");
+            dataTable.Columns.Add("PurchaseAmount_Manager");
+            dataTable.Columns.Add("AssetsClass_Manager");
+            dataTable.Columns.Add("AssetStatus_Manager");
+            dataTable.Columns.Add("Remark_Manager");
+            dataTable.Columns.Add("CreateTime_Manager");
+            dataTable.Columns.Add("CreateName_Manager");
+
+            GetList();
+        }
 
 
-
-            for (int i = 0; i < 10; i++)
+        /// <summary>
+        /// 查询
+        /// </summary>
+        public void GetList()
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Expression<Func<Cap_FixedAssets, bool>> where = s => s.Id != null && s.IsDelete == 0;
+            if (!string.IsNullOrEmpty(AssetNumber.Text))
             {
-                Data data = new Data();
-                data.Column1 = "资产编号1" + i;
-                data.Column2 = "资产名称" + i;
-                data.Column3 = "购置日期" + i;
-                data.Column4 = "购置金额" + i;
-                data.Column5 = "资产类别";
-                data.Column6 = "资产状态";
-                data.Column7 = "备注";
-                data.Column11 = DateTime.Now.ToString();
-                dataList.Add(data);
+                where = ExpressionBuilder.And(where, f => f.AssetNumber.Contains(AssetNumber.Text));
+            };
+
+            dataList.Clear();
+            List<Cap_FixedAssets> cap_FixedAssets = capProjectDb.Cap_FixedAssets.Where(where).OrderByDescending(t => t.CreateTime).ToList(); //全查询
+            foreach (var item in cap_FixedAssets)
+            {
+                dataList.Add(item);
             }
-
-            dataTable.Columns.Add("Column1");
-            dataTable.Columns.Add("Column2");
-            dataTable.Columns.Add("Column3");
-            dataTable.Columns.Add("Column4");
-            dataTable.Columns.Add("Column5");
-            dataTable.Columns.Add("Column6");
-            dataTable.Columns.Add("Column7");
-            dataTable.Columns.Add("Column11");
             uiDataGridView1.DataSource = dataTable;
-
             //不自动生成列
             uiDataGridView1.AutoGenerateColumns = false;
-
             //设置分页控件总数
-            uiPagination1.TotalCount = dataList.Count;
-
+            uiPagination1.TotalCount = cap_FixedAssets.Count;
             //设置分页控件每页数量
             uiPagination1.PageSize = 15;
             uiDataGridView1.SelectIndexChange += uiDataGridView1_SelectIndexChange;
 
+            dataTable.Rows.Clear();
+            for (int i = (1 - 1) * 15; i < 1 * 15; i++)
+            {
+                if (i >= dataList.Count) break;
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].AssetNumber, dataList[i].AssetName, dataList[i].AcquisitionDate?.ToString("yyyy-MM-dd HH:mm:ss"), dataList[i].PurchaseAmount, dataList[i].AssetsClass, dataList[i].AssetStatus, dataList[i].Remark, dataList[i].CreateTime, dataList[i].CreateName);
+            }
         }
+
 
         private void uiDataGridView1_SelectIndexChange(object sender, int index)
         {
             index.WriteConsole("SelectedIndex");
         }
-
 
         private void FixedAssets_Initialize(object sender, EventArgs e)
         {
@@ -79,24 +98,6 @@ namespace Cap.FixedAssetsParent.FixedAssets
 
 
 
-        public class Data
-        {
-            public string Column1 { get; set; }
-            public string Column2 { get; set; }
-            public string Column3 { get; set; }
-            public string Column4 { get; set; }
-            public string Column5 { get; set; }
-            public string Column6 { get; set; }
-            public string Column7 { get; set; }
-            public string Column11 { get; set; }
-
-            public override string ToString()
-            {
-                return Column1;
-            }
-        }
-
-
 
         /// <summary>
         /// 分页控件页面切换事件
@@ -107,16 +108,12 @@ namespace Cap.FixedAssetsParent.FixedAssets
         /// <param name="count"></param>
         private void uiPagination1_PageChanged(object sender, object pagingSource, int pageIndex, int count)
         {
-            //未连接数据库，通过模拟数据来实现
-            //一般通过ORM的分页去取数据来填充
-            //pageIndex：第几页，和界面对应，从1开始，取数据可能要用pageIndex - 1
-            //count：单页数据量，也就是PageSize值
 
             dataTable.Rows.Clear();
             for (int i = (pageIndex - 1) * count; i < pageIndex * count; i++)
             {
                 if (i >= dataList.Count) break;
-                dataTable.Rows.Add(dataList[i].Column1, dataList[i].Column2, dataList[i].Column3, dataList[i].Column4, dataList[i].Column5, dataList[i].Column6, dataList[i].Column7, dataList[i].Column11);
+                dataTable.Rows.Add(dataList[i].Id, dataList[i].AssetNumber, dataList[i].AssetName, dataList[i].AcquisitionDate, dataList[i].PurchaseAmount, dataList[i].AssetsClass, dataList[i].AssetStatus, dataList[i].Remark, dataList[i].CreateTime, dataList[i].CreateName);
             }
         }
 
@@ -126,38 +123,37 @@ namespace Cap.FixedAssetsParent.FixedAssets
             // 获取所点击的行
             DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
             // 获取行数据
-            string rowData = row.Cells["Column1"].Value.ToString();
-            string Column2 = row.Cells["Column2"].Value.ToString();
-            string Column3 = row.Cells["Column3"].Value.ToString();
-            string Column4 = row.Cells["Column4"].Value.ToString();
-            string Column5 = row.Cells["Column5"].Value.ToString();
-            string Column6 = row.Cells["Column6"].Value.ToString();
-            string Column7 = row.Cells["Column7"].Value.ToString();
+            string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
 
 
-            if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
-            {
-
-                FixedAssetsEdit order = new FixedAssetsEdit(rowData, Column2, Column3, Column4, Column5, Column6, Column7);///实例化窗体
-                order.ShowDialog();
-
-            }
-
-            if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
-            {
-
-                FixedAssetsEdit order = new FixedAssetsEdit(rowData, Column2, Column3, Column4, Column5, Column6, Column7);///实例化窗体
-                order.ShowDialog();
-
-            }
+            //if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)
+            //{
+            //    FixedAssetsEdit order = new FixedAssetsEdit(rowData, Column2, Column3, Column4, Column5, Column6, Column7);///实例化窗体
+            //    order.ShowDialog();
+            //}
+            //if (e.ColumnIndex == uiDataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            //{
+            //    FixedAssetsEdit order = new FixedAssetsEdit(rowData, Column2, Column3, Column4, Column5, Column6, Column7);///实例化窗体
+            //    order.ShowDialog();
+            //}
 
 
             if (e.ColumnIndex == uiDataGridView1.Columns["Delete"].Index && e.RowIndex >= 0)
             {
                 if (ShowAskDialog("确定要删除吗？"))
                 {
+                    //ShowSuccessTip("删除成功");
+                    //uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+
+                    CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                    Cap_FixedAssets cap_Fixed = capProjectDb.Cap_FixedAssets.Where(t => t.Id == Id).FirstOrDefault();
+                    cap_Fixed.IsDelete = 0;
+                    capProjectDb.SubmitChanges();
                     ShowSuccessTip("删除成功");
-                    uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                    uiButton6_Click(sender, e); //调用清空文本框方法
+                                                //查询数据
+                    GetList();
+
                 }
                 else
                 {
@@ -166,20 +162,44 @@ namespace Cap.FixedAssetsParent.FixedAssets
             }
         }
 
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //FixedAssetsAdd frm = new FixedAssetsAdd();
-            //frm.Render();
-            //frm.ShowDialog();
-            dataTable.Rows.Add(
-            edtName.Text,
-            uiTextBox3.Text,
-            uiTextBox6.Text,
-            uiTextBox2.Text,
-            uiTextBox4.Text,
-            uiTextBox5.Text,
-            uiTextBox1.Text
-            );
+
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Cap_FixedAssets cap_Fixed = new Cap_FixedAssets();
+                cap_Fixed.Id = Guid.NewGuid().ToString();
+                cap_Fixed.AssetNumber = AssetNumber.Text;
+                cap_Fixed.AssetName = AssetName.Text;
+                cap_Fixed.AcquisitionDate = DateTime.Parse(AcquisitionDate.Text);
+                cap_Fixed.PurchaseAmount = decimal.Parse(PurchaseAmount.Text);
+                cap_Fixed.AssetsClass = AssetsClass.Text;
+                cap_Fixed.AssetStatus = AssetStatus.Text;
+                cap_Fixed.Remark = Remark.Text;
+                cap_Fixed.CreateTime = DateTime.Now;
+                cap_Fixed.CreateName = CreateName.Text;
+                cap_Fixed.IsDelete = 0;
+                //添加数据
+                capProjectDb.Cap_FixedAssets.InsertOnSubmit(cap_Fixed);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
+
 
         }
 
@@ -191,23 +211,97 @@ namespace Cap.FixedAssetsParent.FixedAssets
                 // 获取所点击的行
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据
-                string rowData = row.Cells["Column1"].Value.ToString();
-                string Column2 = row.Cells["Column2"].Value.ToString();
-                string Column3 = row.Cells["Column3"].Value.ToString();
-                string Column4 = row.Cells["Column4"].Value.ToString();
-                string Column5 = row.Cells["Column5"].Value.ToString();
-                string Column6 = row.Cells["Column6"].Value.ToString();
-                string Column7 = row.Cells["Column7"].Value.ToString();
-                string Column11 = row.Cells["Column11"].Value.ToString();
-                edtName.Text = rowData;
-                uiTextBox3.Text = Column2;
-                uiTextBox6.Text = Column3;
-                uiTextBox2.Text = Column4;
-                uiTextBox4.Text = Column5;
-                uiTextBox5.Text = Column6;
-                uiTextBox1.Text = Column7;
-                uiTextBox7.Text = Column11;
+                string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
+                string AssetNumber_Manager = row.Cells["AssetNumber_Manager"].Value.ToString();
+                string AssetName_Manager = row.Cells["AssetName_Manager"].Value.ToString();
+                string AcquisitionDate_Manager = row.Cells["AcquisitionDate_Manager"].Value.ToString();
+                string PurchaseAmount_Manager = row.Cells["PurchaseAmount_Manager"].Value.ToString();
+                string AssetsClass_Manager = row.Cells["AssetsClass_Manager"].Value.ToString();
+                string AssetStatus_Manager = row.Cells["AssetStatus_Manager"].Value.ToString();
+                string Remark_Manager = row.Cells["Remark_Manager"].Value.ToString();
+                string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
+                string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
+
+
+                Id = Id_Manager;
+                AssetNumber.Text = AssetNumber_Manager;
+                AssetName.Text = AssetName_Manager;
+                AcquisitionDate.Text = AcquisitionDate_Manager;
+                PurchaseAmount.Text = PurchaseAmount_Manager;
+                AssetsClass.Text = AssetsClass_Manager;
+                AssetStatus.Text = AssetStatus_Manager;
+                Remark.Text = Remark_Manager;
+                CreateTime.Text = CreateTime_Manager;
+                CreateName.Text = CreateName_Manager;
             }
+        }
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiSymbolButton1_Click(object sender, EventArgs e)
+        {
+            GetList();
+        }
+
+
+        /// <summary>
+        /// 清空文本框
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton6_Click(object sender, EventArgs e)
+        {
+            Id = null;
+            AssetNumber.Text = null;
+            AssetName.Text = null;
+            AcquisitionDate.Text = null;
+            PurchaseAmount.Text = null;
+            AssetsClass.Text = null;
+            AssetStatus.Text = null;
+            Remark.Text = null;
+            CreateTime.Text = null;
+            CreateName.Text = null;
+        }
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton5_Click(object sender, EventArgs e)
+        {
+
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Cap_FixedAssets cap_Fixed = capProjectDb.Cap_FixedAssets.Where(t => t.Id == Id).FirstOrDefault();
+                cap_Fixed.AssetNumber = AssetNumber.Text;
+                cap_Fixed.AssetName = AssetName.Text;
+                //cap_Fixed.AcquisitionDate =  ;
+                cap_Fixed.PurchaseAmount = decimal.Parse(PurchaseAmount.Text);
+                cap_Fixed.AssetsClass = AssetsClass.Text;
+                cap_Fixed.AssetStatus = AssetStatus.Text;
+                cap_Fixed.Remark = Remark.Text;
+                cap_Fixed.CreateName = CreateName.Text;
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
+
+
+     
+
+
+
         }
     }
 }

@@ -170,19 +170,29 @@ namespace Cap.SystemSetup.Menu
             uiSymbolLabel1.Symbol = int.Parse(fSymbols.GetTextBoxValue());
         }
 
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Sys_Menu sys_Menu = capProjectDb.Sys_Menu.Where(t => t.Id == Id).FirstOrDefault();
-            sys_Menu.MenuText = Menu_Name.Text;
-            sys_Menu.Icon = Menu_Icon.Text;
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
-
-
+            if (ShowAskDialog("确定要修改吗？"))
+            {
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Sys_Menu sys_Menu = capProjectDb.Sys_Menu.Where(t => t.Id == Id).FirstOrDefault();
+                sys_Menu.MenuText = Menu_Name.Text;
+                sys_Menu.Icon = Menu_Icon.Text;
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            } 
         }
 
         /// <summary>

@@ -261,64 +261,73 @@ namespace Cap.SystemSetup
 
         private void uiSymbolButton2_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(UserName.Text))
-            {
-                ShowWarningDialog("姓名不能为空");
-                return;
-            }
-            else if (string.IsNullOrEmpty(Account.Text))
-            {
-                ShowWarningDialog("账号不能为空");
-                return;
-            }
-            else if (string.IsNullOrEmpty(Password.Text))
-            {
-                ShowWarningDialog("密码不能为空");
-                return;
-            }
-            else if (string.IsNullOrEmpty(Phone.Text))
-            {
-                ShowWarningDialog("电话不能为空");
-                return;
-            }
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Sys_User sys_User = new Sys_User();
-            int Sex_Manager = 0;
-            if (rbMale.Checked == true)
+
+            if (ShowAskDialog("确定要添加吗？"))
             {
-                Sex_Manager = 0;
+                if (string.IsNullOrEmpty(UserName.Text))
+                {
+                    ShowWarningDialog("姓名不能为空");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(Account.Text))
+                {
+                    ShowWarningDialog("账号不能为空");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(Password.Text))
+                {
+                    ShowWarningDialog("密码不能为空");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(Phone.Text))
+                {
+                    ShowWarningDialog("电话不能为空");
+                    return;
+                }
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Sys_User sys_User = new Sys_User();
+                int Sex_Manager = 0;
+                if (rbMale.Checked == true)
+                {
+                    Sex_Manager = 0;
+                }
+                else
+                {
+                    Sex_Manager = 1;
+                }
+                //姓名
+                sys_User.Name = UserName.Text;
+                //性别
+                sys_User.Sex = Sex_Manager;
+                //账号
+                sys_User.Account = Account.Text;
+                //密码
+                sys_User.Password = Password.Text;
+                //电话
+                sys_User.Phone = Phone.Text;
+                //职位
+                sys_User.Position = Position.Text;
+                //地址
+                sys_User.Address = Address.Text;
+                //创建时间
+                sys_User.CreateTime = DateTime.Now;
+                //是否删除
+                sys_User.IsDelete = 0;
+                //添加数据
+                capProjectDb.Sys_User.InsertOnSubmit(sys_User);
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("添加成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
             }
             else
             {
-                Sex_Manager = 1;
+                ShowErrorTip("取消当前操作");
             }
-            //姓名
-            sys_User.Name = UserName.Text;
-            //性别
-            sys_User.Sex = Sex_Manager;
-            //账号
-            sys_User.Account = Account.Text;
-            //密码
-            sys_User.Password = Password.Text;
-            //电话
-            sys_User.Phone = Phone.Text;
-            //职位
-            sys_User.Position = Position.Text;
-            //地址
-            sys_User.Address = Address.Text;
-            //创建时间
-            sys_User.CreateTime = DateTime.Now;
-            //是否删除
-            sys_User.IsDelete = 0;
-            //添加数据
-            capProjectDb.Sys_User.InsertOnSubmit(sys_User);
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("添加成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
 
         }
         /// <summary>
@@ -328,58 +337,66 @@ namespace Cap.SystemSetup
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(UserName.Text))
+            if (ShowAskDialog("确定要修改吗？"))
             {
-                ShowWarningDialog("姓名不能为空");
-                return;
-            }
-            //else if (string.IsNullOrEmpty(Account.Text))
-            //{
-            //    ShowWarningDialog("账号不能为空");
-            //    return;
-            //}
-            //else if (string.IsNullOrEmpty(Password.Text))
-            //{
-            //    ShowWarningDialog("密码不能为空");
-            //    return;
-            //}
-            else if (string.IsNullOrEmpty(Phone.Text))
-            {
-                ShowWarningDialog("电话不能为空");
-                return;
-            }
+                if (string.IsNullOrEmpty(UserName.Text))
+                {
+                    ShowWarningDialog("姓名不能为空");
+                    return;
+                }
+                //else if (string.IsNullOrEmpty(Account.Text))
+                //{
+                //    ShowWarningDialog("账号不能为空");
+                //    return;
+                //}
+                //else if (string.IsNullOrEmpty(Password.Text))
+                //{
+                //    ShowWarningDialog("密码不能为空");
+                //    return;
+                //}
+                else if (string.IsNullOrEmpty(Phone.Text))
+                {
+                    ShowWarningDialog("电话不能为空");
+                    return;
+                }
 
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Sys_User sys_User = capProjectDb.Sys_User.Where(t => t.UserId == UserId).FirstOrDefault();
-            int Sex_Manager = 0;
-            if (rbFemale.Checked == true)
-            {
-                Sex_Manager = 0;
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Sys_User sys_User = capProjectDb.Sys_User.Where(t => t.UserId == UserId).FirstOrDefault();
+                int Sex_Manager = 0;
+                if (rbFemale.Checked == true)
+                {
+                    Sex_Manager = 0;
+                }
+                else
+                {
+                    Sex_Manager = 1;
+                }
+                //姓名
+                sys_User.Name = UserName.Text;
+                //性别
+                sys_User.Sex = Sex_Manager;
+                //账号
+                //sys_User.Account = Account.Text;
+                //密码
+                //sys_User.Password = Password.Text;
+                //电话
+                sys_User.Phone = Phone.Text;
+                //职位
+                sys_User.Position = Position.Text;
+                //地址
+                sys_User.Address = Address.Text;
+                //保存数据
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
             }
             else
             {
-                Sex_Manager = 1;
+                ShowErrorTip("取消当前操作");
             }
-            //姓名
-            sys_User.Name = UserName.Text;
-            //性别
-            sys_User.Sex = Sex_Manager;
-            //账号
-            //sys_User.Account = Account.Text;
-            //密码
-            //sys_User.Password = Password.Text;
-            //电话
-            sys_User.Phone = Phone.Text;
-            //职位
-            sys_User.Position = Position.Text;
-            //地址
-            sys_User.Address = Address.Text;
-            //保存数据
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
+
         }
 
         /// <summary>

@@ -168,29 +168,36 @@ namespace Cap.SystemSetup.AlarmSetting
         /// <param name="e"></param>
         private void uiSymbolButton2_Click_1(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Message.Text))
-            {
-                ShowWarningDialog("告警信息不能为空");
-                return;
-            }
-            else if (string.IsNullOrEmpty(Processvalue.Text))
-            {
-                ShowWarningDialog("工艺乏值时间秒不能为空");
-                return;
-            }
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Alarm_Setting alarm_Setting = new Alarm_Setting();
-            alarm_Setting.Id = Guid.NewGuid().ToString();
-            alarm_Setting.WarningMessage = Message.Text;
-            alarm_Setting.CreateTime = DateTime.Now;
-            alarm_Setting.Processvalue = int.Parse(Processvalue.Text);
-            alarm_Setting.IsDelete = 0;
-            capProjectDb.Alarm_Setting.InsertOnSubmit(alarm_Setting);
-            capProjectDb.SubmitChanges();
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            ShowSuccessDialog("添加成功");
-            GetList();
 
+            if (ShowAskDialog("确定要添加吗？"))
+            {
+                if (string.IsNullOrEmpty(Message.Text))
+                {
+                    ShowWarningDialog("告警信息不能为空");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(Processvalue.Text))
+                {
+                    ShowWarningDialog("工艺乏值时间秒不能为空");
+                    return;
+                }
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Alarm_Setting alarm_Setting = new Alarm_Setting();
+                alarm_Setting.Id = Guid.NewGuid().ToString();
+                alarm_Setting.WarningMessage = Message.Text;
+                alarm_Setting.CreateTime = DateTime.Now;
+                alarm_Setting.Processvalue = int.Parse(Processvalue.Text);
+                alarm_Setting.IsDelete = 0;
+                capProjectDb.Alarm_Setting.InsertOnSubmit(alarm_Setting);
+                capProjectDb.SubmitChanges();
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                ShowSuccessDialog("添加成功");
+                GetList();
+            }
+            else
+            {
+                ShowErrorTip("取消当前操作");
+            }
 
         }
 
@@ -243,28 +250,33 @@ namespace Cap.SystemSetup.AlarmSetting
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrEmpty(Message.Text))
+            if (ShowAskDialog("确定要修改吗？"))
             {
-                ShowWarningDialog("告警信息不能为空");
-                return;
+                if (string.IsNullOrEmpty(Message.Text))
+                {
+                    ShowWarningDialog("告警信息不能为空");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(Processvalue.Text))
+                {
+                    ShowWarningDialog("工艺乏值时间秒不能为空");
+                    return;
+                }
+
+                CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                Alarm_Setting alarm_Setting = capProjectDb.Alarm_Setting.Where(t => t.Id == Id).FirstOrDefault();
+                alarm_Setting.WarningMessage = Message.Text;
+                alarm_Setting.Processvalue = int.Parse(Processvalue.Text);
+                capProjectDb.SubmitChanges();
+                ShowSuccessDialog("修改成功");
+                uiButton6_Click(sender, e); //调用清空文本框方法
+                                            //查询数据
+                GetList();
             }
-            else if (string.IsNullOrEmpty(Processvalue.Text))
+            else
             {
-                ShowWarningDialog("工艺乏值时间秒不能为空");
-                return;
+                ShowErrorTip("取消当前操作");
             }
-
-            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-            Alarm_Setting alarm_Setting = capProjectDb.Alarm_Setting.Where(t => t.Id == Id).FirstOrDefault();
-            alarm_Setting.WarningMessage = Message.Text;
-            alarm_Setting.Processvalue = int.Parse(Processvalue.Text);
-            capProjectDb.SubmitChanges();
-            ShowSuccessDialog("修改成功");
-            uiButton6_Click(sender, e); //调用清空文本框方法
-            //查询数据
-            GetList();
-
 
         }
     }
