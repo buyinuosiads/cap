@@ -47,6 +47,7 @@ namespace Cap
     public partial class Nav : UIForm2
     {
         CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+        string _Name = string.Empty;
         /// <summary>
         /// 
         /// </summary>
@@ -54,12 +55,13 @@ namespace Cap
         /// <param name="Position">登录人职位</param>
         public Nav(string Name, string Position)
         {
+            _Name = Name;
             InitializeComponent();
 
             #region 设置窗体全屏 
             this.WindowState = FormWindowState.Maximized;
-            #endregion 
-            uiLabel1.Text += Name;
+            #endregion
+
 
             //string aa = "老板";
             Sys_Role sys_Role = capProjectDb.Sys_Role.Where(t => t.RoleName.Equals(Position)).FirstOrDefault(); //查询当前职位
@@ -620,11 +622,18 @@ namespace Cap
             }
 
 
-            uiLabel2.Text = timeOfDay + " " + DateTime.Now.DateTimeString();
+            uiLabel2.Text = DateTime.Now.DateTimeString();
+            uiLabel1.Text = timeOfDay + _Name;
         }
 
+
+        /// <summary>
+        /// 关闭时操作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Nav_FormClosed(object sender, FormClosedEventArgs e)
-        { 
+        {
             Application.Exit();//关闭的时候杀死所有线程
         }
     }

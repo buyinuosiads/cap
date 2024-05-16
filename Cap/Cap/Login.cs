@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cap
 {
@@ -22,12 +23,10 @@ namespace Cap
         private void FLogin_ButtonLoginClick(object sender, System.EventArgs e)
         {
 
-            //IsLogin = true;
-            //Nav form = new Nav();
-            //form.Show();
 
             CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
             Sys_User _User = capProjectDb.Sys_User.Where(t => t.Account == "admin" && t.Password == "123456" && t.IsDelete == 0).FirstOrDefault();
+            //Sys_User _User = capProjectDb.Sys_User.Where(t => t.Account == UserName && t.Password == Password && t.IsDelete == 0).FirstOrDefault();
             if (_User != null)
             {
                 IsLogin = true;
@@ -39,7 +38,6 @@ namespace Cap
             {
                 ShowErrorTip("用户名或者密码错误。");
             }
-
 
             //if (UserName == "1" && Password == "1")
             //{

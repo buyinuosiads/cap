@@ -217,13 +217,13 @@
             this.uiScrollingText2.Location = new System.Drawing.Point(442, 33);
             this.uiScrollingText2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiScrollingText2.Name = "uiScrollingText2";
-            this.uiScrollingText2.Size = new System.Drawing.Size(1052, 82);
+            this.uiScrollingText2.Size = new System.Drawing.Size(1142, 82);
             this.uiScrollingText2.TabIndex = 76;
             this.uiScrollingText2.Text = "不要忘记自己的目标和努力的意义。每一次困难都是成长的机会，每一次挑战都是迈向成功的阶梯。坚持不懈，勇往直前，你将会创造出令人瞩目的成就！";
             // 
             // uiLabel3
             // 
-            this.uiLabel3.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel3.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel3.ForeColor = System.Drawing.Color.Transparent;
             this.uiLabel3.Image = ((System.Drawing.Image)(resources.GetObject("uiLabel3.Image")));
             this.uiLabel3.Location = new System.Drawing.Point(3, 33);
@@ -236,9 +236,9 @@
             // 
             this.uiLabel2.Font = new System.Drawing.Font("宋体", 13F);
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(1512, 74);
+            this.uiLabel2.Location = new System.Drawing.Point(1603, 74);
             this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(314, 23);
+            this.uiLabel2.Size = new System.Drawing.Size(223, 23);
             this.uiLabel2.TabIndex = 9;
             this.uiLabel2.Text = "1";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -247,7 +247,7 @@
             // 
             this.uiLabel1.Font = new System.Drawing.Font("宋体", 13F);
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel1.Location = new System.Drawing.Point(1621, 42);
+            this.uiLabel1.Location = new System.Drawing.Point(1603, 42);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(169, 23);
             this.uiLabel1.TabIndex = 8;
