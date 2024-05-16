@@ -156,20 +156,29 @@ namespace Cap.BasicSettings.Accessories
             if (ShowAskDialog("确定要添加吗？"))
             {
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-                ChargeTime chargeTime = new ChargeTime();
-                chargeTime.Id = Guid.NewGuid().ToString();
-                chargeTime.AccessoryName = AccessoryName.Text;
-                chargeTime.Unit = Unit.Text;
-                chargeTime.CreateTime = DateTime.Now;
-                chargeTime.CreateName = _Name;
-                chargeTime.IsDelete = 0;
-                //保存数据
-                capProjectDb.ChargeTime.InsertOnSubmit(chargeTime);
-                capProjectDb.SubmitChanges();
-                ShowSuccessDialog("添加成功");
-                uiButton6_Click(sender, e); //调用清空文本框方法
-                                            //查询数据
-                GetList();
+                int num = capProjectDb.ChargeTime.Where(t => t.AccessoryName == AccessoryName.Text).Count();
+                if (num == 0)
+                {
+                    ChargeTime chargeTime = new ChargeTime();
+                    chargeTime.Id = Guid.NewGuid().ToString();
+                    chargeTime.AccessoryName = AccessoryName.Text;
+                    chargeTime.Unit = Unit.Text;
+                    chargeTime.CreateTime = DateTime.Now;
+                    chargeTime.CreateName = _Name;
+                    chargeTime.IsDelete = 0;
+                    //保存数据
+                    capProjectDb.ChargeTime.InsertOnSubmit(chargeTime);
+                    capProjectDb.SubmitChanges();
+                    ShowSuccessDialog("添加成功");
+                    uiButton6_Click(sender, e); //调用清空文本框方法
+                                                //查询数据
+                    GetList();
+                }
+                else
+                {
+                    ShowWarningDialog("该名称已存在！");
+                }
+
 
             }
             else

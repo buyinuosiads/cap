@@ -67,7 +67,7 @@ namespace Cap.SystemSetup.WidthOfCloth
             dataList.Clear();
 
 
-            List<Breadth> sys_Users = capProjectDb.Breadth.Where(where).OrderByDescending(t => t.CreateTime).ToList(); //全查询
+            List<Breadth> sys_Users = capProjectDb.Breadth.Where(where).OrderByDescending(t => t.CreateTime).Where(t => t.IsDelete == 0).ToList(); //全查询
             foreach (var item in sys_Users)
             {
                 dataList.Add(item);

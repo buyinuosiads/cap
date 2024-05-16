@@ -30,13 +30,35 @@ namespace Cap.BasicSettings.ToolSettings
         {
             InitializeComponent();
 
+            //幅宽
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            List<Breadth> breadths = capProjectDb.Breadth.Where(t => t.IsDelete == 0).ToList();
+            foreach (var item in breadths)
+            {
+                TreeNode infoList = new TreeNode();
+                infoList.Name = item.BreadthName;
+                infoList.Text = item.BreadthName;
+                Breadth.Nodes.Add(infoList);
+            }
+
+            //烫头
+            List<PermSetting> permSettings = capProjectDb.PermSetting.Where(t => t.IsDelete == 0).ToList();
+            foreach (var item in permSettings)
+            {
+                TreeNode infoList = new TreeNode();
+                infoList.Name = item.PermName;
+                infoList.Text = item.PermName;
+                PermName.Nodes.Add(infoList);
+            }
+
+
             dataTable.Columns.Add("Id_Manager");
             dataTable.Columns.Add("ToolName_Manager");
             dataTable.Columns.Add("WideRating_Manager");
             dataTable.Columns.Add("FaultTolerant_Manager");
             dataTable.Columns.Add("Breadth_Manager");
             dataTable.Columns.Add("Coefficient_Manager");
-            dataTable.Columns.Add("PermName_Manager");
+            dataTable.Columns.Add("PermName_Manager"); 
             dataTable.Columns.Add("CreateTime_Manager");
             dataTable.Columns.Add("CreateName_Manager");
             GetList();
@@ -308,10 +330,6 @@ namespace Cap.BasicSettings.ToolSettings
                     }
                 }
                 PermName.Text = PermName_Manager;
-
-
-
-
             }
         }
 

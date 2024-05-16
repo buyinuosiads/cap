@@ -37,18 +37,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolSettings));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("烫头1");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("烫头2");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("烫头3");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("烫头4");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("系数1");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("系数2");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("系数3");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("系数4");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("幅宽1");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("幅宽2");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("幅宽3");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("幅宽4");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("系数1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("系数2");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("系数3");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("系数4");
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
             this.Id_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToolName_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -473,19 +465,6 @@
             this.PermName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PermName.MinimumSize = new System.Drawing.Size(63, 0);
             this.PermName.Name = "PermName";
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "烫头1";
-            treeNode2.Name = "节点0";
-            treeNode2.Text = "烫头2";
-            treeNode3.Name = "节点1";
-            treeNode3.Text = "烫头3";
-            treeNode4.Name = "节点2";
-            treeNode4.Text = "烫头4";
-            this.PermName.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4});
             this.PermName.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
             this.PermName.Size = new System.Drawing.Size(220, 29);
             this.PermName.SymbolSize = 24;
@@ -503,19 +482,19 @@
             this.Coefficient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Coefficient.MinimumSize = new System.Drawing.Size(63, 0);
             this.Coefficient.Name = "Coefficient";
-            treeNode5.Name = "节点0";
-            treeNode5.Text = "系数1";
-            treeNode6.Name = "节点1";
-            treeNode6.Text = "系数2";
-            treeNode7.Name = "节点2";
-            treeNode7.Text = "系数3";
-            treeNode8.Name = "节点3";
-            treeNode8.Text = "系数4";
+            treeNode1.Name = "节点0";
+            treeNode1.Text = "系数1";
+            treeNode2.Name = "节点1";
+            treeNode2.Text = "系数2";
+            treeNode3.Name = "节点2";
+            treeNode3.Text = "系数3";
+            treeNode4.Name = "节点3";
+            treeNode4.Text = "系数4";
             this.Coefficient.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8});
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
             this.Coefficient.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
             this.Coefficient.Size = new System.Drawing.Size(185, 29);
             this.Coefficient.SymbolSize = 24;
@@ -545,19 +524,6 @@
             this.Breadth.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Breadth.MinimumSize = new System.Drawing.Size(63, 0);
             this.Breadth.Name = "Breadth";
-            treeNode9.Name = "节点0";
-            treeNode9.Text = "幅宽1";
-            treeNode10.Name = "节点1";
-            treeNode10.Text = "幅宽2";
-            treeNode11.Name = "节点2";
-            treeNode11.Text = "幅宽3";
-            treeNode12.Name = "节点3";
-            treeNode12.Text = "幅宽4";
-            this.Breadth.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11,
-            treeNode12});
             this.Breadth.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
             this.Breadth.Size = new System.Drawing.Size(220, 29);
             this.Breadth.SymbolSize = 24;
