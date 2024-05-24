@@ -680,10 +680,11 @@ namespace Cap
         /// <param name="e"></param>
         private void button29_Click(object sender, EventArgs e)
         {
-            Application.Exit();//关闭的时候杀死所有线程
+
+            if (ShowAskDialog("确定要退出吗？"))
+            {
+                Application.Exit();//关闭的时候杀死所有线程
+            } 
         }
-
-
-
     }
 }
