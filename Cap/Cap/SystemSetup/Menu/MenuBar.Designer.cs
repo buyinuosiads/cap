@@ -33,22 +33,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuBar));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuBar));
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.uiPagination1 = new Sunny.UI.UIPagination();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
-            this.uiButton5 = new Sunny.UI.UIButton();
-            this.Menu_Name = new Sunny.UI.UITextBox();
-            this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
-            this.uiLabel2 = new Sunny.UI.UILabel();
-            this.Menu_Icon = new Sunny.UI.UITextBox();
-            this.uiSymbolLabel1 = new Sunny.UI.UISymbolLabel();
-            this.uiButton6 = new Sunny.UI.UIButton();
             this.Menu_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Icon_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +45,17 @@
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.uiPagination1 = new Sunny.UI.UIPagination();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
+            this.uiButton6 = new Sunny.UI.UIButton();
+            this.uiSymbolLabel1 = new Sunny.UI.UISymbolLabel();
+            this.Menu_Icon = new Sunny.UI.UITextBox();
+            this.uiButton5 = new Sunny.UI.UIButton();
+            this.Menu_Name = new Sunny.UI.UITextBox();
+            this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
+            this.uiLabel2 = new Sunny.UI.UILabel();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.uiCheckBoxGroup1.SuspendLayout();
@@ -125,12 +125,79 @@
             this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
             // 
+            // Menu_Id
+            // 
+            this.Menu_Id.DataPropertyName = "Menu_Id";
+            this.Menu_Id.HeaderText = "Menu_Id";
+            this.Menu_Id.Name = "Menu_Id";
+            this.Menu_Id.ReadOnly = true;
+            this.Menu_Id.Visible = false;
+            // 
+            // MenuText
+            // 
+            this.MenuText.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MenuText.DataPropertyName = "MenuText";
+            this.MenuText.HeaderText = "菜单名称";
+            this.MenuText.Name = "MenuText";
+            this.MenuText.ReadOnly = true;
+            // 
+            // Icon_Manager
+            // 
+            this.Icon_Manager.DataPropertyName = "Icon_Manager";
+            this.Icon_Manager.HeaderText = "图标值";
+            this.Icon_Manager.Name = "Icon_Manager";
+            this.Icon_Manager.ReadOnly = true;
+            // 
+            // CreateTime
+            // 
+            this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CreateTime.DataPropertyName = "CreateTime";
+            this.CreateTime.HeaderText = "创建时间";
+            this.CreateTime.Name = "CreateTime";
+            this.CreateTime.ReadOnly = true;
+            // 
+            // Search
+            // 
+            this.Search.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = "查看";
+            this.Search.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Search.HeaderText = "查看";
+            this.Search.Name = "Search";
+            this.Search.ReadOnly = true;
+            this.Search.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Search.Visible = false;
+            // 
+            // Edit
+            // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.NullValue = "编辑";
+            this.Edit.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Edit.HeaderText = "编辑";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Visible = false;
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = "删除";
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Delete.HeaderText = "删除";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Delete.Visible = false;
+            // 
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.uiDataGridView1);
             this.groupBox1.Controls.Add(this.uiPagination1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 109);
+            this.groupBox1.Location = new System.Drawing.Point(0, 144);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1070, 509);
             this.groupBox1.TabIndex = 8;
@@ -169,7 +236,7 @@
             this.uiCheckBoxGroup1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiCheckBoxGroup1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiCheckBoxGroup1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(0, 0);
+            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(0, 35);
             this.uiCheckBoxGroup1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiCheckBoxGroup1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiCheckBoxGroup1.Name = "uiCheckBoxGroup1";
@@ -180,6 +247,60 @@
             this.uiCheckBoxGroup1.TabIndex = 9;
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiButton6
+            // 
+            this.uiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiButton6.Location = new System.Drawing.Point(784, 28);
+            this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton6.Name = "uiButton6";
+            this.uiButton6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.ShowFocusLine = true;
+            this.uiButton6.Size = new System.Drawing.Size(108, 35);
+            this.uiButton6.Style = Sunny.UI.UIStyle.Custom;
+            this.uiButton6.StyleCustomMode = true;
+            this.uiButton6.TabIndex = 92;
+            this.uiButton6.Text = "清空文本框";
+            this.uiButton6.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
+            // 
+            // uiSymbolLabel1
+            // 
+            this.uiSymbolLabel1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSymbolLabel1.Location = new System.Drawing.Point(298, 28);
+            this.uiSymbolLabel1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSymbolLabel1.Name = "uiSymbolLabel1";
+            this.uiSymbolLabel1.Size = new System.Drawing.Size(98, 35);
+            this.uiSymbolLabel1.Symbol = 0;
+            this.uiSymbolLabel1.TabIndex = 91;
+            this.uiSymbolLabel1.Text = "图标值";
+            // 
+            // Menu_Icon
+            // 
+            this.Menu_Icon.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Menu_Icon.EnterAsTab = true;
+            this.Menu_Icon.Font = new System.Drawing.Font("宋体", 12F);
+            this.Menu_Icon.Location = new System.Drawing.Point(401, 28);
+            this.Menu_Icon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Menu_Icon.MinimumSize = new System.Drawing.Size(1, 16);
+            this.Menu_Icon.Name = "Menu_Icon";
+            this.Menu_Icon.Padding = new System.Windows.Forms.Padding(5);
+            this.Menu_Icon.ShowText = false;
+            this.Menu_Icon.Size = new System.Drawing.Size(127, 35);
+            this.Menu_Icon.TabIndex = 31;
+            this.Menu_Icon.Text = "0";
+            this.Menu_Icon.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Menu_Icon.Watermark = "";
+            this.Menu_Icon.Click += new System.EventHandler(this.uiTextBox1_Click);
             // 
             // uiButton5
             // 
@@ -248,134 +369,16 @@
             this.uiLabel2.Text = "菜单名称";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Menu_Icon
-            // 
-            this.Menu_Icon.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Menu_Icon.EnterAsTab = true;
-            this.Menu_Icon.Font = new System.Drawing.Font("宋体", 12F);
-            this.Menu_Icon.Location = new System.Drawing.Point(401, 28);
-            this.Menu_Icon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Menu_Icon.MinimumSize = new System.Drawing.Size(1, 16);
-            this.Menu_Icon.Name = "Menu_Icon";
-            this.Menu_Icon.Padding = new System.Windows.Forms.Padding(5);
-            this.Menu_Icon.ShowText = false;
-            this.Menu_Icon.Size = new System.Drawing.Size(127, 35);
-            this.Menu_Icon.TabIndex = 31;
-            this.Menu_Icon.Text = "0";
-            this.Menu_Icon.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Menu_Icon.Watermark = "";
-            this.Menu_Icon.Click += new System.EventHandler(this.uiTextBox1_Click);
-            // 
-            // uiSymbolLabel1
-            // 
-            this.uiSymbolLabel1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiSymbolLabel1.Location = new System.Drawing.Point(298, 28);
-            this.uiSymbolLabel1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiSymbolLabel1.Name = "uiSymbolLabel1";
-            this.uiSymbolLabel1.Size = new System.Drawing.Size(98, 35);
-            this.uiSymbolLabel1.Symbol = 0;
-            this.uiSymbolLabel1.TabIndex = 91;
-            this.uiSymbolLabel1.Text = "图标值";
-            // 
-            // uiButton6
-            // 
-            this.uiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.uiButton6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.uiButton6.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
-            this.uiButton6.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiButton6.Location = new System.Drawing.Point(784, 28);
-            this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton6.Name = "uiButton6";
-            this.uiButton6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.uiButton6.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
-            this.uiButton6.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.ShowFocusLine = true;
-            this.uiButton6.Size = new System.Drawing.Size(108, 35);
-            this.uiButton6.Style = Sunny.UI.UIStyle.Custom;
-            this.uiButton6.StyleCustomMode = true;
-            this.uiButton6.TabIndex = 92;
-            this.uiButton6.Text = "清空文本框";
-            this.uiButton6.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
-            // 
-            // Menu_Id
-            // 
-            this.Menu_Id.DataPropertyName = "Menu_Id";
-            this.Menu_Id.HeaderText = "Menu_Id";
-            this.Menu_Id.Name = "Menu_Id";
-            this.Menu_Id.ReadOnly = true;
-            this.Menu_Id.Visible = false;
-            // 
-            // MenuText
-            // 
-            this.MenuText.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.MenuText.DataPropertyName = "MenuText";
-            this.MenuText.HeaderText = "菜单名称";
-            this.MenuText.Name = "MenuText";
-            this.MenuText.ReadOnly = true;
-            // 
-            // Icon_Manager
-            // 
-            this.Icon_Manager.DataPropertyName = "Icon_Manager";
-            this.Icon_Manager.HeaderText = "图标值";
-            this.Icon_Manager.Name = "Icon_Manager";
-            this.Icon_Manager.ReadOnly = true;
-            // 
-            // CreateTime
-            // 
-            this.CreateTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CreateTime.DataPropertyName = "CreateTime";
-            this.CreateTime.HeaderText = "创建时间";
-            this.CreateTime.Name = "CreateTime";
-            this.CreateTime.ReadOnly = true;
-            // 
-            // Search
-            // 
-            this.Search.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = "查看";
-            this.Search.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Search.HeaderText = "查看";
-            this.Search.Name = "Search";
-            this.Search.ReadOnly = true;
-            this.Search.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Search.Visible = false;
-            // 
-            // Edit
-            // 
-            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.NullValue = "编辑";
-            this.Edit.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Edit.HeaderText = "编辑";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Visible = false;
-            // 
-            // Delete
-            // 
-            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = "删除";
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Delete.HeaderText = "删除";
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Delete.Visible = false;
-            // 
             // MenuBar
             // 
+            this.AllowShowTitle = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1179, 698);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.uiCheckBoxGroup1);
             this.Name = "MenuBar";
+            this.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
+            this.ShowTitle = true;
             this.Text = "菜单管理";
             this.Initialize += new System.EventHandler(this.MenuBar_Initialize);
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).EndInit();

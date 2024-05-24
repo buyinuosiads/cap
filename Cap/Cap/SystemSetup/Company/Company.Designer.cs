@@ -49,14 +49,14 @@
             this.uiPagination1 = new Sunny.UI.UIPagination();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
+            this.uiButton6 = new Sunny.UI.UIButton();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.Authorization = new Sunny.UI.UIComboBox();
             this.uiButton5 = new Sunny.UI.UIButton();
             this.Company_Name = new Sunny.UI.UITextBox();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiSymbolButton2 = new Sunny.UI.UISymbolButton();
             this.uiSymbolButton1 = new Sunny.UI.UISymbolButton();
-            this.Authorization = new Sunny.UI.UIComboBox();
-            this.uiLabel1 = new Sunny.UI.UILabel();
-            this.uiButton6 = new Sunny.UI.UIButton();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.uiCheckBoxGroup1.SuspendLayout();
@@ -101,7 +101,7 @@
             this.uiDataGridView1.EnableHeadersVisualStyles = false;
             this.uiDataGridView1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            this.uiDataGridView1.Location = new System.Drawing.Point(3, 22);
+            this.uiDataGridView1.Location = new System.Drawing.Point(3, 23);
             this.uiDataGridView1.Name = "uiDataGridView1";
             this.uiDataGridView1.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -121,7 +121,7 @@
             this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.uiDataGridView1.RowTemplate.Height = 23;
             this.uiDataGridView1.SelectedIndex = -1;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 476);
+            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 475);
             this.uiDataGridView1.TabIndex = 9;
             this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
@@ -198,7 +198,7 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.uiDataGridView1);
             this.groupBox1.Controls.Add(this.uiPagination1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 82);
+            this.groupBox1.Location = new System.Drawing.Point(0, 117);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1070, 536);
             this.groupBox1.TabIndex = 2;
@@ -238,7 +238,7 @@
             this.uiCheckBoxGroup1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiCheckBoxGroup1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiCheckBoxGroup1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(0, 0);
+            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(0, 35);
             this.uiCheckBoxGroup1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiCheckBoxGroup1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiCheckBoxGroup1.Name = "uiCheckBoxGroup1";
@@ -249,6 +249,68 @@
             this.uiCheckBoxGroup1.TabIndex = 3;
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiButton6
+            // 
+            this.uiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiButton6.Location = new System.Drawing.Point(889, 23);
+            this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton6.Name = "uiButton6";
+            this.uiButton6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.ShowFocusLine = true;
+            this.uiButton6.Size = new System.Drawing.Size(108, 35);
+            this.uiButton6.Style = Sunny.UI.UIStyle.Custom;
+            this.uiButton6.StyleCustomMode = true;
+            this.uiButton6.TabIndex = 91;
+            this.uiButton6.Text = "清空文本框";
+            this.uiButton6.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.AutoSize = true;
+            this.uiLabel1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel1.Location = new System.Drawing.Point(327, 32);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(71, 16);
+            this.uiLabel1.TabIndex = 90;
+            this.uiLabel1.Text = "是否授权";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Authorization
+            // 
+            this.Authorization.DataSource = null;
+            this.Authorization.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
+            this.Authorization.DropDownWidth = 300;
+            this.Authorization.FillColor = System.Drawing.Color.White;
+            this.Authorization.FilterMaxCount = 50;
+            this.Authorization.Font = new System.Drawing.Font("宋体", 12F);
+            this.Authorization.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.Authorization.Items.AddRange(new object[] {
+            "否",
+            "是"});
+            this.Authorization.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.Authorization.Location = new System.Drawing.Point(404, 23);
+            this.Authorization.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Authorization.MinimumSize = new System.Drawing.Size(63, 0);
+            this.Authorization.Name = "Authorization";
+            this.Authorization.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.Authorization.ShowClearButton = true;
+            this.Authorization.Size = new System.Drawing.Size(136, 35);
+            this.Authorization.SymbolSize = 24;
+            this.Authorization.TabIndex = 89;
+            this.Authorization.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Authorization.Watermark = "";
             // 
             // uiButton5
             // 
@@ -333,75 +395,16 @@
             this.uiSymbolButton1.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiSymbolButton1.Click += new System.EventHandler(this.uiSymbolButton1_Click);
             // 
-            // Authorization
-            // 
-            this.Authorization.DataSource = null;
-            this.Authorization.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
-            this.Authorization.DropDownWidth = 300;
-            this.Authorization.FillColor = System.Drawing.Color.White;
-            this.Authorization.FilterMaxCount = 50;
-            this.Authorization.Font = new System.Drawing.Font("宋体", 12F);
-            this.Authorization.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.Authorization.Items.AddRange(new object[] {
-            "否",
-            "是"});
-            this.Authorization.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.Authorization.Location = new System.Drawing.Point(404, 23);
-            this.Authorization.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Authorization.MinimumSize = new System.Drawing.Size(63, 0);
-            this.Authorization.Name = "Authorization";
-            this.Authorization.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.Authorization.ShowClearButton = true;
-            this.Authorization.Size = new System.Drawing.Size(136, 35);
-            this.Authorization.SymbolSize = 24;
-            this.Authorization.TabIndex = 89;
-            this.Authorization.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Authorization.Watermark = "";
-            // 
-            // uiLabel1
-            // 
-            this.uiLabel1.AutoSize = true;
-            this.uiLabel1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel1.Location = new System.Drawing.Point(327, 32);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(71, 16);
-            this.uiLabel1.TabIndex = 90;
-            this.uiLabel1.Text = "是否授权";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // uiButton6
-            // 
-            this.uiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.uiButton6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.uiButton6.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
-            this.uiButton6.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiButton6.Location = new System.Drawing.Point(889, 23);
-            this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton6.Name = "uiButton6";
-            this.uiButton6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.uiButton6.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
-            this.uiButton6.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.ShowFocusLine = true;
-            this.uiButton6.Size = new System.Drawing.Size(108, 35);
-            this.uiButton6.Style = Sunny.UI.UIStyle.Custom;
-            this.uiButton6.StyleCustomMode = true;
-            this.uiButton6.TabIndex = 91;
-            this.uiButton6.Text = "清空文本框";
-            this.uiButton6.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
-            // 
             // Company
             // 
+            this.AllowShowTitle = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1070, 805);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.uiCheckBoxGroup1);
             this.Name = "Company";
+            this.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
+            this.ShowTitle = true;
             this.Text = "公司管理";
             this.Initialize += new System.EventHandler(this.Company_Initialize);
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).EndInit();

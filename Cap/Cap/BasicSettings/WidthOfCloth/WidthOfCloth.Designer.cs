@@ -116,7 +116,7 @@
             this.uiDataGridView1.EnableHeadersVisualStyles = false;
             this.uiDataGridView1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            this.uiDataGridView1.Location = new System.Drawing.Point(3, 22);
+            this.uiDataGridView1.Location = new System.Drawing.Point(3, 23);
             this.uiDataGridView1.Name = "uiDataGridView1";
             this.uiDataGridView1.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -136,7 +136,7 @@
             this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.uiDataGridView1.RowTemplate.Height = 23;
             this.uiDataGridView1.SelectedIndex = -1;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 373);
+            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 372);
             this.uiDataGridView1.TabIndex = 9;
             this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
@@ -229,7 +229,7 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.uiDataGridView1);
             this.groupBox1.Controls.Add(this.uiPagination1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 185);
+            this.groupBox1.Location = new System.Drawing.Point(0, 220);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1070, 433);
             this.groupBox1.TabIndex = 4;
@@ -281,7 +281,7 @@
             this.uiCheckBoxGroup1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiCheckBoxGroup1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiCheckBoxGroup1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(0, 0);
+            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(0, 35);
             this.uiCheckBoxGroup1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiCheckBoxGroup1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiCheckBoxGroup1.Name = "uiCheckBoxGroup1";
@@ -531,11 +531,14 @@
             // 
             // WidthOfCloth
             // 
+            this.AllowShowTitle = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1088, 663);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.uiCheckBoxGroup1);
             this.Name = "WidthOfCloth";
+            this.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
+            this.ShowTitle = true;
             this.Text = "幅宽设置";
             this.Initialize += new System.EventHandler(this.WidthOfCloth_Initialize);
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).EndInit();

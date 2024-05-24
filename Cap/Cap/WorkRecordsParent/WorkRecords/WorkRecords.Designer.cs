@@ -38,10 +38,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
+            this.uiButton6 = new Sunny.UI.UIButton();
             this.CreateName = new Sunny.UI.UITextBox();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.CreateTime = new Sunny.UI.UITextBox();
             this.uiLabel1 = new Sunny.UI.UILabel();
+            this.JobTitle = new Sunny.UI.UITextBox();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.Statistics = new Sunny.UI.UITextBox();
             this.uiLabel4 = new Sunny.UI.UILabel();
@@ -52,9 +54,6 @@
             this.btnAdd = new Sunny.UI.UISymbolButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
-            this.uiPagination1 = new Sunny.UI.UIPagination();
-            this.uiButton6 = new Sunny.UI.UIButton();
-            this.JobTitle = new Sunny.UI.UITextBox();
             this.Id_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JobTitle_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Logging_Manager = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +63,7 @@
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.uiPagination1 = new Sunny.UI.UIPagination();
             this.uiCheckBoxGroup1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
@@ -88,7 +88,7 @@
             this.uiCheckBoxGroup1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiCheckBoxGroup1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiCheckBoxGroup1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(0, 0);
+            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(0, 35);
             this.uiCheckBoxGroup1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiCheckBoxGroup1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiCheckBoxGroup1.Name = "uiCheckBoxGroup1";
@@ -99,6 +99,31 @@
             this.uiCheckBoxGroup1.TabIndex = 20;
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiButton6
+            // 
+            this.uiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiButton6.Location = new System.Drawing.Point(765, 90);
+            this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton6.Name = "uiButton6";
+            this.uiButton6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.ShowFocusLine = true;
+            this.uiButton6.Size = new System.Drawing.Size(108, 35);
+            this.uiButton6.Style = Sunny.UI.UIStyle.Custom;
+            this.uiButton6.StyleCustomMode = true;
+            this.uiButton6.TabIndex = 129;
+            this.uiButton6.Text = "清空文本框";
+            this.uiButton6.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
             // 
             // CreateName
             // 
@@ -155,6 +180,22 @@
             this.uiLabel1.TabIndex = 126;
             this.uiLabel1.Text = "创建时间";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // JobTitle
+            // 
+            this.JobTitle.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.JobTitle.EnterAsTab = true;
+            this.JobTitle.Font = new System.Drawing.Font("宋体", 12F);
+            this.JobTitle.Location = new System.Drawing.Point(89, 14);
+            this.JobTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.JobTitle.MinimumSize = new System.Drawing.Size(1, 16);
+            this.JobTitle.Name = "JobTitle";
+            this.JobTitle.Padding = new System.Windows.Forms.Padding(5);
+            this.JobTitle.ShowText = false;
+            this.JobTitle.Size = new System.Drawing.Size(340, 29);
+            this.JobTitle.TabIndex = 119;
+            this.JobTitle.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.JobTitle.Watermark = "";
             // 
             // uiLabel2
             // 
@@ -284,7 +325,7 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.uiDataGridView1);
             this.groupBox1.Controls.Add(this.uiPagination1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 141);
+            this.groupBox1.Location = new System.Drawing.Point(0, 176);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1043, 462);
             this.groupBox1.TabIndex = 21;
@@ -355,68 +396,6 @@
             this.uiDataGridView1.TabIndex = 9;
             this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
-            // 
-            // uiPagination1
-            // 
-            this.uiPagination1.CausesValidation = false;
-            this.uiPagination1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.uiPagination1.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiPagination1.Location = new System.Drawing.Point(3, 423);
-            this.uiPagination1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPagination1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPagination1.Name = "uiPagination1";
-            this.uiPagination1.PagerCount = 11;
-            this.uiPagination1.PageSize = 50;
-            this.uiPagination1.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
-            this.uiPagination1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
-            this.uiPagination1.ShowText = false;
-            this.uiPagination1.Size = new System.Drawing.Size(1037, 36);
-            this.uiPagination1.TabIndex = 7;
-            this.uiPagination1.Text = "uiDataGridPage1";
-            this.uiPagination1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiPagination1.TotalCount = 40000;
-            this.uiPagination1.PageChanged += new Sunny.UI.UIPagination.OnPageChangeEventHandler(this.uiPagination1_PageChanged);
-            // 
-            // uiButton6
-            // 
-            this.uiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.uiButton6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.uiButton6.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
-            this.uiButton6.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiButton6.Location = new System.Drawing.Point(765, 90);
-            this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton6.Name = "uiButton6";
-            this.uiButton6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.uiButton6.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
-            this.uiButton6.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.ShowFocusLine = true;
-            this.uiButton6.Size = new System.Drawing.Size(108, 35);
-            this.uiButton6.Style = Sunny.UI.UIStyle.Custom;
-            this.uiButton6.StyleCustomMode = true;
-            this.uiButton6.TabIndex = 129;
-            this.uiButton6.Text = "清空文本框";
-            this.uiButton6.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
-            // 
-            // JobTitle
-            // 
-            this.JobTitle.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.JobTitle.EnterAsTab = true;
-            this.JobTitle.Font = new System.Drawing.Font("宋体", 12F);
-            this.JobTitle.Location = new System.Drawing.Point(89, 14);
-            this.JobTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.JobTitle.MinimumSize = new System.Drawing.Size(1, 16);
-            this.JobTitle.Name = "JobTitle";
-            this.JobTitle.Padding = new System.Windows.Forms.Padding(5);
-            this.JobTitle.ShowText = false;
-            this.JobTitle.Size = new System.Drawing.Size(340, 29);
-            this.JobTitle.TabIndex = 119;
-            this.JobTitle.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.JobTitle.Watermark = "";
             // 
             // Id_Manager
             // 
@@ -501,13 +480,37 @@
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // uiPagination1
+            // 
+            this.uiPagination1.CausesValidation = false;
+            this.uiPagination1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.uiPagination1.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiPagination1.Location = new System.Drawing.Point(3, 423);
+            this.uiPagination1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiPagination1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiPagination1.Name = "uiPagination1";
+            this.uiPagination1.PagerCount = 11;
+            this.uiPagination1.PageSize = 50;
+            this.uiPagination1.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
+            this.uiPagination1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
+            this.uiPagination1.ShowText = false;
+            this.uiPagination1.Size = new System.Drawing.Size(1037, 36);
+            this.uiPagination1.TabIndex = 7;
+            this.uiPagination1.Text = "uiDataGridPage1";
+            this.uiPagination1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiPagination1.TotalCount = 40000;
+            this.uiPagination1.PageChanged += new Sunny.UI.UIPagination.OnPageChangeEventHandler(this.uiPagination1_PageChanged);
+            // 
             // WorkRecords
             // 
+            this.AllowShowTitle = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1090, 634);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.uiCheckBoxGroup1);
             this.Name = "WorkRecords";
+            this.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
+            this.ShowTitle = true;
             this.Text = "工作记录";
             this.Initialize += new System.EventHandler(this.WorkRecords_Initialize);
             this.uiCheckBoxGroup1.ResumeLayout(false);

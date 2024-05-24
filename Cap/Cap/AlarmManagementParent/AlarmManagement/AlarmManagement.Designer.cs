@@ -38,6 +38,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
+            this.WhetherTimelyProcessing = new Sunny.UI.UIComboBox();
+            this.uiButton6 = new Sunny.UI.UIButton();
             this.uiButton5 = new Sunny.UI.UIButton();
             this.CreateTime = new Sunny.UI.UITextBox();
             this.uiLabel5 = new Sunny.UI.UILabel();
@@ -63,8 +65,6 @@
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.uiButton6 = new Sunny.UI.UIButton();
-            this.WhetherTimelyProcessing = new Sunny.UI.UIComboBox();
             this.uiCheckBoxGroup1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
@@ -89,7 +89,7 @@
             this.uiCheckBoxGroup1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiCheckBoxGroup1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiCheckBoxGroup1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(0, 0);
+            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(0, 35);
             this.uiCheckBoxGroup1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiCheckBoxGroup1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiCheckBoxGroup1.Name = "uiCheckBoxGroup1";
@@ -100,6 +100,56 @@
             this.uiCheckBoxGroup1.TabIndex = 21;
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // WhetherTimelyProcessing
+            // 
+            this.WhetherTimelyProcessing.DataSource = null;
+            this.WhetherTimelyProcessing.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
+            this.WhetherTimelyProcessing.DropDownWidth = 300;
+            this.WhetherTimelyProcessing.FillColor = System.Drawing.Color.White;
+            this.WhetherTimelyProcessing.FilterMaxCount = 50;
+            this.WhetherTimelyProcessing.Font = new System.Drawing.Font("宋体", 12F);
+            this.WhetherTimelyProcessing.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.WhetherTimelyProcessing.Items.AddRange(new object[] {
+            "是",
+            "否"});
+            this.WhetherTimelyProcessing.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.WhetherTimelyProcessing.Location = new System.Drawing.Point(134, 54);
+            this.WhetherTimelyProcessing.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.WhetherTimelyProcessing.MinimumSize = new System.Drawing.Size(63, 0);
+            this.WhetherTimelyProcessing.Name = "WhetherTimelyProcessing";
+            this.WhetherTimelyProcessing.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.WhetherTimelyProcessing.ShowClearButton = true;
+            this.WhetherTimelyProcessing.Size = new System.Drawing.Size(340, 29);
+            this.WhetherTimelyProcessing.SymbolSize = 24;
+            this.WhetherTimelyProcessing.TabIndex = 128;
+            this.WhetherTimelyProcessing.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.WhetherTimelyProcessing.Watermark = "";
+            // 
+            // uiButton6
+            // 
+            this.uiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiButton6.Location = new System.Drawing.Point(839, 87);
+            this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton6.Name = "uiButton6";
+            this.uiButton6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.uiButton6.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
+            this.uiButton6.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.uiButton6.ShowFocusLine = true;
+            this.uiButton6.Size = new System.Drawing.Size(108, 35);
+            this.uiButton6.Style = Sunny.UI.UIStyle.Custom;
+            this.uiButton6.StyleCustomMode = true;
+            this.uiButton6.TabIndex = 127;
+            this.uiButton6.Text = "清空文本框";
+            this.uiButton6.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
             // 
             // uiButton5
             // 
@@ -306,7 +356,7 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.uiDataGridView1);
             this.groupBox1.Controls.Add(this.uiPagination1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 148);
+            this.groupBox1.Location = new System.Drawing.Point(0, 183);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1043, 455);
             this.groupBox1.TabIndex = 20;
@@ -353,7 +403,7 @@
             this.uiDataGridView1.EnableHeadersVisualStyles = false;
             this.uiDataGridView1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            this.uiDataGridView1.Location = new System.Drawing.Point(3, 22);
+            this.uiDataGridView1.Location = new System.Drawing.Point(3, 23);
             this.uiDataGridView1.Name = "uiDataGridView1";
             this.uiDataGridView1.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -373,7 +423,7 @@
             this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.uiDataGridView1.RowTemplate.Height = 23;
             this.uiDataGridView1.SelectedIndex = -1;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1037, 394);
+            this.uiDataGridView1.Size = new System.Drawing.Size(1037, 393);
             this.uiDataGridView1.TabIndex = 9;
             this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
@@ -461,63 +511,16 @@
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // uiButton6
-            // 
-            this.uiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.uiButton6.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.uiButton6.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
-            this.uiButton6.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiButton6.Location = new System.Drawing.Point(839, 87);
-            this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton6.Name = "uiButton6";
-            this.uiButton6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
-            this.uiButton6.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(163)))), ((int)(((byte)(163)))));
-            this.uiButton6.RectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.RectSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.uiButton6.ShowFocusLine = true;
-            this.uiButton6.Size = new System.Drawing.Size(108, 35);
-            this.uiButton6.Style = Sunny.UI.UIStyle.Custom;
-            this.uiButton6.StyleCustomMode = true;
-            this.uiButton6.TabIndex = 127;
-            this.uiButton6.Text = "清空文本框";
-            this.uiButton6.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
-            // 
-            // WhetherTimelyProcessing
-            // 
-            this.WhetherTimelyProcessing.DataSource = null;
-            this.WhetherTimelyProcessing.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
-            this.WhetherTimelyProcessing.DropDownWidth = 300;
-            this.WhetherTimelyProcessing.FillColor = System.Drawing.Color.White;
-            this.WhetherTimelyProcessing.FilterMaxCount = 50;
-            this.WhetherTimelyProcessing.Font = new System.Drawing.Font("宋体", 12F);
-            this.WhetherTimelyProcessing.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
-            this.WhetherTimelyProcessing.Items.AddRange(new object[] {
-            "是",
-            "否"});
-            this.WhetherTimelyProcessing.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.WhetherTimelyProcessing.Location = new System.Drawing.Point(134, 54);
-            this.WhetherTimelyProcessing.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.WhetherTimelyProcessing.MinimumSize = new System.Drawing.Size(63, 0);
-            this.WhetherTimelyProcessing.Name = "WhetherTimelyProcessing";
-            this.WhetherTimelyProcessing.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.WhetherTimelyProcessing.ShowClearButton = true;
-            this.WhetherTimelyProcessing.Size = new System.Drawing.Size(340, 29);
-            this.WhetherTimelyProcessing.SymbolSize = 24;
-            this.WhetherTimelyProcessing.TabIndex = 128;
-            this.WhetherTimelyProcessing.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.WhetherTimelyProcessing.Watermark = "";
-            // 
             // AlarmManagement
             // 
+            this.AllowShowTitle = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1062, 677);
             this.Controls.Add(this.uiCheckBoxGroup1);
             this.Controls.Add(this.groupBox1);
             this.Name = "AlarmManagement";
+            this.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
+            this.ShowTitle = true;
             this.Text = "告警管理";
             this.Initialize += new System.EventHandler(this.AlarmManagement_Initialize);
             this.uiCheckBoxGroup1.ResumeLayout(false);

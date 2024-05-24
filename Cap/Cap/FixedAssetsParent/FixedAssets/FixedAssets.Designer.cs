@@ -38,7 +38,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uiCheckBoxGroup1 = new Sunny.UI.UICheckBoxGroup();
+            this.AcquisitionDate = new Sunny.UI.UIDatetimePicker();
+            this.uiLabel9 = new Sunny.UI.UILabel();
             this.uiButton6 = new Sunny.UI.UIButton();
+            this.CreateName = new Sunny.UI.UITextBox();
             this.uiLabel8 = new Sunny.UI.UILabel();
             this.CreateTime = new Sunny.UI.UITextBox();
             this.uiButton5 = new Sunny.UI.UIButton();
@@ -74,9 +77,6 @@
             this.Search = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.uiLabel9 = new Sunny.UI.UILabel();
-            this.CreateName = new Sunny.UI.UITextBox();
-            this.AcquisitionDate = new Sunny.UI.UIDatetimePicker();
             this.uiCheckBoxGroup1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
@@ -109,7 +109,7 @@
             this.uiCheckBoxGroup1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiCheckBoxGroup1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiCheckBoxGroup1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(236)))), ((int)(((byte)(255)))));
-            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(0, 0);
+            this.uiCheckBoxGroup1.Location = new System.Drawing.Point(0, 35);
             this.uiCheckBoxGroup1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiCheckBoxGroup1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiCheckBoxGroup1.Name = "uiCheckBoxGroup1";
@@ -120,6 +120,39 @@
             this.uiCheckBoxGroup1.TabIndex = 21;
             this.uiCheckBoxGroup1.Text = null;
             this.uiCheckBoxGroup1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // AcquisitionDate
+            // 
+            this.AcquisitionDate.CanEmpty = true;
+            this.AcquisitionDate.FillColor = System.Drawing.Color.White;
+            this.AcquisitionDate.Font = new System.Drawing.Font("宋体", 12F);
+            this.AcquisitionDate.Location = new System.Drawing.Point(731, 1);
+            this.AcquisitionDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.AcquisitionDate.MaxLength = 19;
+            this.AcquisitionDate.MinimumSize = new System.Drawing.Size(63, 0);
+            this.AcquisitionDate.Name = "AcquisitionDate";
+            this.AcquisitionDate.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.AcquisitionDate.Size = new System.Drawing.Size(192, 29);
+            this.AcquisitionDate.SymbolDropDown = 61555;
+            this.AcquisitionDate.SymbolNormal = 61555;
+            this.AcquisitionDate.SymbolSize = 24;
+            this.AcquisitionDate.TabIndex = 136;
+            this.AcquisitionDate.Text = "2020-06-02 17:57:28";
+            this.AcquisitionDate.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AcquisitionDate.Value = new System.DateTime(2020, 6, 2, 17, 57, 28, 203);
+            this.AcquisitionDate.Watermark = "";
+            // 
+            // uiLabel9
+            // 
+            this.uiLabel9.AutoSize = true;
+            this.uiLabel9.Font = new System.Drawing.Font("宋体", 12F);
+            this.uiLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel9.Location = new System.Drawing.Point(637, 83);
+            this.uiLabel9.Name = "uiLabel9";
+            this.uiLabel9.Size = new System.Drawing.Size(55, 16);
+            this.uiLabel9.TabIndex = 135;
+            this.uiLabel9.Text = "创建人";
+            this.uiLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiButton6
             // 
@@ -145,6 +178,21 @@
             this.uiButton6.Text = "清空文本框";
             this.uiButton6.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
+            // 
+            // CreateName
+            // 
+            this.CreateName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.CreateName.Font = new System.Drawing.Font("宋体", 12F);
+            this.CreateName.Location = new System.Drawing.Point(731, 79);
+            this.CreateName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CreateName.MinimumSize = new System.Drawing.Size(1, 16);
+            this.CreateName.Name = "CreateName";
+            this.CreateName.Padding = new System.Windows.Forms.Padding(5);
+            this.CreateName.ShowText = false;
+            this.CreateName.Size = new System.Drawing.Size(192, 29);
+            this.CreateName.TabIndex = 134;
+            this.CreateName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CreateName.Watermark = "";
             // 
             // uiLabel8
             // 
@@ -432,7 +480,7 @@
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.uiDataGridView1);
             this.groupBox1.Controls.Add(this.uiPagination1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 177);
+            this.groupBox1.Location = new System.Drawing.Point(0, 212);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1043, 426);
             this.groupBox1.TabIndex = 20;
@@ -619,60 +667,16 @@
             this.Delete.ReadOnly = true;
             this.Delete.Text = "";
             // 
-            // uiLabel9
-            // 
-            this.uiLabel9.AutoSize = true;
-            this.uiLabel9.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel9.Location = new System.Drawing.Point(637, 83);
-            this.uiLabel9.Name = "uiLabel9";
-            this.uiLabel9.Size = new System.Drawing.Size(55, 16);
-            this.uiLabel9.TabIndex = 135;
-            this.uiLabel9.Text = "创建人";
-            this.uiLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // CreateName
-            // 
-            this.CreateName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.CreateName.Font = new System.Drawing.Font("宋体", 12F);
-            this.CreateName.Location = new System.Drawing.Point(731, 79);
-            this.CreateName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.CreateName.MinimumSize = new System.Drawing.Size(1, 16);
-            this.CreateName.Name = "CreateName";
-            this.CreateName.Padding = new System.Windows.Forms.Padding(5);
-            this.CreateName.ShowText = false;
-            this.CreateName.Size = new System.Drawing.Size(192, 29);
-            this.CreateName.TabIndex = 134;
-            this.CreateName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CreateName.Watermark = "";
-            // 
-            // AcquisitionDate
-            // 
-            this.AcquisitionDate.CanEmpty = true;
-            this.AcquisitionDate.FillColor = System.Drawing.Color.White;
-            this.AcquisitionDate.Font = new System.Drawing.Font("宋体", 12F);
-            this.AcquisitionDate.Location = new System.Drawing.Point(731, 1);
-            this.AcquisitionDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.AcquisitionDate.MaxLength = 19;
-            this.AcquisitionDate.MinimumSize = new System.Drawing.Size(63, 0);
-            this.AcquisitionDate.Name = "AcquisitionDate";
-            this.AcquisitionDate.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.AcquisitionDate.Size = new System.Drawing.Size(192, 29);
-            this.AcquisitionDate.SymbolDropDown = 61555;
-            this.AcquisitionDate.SymbolNormal = 61555;
-            this.AcquisitionDate.SymbolSize = 24;
-            this.AcquisitionDate.TabIndex = 136;
-            this.AcquisitionDate.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AcquisitionDate.Value = new System.DateTime(2020, 6, 2, 17, 57, 28, 203);
-            this.AcquisitionDate.Watermark = "";
-            // 
             // FixedAssets
             // 
+            this.AllowShowTitle = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1075, 685);
             this.Controls.Add(this.uiCheckBoxGroup1);
             this.Controls.Add(this.groupBox1);
             this.Name = "FixedAssets";
+            this.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
+            this.ShowTitle = true;
             this.Text = "固定资产";
             this.Initialize += new System.EventHandler(this.FixedAssets_Initialize);
             this.uiCheckBoxGroup1.ResumeLayout(false);

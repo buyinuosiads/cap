@@ -31,24 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Nav));
             this.uiTabControl1 = new Sunny.UI.UITabControl();
-            this.uiPanel3 = new Sunny.UI.UIPanel();
             this.uiContextMenuStrip1 = new Sunny.UI.UIContextMenuStrip();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.StyleManager = new Sunny.UI.UIStyleManager(this.components);
-            this.uiAvatar1 = new Sunny.UI.UIAvatar();
-            this.uiPanel1 = new Sunny.UI.UIPanel();
-            this.uiPanel4 = new Sunny.UI.UIPanel();
-            this.uiPanel2 = new Sunny.UI.UIPanel();
             this.uiNavMenu1 = new Sunny.UI.UINavMenu();
             this.uiNavBar1 = new Sunny.UI.UINavBar();
-            this.uiScrollingText2 = new Sunny.UI.UIScrollingText();
+            this.button29 = new System.Windows.Forms.Button();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.uiContextMenuStrip1.SuspendLayout();
-            this.uiPanel1.SuspendLayout();
             this.uiNavBar1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,26 +56,11 @@
             this.uiTabControl1.MainPage = "";
             this.uiTabControl1.Name = "uiTabControl1";
             this.uiTabControl1.SelectedIndex = 0;
-            this.uiTabControl1.Size = new System.Drawing.Size(1654, 917);
+            this.uiTabControl1.Size = new System.Drawing.Size(1654, 949);
             this.uiTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.uiTabControl1.TabIndex = 13;
             this.uiTabControl1.TabVisible = false;
             this.uiTabControl1.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // uiPanel3
-            // 
-            this.uiPanel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.uiPanel3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiPanel3.Location = new System.Drawing.Point(1368, 0);
-            this.uiPanel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPanel3.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPanel3.Name = "uiPanel3";
-            this.uiPanel3.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
-            this.uiPanel3.RectSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)));
-            this.uiPanel3.Size = new System.Drawing.Size(286, 32);
-            this.uiPanel3.TabIndex = 1;
-            this.uiPanel3.Text = null;
-            this.uiPanel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // uiContextMenuStrip1
             // 
@@ -111,66 +90,6 @@
             this.StyleManager.GlobalFont = true;
             this.StyleManager.GlobalFontName = "Tahoma";
             // 
-            // uiAvatar1
-            // 
-            this.uiAvatar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.uiAvatar1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiAvatar1.Location = new System.Drawing.Point(1860, 33);
-            this.uiAvatar1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiAvatar1.Name = "uiAvatar1";
-            this.uiAvatar1.Size = new System.Drawing.Size(60, 60);
-            this.uiAvatar1.TabIndex = 5;
-            this.uiAvatar1.Text = "uiAvatar1";
-            // 
-            // uiPanel1
-            // 
-            this.uiPanel1.Controls.Add(this.uiPanel4);
-            this.uiPanel1.Controls.Add(this.uiPanel3);
-            this.uiPanel1.Controls.Add(this.uiPanel2);
-            this.uiPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.uiPanel1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiPanel1.Location = new System.Drawing.Point(286, 1068);
-            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
-            this.uiPanel1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Top;
-            this.uiPanel1.Size = new System.Drawing.Size(1654, 32);
-            this.uiPanel1.TabIndex = 11;
-            this.uiPanel1.Text = null;
-            this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // uiPanel4
-            // 
-            this.uiPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiPanel4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiPanel4.Location = new System.Drawing.Point(286, 0);
-            this.uiPanel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPanel4.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPanel4.Name = "uiPanel4";
-            this.uiPanel4.Radius = 1;
-            this.uiPanel4.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
-            this.uiPanel4.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Top;
-            this.uiPanel4.Size = new System.Drawing.Size(1082, 32);
-            this.uiPanel4.TabIndex = 2;
-            this.uiPanel4.Text = null;
-            this.uiPanel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // uiPanel2
-            // 
-            this.uiPanel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.uiPanel2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiPanel2.Location = new System.Drawing.Point(0, 0);
-            this.uiPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPanel2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPanel2.Name = "uiPanel2";
-            this.uiPanel2.RadiusSides = Sunny.UI.UICornerRadiusSides.None;
-            this.uiPanel2.RectSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
-            this.uiPanel2.Size = new System.Drawing.Size(286, 32);
-            this.uiPanel2.TabIndex = 0;
-            this.uiPanel2.Text = null;
-            this.uiPanel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // uiNavMenu1
             // 
             this.uiNavMenu1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -190,11 +109,10 @@
             // uiNavBar1
             // 
             this.uiNavBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.uiNavBar1.Controls.Add(this.uiScrollingText2);
+            this.uiNavBar1.Controls.Add(this.button29);
             this.uiNavBar1.Controls.Add(this.uiLabel3);
             this.uiNavBar1.Controls.Add(this.uiLabel2);
             this.uiNavBar1.Controls.Add(this.uiLabel1);
-            this.uiNavBar1.Controls.Add(this.uiAvatar1);
             this.uiNavBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.uiNavBar1.DropMenuFont = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiNavBar1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -209,17 +127,21 @@
             this.uiNavBar1.Text = "uiNavBar1";
             this.uiNavBar1.MenuItemClick += new Sunny.UI.UINavBar.OnMenuItemClick(this.uiNavBar1_MenuItemClick);
             // 
-            // uiScrollingText2
+            // button29
             // 
-            this.uiScrollingText2.Active = true;
-            this.uiScrollingText2.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiScrollingText2.ForeColor = System.Drawing.Color.Red;
-            this.uiScrollingText2.Location = new System.Drawing.Point(442, 33);
-            this.uiScrollingText2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiScrollingText2.Name = "uiScrollingText2";
-            this.uiScrollingText2.Size = new System.Drawing.Size(1142, 82);
-            this.uiScrollingText2.TabIndex = 76;
-            this.uiScrollingText2.Text = "不要忘记自己的目标和努力的意义。每一次困难都是成长的机会，每一次挑战都是迈向成功的阶梯。坚持不懈，勇往直前，你将会创造出令人瞩目的成就！";
+            this.button29.AutoSize = true;
+            this.button29.BackColor = System.Drawing.Color.Transparent;
+            this.button29.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button29.BackgroundImage")));
+            this.button29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button29.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button29.FlatAppearance.BorderSize = 0;
+            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button29.Location = new System.Drawing.Point(1822, 17);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(89, 77);
+            this.button29.TabIndex = 63;
+            this.button29.UseVisualStyleBackColor = false;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
             // 
             // uiLabel3
             // 
@@ -236,7 +158,7 @@
             // 
             this.uiLabel2.Font = new System.Drawing.Font("宋体", 13F);
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(1603, 74);
+            this.uiLabel2.Location = new System.Drawing.Point(1583, 58);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(223, 23);
             this.uiLabel2.TabIndex = 9;
@@ -247,7 +169,7 @@
             // 
             this.uiLabel1.Font = new System.Drawing.Font("宋体", 13F);
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel1.Location = new System.Drawing.Point(1603, 42);
+            this.uiLabel1.Location = new System.Drawing.Point(1583, 26);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(169, 23);
             this.uiLabel1.TabIndex = 8;
@@ -263,15 +185,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1940, 1100);
             this.Controls.Add(this.uiTabControl1);
-            this.Controls.Add(this.uiPanel1);
             this.Controls.Add(this.uiNavMenu1);
             this.Controls.Add(this.uiNavBar1);
             this.Name = "Nav";
             this.Text = "";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Nav_FormClosed);
             this.uiContextMenuStrip1.ResumeLayout(false);
-            this.uiPanel1.ResumeLayout(false);
             this.uiNavBar1.ResumeLayout(false);
+            this.uiNavBar1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -279,21 +200,16 @@
         #endregion
 
         private Sunny.UI.UITabControl uiTabControl1;
-        private Sunny.UI.UIPanel uiPanel3;
         private Sunny.UI.UIContextMenuStrip uiContextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem1;
         private Sunny.UI.UIStyleManager StyleManager;
-        private Sunny.UI.UIAvatar uiAvatar1;
-        private Sunny.UI.UIPanel uiPanel1;
-        private Sunny.UI.UIPanel uiPanel4;
-        private Sunny.UI.UIPanel uiPanel2;
         private Sunny.UI.UINavMenu uiNavMenu1;
         private Sunny.UI.UINavBar uiNavBar1;
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UILabel uiLabel2;
         private System.Windows.Forms.Timer timer1;
         private Sunny.UI.UILabel uiLabel3;
-        private Sunny.UI.UIScrollingText uiScrollingText2;
+        private System.Windows.Forms.Button button29;
     }
 }

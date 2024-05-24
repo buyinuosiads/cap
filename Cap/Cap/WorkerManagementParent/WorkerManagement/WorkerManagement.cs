@@ -90,7 +90,7 @@ namespace Cap.WorkerManagementParent.WorkerManagement
 
             // 将 groupBox1 的宽度设置为与 uiCheckBoxGroup1 相同
             groupBox1.Width = checkBoxGroupWidth;
-            groupBox1.Height = this.Height - checkBoxGroupHeigth - 15;
+            groupBox1.Height = this.Height - checkBoxGroupHeigth - 65;
         }
 
 
