@@ -475,10 +475,10 @@ namespace Cap
                         }
                         FinancialStatements financialStatements = new FinancialStatements(Name);
                         financialStatements.Text = _Menu.MenuText;
-                        financialStatements.Symbol = int.Parse(_Menu.Icon);
+                        financialStatements.Symbol = int.Parse(_Menu.Icon); 
                         uiNavMenu1.CreateChildNode(parent, AddPage(financialStatements, ++pageIndex));  //26  财务报表
                     }
-                    else if (num == "27")
+                    else if (num == "27") 
                     {
                         if (CW == false)
                         {
