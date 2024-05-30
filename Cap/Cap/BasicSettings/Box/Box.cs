@@ -278,7 +278,6 @@ namespace Cap.BasicSettings.Box
                 AccessoryName.DataGridView.DataSource = null;
 
                 //辅料
-
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 List<ChargeTime> charges = capProjectDb.ChargeTime.Where(t => t.IsDelete == 0).ToList();
 
@@ -303,7 +302,6 @@ namespace Cap.BasicSettings.Box
                     }
                 }
 
-
                 //for (int i = 1; i <= 20; i++)
                 //{
                 //    if (AccessoryName_Manager == "辅料" + i)
@@ -315,9 +313,7 @@ namespace Cap.BasicSettings.Box
                 //        AccessoryName.DataGridView.Rows.Add(false, "辅料" + i);
                 //    }
                 //}
-
             }
-
         }
 
         private void uiComboDataGridView2_ValueChanged(object sender, object value)
@@ -417,7 +413,7 @@ namespace Cap.BasicSettings.Box
                 boxGaugeSetting.ContainerLoad = ContainerLoad.Text;
                 boxGaugeSetting.ConsumableNumber = ConsumableNumber.Text;
                 boxGaugeSetting.AccessoryName = AccessoryName.Text;
-                boxGaugeSetting.AccessoryNum = AccessoryNum.Text; 
+                boxGaugeSetting.AccessoryNum = AccessoryNum.Text;
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法
@@ -429,6 +425,59 @@ namespace Cap.BasicSettings.Box
                 ShowErrorTip("取消当前操作");
             }
 
+        }
+
+        /// <summary>
+        /// 辅料列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AccessoryName_MouseClick(object sender, MouseEventArgs e)
+        {
+            AccessoryName.DataGridView.ClearAll();
+            AccessoryName.DataGridView.Init();
+            AccessoryName.DataGridView.MultiSelect = true;//设置可多选
+            AccessoryName.DataGridView.ReadOnly = false;
+            AccessoryName.ShowFilter = true;
+            // 添加多选按钮列
+            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
+            checkBoxColumn.HeaderText = "多选";
+            checkBoxColumn.Name = "checkBoxColumn";
+            AccessoryName.DataGridView.Columns.Insert(0, checkBoxColumn);
+            // 添加其他列
+            DataGridViewTextBoxColumn column1 = new DataGridViewTextBoxColumn();
+            column1.HeaderText = "辅料";
+            column1.Name = "辅料";
+            AccessoryName.DataGridView.Columns.Add(column1);
+            DataGridViewTextBoxColumn editableColumn = new DataGridViewTextBoxColumn();
+            editableColumn.HeaderText = "辅料数量";
+            editableColumn.Name = "EditableColumn";
+            AccessoryName.DataGridView.Columns.Add(editableColumn);
+
+            //辅料
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            List<ChargeTime> charges = capProjectDb.ChargeTime.Where(t => t.IsDelete == 0).ToList();
+
+            string[] AccessoryName_ = AccessoryName.Text.Split(';');
+            string[] AccessoryNum_ = AccessoryNum.Text.Split(';');
+
+            foreach (var item in charges)
+            {
+                bool tl = false;
+                for (int i = 0; i < AccessoryName_.Length; i++)
+                {
+                    if (AccessoryName_[i].ToString().Trim() == item.AccessoryName)
+                    {
+                        AccessoryName.DataGridView.Rows.Add(true, item.AccessoryName, AccessoryNum_[i].ToString());
+                        tl = true;
+                        break;
+                    }
+                }
+                if (tl == false)
+                {
+                    AccessoryName.DataGridView.Rows.Add(false, item.AccessoryName);
+                }
+            }
         }
     }
 }

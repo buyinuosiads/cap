@@ -252,6 +252,7 @@
             this.ProcessName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.ProcessName.Watermark = "";
             this.ProcessName.ValueChanged += new Sunny.UI.UIComboDataGridView.OnValueChanged(this.uiComboDataGridView2_ValueChanged);
+            this.ProcessName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ProcessName_MouseClick);
             // 
             // uiLabel1
             // 

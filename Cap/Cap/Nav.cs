@@ -475,10 +475,10 @@ namespace Cap
                         }
                         FinancialStatements financialStatements = new FinancialStatements(Name);
                         financialStatements.Text = _Menu.MenuText;
-                        financialStatements.Symbol = int.Parse(_Menu.Icon); 
+                        financialStatements.Symbol = int.Parse(_Menu.Icon);
                         uiNavMenu1.CreateChildNode(parent, AddPage(financialStatements, ++pageIndex));  //26  财务报表
                     }
-                    else if (num == "27") 
+                    else if (num == "27")
                     {
                         if (CW == false)
                         {
@@ -599,6 +599,10 @@ namespace Cap
             uiNavMenu1.SelectPage(1002);
             uiNavMenu1.Font = new System.Drawing.Font("宋体", 12); // 这里设置为 宋体 字体，大小为 12
             timer1.Start();
+
+            //主题颜色
+            UIStyle style3 = (UIStyle)7;
+            StyleManager.Style = style3;
         }
 
         /// <summary>
@@ -684,7 +688,7 @@ namespace Cap
             if (ShowAskDialog("确定要退出吗？"))
             {
                 Application.Exit();//关闭的时候杀死所有线程
-            } 
+            }
         }
     }
 }

@@ -12,10 +12,12 @@ using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
+using System.Security.Policy;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Cap.BasicSettings.Product
@@ -266,10 +268,7 @@ namespace Cap.BasicSettings.Product
 
         }
 
-        private void uiLabel2_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -309,7 +308,6 @@ namespace Cap.BasicSettings.Product
                 string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
                 string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
 
-
                 ProcessName.DataGridView.DataSource = null;
                 ProcessName.DataGridView.Rows.Clear();
                 ProcessName.DataGridView.Init();
@@ -332,12 +330,10 @@ namespace Cap.BasicSettings.Product
                             break;
                         }
                     }
-                     
                     if (tl == false)
                     {
                         ProcessName.DataGridView.Rows.Add(false, item.ProcessName, item.Price);
-                    } 
-
+                    }
                 }
 
 
@@ -431,7 +427,7 @@ namespace Cap.BasicSettings.Product
                 ProductSetup productSetup = capProjectDb.ProductSetup.Where(t => t.Id == Id).FirstOrDefault();
                 productSetup.ProductName = ProductName.Text;
                 productSetup.ProcessName = ProcessName.Text;
-                productSetup.Price = decimal.Parse(Price.Text); 
+                productSetup.Price = decimal.Parse(Price.Text);
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法
@@ -443,8 +439,106 @@ namespace Cap.BasicSettings.Product
             {
                 ShowErrorTip("取消当前操作");
             }
+        }
 
 
+        /// <summary>
+        /// 工艺名称
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ProcessName_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            ProcessName.DataGridView.ClearAll();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Column1", typeof(string));
+            dt.Columns.Add("Column2", typeof(string));
+
+            foreach (var item in processSettings)
+            {
+                dt.Rows.Add(item.ProcessName, item.Price);
+            }
+            ProcessName.DataGridView.Init();
+            ProcessName.DataGridView.MultiSelect = true;//设置可多选
+            ProcessName.ItemSize = new System.Drawing.Size(360, 240);
+            ProcessName.DataGridView.AddColumn("工艺名称", "Column1");
+            ProcessName.DataGridView.AddColumn("工艺价格", "Column2");
+            ProcessName.DataGridView.ReadOnly = false;
+            ProcessName.ShowFilter = true;
+            ProcessName.DataGridView.DataSource = dt;
+            ProcessName.FilterColumnName = "Column1"; //不设置则全部列过滤
+            // 在 DataGridView 中添加一个复选框列用于多选功能
+            DataGridViewCheckBoxColumn multiSelectColumn = new DataGridViewCheckBoxColumn();
+            multiSelectColumn.HeaderText = "选择";
+            multiSelectColumn.Name = "MultiSelectColumn";
+            ProcessName.DataGridView.Columns.Insert(0, multiSelectColumn);
+
+
+            decimal Money = 0; //价格
+            string txt = string.Empty;
+            // 遍历 DataGridView 中的所有行
+            foreach (DataGridViewRow row in ProcessName.DataGridView.Rows)
+            {
+                string check = string.Empty;//是否选中
+                string gongyimingcheng = string.Empty; //工艺名称 
+                decimal jiage = 0;
+                int num = 0;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.Value != null)
+                    {
+                        if (num == 0)
+                        {
+                            check = cell.Value.ToString();
+                        }
+                        else if (num == 1)
+                        {
+                            gongyimingcheng = cell.Value.ToString();
+                        }
+                        else
+                        {
+                            jiage += decimal.Parse(cell.Value.ToString());
+                        }
+                    }
+                    num++;
+                }
+                if (check == "True")
+                {
+                    txt += gongyimingcheng + ";";
+                    Money += jiage;
+                }
+            }
+
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            processSettings = capProjectDb.ProcessSetting.Where(t => t.IsDelete == 0).ToList();
+            ProcessName.DataGridView.DataSource = null;
+            ProcessName.DataGridView.Rows.Clear();
+            ProcessName.DataGridView.Init();
+            ProcessName.DataGridView.MultiSelect = true;//设置可多选
+            ProcessName.ItemSize = new System.Drawing.Size(360, 240);
+            ProcessName.DataGridView.ReadOnly = false;
+            ProcessName.ShowFilter = true;
+            ProcessName.FilterColumnName = "Column1"; //不设置则全部列过滤
+            string[] ProcessName_ManagerList = ProcessName.Text.Split(';');
+
+            foreach (var item in processSettings)
+            {
+                bool tl = false;
+                for (int i = 0; i < ProcessName_ManagerList.Length; i++)
+                {
+                    if (ProcessName_ManagerList[i] == item.ProcessName)
+                    {
+                        ProcessName.DataGridView.Rows.Add(true, item.ProcessName, item.Price);
+                        tl = true;
+                        break;
+                    }
+                }
+                if (tl == false)
+                {
+                    ProcessName.DataGridView.Rows.Add(false, item.ProcessName, item.Price);
+                }
+            }
         }
     }
 }

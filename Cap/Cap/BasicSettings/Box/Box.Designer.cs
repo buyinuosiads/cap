@@ -295,6 +295,7 @@
             this.AccessoryName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.AccessoryName.Watermark = "";
             this.AccessoryName.ValueChanged += new Sunny.UI.UIComboDataGridView.OnValueChanged(this.uiComboDataGridView2_ValueChanged);
+            this.AccessoryName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AccessoryName_MouseClick);
             // 
             // ConsumableNumber
             // 

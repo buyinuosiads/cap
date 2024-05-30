@@ -301,6 +301,7 @@
             this.Accessory.TabIndex = 80;
             this.Accessory.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.Accessory.Watermark = "";
+            this.Accessory.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Accessory_MouseClick);
             // 
             // uiLabel5
             // 
@@ -330,6 +331,7 @@
             this.MainIngredient.TabIndex = 78;
             this.MainIngredient.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.MainIngredient.Watermark = "";
+            this.MainIngredient.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MainIngredient_MouseClick);
             // 
             // ProcessName
             // 

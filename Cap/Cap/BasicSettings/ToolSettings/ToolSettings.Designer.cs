@@ -127,7 +127,7 @@
             this.uiDataGridView1.EnableHeadersVisualStyles = false;
             this.uiDataGridView1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(173)))), ((int)(((byte)(255)))));
-            this.uiDataGridView1.Location = new System.Drawing.Point(3, 22);
+            this.uiDataGridView1.Location = new System.Drawing.Point(3, 23);
             this.uiDataGridView1.Name = "uiDataGridView1";
             this.uiDataGridView1.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -147,7 +147,7 @@
             this.uiDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.uiDataGridView1.RowTemplate.Height = 23;
             this.uiDataGridView1.SelectedIndex = -1;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 366);
+            this.uiDataGridView1.Size = new System.Drawing.Size(1064, 365);
             this.uiDataGridView1.TabIndex = 9;
             this.uiDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellClick);
             this.uiDataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uiDataGridView1_CellContentClick);
@@ -471,6 +471,7 @@
             this.PermName.TabIndex = 72;
             this.PermName.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.PermName.Watermark = "";
+            this.PermName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PermName_MouseClick);
             // 
             // Coefficient
             // 
@@ -530,6 +531,7 @@
             this.Breadth.TabIndex = 68;
             this.Breadth.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.Breadth.Watermark = "";
+            this.Breadth.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Breadth_MouseClick);
             // 
             // uiLabel1
             // 

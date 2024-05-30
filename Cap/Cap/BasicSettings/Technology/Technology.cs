@@ -392,7 +392,7 @@ namespace Cap.BasicSettings.Technology
                 ProcessSetting processSetting = capProjectDb.ProcessSetting.Where(t => t.Id == Id).FirstOrDefault();
                 processSetting.ProcessName = ProcessName.Text;
                 processSetting.Main = MainIngredient.Text;
-                processSetting.Accessory = Accessory.Text; 
+                processSetting.Accessory = Accessory.Text;
                 processSetting.Price = decimal.Parse(Price.Text);
                 //保存数据
                 capProjectDb.SubmitChanges();
@@ -407,6 +407,86 @@ namespace Cap.BasicSettings.Technology
                 ShowErrorTip("取消当前操作");
             }
 
+        }
+
+
+        //主料列表设置
+        private void MainIngredient_MouseClick(object sender, MouseEventArgs e)
+        {
+            MainIngredient.Nodes.Clear();
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            List<MajorIngredient> majorIngredients = capProjectDb.MajorIngredient.Where(t => t.IsDelete == 0).ToList();
+            foreach (var item in majorIngredients)
+            {
+                TreeNode infoList = new TreeNode();
+                infoList.Name = item.MainName;
+                infoList.Text = item.MainName;
+                MainIngredient.Nodes.Add(infoList);
+            }
+
+            //主料
+            if (!string.IsNullOrEmpty(MainIngredient.Text))
+            {
+                string[] role = MainIngredient.Text.Split(';');
+                foreach (TreeNode item3 in MainIngredient.Nodes)
+                {
+                    string im = item3.ToString().Replace("TreeNode: ", null);
+                    for (int i = 0; i < role.Length; i++)
+                    {
+                        if (im == role[i].ToString().Trim())
+                        {
+                            item3.Checked = true;
+                            break;
+                        }
+                        else
+                        {
+                            item3.Checked = false;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// 辅料列表设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Accessory_MouseClick(object sender, MouseEventArgs e)
+        {
+            CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+            Accessory.Nodes.Clear();
+            //辅料
+            List<ChargeTime> chargeTimes = capProjectDb.ChargeTime.Where(t => t.IsDelete == 0).ToList();
+            foreach (var item in chargeTimes)
+            {
+                TreeNode infoList = new TreeNode();
+                infoList.Name = item.AccessoryName;
+                infoList.Text = item.AccessoryName;
+                Accessory.Nodes.Add(infoList);
+            }
+            //辅料
+            if (!string.IsNullOrEmpty(Accessory.Text))
+            {
+                string[] role = Accessory.Text.Split(';');
+                foreach (TreeNode item in Accessory.Nodes)
+                {
+                    string im = item.ToString().Replace("TreeNode: ", null);
+                    for (int i = 0; i < role.Length; i++)
+                    {
+                        if (im == role[i].ToString().Trim())
+                        {
+                            item.Checked = true;
+                            break;
+                        }
+                        else
+                        {
+                            item.Checked = false;
+                        }
+                    }
+                }
+            }
         }
     }
 }
