@@ -190,6 +190,31 @@ namespace Cap.BasicSettings.Box
         {
             if (ShowAskDialog("确定要添加吗？"))
             {
+
+                if (string.IsNullOrEmpty(CaseGaugeName.Text))
+                {
+                    ShowWarningDialog("箱规名称不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(ContainerLoad.Text))
+                {
+                    ShowWarningDialog("满箱数不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(ConsumableNumber.Text))
+                {
+                    ShowWarningDialog("耗材不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(AccessoryName.Text))
+                {
+                    ShowWarningDialog("辅料不能为空");
+                    return;
+                }
+
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 BoxGaugeSetting boxGaugeSetting = new BoxGaugeSetting();
                 boxGaugeSetting.Id = Guid.NewGuid().ToString();

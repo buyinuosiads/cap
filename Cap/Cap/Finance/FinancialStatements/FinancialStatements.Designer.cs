@@ -182,6 +182,7 @@
             this.CreateName.MinimumSize = new System.Drawing.Size(1, 16);
             this.CreateName.Name = "CreateName";
             this.CreateName.Padding = new System.Windows.Forms.Padding(5);
+            this.CreateName.ReadOnly = true;
             this.CreateName.ShowText = false;
             this.CreateName.Size = new System.Drawing.Size(340, 29);
             this.CreateName.TabIndex = 119;
@@ -209,6 +210,7 @@
             this.CreateTime.MinimumSize = new System.Drawing.Size(1, 16);
             this.CreateTime.Name = "CreateTime";
             this.CreateTime.Padding = new System.Windows.Forms.Padding(5);
+            this.CreateTime.ReadOnly = true;
             this.CreateTime.ShowText = false;
             this.CreateTime.Size = new System.Drawing.Size(340, 29);
             this.CreateTime.TabIndex = 117;
@@ -309,6 +311,7 @@
             this.OrderNumber.MinimumSize = new System.Drawing.Size(1, 16);
             this.OrderNumber.Name = "OrderNumber";
             this.OrderNumber.Padding = new System.Windows.Forms.Padding(5);
+            this.OrderNumber.ReadOnly = true;
             this.OrderNumber.ShowText = false;
             this.OrderNumber.Size = new System.Drawing.Size(340, 29);
             this.OrderNumber.TabIndex = 107;

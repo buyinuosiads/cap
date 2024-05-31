@@ -196,6 +196,22 @@ namespace Cap.BasicSettings.Technology
                     ShowWarningDialog("工艺名称不能为空");
                     return;
                 }
+                if (string.IsNullOrEmpty(MainIngredient.Text))
+                {
+                    ShowWarningDialog("主料不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Accessory.Text))
+                {
+                    ShowWarningDialog("辅料不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Price.Text))
+                {
+                    ShowWarningDialog("价格不能为空");
+                    return;
+                }
+
 
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 ProcessSetting processSetting = new ProcessSetting();

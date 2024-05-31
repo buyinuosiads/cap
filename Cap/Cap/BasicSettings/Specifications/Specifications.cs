@@ -182,6 +182,24 @@ namespace Cap.BasicSettings.Specifications
             if (ShowAskDialog("确定要添加吗？"))
             {
 
+                if (string.IsNullOrEmpty(NameOfTheMaterial.Text))
+                {
+                    ShowWarningDialog("材料名称不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(Unit.Text))
+                {
+                    ShowWarningDialog("单位不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(LengthUnit.Text))
+                {
+                    ShowWarningDialog("长度（米）不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 SpecificationSetting specificationSetting = new SpecificationSetting();
                 specificationSetting.Id = Guid.NewGuid().ToString();
@@ -259,12 +277,12 @@ namespace Cap.BasicSettings.Specifications
 
             if (ShowAskDialog("确定要修改吗？"))
             {
-                 
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 SpecificationSetting specification = capProjectDb.SpecificationSetting.Where(t => t.Id == Id).FirstOrDefault();
                 specification.NameOfTheMaterial = NameOfTheMaterial.Text;
                 specification.Unit = Unit.Text;
-                specification.LengthUnit = decimal.Parse(LengthUnit.Text); 
+                specification.LengthUnit = decimal.Parse(LengthUnit.Text);
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法

@@ -154,6 +154,7 @@
             this.CreateName.MinimumSize = new System.Drawing.Size(1, 16);
             this.CreateName.Name = "CreateName";
             this.CreateName.Padding = new System.Windows.Forms.Padding(5);
+            this.CreateName.ReadOnly = true;
             this.CreateName.ShowText = false;
             this.CreateName.Size = new System.Drawing.Size(340, 29);
             this.CreateName.TabIndex = 102;
@@ -212,6 +213,7 @@
             this.CreateTime.MinimumSize = new System.Drawing.Size(1, 16);
             this.CreateTime.Name = "CreateTime";
             this.CreateTime.Padding = new System.Windows.Forms.Padding(5);
+            this.CreateTime.ReadOnly = true;
             this.CreateTime.ShowText = false;
             this.CreateTime.Size = new System.Drawing.Size(340, 29);
             this.CreateTime.TabIndex = 99;

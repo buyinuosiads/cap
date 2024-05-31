@@ -125,6 +125,23 @@ namespace Cap.SupplierAndCustom.Custom
 
             if (ShowAskDialog("确定要添加吗？"))
             {
+
+                if (string.IsNullOrEmpty(CustomerName.Text))
+                {
+                    ShowWarningDialog("客户名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Contact.Text))
+                {
+                    ShowWarningDialog("联系人不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Phone.Text))
+                {
+                    ShowWarningDialog("电话不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Consumer consumer = new Consumer();
                 consumer.Id = Guid.NewGuid().ToString();
@@ -271,7 +288,7 @@ namespace Cap.SupplierAndCustom.Custom
                 consumer.CustomerName = CustomerName.Text;
                 consumer.Contact = Contact.Text;
                 consumer.Phone = Phone.Text;
-                 
+
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法

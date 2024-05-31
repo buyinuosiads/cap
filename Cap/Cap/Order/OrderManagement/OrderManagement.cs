@@ -172,6 +172,32 @@ namespace Cap.Order.OrderManagement
             if (ShowAskDialog("确定要添加吗？"))
             {
 
+                if (string.IsNullOrEmpty(ProductManagement.Text))
+                {
+                    ShowWarningDialog("产品信息不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Quantity.Text))
+                {
+                    ShowWarningDialog("数量不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Customer.Text))
+                {
+                    ShowWarningDialog("客户不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Schedule.Text))
+                {
+                    ShowWarningDialog("进度不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(State.Text))
+                {
+                    ShowWarningDialog("状态不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_OrderManagement outbound = new Cap_OrderManagement();
                 outbound.Id = Guid.NewGuid().ToString();
@@ -269,7 +295,7 @@ namespace Cap.Order.OrderManagement
                 outbound.Quantity = Quantity.Text;
                 outbound.Customer = Customer.Text;
                 outbound.Schedule = Schedule.Text;
-                outbound.State = State.Text; 
+                outbound.State = State.Text;
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法

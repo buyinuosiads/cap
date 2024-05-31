@@ -146,6 +146,42 @@ namespace Cap.BasicSettings.ToolSettings
             if (ShowAskDialog("确定要添加吗？"))
             {
 
+                if (string.IsNullOrEmpty(ToolName.Text))
+                {
+                    ShowWarningDialog("刀具名称不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(WideRating.Text))
+                {
+                    ShowWarningDialog("幅宽定额不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(FaultTolerant.Text))
+                {
+                    ShowWarningDialog("容错值不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(Breadth.Text))
+                {
+                    ShowWarningDialog("幅宽不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(Coefficient.Text))
+                {
+                    ShowWarningDialog("系数不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(PermName.Text))
+                {
+                    ShowWarningDialog("烫头不能为空");
+                    return;
+                }
+
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 ToolSetup toolSetup = new ToolSetup();
                 toolSetup.Id = Guid.NewGuid().ToString();

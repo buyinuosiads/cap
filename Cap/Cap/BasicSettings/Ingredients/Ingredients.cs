@@ -156,7 +156,7 @@ namespace Cap.BasicSettings.Ingredients
             //}
 
 
-        
+
         }
 
 
@@ -168,9 +168,18 @@ namespace Cap.BasicSettings.Ingredients
         /// <param name="e"></param>
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
-             
             if (ShowAskDialog("确定要添加吗？"))
-            { 
+            {
+                if (string.IsNullOrEmpty(MainName.Text))
+                {
+                    ShowWarningDialog("主料名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Unit.Text))
+                {
+                    ShowWarningDialog("单位不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 MajorIngredient majorIngredient = new MajorIngredient();
                 majorIngredient.Id = Guid.NewGuid().ToString();
@@ -276,7 +285,7 @@ namespace Cap.BasicSettings.Ingredients
             else
             {
                 ShowErrorTip("取消当前操作");
-            } 
+            }
         }
     }
 }

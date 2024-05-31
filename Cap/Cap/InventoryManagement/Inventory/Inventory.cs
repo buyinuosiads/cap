@@ -175,6 +175,19 @@ namespace Cap.InventoryManagement.Inventory
 
             if (ShowAskDialog("确定要添加吗？"))
             {
+                if (string.IsNullOrEmpty(NameOfMaterial.Text))
+                {
+                    ShowWarningDialog("物料名称不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(QuantityOfMaterial.Text))
+                {
+                    ShowWarningDialog("物料数量不能为空");
+                    return;
+                }
+
+
 
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Stocks stocks = new Stocks();

@@ -369,6 +369,7 @@
             this.CreateTime.MinimumSize = new System.Drawing.Size(1, 16);
             this.CreateTime.Name = "CreateTime";
             this.CreateTime.Padding = new System.Windows.Forms.Padding(5);
+            this.CreateTime.ReadOnly = true;
             this.CreateTime.ShowText = false;
             this.CreateTime.Size = new System.Drawing.Size(172, 29);
             this.CreateTime.TabIndex = 33;

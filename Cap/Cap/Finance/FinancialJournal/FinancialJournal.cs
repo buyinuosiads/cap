@@ -174,6 +174,24 @@ namespace Cap.Finance.FinancialJournal
             if (ShowAskDialog("确定要添加吗？"))
             {
 
+                if (string.IsNullOrEmpty(FinancialJournal_RZ.Text))
+                {
+                    ShowWarningDialog("财务日账不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(FixedAssets.Text))
+                {
+                    ShowWarningDialog("固定资产不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(OtherPurchases.Text))
+                {
+                    ShowWarningDialog("其他采购不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_FinancialDailyAccount cap_FinancialDaily = new Cap_FinancialDailyAccount();
                 cap_FinancialDaily.Id = Guid.NewGuid().ToString();
@@ -253,7 +271,7 @@ namespace Cap.Finance.FinancialJournal
                 Cap_FinancialDailyAccount cap_Financial = capProjectDb.Cap_FinancialDailyAccount.Where(t => t.Id == Id).FirstOrDefault();
                 cap_Financial.FinancialJournal = FinancialJournal_RZ.Text;
                 cap_Financial.FixedAssets = FixedAssets.Text;
-                cap_Financial.OtherPurchases = OtherPurchases.Text; 
+                cap_Financial.OtherPurchases = OtherPurchases.Text;
                 //保存数据
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");

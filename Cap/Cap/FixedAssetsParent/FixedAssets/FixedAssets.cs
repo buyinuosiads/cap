@@ -174,6 +174,45 @@ namespace Cap.FixedAssetsParent.FixedAssets
 
             if (ShowAskDialog("确定要添加吗？"))
             {
+                if (string.IsNullOrEmpty(AssetNumber.Text))
+                {
+                    ShowWarningDialog("资产编号不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(AssetName.Text))
+                {
+                    ShowWarningDialog("资产名称不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(AcquisitionDate.Text))
+                {
+                    ShowWarningDialog("购置日期不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(PurchaseAmount.Text))
+                {
+                    ShowWarningDialog("购置金额不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(AssetsClass.Text))
+                {
+                    ShowWarningDialog("资产类别不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(AssetStatus.Text))
+                {
+                    ShowWarningDialog("资产状态不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Remark.Text))
+                {
+                    ShowWarningDialog("备注不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_FixedAssets cap_Fixed = new Cap_FixedAssets();
                 cap_Fixed.Id = Guid.NewGuid().ToString();
@@ -285,7 +324,7 @@ namespace Cap.FixedAssetsParent.FixedAssets
                 cap_Fixed.PurchaseAmount = decimal.Parse(PurchaseAmount.Text);
                 cap_Fixed.AssetsClass = AssetsClass.Text;
                 cap_Fixed.AssetStatus = AssetStatus.Text;
-                cap_Fixed.Remark = Remark.Text; 
+                cap_Fixed.Remark = Remark.Text;
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("修改成功");
                 uiButton6_Click(sender, e); //调用清空文本框方法
@@ -299,7 +338,7 @@ namespace Cap.FixedAssetsParent.FixedAssets
             }
 
 
-     
+
 
 
 

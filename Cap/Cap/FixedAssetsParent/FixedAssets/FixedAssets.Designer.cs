@@ -126,7 +126,7 @@
             this.AcquisitionDate.CanEmpty = true;
             this.AcquisitionDate.FillColor = System.Drawing.Color.White;
             this.AcquisitionDate.Font = new System.Drawing.Font("宋体", 12F);
-            this.AcquisitionDate.Location = new System.Drawing.Point(731, 1);
+            this.AcquisitionDate.Location = new System.Drawing.Point(731, 9);
             this.AcquisitionDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AcquisitionDate.MaxLength = 19;
             this.AcquisitionDate.MinimumSize = new System.Drawing.Size(63, 0);
@@ -137,7 +137,6 @@
             this.AcquisitionDate.SymbolNormal = 61555;
             this.AcquisitionDate.SymbolSize = 24;
             this.AcquisitionDate.TabIndex = 136;
-            this.AcquisitionDate.Text = "2020-06-02 17:57:28";
             this.AcquisitionDate.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.AcquisitionDate.Value = new System.DateTime(2020, 6, 2, 17, 57, 28, 203);
             this.AcquisitionDate.Watermark = "";
@@ -147,7 +146,7 @@
             this.uiLabel9.AutoSize = true;
             this.uiLabel9.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel9.Location = new System.Drawing.Point(637, 83);
+            this.uiLabel9.Location = new System.Drawing.Point(637, 91);
             this.uiLabel9.Name = "uiLabel9";
             this.uiLabel9.Size = new System.Drawing.Size(55, 16);
             this.uiLabel9.TabIndex = 135;
@@ -163,7 +162,7 @@
             this.uiButton6.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.uiButton6.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.uiButton6.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiButton6.Location = new System.Drawing.Point(372, 120);
+            this.uiButton6.Location = new System.Drawing.Point(372, 128);
             this.uiButton6.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton6.Name = "uiButton6";
             this.uiButton6.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
@@ -183,11 +182,12 @@
             // 
             this.CreateName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.CreateName.Font = new System.Drawing.Font("宋体", 12F);
-            this.CreateName.Location = new System.Drawing.Point(731, 79);
+            this.CreateName.Location = new System.Drawing.Point(731, 87);
             this.CreateName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CreateName.MinimumSize = new System.Drawing.Size(1, 16);
             this.CreateName.Name = "CreateName";
             this.CreateName.Padding = new System.Windows.Forms.Padding(5);
+            this.CreateName.ReadOnly = true;
             this.CreateName.ShowText = false;
             this.CreateName.Size = new System.Drawing.Size(192, 29);
             this.CreateName.TabIndex = 134;
@@ -199,7 +199,7 @@
             this.uiLabel8.AutoSize = true;
             this.uiLabel8.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel8.Location = new System.Drawing.Point(344, 83);
+            this.uiLabel8.Location = new System.Drawing.Point(344, 91);
             this.uiLabel8.Name = "uiLabel8";
             this.uiLabel8.Size = new System.Drawing.Size(71, 16);
             this.uiLabel8.TabIndex = 133;
@@ -210,11 +210,12 @@
             // 
             this.CreateTime.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.CreateTime.Font = new System.Drawing.Font("宋体", 12F);
-            this.CreateTime.Location = new System.Drawing.Point(438, 79);
+            this.CreateTime.Location = new System.Drawing.Point(438, 87);
             this.CreateTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CreateTime.MinimumSize = new System.Drawing.Size(1, 16);
             this.CreateTime.Name = "CreateTime";
             this.CreateTime.Padding = new System.Windows.Forms.Padding(5);
+            this.CreateTime.ReadOnly = true;
             this.CreateTime.ShowText = false;
             this.CreateTime.Size = new System.Drawing.Size(170, 29);
             this.CreateTime.TabIndex = 132;
@@ -230,7 +231,7 @@
             this.uiButton5.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
             this.uiButton5.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(124)))), ((int)(((byte)(32)))));
             this.uiButton5.Font = new System.Drawing.Font("宋体", 12F);
-            this.uiButton5.Location = new System.Drawing.Point(266, 120);
+            this.uiButton5.Location = new System.Drawing.Point(266, 128);
             this.uiButton5.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton5.Name = "uiButton5";
             this.uiButton5.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(155)))), ((int)(((byte)(40)))));
@@ -251,7 +252,7 @@
             this.uiLabel7.AutoSize = true;
             this.uiLabel7.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel7.Location = new System.Drawing.Point(641, 44);
+            this.uiLabel7.Location = new System.Drawing.Point(641, 52);
             this.uiLabel7.Name = "uiLabel7";
             this.uiLabel7.Size = new System.Drawing.Size(71, 16);
             this.uiLabel7.TabIndex = 130;
@@ -263,7 +264,7 @@
             this.uiLabel6.AutoSize = true;
             this.uiLabel6.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel6.Location = new System.Drawing.Point(51, 89);
+            this.uiLabel6.Location = new System.Drawing.Point(51, 97);
             this.uiLabel6.Name = "uiLabel6";
             this.uiLabel6.Size = new System.Drawing.Size(39, 16);
             this.uiLabel6.TabIndex = 128;
@@ -274,7 +275,7 @@
             // 
             this.AssetStatus.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.AssetStatus.Font = new System.Drawing.Font("宋体", 12F);
-            this.AssetStatus.Location = new System.Drawing.Point(731, 40);
+            this.AssetStatus.Location = new System.Drawing.Point(731, 48);
             this.AssetStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AssetStatus.MinimumSize = new System.Drawing.Size(1, 16);
             this.AssetStatus.Name = "AssetStatus";
@@ -290,7 +291,7 @@
             this.uiLabel5.AutoSize = true;
             this.uiLabel5.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel5.Location = new System.Drawing.Point(344, 44);
+            this.uiLabel5.Location = new System.Drawing.Point(344, 52);
             this.uiLabel5.Name = "uiLabel5";
             this.uiLabel5.Size = new System.Drawing.Size(71, 16);
             this.uiLabel5.TabIndex = 126;
@@ -301,7 +302,7 @@
             // 
             this.AssetsClass.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.AssetsClass.Font = new System.Drawing.Font("宋体", 12F);
-            this.AssetsClass.Location = new System.Drawing.Point(438, 40);
+            this.AssetsClass.Location = new System.Drawing.Point(438, 48);
             this.AssetsClass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AssetsClass.MinimumSize = new System.Drawing.Size(1, 16);
             this.AssetsClass.Name = "AssetsClass";
@@ -317,7 +318,7 @@
             this.uiLabel3.AutoSize = true;
             this.uiLabel3.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel3.Location = new System.Drawing.Point(31, 50);
+            this.uiLabel3.Location = new System.Drawing.Point(31, 58);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(71, 16);
             this.uiLabel3.TabIndex = 124;
@@ -328,7 +329,7 @@
             // 
             this.AssetName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.AssetName.Font = new System.Drawing.Font("宋体", 12F);
-            this.AssetName.Location = new System.Drawing.Point(438, 1);
+            this.AssetName.Location = new System.Drawing.Point(438, 9);
             this.AssetName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AssetName.MinimumSize = new System.Drawing.Size(1, 16);
             this.AssetName.Name = "AssetName";
@@ -344,7 +345,7 @@
             this.PurchaseAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.PurchaseAmount.EnterAsTab = true;
             this.PurchaseAmount.Font = new System.Drawing.Font("宋体", 12F);
-            this.PurchaseAmount.Location = new System.Drawing.Point(126, 44);
+            this.PurchaseAmount.Location = new System.Drawing.Point(126, 52);
             this.PurchaseAmount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PurchaseAmount.MinimumSize = new System.Drawing.Size(1, 16);
             this.PurchaseAmount.Name = "PurchaseAmount";
@@ -362,7 +363,7 @@
             this.uiLabel1.AutoSize = true;
             this.uiLabel1.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel1.Location = new System.Drawing.Point(641, 9);
+            this.uiLabel1.Location = new System.Drawing.Point(641, 17);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(71, 16);
             this.uiLabel1.TabIndex = 121;
@@ -374,7 +375,7 @@
             this.AssetNumber.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.AssetNumber.EnterAsTab = true;
             this.AssetNumber.Font = new System.Drawing.Font("宋体", 12F);
-            this.AssetNumber.Location = new System.Drawing.Point(125, 1);
+            this.AssetNumber.Location = new System.Drawing.Point(125, 9);
             this.AssetNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AssetNumber.MinimumSize = new System.Drawing.Size(1, 16);
             this.AssetNumber.Name = "AssetNumber";
@@ -389,7 +390,7 @@
             // 
             this.Remark.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Remark.Font = new System.Drawing.Font("宋体", 12F);
-            this.Remark.Location = new System.Drawing.Point(126, 83);
+            this.Remark.Location = new System.Drawing.Point(126, 91);
             this.Remark.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Remark.MinimumSize = new System.Drawing.Size(1, 16);
             this.Remark.Name = "Remark";
@@ -405,7 +406,7 @@
             this.uiLabel2.AutoSize = true;
             this.uiLabel2.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel2.Location = new System.Drawing.Point(31, 9);
+            this.uiLabel2.Location = new System.Drawing.Point(31, 17);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(71, 16);
             this.uiLabel2.TabIndex = 118;
@@ -417,7 +418,7 @@
             this.uiLabel4.AutoSize = true;
             this.uiLabel4.Font = new System.Drawing.Font("宋体", 12F);
             this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiLabel4.Location = new System.Drawing.Point(344, 9);
+            this.uiLabel4.Location = new System.Drawing.Point(344, 17);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(71, 16);
             this.uiLabel4.TabIndex = 119;
@@ -428,7 +429,7 @@
             // 
             this.uiSymbolButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiSymbolButton1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiSymbolButton1.Location = new System.Drawing.Point(54, 120);
+            this.uiSymbolButton1.Location = new System.Drawing.Point(54, 128);
             this.uiSymbolButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiSymbolButton1.Name = "uiSymbolButton1";
             this.uiSymbolButton1.Size = new System.Drawing.Size(100, 35);
@@ -443,7 +444,7 @@
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.FillColor = System.Drawing.Color.ForestGreen;
             this.btnAdd.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnAdd.Location = new System.Drawing.Point(160, 120);
+            this.btnAdd.Location = new System.Drawing.Point(160, 128);
             this.btnAdd.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Padding = new System.Windows.Forms.Padding(28, 0, 0, 0);

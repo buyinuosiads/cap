@@ -172,6 +172,22 @@ namespace Cap.AlarmManagementParent.AlarmManagement
 
             if (ShowAskDialog("确定要添加吗？"))
             {
+                if (string.IsNullOrEmpty(AlarmContent.Text))
+                {
+                    ShowWarningDialog("告警内容不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(AlarmCause.Text))
+                {
+                    ShowWarningDialog("告警原因不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(WhetherTimelyProcessing.Text))
+                {
+                    ShowWarningDialog("是否及时处理不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_AlarmManagement cap_AlarmManagement = new Cap_AlarmManagement();
                 cap_AlarmManagement.Id = Guid.NewGuid().ToString();

@@ -164,6 +164,11 @@ namespace Cap.Order.OrderSplitting
 
             if (ShowAskDialog("确定要添加吗？"))
             {
+                if (string.IsNullOrEmpty(OrderName.Text))
+                {
+                    ShowWarningDialog("订单不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_OrderSplitting cap = new Cap_OrderSplitting();
                 cap.Id = Guid.NewGuid().ToString();
@@ -179,7 +184,6 @@ namespace Cap.Order.OrderSplitting
                 uiButton6_Click(sender, e); //调用清空文本框方法
                                             //查询数据
                 GetList();
-
             }
             else
             {

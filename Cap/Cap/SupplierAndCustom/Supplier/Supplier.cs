@@ -131,9 +131,31 @@ namespace Cap.SupplierAndCustom.Supplier
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
             if (ShowAskDialog("确定要添加吗？"))
             {
+                if (string.IsNullOrEmpty(NameOfTheSupplier.Text))
+                {
+                    ShowWarningDialog("供应商名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(SuppliersList.Text))
+                {
+                    ShowWarningDialog("供应商信息不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(SupplyPosition.Text))
+                {
+                    ShowWarningDialog("供货情况不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Price.Text))
+                {
+                    ShowWarningDialog("货物单价不能为空");
+                    return;
+                }
+
+
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 SupplierName supplierName = new SupplierName();
                 supplierName.Id = Guid.NewGuid().ToString();

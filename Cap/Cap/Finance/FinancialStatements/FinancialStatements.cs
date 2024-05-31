@@ -170,6 +170,31 @@ namespace Cap.Finance.FinancialStatements
 
             if (ShowAskDialog("确定要添加吗？"))
             {
+
+                if (string.IsNullOrEmpty(NameOfMaterial.Text))
+                {
+                    ShowWarningDialog("物料名称不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(MaterialPrice.Text))
+                {
+                    ShowWarningDialog("物料价格不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(QuantityOfMaterial.Text))
+                {
+                    ShowWarningDialog("物料数量不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(GrossAmount.Text))
+                {
+                    ShowWarningDialog("总金额不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_FinancialStatements cap_Financial = new Cap_FinancialStatements();
                 cap_Financial.Id = Guid.NewGuid().ToString();
@@ -194,7 +219,7 @@ namespace Cap.Finance.FinancialStatements
             else
             {
                 ShowErrorTip("取消当前操作");
-            } 
+            }
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -255,14 +280,14 @@ namespace Cap.Finance.FinancialStatements
         {
 
             if (ShowAskDialog("确定要修改吗？"))
-            { 
+            {
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_FinancialStatements cap_Financial = capProjectDb.Cap_FinancialStatements.Where(t => t.Id == Id).FirstOrDefault();
                 //cap_Financial.OrderNumber = OrderNumber.Text;
                 cap_Financial.NameOfMaterial = NameOfMaterial.Text;
                 cap_Financial.MaterialPrice = decimal.Parse(MaterialPrice.Text);
                 cap_Financial.QuantityOfMaterial = QuantityOfMaterial.Text;
-                cap_Financial.GrossAmount = decimal.Parse(GrossAmount.Text); 
+                cap_Financial.GrossAmount = decimal.Parse(GrossAmount.Text);
                 //保存数据
                 capProjectDb.SubmitChanges();
                 ShowSuccessDialog("添加成功");
@@ -274,7 +299,7 @@ namespace Cap.Finance.FinancialStatements
             else
             {
                 ShowErrorTip("取消当前操作");
-            } 
+            }
         }
 
         /// <summary>

@@ -105,6 +105,20 @@ namespace Cap.BasicSettings.Perm
 
             if (ShowAskDialog("确定要添加吗？"))
             {
+
+                if (string.IsNullOrEmpty(PermName.Text))
+                {
+                    ShowWarningDialog("烫头名称不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(PermSpecifications.Text))
+                {
+                    ShowWarningDialog("烫头规格不能为空");
+                    return;
+                }
+
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 PermSetting permSetting = new PermSetting();
                 permSetting.Id = Guid.NewGuid().ToString();

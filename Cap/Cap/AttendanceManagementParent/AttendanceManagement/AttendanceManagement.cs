@@ -165,7 +165,18 @@ namespace Cap.AttendanceManagementParent.AttendanceManagement
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (ShowAskDialog("确定要添加吗？"))
-            { 
+            {
+                if (string.IsNullOrEmpty(AttendanceDays.Text))
+                {
+                    ShowWarningDialog("考勤天数不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Timekeeper.Text))
+                {
+                    ShowWarningDialog("考勤人不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_AttendanceManagement cap_Attendance = new Cap_AttendanceManagement();
                 cap_Attendance.Id = Guid.NewGuid().ToString();
@@ -233,7 +244,7 @@ namespace Cap.AttendanceManagementParent.AttendanceManagement
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_AttendanceManagement cap_Attendance = capProjectDb.Cap_AttendanceManagement.Where(t => t.Id == Id).FirstOrDefault();
                 cap_Attendance.AttendanceDays = AttendanceDays.Text;
-                cap_Attendance.Timekeeper = Timekeeper.Text; 
+                cap_Attendance.Timekeeper = Timekeeper.Text;
                 cap_Attendance.IsDelete = 0;
                 capProjectDb.SubmitChanges();
                 ShowSuccessTip("修改成功");
@@ -243,7 +254,7 @@ namespace Cap.AttendanceManagementParent.AttendanceManagement
             else
             {
                 ShowErrorTip("取消当前操作");
-            }        
+            }
         }
 
         private void uiSymbolButton1_Click(object sender, EventArgs e)

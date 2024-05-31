@@ -176,6 +176,19 @@ namespace Cap.PurchasingManagementParent.PurchasingManagement
 
             if (ShowAskDialog("确定要添加吗？"))
             {
+                if (string.IsNullOrEmpty(OrderQuantity.Text))
+                {
+                    ShowWarningDialog("订单数量不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(OrderName.Text))
+                {
+                    ShowWarningDialog("订单名称不能为空");
+                    return;
+                }
+
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_PurchasingManagement cap_PurchasingManagement = new Cap_PurchasingManagement();
                 cap_PurchasingManagement.Id = Guid.NewGuid().ToString();

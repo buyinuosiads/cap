@@ -161,6 +161,13 @@ namespace Cap.Order.OrderAdditionalRecording
         {
             if (ShowAskDialog("确定要添加吗？"))
             {
+
+                if (string.IsNullOrEmpty(AdditionalRecording.Text))
+                {
+                    ShowWarningDialog("订单补录不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 OrderSupplement orderSupplement = new OrderSupplement();
                 orderSupplement.Id = Guid.NewGuid().ToString();

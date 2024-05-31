@@ -188,6 +188,17 @@ namespace Cap.SystemSetup
         {
             if (ShowAskDialog("确定要添加吗？"))
             {
+                if (string.IsNullOrEmpty(Company_Name.Text))
+                {
+                    ShowWarningDialog("公司名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Authorization.Text))
+                {
+                    ShowWarningDialog("是否授权不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 //公司表
                 Cap_Company cap_Company = new Cap_Company();

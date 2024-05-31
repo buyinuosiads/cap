@@ -171,6 +171,22 @@ namespace Cap.InventoryManagement.Outbound
             if (ShowAskDialog("确定要添加吗？"))
             {
 
+                if (string.IsNullOrEmpty(OutboundName.Text))
+                {
+                    ShowWarningDialog("出库名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Contact.Text))
+                {
+                    ShowWarningDialog("联系人不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Phone.Text))
+                {
+                    ShowWarningDialog("联系电话不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 OutboundManager outbound = new OutboundManager();
                 outbound.Id = Guid.NewGuid().ToString();
@@ -257,7 +273,7 @@ namespace Cap.InventoryManagement.Outbound
                 OutboundManager outbound = capProjectDb.OutboundManager.Where(t => t.Id == Id).FirstOrDefault();
                 outbound.OutboundName = OutboundName.Text;
                 outbound.Contact = Contact.Text; ;
-                outbound.Phone = Phone.Text; 
+                outbound.Phone = Phone.Text;
                 outbound.IsDelete = 0;
                 //保存数据
                 capProjectDb.SubmitChanges();
