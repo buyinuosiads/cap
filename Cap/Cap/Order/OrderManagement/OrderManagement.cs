@@ -206,6 +206,7 @@ namespace Cap.Order.OrderManagement
                 outbound.Customer = Customer.Text;
                 outbound.Schedule = Schedule.Text;
                 outbound.State = State.Text;
+                outbound.CreateTime = DateTime.Now;
                 outbound.CreateName = _Name;
                 outbound.IsDelete = 0;
                 capProjectDb.Cap_OrderManagement.InsertOnSubmit(outbound);

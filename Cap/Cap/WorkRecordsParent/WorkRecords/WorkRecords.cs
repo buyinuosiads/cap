@@ -204,15 +204,11 @@ namespace Cap.WorkRecordsParent.WorkRecords
                 uiButton6_Click(sender, e); //调用清空文本框方法
                                             //查询数据
                 GetList();
-
             }
             else
             {
                 ShowErrorTip("取消当前操作");
             }
-
-
-
         }
 
         private void uiDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

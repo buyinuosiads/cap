@@ -42,6 +42,7 @@
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.uiLabel4 = new Sunny.UI.UILabel();
             this.uiContextMenuStrip1.SuspendLayout();
             this.uiNavBar1.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +110,7 @@
             // uiNavBar1
             // 
             this.uiNavBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.uiNavBar1.Controls.Add(this.uiLabel4);
             this.uiNavBar1.Controls.Add(this.button29);
             this.uiNavBar1.Controls.Add(this.uiLabel3);
             this.uiNavBar1.Controls.Add(this.uiLabel2);
@@ -148,7 +150,7 @@
             this.uiLabel3.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel3.ForeColor = System.Drawing.Color.Transparent;
             this.uiLabel3.Image = ((System.Drawing.Image)(resources.GetObject("uiLabel3.Image")));
-            this.uiLabel3.Location = new System.Drawing.Point(3, 33);
+            this.uiLabel3.Location = new System.Drawing.Point(151, 33);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(433, 82);
             this.uiLabel3.TabIndex = 10;
@@ -179,6 +181,17 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // uiLabel4
+            // 
+            this.uiLabel4.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel4.ForeColor = System.Drawing.Color.Transparent;
+            this.uiLabel4.Image = ((System.Drawing.Image)(resources.GetObject("uiLabel4.Image")));
+            this.uiLabel4.Location = new System.Drawing.Point(19, 26);
+            this.uiLabel4.Name = "uiLabel4";
+            this.uiLabel4.Size = new System.Drawing.Size(150, 89);
+            this.uiLabel4.TabIndex = 64;
+            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Nav
             // 
@@ -211,5 +224,6 @@
         private System.Windows.Forms.Timer timer1;
         private Sunny.UI.UILabel uiLabel3;
         private System.Windows.Forms.Button button29;
+        private Sunny.UI.UILabel uiLabel4;
     }
 }
