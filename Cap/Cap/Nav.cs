@@ -48,7 +48,7 @@ namespace Cap
     {
         CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
         string _Name = string.Empty;
-        bool _IsActive = false;
+        bool _Close = false;
         /// <summary>
         /// 
         /// </summary>
@@ -58,7 +58,7 @@ namespace Cap
         {
             _Name = Name;
             InitializeComponent();
-
+            this.FormClosing += new FormClosingEventHandler(Nav_FormClosed);
             #region 设置窗体全屏 
             this.WindowState = FormWindowState.Maximized;
             #endregion
@@ -672,9 +672,21 @@ namespace Cap
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Nav_FormClosed(object sender, FormClosedEventArgs e)
+        private void Nav_FormClosed(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();//关闭的时候杀死所有线程
+
+            if (_Close == false)
+            {
+                if (ShowAskDialog("确定要退出吗？"))
+                {
+                    _Close = true;
+                    Application.Exit();//关闭的时候杀死所有线程
+                }
+                else
+                {
+                    e.Cancel = true; // 阻止窗体关闭
+                }
+            }
         }
 
         /// <summary>

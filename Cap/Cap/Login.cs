@@ -19,7 +19,7 @@ namespace Cap
         {
             InitializeComponent();
         }
-
+          
         private void FLogin_ButtonLoginClick(object sender, System.EventArgs e)
         {
 

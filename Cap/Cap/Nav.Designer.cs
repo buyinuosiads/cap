@@ -37,12 +37,12 @@
             this.StyleManager = new Sunny.UI.UIStyleManager(this.components);
             this.uiNavMenu1 = new Sunny.UI.UINavMenu();
             this.uiNavBar1 = new Sunny.UI.UINavBar();
+            this.uiLabel4 = new Sunny.UI.UILabel();
             this.button29 = new System.Windows.Forms.Button();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.uiLabel4 = new Sunny.UI.UILabel();
             this.uiContextMenuStrip1.SuspendLayout();
             this.uiNavBar1.SuspendLayout();
             this.SuspendLayout();
@@ -129,6 +129,17 @@
             this.uiNavBar1.Text = "uiNavBar1";
             this.uiNavBar1.MenuItemClick += new Sunny.UI.UINavBar.OnMenuItemClick(this.uiNavBar1_MenuItemClick);
             // 
+            // uiLabel4
+            // 
+            this.uiLabel4.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel4.ForeColor = System.Drawing.Color.Transparent;
+            this.uiLabel4.Image = ((System.Drawing.Image)(resources.GetObject("uiLabel4.Image")));
+            this.uiLabel4.Location = new System.Drawing.Point(5, 26);
+            this.uiLabel4.Name = "uiLabel4";
+            this.uiLabel4.Size = new System.Drawing.Size(150, 89);
+            this.uiLabel4.TabIndex = 64;
+            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // button29
             // 
             this.button29.AutoSize = true;
@@ -150,7 +161,7 @@
             this.uiLabel3.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLabel3.ForeColor = System.Drawing.Color.Transparent;
             this.uiLabel3.Image = ((System.Drawing.Image)(resources.GetObject("uiLabel3.Image")));
-            this.uiLabel3.Location = new System.Drawing.Point(151, 33);
+            this.uiLabel3.Location = new System.Drawing.Point(137, 33);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(433, 82);
             this.uiLabel3.TabIndex = 10;
@@ -182,17 +193,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // uiLabel4
-            // 
-            this.uiLabel4.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel4.ForeColor = System.Drawing.Color.Transparent;
-            this.uiLabel4.Image = ((System.Drawing.Image)(resources.GetObject("uiLabel4.Image")));
-            this.uiLabel4.Location = new System.Drawing.Point(19, 26);
-            this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(150, 89);
-            this.uiLabel4.TabIndex = 64;
-            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // Nav
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -200,9 +200,10 @@
             this.Controls.Add(this.uiTabControl1);
             this.Controls.Add(this.uiNavMenu1);
             this.Controls.Add(this.uiNavBar1);
+            this.MaximizeBox = false;
             this.Name = "Nav";
             this.Text = "";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Nav_FormClosed);
+            //this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Nav_FormClosed);
             this.uiContextMenuStrip1.ResumeLayout(false);
             this.uiNavBar1.ResumeLayout(false);
             this.uiNavBar1.PerformLayout();
