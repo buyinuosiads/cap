@@ -269,6 +269,16 @@ namespace Cap.BasicSettings.Ingredients
 
             if (ShowAskDialog("确定要修改吗？"))
             {
+                if (string.IsNullOrEmpty(MainName.Text))
+                {
+                    ShowWarningDialog("主料名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Unit.Text))
+                {
+                    ShowWarningDialog("单位不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 MajorIngredient majorIngredient = capProjectDb.MajorIngredient.Where(t => t.Id == Id).FirstOrDefault();
                 majorIngredient.MainName = MainName.Text;

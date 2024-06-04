@@ -313,9 +313,48 @@ namespace Cap.FixedAssetsParent.FixedAssets
         /// <param name="e"></param>
         private void uiButton5_Click(object sender, EventArgs e)
         {
-
             if (ShowAskDialog("确定要修改吗？"))
             {
+
+                if (string.IsNullOrEmpty(AssetNumber.Text))
+                {
+                    ShowWarningDialog("资产编号不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(AssetName.Text))
+                {
+                    ShowWarningDialog("资产名称不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(AcquisitionDate.Text))
+                {
+                    ShowWarningDialog("购置日期不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(PurchaseAmount.Text))
+                {
+                    ShowWarningDialog("购置金额不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(AssetsClass.Text))
+                {
+                    ShowWarningDialog("资产类别不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(AssetStatus.Text))
+                {
+                    ShowWarningDialog("资产状态不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Remark.Text))
+                {
+                    ShowWarningDialog("备注不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_FixedAssets cap_Fixed = capProjectDb.Cap_FixedAssets.Where(t => t.Id == Id).FirstOrDefault();
                 cap_Fixed.AssetNumber = AssetNumber.Text;

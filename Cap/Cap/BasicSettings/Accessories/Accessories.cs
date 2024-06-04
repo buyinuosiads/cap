@@ -262,6 +262,17 @@ namespace Cap.BasicSettings.Accessories
         {
             if (ShowAskDialog("确定要修改吗？"))
             {
+                if (string.IsNullOrEmpty(AccessoryName.Text))
+                {
+                    ShowWarningDialog("辅料名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Unit.Text))
+                {
+                    ShowWarningDialog("单位不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 ChargeTime chargeTime = capProjectDb.ChargeTime.Where(t => t.Id == Id).FirstOrDefault();
                 chargeTime.AccessoryName = AccessoryName.Text;

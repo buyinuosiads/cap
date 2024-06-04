@@ -241,6 +241,16 @@ namespace Cap.AttendanceManagementParent.AttendanceManagement
         {
             if (ShowAskDialog("确定要修改吗？"))
             {
+                if (string.IsNullOrEmpty(AttendanceDays.Text))
+                {
+                    ShowWarningDialog("考勤天数不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Timekeeper.Text))
+                {
+                    ShowWarningDialog("考勤人不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_AttendanceManagement cap_Attendance = capProjectDb.Cap_AttendanceManagement.Where(t => t.Id == Id).FirstOrDefault();
                 cap_Attendance.AttendanceDays = AttendanceDays.Text;

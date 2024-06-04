@@ -283,6 +283,22 @@ namespace Cap.SupplierAndCustom.Custom
         {
             if (ShowAskDialog("确定要修改吗？"))
             {
+
+                if (string.IsNullOrEmpty(CustomerName.Text))
+                {
+                    ShowWarningDialog("客户名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Contact.Text))
+                {
+                    ShowWarningDialog("联系人不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Phone.Text))
+                {
+                    ShowWarningDialog("电话不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Consumer consumer = capProjectDb.Consumer.Where(t => t.Id == Id).FirstOrDefault();
                 consumer.CustomerName = CustomerName.Text;

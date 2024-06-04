@@ -290,6 +290,31 @@ namespace Cap.Order.OrderManagement
             if (ShowAskDialog("确定要修改吗？"))
             {
 
+                if (string.IsNullOrEmpty(ProductManagement.Text))
+                {
+                    ShowWarningDialog("产品信息不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Quantity.Text))
+                {
+                    ShowWarningDialog("数量不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Customer.Text))
+                {
+                    ShowWarningDialog("客户不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Schedule.Text))
+                {
+                    ShowWarningDialog("进度不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(State.Text))
+                {
+                    ShowWarningDialog("状态不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_OrderManagement outbound = capProjectDb.Cap_OrderManagement.Where(t => t.Id == Id).FirstOrDefault();
                 outbound.ProductManagement = ProductManagement.Text;

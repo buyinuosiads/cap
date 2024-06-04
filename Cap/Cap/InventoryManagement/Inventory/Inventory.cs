@@ -273,6 +273,18 @@ namespace Cap.InventoryManagement.Inventory
 
             if (ShowAskDialog("确定要修改吗？"))
             {
+
+                if (string.IsNullOrEmpty(NameOfMaterial.Text))
+                {
+                    ShowWarningDialog("物料名称不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(QuantityOfMaterial.Text))
+                {
+                    ShowWarningDialog("物料数量不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Stocks stocks = capProjectDb.Stocks.Where(t => t.Id == Id).FirstOrDefault();
                 stocks.NameOfMaterial = NameOfMaterial.Text;

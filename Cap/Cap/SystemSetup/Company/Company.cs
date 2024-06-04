@@ -287,7 +287,16 @@ namespace Cap.SystemSetup
         {
             if (ShowAskDialog("确定要修改吗？"))
             {
-
+                if (string.IsNullOrEmpty(Company_Name.Text))
+                {
+                    ShowWarningDialog("公司名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Authorization.Text))
+                {
+                    ShowWarningDialog("是否授权不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_Company sys_Users = capProjectDb.Cap_Company.Where(t => t.Id == Id).FirstOrDefault();
                 sys_Users.Company_Name = Company_Name.Text;

@@ -260,6 +260,22 @@ namespace Cap.WorkerManagementParent.WorkerManagement
         {
             if (ShowAskDialog("确定要修改吗？"))
             {
+
+                if (string.IsNullOrEmpty(NameOfWorker.Text))
+                {
+                    ShowWarningDialog("工人名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Message.Text))
+                {
+                    ShowWarningDialog("基本信息不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(BasicInformation.Text))
+                {
+                    ShowWarningDialog("工艺信息不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_WorkerManagement cap_WorkerManagement = capProjectDb.Cap_WorkerManagement.Where(t => t.Id == Id).FirstOrDefault();
                 cap_WorkerManagement.Id = Guid.NewGuid().ToString();

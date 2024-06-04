@@ -232,6 +232,11 @@ namespace Cap.Order.OrderAdditionalRecording
             if (ShowAskDialog("确定要修改吗？"))
             {
 
+                if (string.IsNullOrEmpty(AdditionalRecording.Text))
+                {
+                    ShowWarningDialog("订单补录不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 OrderSupplement orderSupplement = capProjectDb.OrderSupplement.Where(t => t.Id == Id).FirstOrDefault();
                 orderSupplement.AdditionalRecording = AdditionalRecording.Text;

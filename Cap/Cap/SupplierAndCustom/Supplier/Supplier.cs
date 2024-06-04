@@ -284,6 +284,28 @@ namespace Cap.SupplierAndCustom.Supplier
         {
             if (ShowAskDialog("确定要修改吗？"))
             {
+
+                if (string.IsNullOrEmpty(NameOfTheSupplier.Text))
+                {
+                    ShowWarningDialog("供应商名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(SuppliersList.Text))
+                {
+                    ShowWarningDialog("供应商信息不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(SupplyPosition.Text))
+                {
+                    ShowWarningDialog("供货情况不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Price.Text))
+                {
+                    ShowWarningDialog("货物单价不能为空");
+                    return;
+                }
+
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 SupplierName supplierName = capProjectDb.SupplierName.Where(t => t.Id == Id).FirstOrDefault();
                 supplierName.NameOfTheSupplier = NameOfTheSupplier.Text;

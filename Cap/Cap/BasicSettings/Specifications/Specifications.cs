@@ -278,6 +278,23 @@ namespace Cap.BasicSettings.Specifications
             if (ShowAskDialog("确定要修改吗？"))
             {
 
+                if (string.IsNullOrEmpty(NameOfTheMaterial.Text))
+                {
+                    ShowWarningDialog("材料名称不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(Unit.Text))
+                {
+                    ShowWarningDialog("单位不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(LengthUnit.Text))
+                {
+                    ShowWarningDialog("长度（米）不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 SpecificationSetting specification = capProjectDb.SpecificationSetting.Where(t => t.Id == Id).FirstOrDefault();
                 specification.NameOfTheMaterial = NameOfTheMaterial.Text;

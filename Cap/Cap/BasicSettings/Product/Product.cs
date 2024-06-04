@@ -439,6 +439,22 @@ namespace Cap.BasicSettings.Product
         {
             if (ShowAskDialog("确定要修改吗？"))
             {
+                if (string.IsNullOrEmpty(ProductName.Text))
+                {
+                    ShowWarningDialog("产品名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(ProcessName.Text))
+                {
+                    ShowWarningDialog("工艺名称不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(Price.Text))
+                {
+                    ShowWarningDialog("价格不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 ProductSetup productSetup = capProjectDb.ProductSetup.Where(t => t.Id == Id).FirstOrDefault();
                 productSetup.ProductName = ProductName.Text;

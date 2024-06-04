@@ -262,6 +262,22 @@ namespace Cap.WorkRecordsParent.WorkRecords
 
             if (ShowAskDialog("确定要修改吗？"))
             {
+
+                if (string.IsNullOrEmpty(JobTitle.Text))
+                {
+                    ShowWarningDialog("工作名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Logging.Text))
+                {
+                    ShowWarningDialog("工作记录不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Statistics.Text))
+                {
+                    ShowWarningDialog("统计不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_WorkRecord cap_Work = capProjectDb.Cap_WorkRecord.Where(t => t.Id == Id).FirstOrDefault();
                 cap_Work.JobTitle = JobTitle.Text;

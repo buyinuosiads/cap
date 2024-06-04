@@ -271,6 +271,18 @@ namespace Cap.PurchasingManagementParent.PurchasingManagement
         {
             if (ShowAskDialog("确定要修改吗？"))
             {
+
+                if (string.IsNullOrEmpty(OrderQuantity.Text))
+                {
+                    ShowWarningDialog("订单数量不能为空");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(OrderName.Text))
+                {
+                    ShowWarningDialog("订单名称不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 Cap_PurchasingManagement cap_PurchasingManagement = capProjectDb.Cap_PurchasingManagement.Where(t => t.Id == Id).FirstOrDefault();
                 cap_PurchasingManagement.OrderQuantity = int.Parse(OrderQuantity.Text);

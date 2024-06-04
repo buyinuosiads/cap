@@ -281,6 +281,22 @@ namespace Cap.InventoryManagement.Inbound
         {
             if (ShowAskDialog("确定要修改吗？"))
             {
+
+                if (string.IsNullOrEmpty(IncomingName.Text))
+                {
+                    ShowWarningDialog("入库名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Contact.Text))
+                {
+                    ShowWarningDialog("联系人不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Phone.Text))
+                {
+                    ShowWarningDialog("联系电话不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 BePutInStorage bePutInStorage = capProjectDb.BePutInStorage.Where(t => t.Id == Id).FirstOrDefault();
                 bePutInStorage.IncomingName = IncomingName.Text;

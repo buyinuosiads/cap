@@ -403,7 +403,26 @@ namespace Cap.BasicSettings.Technology
         {
             if (ShowAskDialog("确定要修改吗？"))
             {
-
+                if (string.IsNullOrEmpty(ProcessName.Text))
+                {
+                    ShowWarningDialog("工艺名称不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(MainIngredient.Text))
+                {
+                    ShowWarningDialog("主料不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Accessory.Text))
+                {
+                    ShowWarningDialog("辅料不能为空");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Price.Text))
+                {
+                    ShowWarningDialog("价格不能为空");
+                    return;
+                }
                 CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
                 ProcessSetting processSetting = capProjectDb.ProcessSetting.Where(t => t.Id == Id).FirstOrDefault();
                 processSetting.ProcessName = ProcessName.Text;
