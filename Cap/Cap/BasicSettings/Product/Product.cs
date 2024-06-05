@@ -159,11 +159,11 @@ namespace Cap.BasicSettings.Product
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
 
                 string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
-                string ProductName_Manager = row.Cells["ProductName_Manager"].Value.ToString();
-                string ProcessName_Manager = row.Cells["ProcessName_Manager"].Value.ToString();
-                string Price_Manager = row.Cells["Price_Manager"].Value.ToString();
-                string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
-                string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
+                //string ProductName_Manager = row.Cells["ProductName_Manager"].Value.ToString();
+                //string ProcessName_Manager = row.Cells["ProcessName_Manager"].Value.ToString();
+                //string Price_Manager = row.Cells["Price_Manager"].Value.ToString();
+                //string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
+                //string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
 
 
                 //if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)

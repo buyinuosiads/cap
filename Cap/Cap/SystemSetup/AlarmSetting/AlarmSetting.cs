@@ -144,7 +144,7 @@ namespace Cap.SystemSetup.AlarmSetting
                     {
 
                         CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-                        Alarm_Setting alarm_Setting = capProjectDb.Alarm_Setting.Where(t => t.Id == Id).FirstOrDefault();
+                        Alarm_Setting alarm_Setting = capProjectDb.Alarm_Setting.Where(t => t.Id == Id_Manager).FirstOrDefault();
                         alarm_Setting.IsDelete = 99;
                         capProjectDb.SubmitChanges();
                         ShowSuccessTip("删除成功");

@@ -155,7 +155,7 @@ namespace Cap.BasicSettings.Specifications
                     if (ShowAskDialog("确定要删除吗？"))
                     {
                         CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-                        SpecificationSetting specification = capProjectDb.SpecificationSetting.Where(t => t.Id == Id).FirstOrDefault();
+                        SpecificationSetting specification = capProjectDb.SpecificationSetting.Where(t => t.Id == Id_Manager).FirstOrDefault();
                         specification.IsDelete = 99;
                         capProjectDb.SubmitChanges();
                         ShowSuccessTip("删除成功");

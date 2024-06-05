@@ -148,7 +148,7 @@ namespace Cap.FixedAssetsParent.FixedAssets
                     //uiDataGridView1.Rows.RemoveAt(e.RowIndex);
 
                     CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-                    Cap_FixedAssets cap_Fixed = capProjectDb.Cap_FixedAssets.Where(t => t.Id == Id).FirstOrDefault();
+                    Cap_FixedAssets cap_Fixed = capProjectDb.Cap_FixedAssets.Where(t => t.Id == Id_Manager).FirstOrDefault();
                     cap_Fixed.IsDelete = 0;
                     capProjectDb.SubmitChanges();
                     ShowSuccessTip("删除成功");

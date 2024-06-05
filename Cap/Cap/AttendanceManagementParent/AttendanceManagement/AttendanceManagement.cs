@@ -142,7 +142,7 @@ namespace Cap.AttendanceManagementParent.AttendanceManagement
                 {
 
                     CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-                    Cap_AttendanceManagement cap_Attendance = capProjectDb.Cap_AttendanceManagement.Where(t => t.Id == Id).FirstOrDefault();
+                    Cap_AttendanceManagement cap_Attendance = capProjectDb.Cap_AttendanceManagement.Where(t => t.Id == Id_Manager).FirstOrDefault();
                     cap_Attendance.IsDelete = 99;
                     capProjectDb.SubmitChanges();
                     ShowSuccessTip("删除成功");

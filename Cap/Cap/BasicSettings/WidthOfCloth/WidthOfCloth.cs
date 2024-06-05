@@ -185,11 +185,11 @@ namespace Cap.SystemSetup.WidthOfCloth
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据 
                 string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
-                string BreadthName_Manager = row.Cells["BreadthName_Manager"].Value.ToString();
-                string WidthSize_Manager = row.Cells["WidthSize_Manager"].Value.ToString();
-                string WidthType_Manager = row.Cells["WidthType_Manager"].Value.ToString();
-                string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
-                string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
+                //string BreadthName_Manager = row.Cells["BreadthName_Manager"].Value.ToString();
+                //string WidthSize_Manager = row.Cells["WidthSize_Manager"].Value.ToString();
+                //string WidthType_Manager = row.Cells["WidthType_Manager"].Value.ToString();
+                //string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
+                //string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
 
 
                 //if (e.ColumnIndex == uiDataGridView1.Columns["Search"].Index && e.RowIndex >= 0)

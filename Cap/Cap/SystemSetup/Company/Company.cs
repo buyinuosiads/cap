@@ -152,7 +152,7 @@ namespace Cap.SystemSetup
                     if (ShowAskDialog("确定要删除吗？"))
                     {
                         CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
-                        Cap_Company cap_Company = capProjectDb.Cap_Company.Where(t => t.Id == Id).FirstOrDefault();
+                        Cap_Company cap_Company = capProjectDb.Cap_Company.Where(t => t.Id == Id_Manager).FirstOrDefault();
                         cap_Company.IsDelete = 99;
                         capProjectDb.SubmitChanges();
                         ShowSuccessTip("删除成功");

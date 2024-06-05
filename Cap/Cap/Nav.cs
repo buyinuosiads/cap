@@ -616,9 +616,7 @@ namespace Cap
             Type o = Type.GetType(fullName);
             dynamic obj = Activator.CreateInstance(o, true);
             return (T)obj;//类型转换并返回
-        }
-
-
+        } 
         private void uiNavBar1_MenuItemClick(string itemText, int menuIndex, int pageIndex)
         {
             switch (menuIndex)
@@ -697,9 +695,13 @@ namespace Cap
         private void button29_Click(object sender, EventArgs e)
         {
 
-            if (ShowAskDialog("确定要退出吗？"))
+            if (_Close == false)
             {
-                Application.Exit();//关闭的时候杀死所有线程
+                if (ShowAskDialog("确定要退出吗？"))
+                {
+                    _Close = true;
+                    Application.Exit();//关闭的时候杀死所有线程
+                }                
             }
         }
     }

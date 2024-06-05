@@ -110,10 +110,10 @@ namespace Cap.BasicSettings.Accessories
                 DataGridViewRow row = uiDataGridView1.Rows[e.RowIndex];
                 // 获取行数据
                 string Id_Manager = row.Cells["Id_Manager"].Value.ToString();
-                string AccessoryName_Manager = row.Cells["AccessoryName_Manager"].Value.ToString();
-                string Unit_Manager = row.Cells["Unit_Manager"].Value.ToString();
-                string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
-                string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
+                //string AccessoryName_Manager = row.Cells["AccessoryName_Manager"].Value.ToString();
+                //string Unit_Manager = row.Cells["Unit_Manager"].Value.ToString();
+                //string CreateTime_Manager = row.Cells["CreateTime_Manager"].Value.ToString();
+                //string CreateName_Manager = row.Cells["CreateName_Manager"].Value.ToString();
 
 
 
@@ -138,8 +138,14 @@ namespace Cap.BasicSettings.Accessories
                 {
                     if (ShowAskDialog("确定要删除吗？"))
                     {
+                        CapDbContextDataContext capProjectDb = new CapDbContextDataContext();
+                        ChargeTime cap_Attendance = capProjectDb.ChargeTime.Where(t => t.Id == Id_Manager).FirstOrDefault();
+                        cap_Attendance.IsDelete = 99;
+                        capProjectDb.SubmitChanges();
                         ShowSuccessTip("删除成功");
-                        uiDataGridView1.Rows.RemoveAt(e.RowIndex);
+                        uiButton6_Click(sender, e); //调用清空文本框方法
+                        GetList();
+                         
                     }
                     else
                     {
